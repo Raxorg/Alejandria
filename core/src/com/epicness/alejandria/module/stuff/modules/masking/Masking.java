@@ -3,6 +3,7 @@ package com.epicness.alejandria.module.stuff.modules.masking;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.module.stuff.modules.Module;
@@ -19,7 +20,7 @@ public class Masking extends Module {
     // Structure
     private final SharedAssets assets;
     // Module specific
-    private Sprite bg, sprite, alphaMask;
+    private Sprite bg, sprite, alphaMask, alphaMask2;
 
     public Masking(SharedAssets assets) {
         super(MASKING);
@@ -31,13 +32,22 @@ public class Masking extends Module {
         bg = new Sprite(assets.getPixel());
         bg.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         bg.setColor(Color.PINK);
-        sprite = new Sprite(assets.getWeirdShape());
+
+        Texture tex1 = new Texture(Gdx.files.internal("images/weirdShape.png"));
+        sprite = new Sprite(tex1);
         sprite.setSize(250, 250);
         sprite.setColor(Color.GREEN);
-        alphaMask = new Sprite(assets.getGlow());
-        alphaMask.setPosition(25, 50);
+        sprite.getTexture().setFilter(Linear, Linear);
+
+        Texture tex2 = new Texture(Gdx.files.internal("images/glow2.png"));
+        alphaMask = new Sprite(tex2);
         alphaMask.setSize(250, 250);
         alphaMask.getTexture().setFilter(Linear, Linear);
+
+        Texture tex3 = new Texture(Gdx.files.internal("images/weirdShape4.png"));
+        alphaMask2 = new Sprite(tex3);
+        alphaMask2.setSize(250, 250);
+        alphaMask2.getTexture().setFilter(Linear, Linear);
     }
 
     @Override
@@ -62,6 +72,9 @@ public class Masking extends Module {
         spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         bg.draw(spriteBatch);
+        sprite.translateX(300f);
+        sprite.draw(spriteBatch);
+        sprite.translateX(-300f);
 
         //flush the batch to the GPU
         spriteBatch.flush();
@@ -77,6 +90,10 @@ public class Masking extends Module {
         //draw alpha mask sprite(s)
         alphaMask.draw(spriteBatch);
 
+        spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        alphaMask2.draw(spriteBatch);
+
         //flush the batch to the GPU
         spriteBatch.flush();
     }
@@ -88,7 +105,7 @@ public class Masking extends Module {
 
         //The scissor test is optional, but it depends
         Gdx.gl.glEnable(GL20.GL_SCISSOR_TEST);
-        Gdx.gl.glScissor(25, 50, 250, 250);
+        //Gdx.gl.glScissor(25, 50, 250, 250);
 
         //draw our sprite to be masked
         sprite.draw(spriteBatch);
