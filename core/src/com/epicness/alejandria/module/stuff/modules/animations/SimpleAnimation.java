@@ -1,0 +1,41 @@
+package com.epicness.alejandria.module.stuff.modules.animations;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.epicness.alejandria.module.stuff.modules.Module;
+
+import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
+
+public class SimpleAnimation extends Module {
+
+    private Animation<Sprite> animation;
+    private float time;
+
+    public SimpleAnimation() {
+        super(SIMPLE_ANIMATION);
+    }
+
+    @Override
+    public void setup() {
+        Sprite[] sprites = new Sprite[2];
+        sprites[0] = new Sprite(new Texture(Gdx.files.internal("images/pixel.png")));
+        sprites[0].setSize(100f, 100f);
+        sprites[1] = new Sprite(new Texture(Gdx.files.internal("images/weirdShape.png")));
+        sprites[1].setSize(100f, 100f);
+        animation = new Animation<>(0.1f, sprites);
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
+    @Override
+    public void update(float delta) {
+        time += delta;
+    }
+
+    @Override
+    public void draw(SpriteBatch spriteBatch) {
+        animation.getKeyFrame(time).draw(spriteBatch);
+    }
+}
