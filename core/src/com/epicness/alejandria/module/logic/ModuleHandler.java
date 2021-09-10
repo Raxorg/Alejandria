@@ -8,7 +8,7 @@ import com.epicness.alejandria.module.stuff.modules.masking.Masking;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.SharedAssets;
 
-import static com.epicness.alejandria.ModuleID.*;
+import static com.epicness.alejandria.ModuleID.MASKING;
 
 public class ModuleHandler {
 
@@ -31,8 +31,12 @@ public class ModuleHandler {
     }
 
     public void changeModule(ModuleID moduleID) {
-        stuff.getModuleStorage().setCurrentModule(moduleID);
-        stuff.getModuleStorage().getCurrentModule().setup();
+        ModuleStorage moduleStorage = stuff.getModuleStorage();
+        if (moduleStorage.getCurrentModule() != null) {
+            moduleStorage.getCurrentModule().dispose();
+        }
+        moduleStorage.setCurrentModule(moduleID);
+        moduleStorage.getCurrentModule().setup();
     }
 
     // Structure

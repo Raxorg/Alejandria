@@ -20,7 +20,7 @@ public class Masking extends Module {
     // Structure
     private final SharedAssets assets;
     // Module specific
-    private Sprite bg, sprite, alphaMask, alphaMask2;
+    private Sprite bg, sprite, alphaMask, spriteInverseAlpha;
 
     public Masking(SharedAssets assets) {
         super(MASKING);
@@ -39,15 +39,15 @@ public class Masking extends Module {
         sprite.setColor(Color.GREEN);
         sprite.getTexture().setFilter(Linear, Linear);
 
-        Texture tex2 = new Texture(Gdx.files.internal("images/glow2.png"));
+        Texture tex2 = new Texture(Gdx.files.internal("images/masking/glow2.png"));
         alphaMask = new Sprite(tex2);
         alphaMask.setSize(250, 250);
         alphaMask.getTexture().setFilter(Linear, Linear);
 
-        Texture tex3 = new Texture(Gdx.files.internal("images/weirdShape4.png"));
-        alphaMask2 = new Sprite(tex3);
-        alphaMask2.setSize(250, 250);
-        alphaMask2.getTexture().setFilter(Linear, Linear);
+        Texture tex3 = new Texture(Gdx.files.internal("images/masking/weirdShapeInvertedAlpha.png"));
+        spriteInverseAlpha = new Sprite(tex3);
+        spriteInverseAlpha.setSize(250, 250);
+        spriteInverseAlpha.getTexture().setFilter(Linear, Linear);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Masking extends Module {
 
         spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        alphaMask2.draw(spriteBatch);
+        spriteInverseAlpha.draw(spriteBatch);
 
         //flush the batch to the GPU
         spriteBatch.flush();
@@ -115,5 +115,11 @@ public class Masking extends Module {
 
         //disable scissor before continuing
         Gdx.gl.glDisable(GL20.GL_SCISSOR_TEST);
+    }
+
+    @Override
+    public void dispose() {
+        alphaMask.getTexture().dispose();
+        spriteInverseAlpha.getTexture().dispose();
     }
 }

@@ -17,6 +17,10 @@ public abstract class Module {
 
     public abstract void draw(SpriteBatch spriteBatch);
 
+    public void dispose() {
+
+    }
+
     public ModuleID getID() {
         return moduleID;
     }
