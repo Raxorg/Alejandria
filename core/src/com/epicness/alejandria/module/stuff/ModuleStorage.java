@@ -1,10 +1,13 @@
 package com.epicness.alejandria.module.stuff;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.stuff.modules.Module;
 
 import java.util.HashMap;
+
+import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
 
 public class ModuleStorage {
 
@@ -28,7 +31,7 @@ public class ModuleStorage {
         currentModule = moduleMap.get(moduleID);
     }
 
-    public void draw(SpriteBatch spriteBatch) {
-        currentModule.draw(spriteBatch);
+    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        currentModule.draw(spriteBatch, shapeRenderer);
     }
 }

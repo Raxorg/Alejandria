@@ -1,8 +1,6 @@
 package com.epicness.alejandria.module.logic;
 
 import com.epicness.alejandria.module.stuff.ModuleStuff;
-import com.epicness.fundamentals.SharedScreen;
-import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
@@ -33,18 +31,8 @@ public class ModuleLogic extends Logic {
     }
 
     @Override
-    public void setSharedAssets(SharedAssets sharedAssets) {
-        moduleHandler.setSharedAssets(sharedAssets);
-    }
-
-    @Override
     public void setInput(SharedInput input) {
         moduleInputHandler.setInput(input);
-    }
-
-    @Override
-    public void setScreen(SharedScreen screen) {
-        moduleHandler.setScreen(screen);
     }
 
     @Override

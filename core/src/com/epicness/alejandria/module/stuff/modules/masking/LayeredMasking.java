@@ -3,12 +3,11 @@ package com.epicness.alejandria.module.stuff.modules.masking;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.module.stuff.modules.Module;
-import com.epicness.fundamentals.SharedScreen;
-import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.stuff.Circle;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
@@ -24,10 +23,8 @@ import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
 
 public class LayeredMasking extends Module {
 
-    private final SharedAssets assets;
-    private final SharedScreen screen;
     // Module specific
-    private ShapeRenderer shapeRenderer;
+    private Texture weirdShape, square32, square32Inverted, pixel;
     private Sprite mask;
     private Grid gridA, gridB;
     private Circle circle1, circle2;
@@ -36,25 +33,27 @@ public class LayeredMasking extends Module {
     private static final int GRID_COLUMNS = 10, GRID_ROWS = 10;
     private static final float SHAPE_SIZE = 100f;
 
-    public LayeredMasking(SharedAssets assets, SharedScreen screen) {
+    public LayeredMasking() {
         super(LAYERED_MASKING);
-        this.assets = assets;
-        this.screen = screen;
     }
 
     @Override
     public void setup() {
-        shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setAutoShapeType(true);
         Gdx.gl.glLineWidth(3f);
 
-        mask = new Sprite(assets.getWeirdShape());
+        weirdShape = new Texture(Gdx.files.internal("images/shared/weirdShape.png"));
+        square32 = new Texture(Gdx.files.internal("images/shared/square32.png"));
+        square32Inverted = new Texture(Gdx.files.internal("images/shared/square32Inverted.png"));
+        pixel = new Texture(Gdx.files.internal("images/shared/pixel.png"));
+
+        mask = new Sprite(weirdShape);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
         mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
         mask.setColor(Color.BLUE);
 
-        gridA = new Grid(GRID_COLUMNS, GRID_ROWS, assets.getSquare());
+        Sprite cellSprite = new Sprite(square32);
+        gridA = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
         gridA.setCellSize(100f);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -63,7 +62,8 @@ public class LayeredMasking extends Module {
             }
         }
 
-        gridB = new Grid(GRID_COLUMNS, GRID_ROWS, assets.getSquareInverted());
+        cellSprite = new Sprite(square32Inverted);
+        gridB = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
         gridB.setCellSize(100f);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -72,17 +72,19 @@ public class LayeredMasking extends Module {
             }
         }
 
-        circle1 = new Circle(250f);
+        circle1 = new Circle(CAMERA_HEIGHT / 4f);
         circle1.setPosition(CAMERA_WIDTH / 2f, 750f);
         circle1.setColor(Color.BLACK);
 
-        circle2 = new Circle(250f);
+        circle2 = new Circle(CAMERA_HEIGHT / 4f);
         circle2.setPosition(CAMERA_WIDTH / 2f, 250f);
         circle2.setColor(Color.BLACK);
 
+        Sprite backgroundSprite = new Sprite(pixel);
+        Sprite foregroundSprite = new Sprite(weirdShape);
         shapes = new ArrayList<>();
         for (int i = 0; i < GRID_COLUMNS; i++) {
-            DualSprited shape = new DualSprited(assets.getPixel(), assets.getWeirdShape());
+            DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
             shape.setX(SHAPE_SIZE * i);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.ORANGE);
@@ -90,7 +92,7 @@ public class LayeredMasking extends Module {
         }
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
-            DualSprited shape = new DualSprited(assets.getPixel(), assets.getWeirdShape());
+            DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
             shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.375f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.PURPLE);
@@ -98,7 +100,7 @@ public class LayeredMasking extends Module {
         }
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
-            DualSprited shape = new DualSprited(assets.getPixel(), assets.getWeirdShape());
+            DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
             shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.75f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.GREEN);
@@ -129,21 +131,17 @@ public class LayeredMasking extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch) {
-        spriteBatch.setProjectionMatrix(screen.getStaticCamera().combined);
-        shapeRenderer.setProjectionMatrix(screen.getStaticCamera().combined);
-
-        spriteBatch.end();
+    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         drawUnmasked(spriteBatch);
-        drawMask(spriteBatch);
-        drawMasked(spriteBatch);
-        drawMask2(spriteBatch);
-        drawMasked2(spriteBatch);
-        spriteBatch.begin();
+        drawMask(spriteBatch, shapeRenderer);
+        drawMasked(spriteBatch, shapeRenderer);
+        drawMask2(spriteBatch, shapeRenderer);
+        drawMasked2(spriteBatch, shapeRenderer);
+        // Back to default depth test
+        Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
 
     private void drawUnmasked(SpriteBatch spriteBatch) {
-        Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
         spriteBatch.begin();
         gridA.draw(spriteBatch);
         for (DualSprited shape : shapes) {
@@ -152,7 +150,7 @@ public class LayeredMasking extends Module {
         spriteBatch.end();
     }
 
-    private void drawMask(SpriteBatch spriteBatch) {
+    private void drawMask(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -178,7 +176,7 @@ public class LayeredMasking extends Module {
         shapeRenderer.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch) {
+    private void drawMasked(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();
@@ -192,7 +190,7 @@ public class LayeredMasking extends Module {
         shapeRenderer.end();
     }
 
-    private void drawMask2(SpriteBatch spriteBatch) {
+    private void drawMask2(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -218,7 +216,7 @@ public class LayeredMasking extends Module {
         shapeRenderer.end();
     }
 
-    private void drawMasked2(SpriteBatch spriteBatch) {
+    private void drawMasked2(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();
@@ -230,5 +228,13 @@ public class LayeredMasking extends Module {
         shapeRenderer.begin(Filled);
         circle2.drawContour(shapeRenderer);
         shapeRenderer.end();
+    }
+
+    @Override
+    public void dispose() {
+        weirdShape.dispose();
+        square32.dispose();
+        square32Inverted.dispose();
+        pixel.dispose();
     }
 }

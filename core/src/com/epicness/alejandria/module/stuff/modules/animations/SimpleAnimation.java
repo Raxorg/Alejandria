@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.module.stuff.modules.Module;
 
 import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
@@ -35,7 +36,7 @@ public class SimpleAnimation extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         animation.getKeyFrame(time).draw(spriteBatch);
     }
 }

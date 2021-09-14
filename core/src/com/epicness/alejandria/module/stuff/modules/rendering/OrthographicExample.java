@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.module.stuff.modules.Module;
 
 import static com.epicness.alejandria.ModuleID.ORTHOGRAPHIC_EXAMPLE;
@@ -34,7 +35,7 @@ public class OrthographicExample extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         spriteBatch.setProjectionMatrix(camera.combined);
         weirdShape.draw(spriteBatch);
     }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.module.stuff.modules.Module;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_2;
-import static com.epicness.alejandria.ModuleID.ASTAR;
+import static com.epicness.alejandria.ModuleID.A_STAR;
 
 public class AStar extends Module {
 
@@ -24,7 +25,7 @@ public class AStar extends Module {
     private boolean finished;
 
     public AStar() {
-        super(ASTAR);
+        super(A_STAR);
     }
 
     @Override
@@ -61,7 +62,7 @@ public class AStar extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         grid.draw(spriteBatch);
     }
 
