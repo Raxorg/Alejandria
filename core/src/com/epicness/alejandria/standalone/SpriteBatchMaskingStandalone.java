@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class AlphaMaskingStandalone extends Game {
+public class SpriteBatchMaskingStandalone extends Game {
 
     private SpriteBatch spriteBatch;
     private Sprite mask, maskedSprite, alphaInvertedMaskedSprite;

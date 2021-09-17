@@ -3,11 +3,11 @@ package com.epicness.alejandria.module.logic;
 import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.stuff.ModuleStorage;
 import com.epicness.alejandria.module.stuff.ModuleStuff;
-import com.epicness.alejandria.module.stuff.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.AlphaMasking;
+import com.epicness.alejandria.module.stuff.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.ShapeRendererMasking;
 
-import static com.epicness.alejandria.ModuleID.MASKING;
+import static com.epicness.alejandria.ModuleID.ALPHA_MASKING;
 
 public class ModuleHandler {
 
@@ -21,7 +21,7 @@ public class ModuleHandler {
         moduleStorage.addModule(new AlphaMasking());
         moduleStorage.addModule(new ShapeRendererMasking());
 
-        changeModule(MASKING);
+        changeModule(ALPHA_MASKING);
     }
 
     public void update(float delta) {

@@ -2,7 +2,7 @@ package com.epicness.alejandria.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.epicness.alejandria.AlejandriaApp;
+import com.epicness.alejandria.standalone.FrameBufferTintMaskingStandalone;
 
 import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 
@@ -12,6 +12,8 @@ public class DesktopLauncher {
         config.width = INITIAL_WINDOW_SIZE;
         config.height = INITIAL_WINDOW_SIZE;
         config.forceExit = false;
-        new LwjglApplication(new AlejandriaApp(), config);
+        //new LwjglApplication(new AlejandriaApp(), config);
+        new LwjglApplication(new FrameBufferTintMaskingStandalone(), config);
+        // See package com.epicness.alejandria.standalone for demos
     }
 }
