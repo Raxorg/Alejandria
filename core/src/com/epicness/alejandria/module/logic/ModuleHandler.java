@@ -7,7 +7,7 @@ import com.epicness.alejandria.module.stuff.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.ShapeRendererMasking;
 
-import static com.epicness.alejandria.ModuleID.ALPHA_MASKING;
+import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
 
 public class ModuleHandler {
 
@@ -21,7 +21,7 @@ public class ModuleHandler {
         moduleStorage.addModule(new AlphaMasking());
         moduleStorage.addModule(new ShapeRendererMasking());
 
-        changeModule(ALPHA_MASKING);
+        changeModule(LAYERED_MASKING);
     }
 
     public void update(float delta) {
