@@ -6,8 +6,9 @@ import com.epicness.alejandria.module.stuff.ModuleStuff;
 import com.epicness.alejandria.module.stuff.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.ShapeRendererMasking;
+import com.epicness.alejandria.module.stuff.modules.rendering.ProceduralSquare;
 
-import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
+import static com.epicness.alejandria.ModuleID.PROCEDURAL_SQUARE;
 
 public class ModuleHandler {
 
@@ -20,8 +21,9 @@ public class ModuleHandler {
         moduleStorage.addModule(new LayeredMasking());
         moduleStorage.addModule(new AlphaMasking());
         moduleStorage.addModule(new ShapeRendererMasking());
+        moduleStorage.addModule(new ProceduralSquare());
 
-        changeModule(LAYERED_MASKING);
+        changeModule(PROCEDURAL_SQUARE);
     }
 
     public void update(float delta) {
