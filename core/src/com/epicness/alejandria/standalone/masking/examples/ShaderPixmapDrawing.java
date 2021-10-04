@@ -1,4 +1,4 @@
-package com.epicness.alejandria.standalone.examples;
+package com.epicness.alejandria.standalone.masking.examples;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
