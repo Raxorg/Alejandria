@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class SpriteBatchMaskingStandalone extends Game {
 
     private SpriteBatch spriteBatch;
-    private Sprite mask, maskedSprite, alphaInvertedMaskedSprite;
+    private Sprite mask, maskedSprite;
 
     @Override
     public void create() {
@@ -22,8 +22,6 @@ public class SpriteBatchMaskingStandalone extends Game {
 
         maskedSprite = new Sprite(new Texture("images/shared/weirdShape.png"));
         maskedSprite.setColor(Color.RED);
-
-        alphaInvertedMaskedSprite = new Sprite(new Texture("images/masking/weirdShapeInvertedAlpha.png"));
     }
 
     @Override
@@ -50,10 +48,10 @@ public class SpriteBatchMaskingStandalone extends Game {
         mask.draw(spriteBatch);
 
         // Change the blending function to remove pixels from the alpha map where alpha = 1
-        spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_SRC_ALPHA);
 
-        // Remove the masked sprite's inverse alpha
-        alphaInvertedMaskedSprite.draw(spriteBatch);
+        // Remove the masked sprite's inverse alpha from the map
+        maskedSprite.draw(spriteBatch);
 
         // Flush the batch to the GPU
         spriteBatch.flush();
@@ -79,6 +77,5 @@ public class SpriteBatchMaskingStandalone extends Game {
 
         spriteBatch.draw(mask, 0, 256);
         spriteBatch.draw(maskedSprite, 256, 256);
-        spriteBatch.draw(alphaInvertedMaskedSprite, 512, 256);
     }
 }
