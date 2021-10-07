@@ -14,13 +14,14 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
 import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 public class ShaderPixmapMaskingStandalone extends Game {
 
     private final int size = 300;
-    private Texture smileColor, smileOutline;
-    private SpriteBatch spriteBatch;
+    private Texture texture;
+    private SpriteBatch spriteBatch1, spriteBatch2;
     private ShapeRenderer shapeRenderer;
 
     @Override
@@ -39,9 +40,9 @@ public class ShaderPixmapMaskingStandalone extends Game {
         pixmap.setColor(0, 0, 0, 1);
 
         /* This setting will let us see some portions of the masked image. */
-        pixmap.fillCircle(size / 4, size / 4, size / 4);
-        pixmap.setColor(0, 0, 0, 0.5f);
-        pixmap.fillRectangle(size / 2, size / 2, size / 2, size / 2);
+        pixmap.fillCircle(size / 2, size / 4, size / 4);
+        pixmap.setColor(0, 0, 0, 0.25f);
+        pixmap.fillRectangle(size / 4, size / 2, size / 2, size / 2);
 
         /* Create a Texture based on the pixmap. */
         Texture pixmapTex = new Texture(pixmap);
@@ -56,8 +57,8 @@ public class ShaderPixmapMaskingStandalone extends Game {
         Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
 
         /* Some regular textures to draw on the screen. */
-        smileColor = new Texture("images/masking/smiley_color.png");
-        smileOutline = new Texture("images/masking/smiley_outline.png");
+        texture = new Texture(WEIRD_SHAPE_PATH);
+        texture.setFilter(Linear, Linear);
 
         /* It's nicer to keep shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
@@ -85,8 +86,12 @@ public class ShaderPixmapMaskingStandalone extends Game {
         shader.setUniformi("u_mask", 1);
 
         /* Construct a simple SpriteBatch using our shader program. */
-        spriteBatch = new SpriteBatch();
-        spriteBatch.setShader(shader);
+        spriteBatch1 = new SpriteBatch();
+        spriteBatch1.setShader(shader);
+
+        /* An unmodified SpriteBatch to draw the original image as reference
+         * we could also change the shader of spriteBatch1 back to the default. */
+        spriteBatch2 = new SpriteBatch();
 
         /* Construct a simple ShapeRenderer to draw reference contours. */
         shapeRenderer = new ShapeRenderer();
@@ -98,28 +103,24 @@ public class ShaderPixmapMaskingStandalone extends Game {
     public void render() {
         ScreenUtils.clear(Color.BLACK);
 
-        spriteBatch.begin();
-        drawImages();
-        spriteBatch.end();
+        spriteBatch1.begin();
+        spriteBatch1.setColor(Color.RED);
+        spriteBatch1.draw(texture, 0, 0, size, size);
+        spriteBatch1.end();
+
+        spriteBatch2.begin();
+        spriteBatch2.draw(texture, 0, size, size, size);
+        spriteBatch2.end();
 
         shapeRenderer.begin();
         drawContours();
         shapeRenderer.end();
     }
 
-    private void drawImages() {
-        spriteBatch.draw(smileColor, 0, 0, size, size);
-        spriteBatch.draw(smileOutline, 0, 0, size, size);
-    }
-
     private void drawContours() {
-        /* The contour of the image. */
-        shapeRenderer.set(Line);
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(0, 0, size, size);
-        /* The contour of the masks. */
+        /* Draw the contour of the masks. */
         shapeRenderer.setColor(Color.CYAN);
-        shapeRenderer.rect(size / 2f, 0f, size / 2f, size / 2f);
-        shapeRenderer.circle(size / 4f, size * 0.75f, size / 4f);
+        shapeRenderer.rect(size / 4f, 0f, size / 2f, size / 2f);
+        shapeRenderer.circle(size / 2f, size * 0.75f, size / 4f);
     }
 }
