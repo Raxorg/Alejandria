@@ -103,11 +103,13 @@ public class ShaderPixmapMaskingStandalone extends Game {
     public void render() {
         ScreenUtils.clear(Color.BLACK);
 
+        /* Draw our masked image. */
         spriteBatch1.begin();
         spriteBatch1.setColor(Color.RED);
         spriteBatch1.draw(texture, 0, 0, size, size);
         spriteBatch1.end();
 
+        /* Draw the original image unmasked for comparison. */
         spriteBatch2.begin();
         spriteBatch2.draw(texture, 0, size, size, size);
         spriteBatch2.end();
