@@ -26,6 +26,26 @@ public class ShaderPixmapMaskingStandalone extends Game {
 
     @Override
     public void create() {
+        /* We'll be using a pixmap to define the mask this time */
+        defineMask();
+
+        /* Some regular textures to draw on the screen. */
+        texture = new Texture(WEIRD_SHAPE_PATH);
+        texture.setFilter(Linear, Linear);
+
+        setupShader();
+
+        /* An unmodified SpriteBatch to draw the original image as reference
+         * we could also change the shader of spriteBatch1 back to the default. */
+        spriteBatch2 = new SpriteBatch();
+
+        /* Construct a simple ShapeRenderer to draw reference contours. */
+        shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
+        Gdx.gl.glLineWidth(2);
+    }
+
+    private void defineMask() {
         /* The fragment shader simply multiplies the fragment's usual alpha with
          * our mask alpha, since we only care about the alpha channel, the Alpha
          * Pixmap format is just what we need. */
@@ -57,11 +77,9 @@ public class ShaderPixmapMaskingStandalone extends Game {
          * so we must now reset it to TEXTURE0 or else our mask will be
          * overwritten. */
         Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+    }
 
-        /* Some regular textures to draw on the screen. */
-        texture = new Texture(WEIRD_SHAPE_PATH);
-        texture.setFilter(Linear, Linear);
-
+    private void setupShader() {
         /* It's nicer to keep shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
         FileHandle vertexShader = Gdx.files.internal("shaders/shared/vertex.glsl");
@@ -90,15 +108,6 @@ public class ShaderPixmapMaskingStandalone extends Game {
         /* Construct a simple SpriteBatch using our shader program. */
         spriteBatch1 = new SpriteBatch();
         spriteBatch1.setShader(shader);
-
-        /* An unmodified SpriteBatch to draw the original image as reference
-         * we could also change the shader of spriteBatch1 back to the default. */
-        spriteBatch2 = new SpriteBatch();
-
-        /* Construct a simple ShapeRenderer to draw reference contours. */
-        shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setAutoShapeType(true);
-        Gdx.gl.glLineWidth(2);
     }
 
     @Override
