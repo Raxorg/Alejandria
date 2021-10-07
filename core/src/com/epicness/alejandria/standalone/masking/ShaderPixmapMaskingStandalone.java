@@ -44,7 +44,9 @@ public class ShaderPixmapMaskingStandalone extends Game {
         pixmap.setColor(0, 0, 0, 0.25f);
         pixmap.fillRectangle(size / 4, size / 2, size / 2, size / 2);
 
-        /* Create a Texture based on the pixmap. */
+        /* Create a Texture based on the pixmap.
+         * IMPORTANT: How we create the texture doesn't matter, this technique
+         * also allows, for example, to create it out of any supported format image */
         Texture pixmapTex = new Texture(pixmap);
 
         /* Bind the mask texture to TEXTURE<N> (TEXTURE1 for our purposes),
