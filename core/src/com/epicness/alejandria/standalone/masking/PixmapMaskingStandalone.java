@@ -73,7 +73,7 @@ public class PixmapMaskingStandalone extends Game {
          * you can draw individual pixels to the Pixmap. */
         result.fillCircle(size / 2, size / 2, size / 2);
 
-        /* Draw a rectangle with half alpha to our mask, this will turn
+        /* Draw a rectangle with little alpha to our mask, this will turn
          * a corner of the original image transparent. */
         result.setColor(1f, 1f, 1f, 0.25f);
         result.fillRectangle(size / 2, size / 2, size / 2, size / 2);
