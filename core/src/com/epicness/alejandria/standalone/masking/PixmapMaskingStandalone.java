@@ -75,7 +75,7 @@ public class PixmapMaskingStandalone extends Game {
 
         /* Draw a rectangle with half alpha to our mask, this will turn
          * a corner of the original image transparent. */
-        result.setColor(1f, 1f, 1f, 0.5f);
+        result.setColor(1f, 1f, 1f, 0.25f);
         result.fillRectangle(size / 2, size / 2, size / 2, size / 2);
 
         /* We can also define the mask by loading an image:
@@ -92,11 +92,11 @@ public class PixmapMaskingStandalone extends Game {
     }
 
     private void drawImages() {
-        /* Draw the original image in blue first to see transparency taking place. */
-        spriteBatch.setColor(Color.BLUE);
-        spriteBatch.draw(original, 0, 0, size, size);
+        /* Draw the original image for comparison. */
+        spriteBatch.setColor(Color.WHITE);
+        spriteBatch.draw(original, 0, size, size, size);
 
-        /* Draw the masked image in red on top. */
+        /* Draw the masked image in red. */
         spriteBatch.setColor(Color.RED);
         spriteBatch.draw(masked, 0, 0, size, size);
     }
