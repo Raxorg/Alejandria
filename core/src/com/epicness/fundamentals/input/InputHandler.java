@@ -15,6 +15,10 @@ public abstract class InputHandler {
         input.setEnabled(true);
     }
 
+    public void mouseMoved(float x, float y) {
+
+    }
+
     public void touchDown(float x, float y) {
 
     }

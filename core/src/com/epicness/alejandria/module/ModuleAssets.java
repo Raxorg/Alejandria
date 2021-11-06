@@ -10,11 +10,6 @@ public class ModuleAssets extends Assets {
     }
 
     @Override
-    public boolean loadAssets() {
-        return false;
-    }
-
-    @Override
     public void initializeAssets() {
 
     }

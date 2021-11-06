@@ -30,7 +30,7 @@ public class PixmapMaskingStandalone extends Game {
         spriteBatch = new SpriteBatch();
 
         /* The path to the image to mask. */
-        FileHandle imagePath = new FileHandle("images/shared/weirdShape.png");
+        FileHandle imagePath = new FileHandle("fundamentals/images/weirdShape.png");
 
         /* Load the pixels of our image into a Pixmap. */
         Pixmap pixmap = new Pixmap(imagePath);

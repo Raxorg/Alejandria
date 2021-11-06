@@ -13,7 +13,15 @@ public abstract class Assets {
 
     public abstract void queueAssetLoading();
 
-    public abstract boolean loadAssets();
+    /* Default recommended way of loading assets -> async */
+    public final boolean loadAssets() {
+        return assetManager.update();
+    }
+
+    /* Obstructing way of loading assets -> blocks until finished */
+    public final void finishLoading() {
+        assetManager.finishLoading();
+    }
 
     public abstract void initializeAssets();
 

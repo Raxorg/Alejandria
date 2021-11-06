@@ -27,10 +27,6 @@ public abstract class Renderer {
 
     public abstract void render();
 
-    public ShapeRenderer getShapeRenderer() {
-        return shapeRenderer;
-    }
-
     // Structure
     public void setScreen(SharedScreen screen) {
         this.screen = screen;

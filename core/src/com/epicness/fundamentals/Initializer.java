@@ -32,9 +32,6 @@ public abstract class Initializer {
         stuff.setSharedAssets(sharedResources.getAssets());
         stuff.setAssets(assets);
 
-        assets.queueAssetLoading();
-        assets.loadAssets();
-        assets.initializeAssets();
         renderer.setProjectionMatrix();
         stuff.initializeStuff();
 

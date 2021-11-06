@@ -64,6 +64,10 @@ public class DualSprited implements Buttonable {
         foreground.translateY(amount);
     }
 
+    public void setBackgroundSize(float size) {
+        background.setSize(size, size);
+    }
+
     public void setSize(float size) {
         setSize(size, size);
     }
@@ -73,13 +77,16 @@ public class DualSprited implements Buttonable {
         foreground.setSize(width, height);
     }
 
+    public void setBackgroundScale(float scale) {
+        background.setScale(scale);
+    }
+
     public Color getForegroundColor() {
         return foreground.getColor();
     }
 
-    public void setColor(Color color) {
-        setBackgroundColor(color);
-        setForegroundColor(color);
+    public void centerBackgroundOrigin() {
+        background.setOriginCenter();
     }
 
     public void setBackgroundColor(Color color) {
@@ -88,5 +95,10 @@ public class DualSprited implements Buttonable {
 
     public void setForegroundColor(Color color) {
         foreground.setColor(color);
+    }
+
+    public void setColor(Color color) {
+        setBackgroundColor(color);
+        setForegroundColor(color);
     }
 }

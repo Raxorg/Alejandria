@@ -20,7 +20,7 @@ public class SpriteBatchMaskingStandalone extends Game {
 
         mask = new Sprite(new Texture("images/masking/glow2.png"));
 
-        maskedSprite = new Sprite(new Texture("images/shared/weirdShape.png"));
+        maskedSprite = new Sprite(new Texture("fundamentals/images/weirdShape.png"));
         maskedSprite.setColor(Color.RED);
     }
 

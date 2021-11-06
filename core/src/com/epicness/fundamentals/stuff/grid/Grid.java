@@ -37,6 +37,14 @@ public class Grid {
         }
     }
 
+    public float getWidth() {
+        return columns * cells[0][0].getWidth();
+    }
+
+    public float getHeight() {
+        return rows * cells[0][0].getHeight();
+    }
+
     public Cell[][] getCells() {
         return cells;
     }

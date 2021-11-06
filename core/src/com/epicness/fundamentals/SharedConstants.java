@@ -10,11 +10,15 @@ public class SharedConstants {
     public static final float CAMERA_HEIGHT = 1000;
     public static final float CAMERA_WIDTH = CAMERA_HEIGHT * RATIO;
     // Asset paths
-    public static final String GLOW_PATH = "images/shared/glow.png";
-    public static final String PIXEL_PATH = "images/shared/pixel.png";
-    public static final String SQUARE_32_PATH = "images/shared/square32.png";
-    public static final String SQUARE_32_INVERTED_PATH = "images/shared/square32Inverted.png";
-    public static final String WEIRD_SHAPE_PATH = "images/shared/weirdShape.png";
+    public static final String EXPLOSION_PATH = "fundamentals/audio/explosionSound.wav";
+
+    public static final String PIXEL_FONT_PATH = "fundamentals/fonts/pixelFont.fnt";
+
+    public static final String GLOW_PATH = "fundamentals/images/glow.png";
+    public static final String PIXEL_PATH = "fundamentals/images/pixel.png";
+    public static final String SQUARE_32_PATH = "fundamentals/images/square32.png";
+    public static final String SQUARE_32_INVERTED_PATH = "fundamentals/images/square32Inverted.png";
+    public static final String WEIRD_SHAPE_PATH = "fundamentals/images/weirdShape.png";
     // Colors
     public static final Color TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.5f);
     public static final Color HALF_TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.75f);
