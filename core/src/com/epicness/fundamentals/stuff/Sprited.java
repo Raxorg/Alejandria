@@ -66,7 +66,7 @@ public class Sprited implements Buttonable {
     }
 
     public void setSize(float size) {
-        sprite.setSize(size, size);
+        setSize(size, size);
     }
 
     public void setScale(float scale) {

@@ -105,6 +105,7 @@ public class AnimatedBackground {
                     imageSize, imageSize, 1f, 1f,
                     45f);
         }
+
         spriteBatch.flush();
         if (pop) {
             ScissorStack.popScissors();

@@ -22,6 +22,7 @@ public class SharedConstants {
     // Colors
     public static final Color TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.5f);
     public static final Color HALF_TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.75f);
+    public static final Color OPAQUE_TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.25f);
     public static final Color DIRT = new Color(0xeea160ff);
     public static final Color LIGHT_DIRT = new Color(0xf4cca1ff);
     public static final Color GRASS = new Color(0x71aa34ff);
