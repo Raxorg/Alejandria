@@ -1,7 +1,7 @@
 package com.epicness.fundamentals.logic.behaviors;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.fundamentals.stuff.Scrollable;
+import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class ScrollBehavior {
 

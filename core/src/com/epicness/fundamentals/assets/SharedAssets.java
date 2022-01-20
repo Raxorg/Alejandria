@@ -1,10 +1,5 @@
 package com.epicness.fundamentals.assets;
 
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-
 import static com.epicness.fundamentals.SharedConstants.EXPLOSION_PATH;
 import static com.epicness.fundamentals.SharedConstants.GLOW_PATH;
 import static com.epicness.fundamentals.SharedConstants.PIXEL_FONT_PATH;
@@ -12,6 +7,10 @@ import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_INVERTED_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_PATH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
+
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SharedAssets extends Assets {
 
@@ -28,29 +27,29 @@ public class SharedAssets extends Assets {
     @Override
     public void queueAssetLoading() {
         // Audio
-        assetManager.load(EXPLOSION_PATH, Sound.class);
+        loadSound(EXPLOSION_PATH);
         // Fonts
-        assetManager.load(PIXEL_FONT_PATH, BitmapFont.class);
+        loadFont(PIXEL_FONT_PATH);
         // Sprites
-        assetManager.load(GLOW_PATH, Texture.class);
-        assetManager.load(PIXEL_PATH, Texture.class);
-        assetManager.load(SQUARE_32_PATH, Texture.class);
-        assetManager.load(SQUARE_32_INVERTED_PATH, Texture.class);
-        assetManager.load(WEIRD_SHAPE_PATH, Texture.class);
+        loadTexture(GLOW_PATH);
+        loadTexture(PIXEL_PATH);
+        loadTexture(SQUARE_32_PATH);
+        loadTexture(SQUARE_32_INVERTED_PATH);
+        loadTexture(WEIRD_SHAPE_PATH);
     }
 
     @Override
     public void initializeAssets() {
         // Audio
-        explosionSound = assetManager.get(EXPLOSION_PATH, Sound.class);
+        explosionSound = getSound(EXPLOSION_PATH);
         // Fonts
-        pixelFont = assetManager.get(PIXEL_FONT_PATH, BitmapFont.class);
+        pixelFont = getFont(PIXEL_FONT_PATH);
         // Sprites
-        glow = new Sprite(assetManager.get(GLOW_PATH, Texture.class));
-        pixel = new Sprite(assetManager.get(PIXEL_PATH, Texture.class));
-        square = new Sprite(assetManager.get(SQUARE_32_PATH, Texture.class));
-        squareInverted = new Sprite(assetManager.get(SQUARE_32_INVERTED_PATH, Texture.class));
-        weirdShape = new Sprite(assetManager.get(WEIRD_SHAPE_PATH, Texture.class));
+        glow = new Sprite(getTexture(GLOW_PATH));
+        pixel = new Sprite(getTexture(PIXEL_PATH));
+        square = new Sprite(getTexture(SQUARE_32_PATH));
+        squareInverted = new Sprite(getTexture(SQUARE_32_INVERTED_PATH));
+        weirdShape = new Sprite(getTexture(WEIRD_SHAPE_PATH));
     }
 
     // Audio

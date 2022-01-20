@@ -1,8 +1,13 @@
 package com.epicness.alejandria.module.stuff.modules.rendering;
 
+import static com.badlogic.gdx.Input.Keys.NUM_7;
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
+import static com.epicness.alejandria.ModuleID.PROCEDURAL_SQUARE;
+import static com.epicness.fundamentals.SharedConstants.DIRT;
+import static com.epicness.fundamentals.SharedConstants.GRASS;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -10,14 +15,9 @@ import com.epicness.alejandria.module.stuff.modules.Module;
 
 import java.util.ArrayList;
 
-import static com.badlogic.gdx.Input.Keys.NUM_7;
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.ModuleID.PROCEDURAL_SQUARE;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-
 public class ProceduralSquare extends Module {
 
+    private ShapeRenderer shapeRenderer;
     private ArrayList<ArrayList<Pixel>> pixels;
     private float pixelSize = 15f;
 
@@ -27,6 +27,7 @@ public class ProceduralSquare extends Module {
 
     @Override
     public void setup() {
+        shapeRenderer = new ShapeRenderer();
         pixels = new ArrayList<>();
         int size = 30;
         for (int column = 0; column < size; column++) {
@@ -63,7 +64,7 @@ public class ProceduralSquare extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         ScreenUtils.clear(DIRT);
         shapeRenderer.begin(Filled);
         for (int x = 0; x < pixels.size(); x++) {

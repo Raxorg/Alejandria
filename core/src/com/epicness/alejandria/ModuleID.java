@@ -11,10 +11,15 @@ public enum ModuleID {
 
     SIMPLE_ANIMATION,
     ANIMATED_BACKGROUNDS,
-    // Algorithms
+    // Pathfinding
     A_STAR,
-
-    ORTHOGRAPHIC_EXAMPLE,
+    // Pixmaps
+    PIXEL_PERFECT_COLLISION_DETECTION,
     // Rendering
-    PROCEDURAL_SQUARE
+    ORTHOGRAPHIC_EXAMPLE,
+    PROCEDURAL_SQUARE,
+    // Shaders
+    INVERT_SHADER,
+    SHAKE_SHADER,
+    VIGNETTE_SHADER
 }

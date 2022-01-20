@@ -48,7 +48,7 @@ public class ShaderPixmapDrawing extends Game {
         /* I like to keep my shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
         FileHandle vertexShader = Gdx.files.internal("shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("shaders/masking/fragment.glsl");
+        FileHandle fragmentShader = Gdx.files.internal("shaders/masking/mask.glsl");
 
         /* Bonus: you can set `pedantic = false` while tinkering with your
          * shaders. This will stop it from crashing if you have unused variables

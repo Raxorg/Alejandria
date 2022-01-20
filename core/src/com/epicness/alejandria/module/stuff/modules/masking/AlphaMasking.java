@@ -1,21 +1,21 @@
 package com.epicness.alejandria.module.stuff.modules.masking;
 
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.alejandria.ModuleID.ALPHA_MASKING;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.module.stuff.modules.Module;
-
-import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.alejandria.ModuleID.ALPHA_MASKING;
 
 
 public class AlphaMasking extends Module {
 
+    private SpriteBatch spriteBatch;
     private Sprite sprite, alphaMask, spriteInverseAlpha;
 
     public AlphaMasking() {
@@ -24,6 +24,8 @@ public class AlphaMasking extends Module {
 
     @Override
     public void setup() {
+        spriteBatch = new SpriteBatch();
+
         Texture weirdShape = new Texture(Gdx.files.internal("images/shared/weirdShape.png"));
         Texture glow = new Texture(Gdx.files.internal("images/masking/glow2.png"));
         Texture weirdShapeInvertedAlpha = new Texture(Gdx.files.internal("images/masking/weirdShapeInvertedAlpha.png"));
@@ -38,12 +40,7 @@ public class AlphaMasking extends Module {
     }
 
     @Override
-    public void update(float delta) {
-
-    }
-
-    @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         ScreenUtils.clear(Color.BLACK);
 
         spriteBatch.begin();

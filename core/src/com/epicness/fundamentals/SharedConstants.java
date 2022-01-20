@@ -21,6 +21,7 @@ public class SharedConstants {
     public static final String WEIRD_SHAPE_PATH = "fundamentals/images/weirdShape.png";
     // Colors
     public static final Color TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.5f);
+    public static final Color WHITE_OPAQUE_TRANSPARENT = Color.WHITE.cpy().lerp(Color.CLEAR, 0.25f);
     public static final Color HALF_TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.75f);
     public static final Color OPAQUE_TRANSPARENT = Color.BLACK.cpy().lerp(Color.CLEAR, 0.25f);
     public static final Color DIRT = new Color(0xeea160ff);

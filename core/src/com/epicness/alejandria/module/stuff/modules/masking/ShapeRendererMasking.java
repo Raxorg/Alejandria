@@ -1,10 +1,8 @@
 package com.epicness.alejandria.module.stuff.modules.masking;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.module.stuff.modules.Module;
-
 import static com.epicness.alejandria.ModuleID.SHAPE_RENDERER_MASKING;
+
+import com.epicness.alejandria.module.stuff.modules.Module;
 
 public class ShapeRendererMasking extends Module {
 
@@ -23,7 +21,7 @@ public class ShapeRendererMasking extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
 
     }
 }

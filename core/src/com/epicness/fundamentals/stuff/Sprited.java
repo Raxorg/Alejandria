@@ -3,10 +3,14 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
 
-public class Sprited implements Buttonable {
+public class Sprited implements Buttonable, Parallaxable {
 
-    private Sprite sprite;
+    private final Sprite sprite;
 
     public Sprited(Sprite sprite) {
         this.sprite = new Sprite(sprite);
@@ -16,13 +20,27 @@ public class Sprited implements Buttonable {
         sprite.draw(spriteBatch);
     }
 
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        Rectangle bounds = sprite.getBoundingRectangle();
+        shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height);
+    }
+
     public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
+        this.sprite.set(sprite);
     }
 
     @Override
     public boolean contains(float x, float y) {
         return sprite.getBoundingRectangle().contains(x, y);
+    }
+
+    @Override
+    public void translateX(float amount) {
+        sprite.translateX(amount);
+    }
+
+    public Rectangle getBoundingRectangle() {
+        return sprite.getBoundingRectangle();
     }
 
     public float getX() {
@@ -43,10 +61,6 @@ public class Sprited implements Buttonable {
 
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
-    }
-
-    public void translateX(float amount) {
-        sprite.translateX(amount);
     }
 
     public void translateY(float amount) {
@@ -71,6 +85,11 @@ public class Sprited implements Buttonable {
 
     public void setScale(float scale) {
         sprite.setScale(scale);
+    }
+
+    public void setRotation(float degrees) {
+        sprite.setOriginCenter();
+        sprite.setRotation(degrees);
     }
 
     public boolean isFlipX() {

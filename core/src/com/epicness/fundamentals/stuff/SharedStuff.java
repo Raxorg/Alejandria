@@ -1,12 +1,12 @@
 package com.epicness.fundamentals.stuff;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.epicness.fundamentals.SharedScreen;
-import com.epicness.fundamentals.assets.SharedAssets;
-
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
+
+import com.badlogic.gdx.graphics.Color;
+import com.epicness.fundamentals.SharedScreen;
+import com.epicness.fundamentals.assets.SharedAssets;
 
 public class SharedStuff extends Stuff {
 
@@ -14,8 +14,8 @@ public class SharedStuff extends Stuff {
     private SharedAssets assets;
     private SharedScreen screen;
     // Stuff
-    private AnimatedBackground animatedBackground;
-    private Sprite fader;
+    private AnimatedBackgroundDeluxe animatedBackground;
+    private Sprited fader;
 
     @Override
     public void initializeStuff() {
@@ -26,22 +26,24 @@ public class SharedStuff extends Stuff {
                 assets.getWeirdShape(),
                 assets.getPixel(),
                 screen.getStaticCamera(),
-                15,
-                4,
+                24,
+                12,
                 20f
         );
+        animatedBackground.setFollowBackgroundColor(false);
+        animatedBackground.setSpriteColor(TRANSPARENT);
 
-        fader = new Sprite(assets.getPixel());
+        fader = new Sprited(assets.getPixel());
         fader.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         fader.setColor(Color.BLACK);
     }
 
     // Stuff
-    public AnimatedBackground getAnimatedBackground() {
+    public AnimatedBackgroundDeluxe getAnimatedBackground() {
         return animatedBackground;
     }
 
-    public Sprite getFader() {
+    public Sprited getFader() {
         return fader;
     }
 

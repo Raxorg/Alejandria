@@ -1,9 +1,9 @@
 package com.epicness.fundamentals.stuff;
 
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 
 public class Circle {
 

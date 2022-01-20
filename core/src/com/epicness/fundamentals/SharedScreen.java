@@ -1,12 +1,12 @@
 package com.epicness.fundamentals;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.renderer.Renderer;
-
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 public class SharedScreen extends ScreenAdapter {
 
@@ -25,6 +25,11 @@ public class SharedScreen extends ScreenAdapter {
     public void render(float delta) {
         logic.update(delta);
         renderer.render();
+    }
+
+    @Override
+    public void pause() {
+        logic.pause();
     }
 
     public OrthographicCamera getDynamicCamera() {

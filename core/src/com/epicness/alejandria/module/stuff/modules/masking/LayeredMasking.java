@@ -1,5 +1,12 @@
 package com.epicness.alejandria.module.stuff.modules.masking;
 
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
+import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,16 +21,11 @@ import com.epicness.fundamentals.stuff.grid.Grid;
 
 import java.util.ArrayList;
 
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
-
 public class LayeredMasking extends Module {
 
     // Module specific
+    private SpriteBatch spriteBatch;
+    private ShapeRenderer shapeRenderer;
     private Texture weirdShape, square32, square32Inverted, pixel;
     private Sprite mask;
     private Grid gridA, gridB;
@@ -39,6 +41,9 @@ public class LayeredMasking extends Module {
 
     @Override
     public void setup() {
+        spriteBatch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
+
         Gdx.gl.glLineWidth(3f);
 
         weirdShape = new Texture(Gdx.files.internal("images/shared/weirdShape.png"));
@@ -131,7 +136,7 @@ public class LayeredMasking extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         drawUnmasked(spriteBatch);
         drawMask(spriteBatch, shapeRenderer);
         drawMasked(spriteBatch, shapeRenderer);

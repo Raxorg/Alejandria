@@ -8,6 +8,6 @@ public class AlejandriaApp extends Game {
 
     @Override
     public void create() {
-        new ModuleInitializer().initialize(new SharedResources(this));
+        new ModuleInitializer().initialize(new SharedResources());
     }
 }

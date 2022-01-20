@@ -30,9 +30,20 @@ public class PreferencesHandler {
         prefs.flush();
     }
 
+    public void saveInteger(String preferencesPath, String key, int value) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        prefs.putInteger(key, value);
+        prefs.flush();
+    }
+
     public String loadString(String preferencesPath, String key) {
         Preferences prefs = Gdx.app.getPreferences(preferencesPath);
         return prefs.getString(key);
+    }
+
+    public int loadInteger(String preferencesPath, String key) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        return prefs.getInteger(key);
     }
 
     public void removeString(String preferencesPath, String key) {

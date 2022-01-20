@@ -11,6 +11,6 @@ public class ModuleRenderer extends Renderer {
         ModuleStuff stuff = (ModuleStuff) this.stuff;
 
         ScreenUtils.clear(0f, 0f, 0f, 0f);
-        stuff.getModuleStorage().draw(spriteBatch, shapeRenderer);
+        stuff.getModuleStorage().draw();
     }
 }

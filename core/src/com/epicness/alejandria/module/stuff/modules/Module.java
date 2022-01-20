@@ -1,7 +1,5 @@
 package com.epicness.alejandria.module.stuff.modules;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.ModuleID;
 
 public abstract class Module {
@@ -14,9 +12,11 @@ public abstract class Module {
 
     public abstract void setup();
 
-    public abstract void update(float delta);
+    public void update(float delta) {
 
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    }
+
+    public void draw() {
 
     }
 

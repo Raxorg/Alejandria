@@ -1,4 +1,4 @@
-package com.epicness.fundamentals.stuff;
+package com.epicness.fundamentals.stuff.interfaces;
 
 public interface Scrollable {
 

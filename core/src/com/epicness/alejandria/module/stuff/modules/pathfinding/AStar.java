@@ -1,23 +1,23 @@
 package com.epicness.alejandria.module.stuff.modules.pathfinding;
 
+import static com.badlogic.gdx.Input.Keys.NUM_1;
+import static com.badlogic.gdx.Input.Keys.NUM_2;
+import static com.epicness.alejandria.ModuleID.A_STAR;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.module.stuff.modules.Module;
 
 import java.util.ArrayList;
 
-import static com.badlogic.gdx.Input.Keys.NUM_1;
-import static com.badlogic.gdx.Input.Keys.NUM_2;
-import static com.epicness.alejandria.ModuleID.A_STAR;
-
 public class AStar extends Module {
 
+    private SpriteBatch spriteBatch;
     private ArrayList<Cell> openCells, closedCells, obstacleCells;
     private Grid grid;
     private Cell start, target;
@@ -30,6 +30,7 @@ public class AStar extends Module {
 
     @Override
     public void setup() {
+        spriteBatch = new SpriteBatch();
         openCells = new ArrayList<>();
         closedCells = new ArrayList<>();
         obstacleCells = new ArrayList<>();
@@ -62,7 +63,7 @@ public class AStar extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         grid.draw(spriteBatch);
     }
 

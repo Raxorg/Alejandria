@@ -1,5 +1,10 @@
 package com.epicness.alejandria.standalone.masking;
 
+import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
+import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -11,11 +16,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-
-import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
-import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;
-import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 public class ShaderPixmapMaskingStandalone extends Game {
 
@@ -83,7 +83,7 @@ public class ShaderPixmapMaskingStandalone extends Game {
         /* It's nicer to keep shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
         FileHandle vertexShader = Gdx.files.internal("shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("shaders/masking/fragment.glsl");
+        FileHandle fragmentShader = Gdx.files.internal("shaders/masking/mask.glsl");
 
         /* Bonus: you can set `pedantic = false` while tinkering with your
          * shaders. This will stop it from crashing if you have unused variables

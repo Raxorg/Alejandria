@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 import com.epicness.fundamentals.utils.TextUtils;
 
 public class Text implements Buttonable, Scrollable {
@@ -54,10 +56,6 @@ public class Text implements Buttonable, Scrollable {
     }
 
     // Getters & Setters
-    public void setX(float x) {
-        bounds.x = x;
-    }
-
     @Override
     public float getY() {
         return bounds.y;
@@ -68,14 +66,22 @@ public class Text implements Buttonable, Scrollable {
         bounds.y = y;
     }
 
+    @Override
+    public void translateY(float y) {
+        bounds.y += y;
+    }
+
+    public void setX(float x) {
+        bounds.x = x;
+    }
+
     public void setPosition(float x, float y) {
         setX(x);
         setY(y);
     }
 
-    @Override
-    public void translateY(float y) {
-        bounds.y += y;
+    public void translateX(float x) {
+        bounds.x += x;
     }
 
     public BitmapFont getFont() {

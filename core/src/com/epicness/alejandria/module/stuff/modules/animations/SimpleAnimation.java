@@ -1,17 +1,17 @@
 package com.epicness.alejandria.module.stuff.modules.animations;
 
+import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.module.stuff.modules.Module;
-
-import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
 
 public class SimpleAnimation extends Module {
 
+    private SpriteBatch spriteBatch;
     private Animation<Sprite> animation;
     private float time;
 
@@ -21,6 +21,8 @@ public class SimpleAnimation extends Module {
 
     @Override
     public void setup() {
+        spriteBatch = new SpriteBatch();
+
         Sprite[] sprites = new Sprite[2];
         sprites[0] = new Sprite(new Texture(Gdx.files.internal("images/pixel.png")));
         sprites[0].setSize(100f, 100f);
@@ -36,7 +38,7 @@ public class SimpleAnimation extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         animation.getKeyFrame(time).draw(spriteBatch);
     }
 }

@@ -3,10 +3,12 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
-public class DualSprited implements Buttonable {
+public class DualSprited implements Buttonable, Scrollable {
 
-    private final Sprite background, foreground;
+    protected final Sprite background, foreground;
 
     public DualSprited(Sprite backgroundSprite, Sprite foregroundSprite) {
         background = new Sprite(backgroundSprite);
@@ -31,6 +33,23 @@ public class DualSprited implements Buttonable {
         return background.getBoundingRectangle().contains(x, y);
     }
 
+    @Override
+    public float getY() {
+        return background.getY();
+    }
+
+    @Override
+    public void setY(float y) {
+        background.setY(y);
+        foreground.setY(y);
+    }
+
+    @Override
+    public void translateY(float amount) {
+        background.translateY(amount);
+        foreground.translateY(amount);
+    }
+
     public float getX() {
         return background.getX();
     }
@@ -38,15 +57,6 @@ public class DualSprited implements Buttonable {
     public void setX(float x) {
         background.setX(x);
         foreground.setX(x);
-    }
-
-    public float getY() {
-        return background.getY();
-    }
-
-    public void setY(float y) {
-        background.setY(y);
-        foreground.setY(y);
     }
 
     public void setPosition(float x, float y) {
@@ -59,13 +69,16 @@ public class DualSprited implements Buttonable {
         foreground.translateX(amount);
     }
 
-    public void translateY(float amount) {
-        background.translateY(amount);
-        foreground.translateY(amount);
-    }
-
     public void setBackgroundSize(float size) {
         background.setSize(size, size);
+    }
+
+    public float getWidth() {
+        return background.getWidth();
+    }
+
+    public float getHeight() {
+        return background.getHeight();
     }
 
     public void setSize(float size) {
@@ -81,12 +94,21 @@ public class DualSprited implements Buttonable {
         background.setScale(scale);
     }
 
-    public Color getForegroundColor() {
-        return foreground.getColor();
-    }
-
     public void centerBackgroundOrigin() {
         background.setOriginCenter();
+    }
+
+    public void setFlip(boolean flipX, boolean flipY) {
+        background.setFlip(flipX, flipY);
+        foreground.setFlip(flipX, flipY);
+    }
+
+    public Color getBackgroundColor() {
+        return background.getColor();
+    }
+
+    public Color getForegroundColor() {
+        return foreground.getColor();
     }
 
     public void setBackgroundColor(Color color) {

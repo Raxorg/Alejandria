@@ -15,6 +15,7 @@ public abstract class InputHandler {
         input.setEnabled(true);
     }
 
+    // Input related to the static camera
     public void mouseMoved(float x, float y) {
 
     }
@@ -31,6 +32,24 @@ public abstract class InputHandler {
 
     }
 
+    // Input related to the dynamic camera
+    public void mouseMovedDynamic(float x, float y) {
+
+    }
+
+    public void touchDownDynamic(float x, float y) {
+
+    }
+
+    public void touchDraggedDynamic(float x, float y) {
+
+    }
+
+    public void touchUpDynamic(float x, float y) {
+
+    }
+
+    // Camera-agnostic input
     public void keyDown(int keycode) {
 
     }

@@ -1,21 +1,20 @@
 package com.epicness.alejandria.module.stuff.modules.masking;
 
+import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
+import static com.epicness.alejandria.ModuleID.ANIMATED_BACKGROUNDS;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.stuff.modules.Module;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
 
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
-import static com.epicness.alejandria.ModuleID.ANIMATED_BACKGROUNDS;
-
 public class AnimatedBackgrounds extends Module {
 
+    private SpriteBatch spriteBatch;
     private AnimatedBackground background3, background2, background1;
     private OrthographicCamera camera;
 
@@ -25,6 +24,8 @@ public class AnimatedBackgrounds extends Module {
 
     @Override
     public void setup() {
+        spriteBatch = new SpriteBatch();
+
         Sprite pixel = new Sprite(new Texture(Gdx.files.internal("images/pixel.png")));
         Sprite weirdShape = new Sprite(new Texture(Gdx.files.internal("images/weirdShape.png")));
         camera = new OrthographicCamera(INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE);
@@ -69,7 +70,7 @@ public class AnimatedBackgrounds extends Module {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw() {
         spriteBatch.setProjectionMatrix(camera.combined);
         background1.draw(spriteBatch);
         background2.draw(spriteBatch);

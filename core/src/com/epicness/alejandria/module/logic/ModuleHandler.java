@@ -1,14 +1,18 @@
 package com.epicness.alejandria.module.logic;
 
+import static com.epicness.alejandria.ModuleID.PIXEL_PERFECT_COLLISION_DETECTION;
+
 import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.stuff.ModuleStorage;
 import com.epicness.alejandria.module.stuff.ModuleStuff;
 import com.epicness.alejandria.module.stuff.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.stuff.modules.masking.ShapeRendererMasking;
+import com.epicness.alejandria.module.stuff.modules.pixmaps.PixelPerfectCollisionDetection;
 import com.epicness.alejandria.module.stuff.modules.rendering.ProceduralSquare;
-
-import static com.epicness.alejandria.ModuleID.PROCEDURAL_SQUARE;
+import com.epicness.alejandria.module.stuff.modules.shaders.InvertShader;
+import com.epicness.alejandria.module.stuff.modules.shaders.ShakeShader;
+import com.epicness.alejandria.module.stuff.modules.shaders.VignetteShader;
 
 public class ModuleHandler {
 
@@ -22,8 +26,12 @@ public class ModuleHandler {
         moduleStorage.addModule(new AlphaMasking());
         moduleStorage.addModule(new ShapeRendererMasking());
         moduleStorage.addModule(new ProceduralSquare());
+        moduleStorage.addModule(new InvertShader());
+        moduleStorage.addModule(new ShakeShader());
+        moduleStorage.addModule(new VignetteShader());
+        moduleStorage.addModule(new PixelPerfectCollisionDetection());
 
-        changeModule(PROCEDURAL_SQUARE);
+        changeModule(PIXEL_PERFECT_COLLISION_DETECTION);
     }
 
     public void update(float delta) {
