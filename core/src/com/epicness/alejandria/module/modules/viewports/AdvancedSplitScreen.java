@@ -128,7 +128,8 @@ public class AdvancedSplitScreen extends Module {
     public void update(float delta) {
         handleInput(delta);
         limitPlayerPositions();
-        updateCameras();
+        updateCameraPositions();
+        updateCameraZoom();
         limitCameraPositions();
         updateMask();
         playersClose = player1.getPosition().dst(player2.getPosition()) < MAX_DISTANCE;
@@ -170,7 +171,7 @@ public class AdvancedSplitScreen extends Module {
         player2.setY(MathUtils.clamp(player2.getY(), PLAYER_RADIUS, GRID_SIZE - player2.getRadius()));
     }
 
-    private void updateCameras() {
+    private void updateCameraPositions() {
         if (playersClose) {
             float averageX = (player1.getX() + player2.getX()) / 2f;
             float averageY = (player1.getY() + player2.getY()) / 2f;
@@ -188,6 +189,17 @@ public class AdvancedSplitScreen extends Module {
             camera2.position.x = player2.getX() - distanceX / 2f;
             camera2.position.y = player2.getY() - distanceY / 2f;
         }
+    }
+
+    private void updateCameraZoom() {
+        if (!playersClose) {
+            return;
+        }
+        float distance = player1.getPosition().dst(player2.getPosition());
+        float viewportSize = MathUtils.map(0, MAX_DISTANCE, MIN_VIEWPORT_SIZE, MAX_VIEWPORT_SIZE, distance);
+        viewportSize = Math.min(viewportSize, MAX_VIEWPORT_SIZE);
+        camera1.viewportWidth = viewportSize;
+        camera1.viewportHeight = viewportSize;
     }
 
     private void limitCameraPositions() {
