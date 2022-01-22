@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.rendering;
+package com.epicness.alejandria.module.modules.rendering;
 
 import static com.badlogic.gdx.Input.Keys.NUM_7;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 import java.util.ArrayList;
 

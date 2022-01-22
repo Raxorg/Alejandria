@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.masking;
+package com.epicness.alejandria.module.modules.masking;
 
 import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.ModuleID.ANIMATED_BACKGROUNDS;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
 
 public class AnimatedBackgrounds extends Module {

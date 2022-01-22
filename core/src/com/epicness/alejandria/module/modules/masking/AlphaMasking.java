@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.masking;
+package com.epicness.alejandria.module.modules.masking;
 
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.alejandria.ModuleID.ALPHA_MASKING;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 
 public class AlphaMasking extends Module {

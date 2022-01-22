@@ -1,7 +1,7 @@
 package com.epicness.alejandria.module.stuff;
 
 import com.epicness.alejandria.ModuleID;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 import java.util.HashMap;
 

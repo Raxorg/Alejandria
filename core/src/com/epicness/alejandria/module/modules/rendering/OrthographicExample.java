@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.rendering;
+package com.epicness.alejandria.module.modules.rendering;
 
 import static com.epicness.alejandria.ModuleID.ORTHOGRAPHIC_EXAMPLE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 public class OrthographicExample extends Module {
 

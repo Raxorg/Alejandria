@@ -1,9 +1,8 @@
-package com.epicness.alejandria.module.stuff.modules.masking;
+package com.epicness.alejandria.module.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
+import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.ModuleID.LAYERED_MASKING;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
 
@@ -14,7 +13,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 import com.epicness.fundamentals.stuff.Circle;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
@@ -43,18 +42,19 @@ public class LayeredMasking extends Module {
     public void setup() {
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
 
         Gdx.gl.glLineWidth(3f);
 
-        weirdShape = new Texture(Gdx.files.internal("images/shared/weirdShape.png"));
-        square32 = new Texture(Gdx.files.internal("images/shared/square32.png"));
-        square32Inverted = new Texture(Gdx.files.internal("images/shared/square32Inverted.png"));
-        pixel = new Texture(Gdx.files.internal("images/shared/pixel.png"));
+        weirdShape = new Texture(Gdx.files.internal("fundamentals/images/weirdShape.png"));
+        square32 = new Texture(Gdx.files.internal("fundamentals/images/square32.png"));
+        square32Inverted = new Texture(Gdx.files.internal("fundamentals/images/square32Inverted.png"));
+        pixel = new Texture(Gdx.files.internal("fundamentals/images/pixel.png"));
 
         mask = new Sprite(weirdShape);
-        mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
-        mask.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
-        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
+        mask.setOrigin(INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE * 2f);
+        mask.setOriginBasedPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 2f);
+        mask.setSize(INITIAL_WINDOW_SIZE * 2f, INITIAL_WINDOW_SIZE * 2f);
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);
@@ -77,12 +77,12 @@ public class LayeredMasking extends Module {
             }
         }
 
-        circle1 = new Circle(CAMERA_HEIGHT / 4f);
-        circle1.setPosition(CAMERA_WIDTH / 2f, 750f);
+        circle1 = new Circle(INITIAL_WINDOW_SIZE / 4f);
+        circle1.setPosition(INITIAL_WINDOW_SIZE / 2f, (INITIAL_WINDOW_SIZE / 4f) * 3f);
         circle1.setColor(Color.BLACK);
 
-        circle2 = new Circle(CAMERA_HEIGHT / 4f);
-        circle2.setPosition(CAMERA_WIDTH / 2f, 250f);
+        circle2 = new Circle(INITIAL_WINDOW_SIZE / 4f);
+        circle2.setPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 4f);
         circle2.setColor(Color.BLACK);
 
         Sprite backgroundSprite = new Sprite(pixel);
@@ -98,7 +98,7 @@ public class LayeredMasking extends Module {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.375f);
+            shape.setPosition(SHAPE_SIZE * i, INITIAL_WINDOW_SIZE * 0.375f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.PURPLE);
             shapes.add(shape);
@@ -106,7 +106,7 @@ public class LayeredMasking extends Module {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.75f);
+            shape.setPosition(SHAPE_SIZE * i, INITIAL_WINDOW_SIZE * 0.75f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.GREEN);
             shapes.add(shape);
@@ -119,19 +119,19 @@ public class LayeredMasking extends Module {
         for (int i = 0; i < shapes.size(); i++) {
             DualSprited shape = shapes.get(i);
             shape.translateY(delta * 30f);
-            if (shape.getY() >= CAMERA_HEIGHT) {
+            if (shape.getY() >= INITIAL_WINDOW_SIZE) {
                 shape.setY(-SHAPE_SIZE);
             }
         }
 
         circle1.translateX(delta * 100f);
-        if (circle1.getX() - circle1.getRadius() >= CAMERA_WIDTH) {
+        if (circle1.getX() - circle1.getRadius() >= INITIAL_WINDOW_SIZE) {
             circle1.setX(-circle1.getRadius());
         }
 
         circle2.translateX(-delta * 100f);
         if (circle2.getX() + circle2.getRadius() <= 0f) {
-            circle2.setX(CAMERA_WIDTH + circle2.getRadius());
+            circle2.setX(INITIAL_WINDOW_SIZE + circle2.getRadius());
         }
     }
 

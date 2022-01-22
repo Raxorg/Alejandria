@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.animations;
+package com.epicness.alejandria.module.modules.animations;
 
 import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
 
@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 public class SimpleAnimation extends Module {
 

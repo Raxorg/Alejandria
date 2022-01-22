@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 
 public class Circle {
 
@@ -33,8 +34,16 @@ public class Circle {
         this.x = x;
     }
 
+    public float getY() {
+        return y;
+    }
+
     public void setY(float y) {
         this.y = y;
+    }
+
+    public Vector2 getPosition() {
+        return new Vector2(x, y);
     }
 
     public void setPosition(float x, float y) {
@@ -44,6 +53,10 @@ public class Circle {
 
     public void translateX(float amount) {
         x += amount;
+    }
+
+    public void translateY(float amount) {
+        y += amount;
     }
 
     public float getRadius() {

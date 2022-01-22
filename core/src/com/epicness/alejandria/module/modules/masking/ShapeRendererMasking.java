@@ -1,8 +1,8 @@
-package com.epicness.alejandria.module.stuff.modules.masking;
+package com.epicness.alejandria.module.modules.masking;
 
 import static com.epicness.alejandria.ModuleID.SHAPE_RENDERER_MASKING;
 
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 public class ShapeRendererMasking extends Module {
 

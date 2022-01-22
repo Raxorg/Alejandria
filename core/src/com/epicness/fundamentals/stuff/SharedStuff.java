@@ -2,7 +2,7 @@ package com.epicness.fundamentals.stuff;
 
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.TRANSPARENT;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.SharedScreen;
@@ -31,7 +31,7 @@ public class SharedStuff extends Stuff {
                 20f
         );
         animatedBackground.setFollowBackgroundColor(false);
-        animatedBackground.setSpriteColor(TRANSPARENT);
+        animatedBackground.setSpriteColor(BLACK_CLEAR_50);
 
         fader = new Sprited(assets.getPixel());
         fader.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);

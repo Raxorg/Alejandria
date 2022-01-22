@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.shaders;
+package com.epicness.alejandria.module.modules.shaders;
 
 import static com.epicness.alejandria.ModuleID.INVERT_SHADER;
 
@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 
 public class InvertShader extends Module {

@@ -21,5 +21,7 @@ public enum ModuleID {
     // Shaders
     INVERT_SHADER,
     SHAKE_SHADER,
-    VIGNETTE_SHADER
+    VIGNETTE_SHADER,
+    // Viewports
+    ADVANCED_SPLIT_SCREEN
 }

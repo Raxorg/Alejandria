@@ -1,7 +1,8 @@
-package com.epicness.alejandria.module.stuff.modules;
+package com.epicness.alejandria.module.modules;
 
 import com.epicness.alejandria.ModuleID;
 
+/** The modules package is an exception to the conventional structuring of epicness games/apps **/
 public abstract class Module {
 
     private final ModuleID moduleID;

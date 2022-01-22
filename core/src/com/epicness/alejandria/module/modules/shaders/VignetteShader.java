@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.shaders;
+package com.epicness.alejandria.module.modules.shaders;
 
 import static com.epicness.alejandria.AssetPaths.VERTEX_SHADER_PATH;
 import static com.epicness.alejandria.AssetPaths.VIGNETTE_SHADER_PATH;
@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 
 public class VignetteShader extends Module {

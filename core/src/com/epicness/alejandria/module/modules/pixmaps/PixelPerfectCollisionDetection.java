@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.stuff.modules.pixmaps;
+package com.epicness.alejandria.module.modules.pixmaps;
 
 import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.ModuleID.PIXEL_PERFECT_COLLISION_DETECTION;
@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.alejandria.module.stuff.modules.Module;
+import com.epicness.alejandria.module.modules.Module;
 
 public class PixelPerfectCollisionDetection extends Module {
 
