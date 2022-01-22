@@ -56,7 +56,7 @@ public class AdvancedSplitScreen extends Module {
 
     private Sprite mask, divider;
 
-    private boolean playersClose;
+    private boolean playersClose, camerasClose;
 
     public AdvancedSplitScreen() {
         super(ModuleID.ADVANCED_SPLIT_SCREEN);
@@ -132,6 +132,7 @@ public class AdvancedSplitScreen extends Module {
         limitCameraPositions();
         updateMask();
         playersClose = player1.getPosition().dst(player2.getPosition()) < MAX_DISTANCE;
+        camerasClose = camera1.position.dst(camera2.position) == 0f;
     }
 
     private void handleInput(float delta) {
@@ -214,7 +215,7 @@ public class AdvancedSplitScreen extends Module {
     @Override
     public void draw() {
         drawUnmasked();
-        if (playersClose) {
+        if (playersClose || camerasClose) {
             return;
         }
         applyMask();
