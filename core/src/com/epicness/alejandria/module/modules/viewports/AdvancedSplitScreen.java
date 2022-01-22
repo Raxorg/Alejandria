@@ -12,6 +12,7 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 import static com.epicness.fundamentals.SharedConstants.DIRT;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.LIGHT_DIRT;
@@ -49,7 +50,7 @@ public class AdvancedSplitScreen extends Module {
     private ShapeRenderer shapeRenderer;
 
     private Sprite cellSprite;
-    private Grid grid1, grid2;
+    private Grid grid;
 
     private Circle player1, player2;
 
@@ -64,7 +65,7 @@ public class AdvancedSplitScreen extends Module {
     @Override
     public void setup() {
         initCameras();
-        initGrids();
+        initGrid();
         initPlayers();
         initMask();
         initDivider();
@@ -81,27 +82,17 @@ public class AdvancedSplitScreen extends Module {
         shapeRenderer = new ShapeRenderer();
     }
 
-    private void initGrids() {
+    private void initGrid() {
         cellSprite = new Sprite(new Texture(Gdx.files.internal(SQUARE_32_PATH)));
-        grid1 = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
-        grid1.setCellSize(CELL_SIZE);
+        grid = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
+        grid.setCellSize(CELL_SIZE);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
-                if ((column + row) % 2 == 0) {
-                    grid1.getCells()[column][row].setColor(DIRT);
-                } else {
-                    grid1.getCells()[column][row].setColor(LIGHT_DIRT);
-                }
-            }
-        }
-        grid2 = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
-        grid2.setCellSize(CELL_SIZE);
-        for (int column = 0; column < GRID_COLUMNS; column++) {
-            for (int row = 0; row < GRID_ROWS; row++) {
-                if ((column + row) % 2 == 0) {
-                    grid2.getCells()[column][row].setColor(DIRT);
-                } else {
-                    grid2.getCells()[column][row].setColor(LIGHT_DIRT);
+                grid.getCells()[column][row].setColor(DARK_GRASS);
+                if ((column + row) % 3 == 0) {
+                    grid.getCells()[column][row].setColor(DIRT);
+                } else if ((column + row) % 3 == 1) {
+                    grid.getCells()[column][row].setColor(LIGHT_DIRT);
                 }
             }
         }
@@ -179,9 +170,9 @@ public class AdvancedSplitScreen extends Module {
     }
 
     private void updateCameras() {
-        float averageX = (player1.getX() + player2.getX()) / 2f;
-        float averageY = (player1.getY() + player2.getY()) / 2f;
         if (playersClose) {
+            float averageX = (player1.getX() + player2.getX()) / 2f;
+            float averageY = (player1.getY() + player2.getY()) / 2f;
             camera1.position.x = averageX;
             camera1.position.y = averageY;
             camera2.position.x = averageX;
@@ -234,7 +225,7 @@ public class AdvancedSplitScreen extends Module {
     private void drawUnmasked() {
         spriteBatch.begin();
         spriteBatch.setProjectionMatrix(camera1.combined);
-        grid1.draw(spriteBatch);
+        grid.draw(spriteBatch);
         spriteBatch.end();
 
         shapeRenderer.setProjectionMatrix(camera1.combined);
@@ -273,7 +264,7 @@ public class AdvancedSplitScreen extends Module {
 
         spriteBatch.setProjectionMatrix(camera2.combined);
         spriteBatch.begin();
-        grid2.draw(spriteBatch);
+        grid.draw(spriteBatch);
         spriteBatch.end();
 
         shapeRenderer.setProjectionMatrix(camera2.combined);
@@ -284,7 +275,7 @@ public class AdvancedSplitScreen extends Module {
     }
 
     private void drawUnmasked2() {
-        // Back to default depth test
+        // 6. Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
         spriteBatch.setProjectionMatrix(camera3.combined);
         spriteBatch.begin();

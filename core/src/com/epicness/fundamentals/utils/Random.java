@@ -14,7 +14,7 @@ public class Random {
     }
 
     public static Color randomColor() {
-        int random = MathUtils.random(9);
+        int random = MathUtils.random(10);
         switch (random) {
             case 0:
                 return Color.RED;
@@ -25,16 +25,18 @@ public class Random {
             case 3:
                 return Color.CHARTREUSE;
             case 4:
-                return Color.FOREST;
+                return Color.LIME;
             case 5:
-                return Color.SKY;
+                return Color.FOREST;
             case 6:
                 return Color.CYAN;
             case 7:
-                return Color.PURPLE;
+                return Color.SKY;
             case 8:
-                return Color.LIME;
+                return Color.BLUE;
             case 9:
+                return Color.PURPLE;
+            case 10:
             default:
                 return Color.PINK;
         }
