@@ -1,8 +1,8 @@
 package com.epicness.fundamentals.stuff;
 
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.SharedScreen;
