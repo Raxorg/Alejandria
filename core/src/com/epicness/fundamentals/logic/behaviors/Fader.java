@@ -1,16 +1,19 @@
 package com.epicness.fundamentals.logic.behaviors;
 
 import com.badlogic.gdx.graphics.Color;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.logic.CompletionListener;
+import com.epicness.fundamentals.stuff.SharedStuff;
 
 public class Fader {
 
-    private Sprited fadeSprite;
+    // Structure
+    private SharedStuff stuff;
+    // Logic
     private float time, fadeTime;
     private boolean fadingIn, fadingOut, enabled;
+    private CompletionListener completionListener;
 
-    public void setup(Sprited fadeSprite, float fadeTime) {
-        this.fadeSprite = fadeSprite;
+    public void setup(float fadeTime) {
         this.fadeTime = fadeTime;
         enabled = true;
     }
@@ -20,14 +23,21 @@ public class Fader {
             return;
         }
         Color color;
+        float progress = 0f;
         if (fadingIn) {
-            float progress = Math.min(time / fadeTime, 1f);
+            progress = Math.min(time / fadeTime, 1f);
             color = Color.CLEAR.cpy().lerp(Color.BLACK, progress);
-            fadeSprite.setColor(color);
+            stuff.getFader().setColor(color);
         } else if (fadingOut) {
-            float progress = Math.min(time / fadeTime, 1f);
+            progress = Math.min(time / fadeTime, 1f);
             color = Color.BLACK.cpy().lerp(Color.CLEAR, progress);
-            fadeSprite.setColor(color);
+            stuff.getFader().setColor(color);
+        }
+        if (completionListener != null && progress == 1f) {
+            fadingIn = false;
+            fadingOut = false;
+            completionListener.onComplete();
+            completionListener = null;
         }
         time += delta;
     }
@@ -38,9 +48,24 @@ public class Fader {
         fadingOut = false;
     }
 
+    public void fadeIn(CompletionListener completionListener) {
+        fadeIn();
+        this.completionListener = completionListener;
+    }
+
     public void fadeOut() {
         time = 0f;
         fadingIn = false;
         fadingOut = true;
+    }
+
+    public void fadeOut(CompletionListener completionListener) {
+        fadeOut();
+        this.completionListener = completionListener;
+    }
+
+    // Structure
+    public void setStuff(SharedStuff stuff) {
+        this.stuff = stuff;
     }
 }

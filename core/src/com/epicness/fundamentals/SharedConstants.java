@@ -13,6 +13,7 @@ public class SharedConstants {
     public static final String EXPLOSION_PATH = "fundamentals/audio/explosionSound.wav";
 
     public static final String PIXEL_FONT_PATH = "fundamentals/fonts/pixelFont.fnt";
+    public static final String TIMES_SQUARE_PATH = "fundamentals/fonts/timesSquare.fnt";
 
     public static final String GLOW_PATH = "fundamentals/images/glow.png";
     public static final String PIXEL_PATH = "fundamentals/images/pixel.png";
@@ -24,6 +25,7 @@ public class SharedConstants {
     public static final Color BLACK_CLEAR_50 = Color.BLACK.cpy().lerp(Color.CLEAR, 0.5f);
     public static final Color BLACK_CLEAR_75 = Color.BLACK.cpy().lerp(Color.CLEAR, 0.75f);
     public static final Color WHITE_CLEAR_25 = Color.WHITE.cpy().lerp(Color.CLEAR, 0.25f);
+    public static final Color NAVY_GRAY_50 = Color.NAVY.cpy().lerp(Color.GRAY, 0.5f);
     public static final Color DIRT = new Color(0xeea160ff);
     public static final Color LIGHT_DIRT = new Color(0xf4cca1ff);
     public static final Color GRASS = new Color(0x71aa34ff);

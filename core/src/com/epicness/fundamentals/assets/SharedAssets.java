@@ -6,6 +6,7 @@ import static com.epicness.fundamentals.SharedConstants.PIXEL_FONT_PATH;
 import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_INVERTED_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_PATH;
+import static com.epicness.fundamentals.SharedConstants.TIMES_SQUARE_PATH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 import com.badlogic.gdx.audio.Sound;
@@ -17,7 +18,7 @@ public class SharedAssets extends Assets {
     // Audio
     private Sound explosionSound;
     // Fonts
-    private BitmapFont pixelFont;
+    private BitmapFont pixelFont, timesSquare;
     // Sprites
     private Sprite glow;
     private Sprite pixel;
@@ -30,6 +31,7 @@ public class SharedAssets extends Assets {
         loadSound(EXPLOSION_PATH);
         // Fonts
         loadFont(PIXEL_FONT_PATH);
+        loadFont(TIMES_SQUARE_PATH);
         // Sprites
         loadTexture(GLOW_PATH);
         loadTexture(PIXEL_PATH);
@@ -44,6 +46,7 @@ public class SharedAssets extends Assets {
         explosionSound = getSound(EXPLOSION_PATH);
         // Fonts
         pixelFont = getFont(PIXEL_FONT_PATH);
+        timesSquare = getFont(TIMES_SQUARE_PATH);
         // Sprites
         glow = new Sprite(getTexture(GLOW_PATH));
         pixel = new Sprite(getTexture(PIXEL_PATH));
@@ -60,6 +63,10 @@ public class SharedAssets extends Assets {
     // Fonts
     public BitmapFont getPixelFont() {
         return pixelFont;
+    }
+
+    public BitmapFont getTimesSquare() {
+        return timesSquare;
     }
 
     // Sprites
