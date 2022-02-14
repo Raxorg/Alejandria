@@ -1,13 +1,14 @@
 package com.epicness.alejandria.module.logic;
 
-import static com.epicness.alejandria.ModuleID.ADVANCED_SPLIT_SCREEN;
+import static com.epicness.alejandria.ModuleID.SPRITE_TRANSFORM_ANIMATION;
 
 import com.epicness.alejandria.ModuleID;
+import com.epicness.alejandria.module.modules.animations.SpriteTransformAnimation;
 import com.epicness.alejandria.module.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.module.modules.pixmaps.PixelPerfectCollisionDetection;
-import com.epicness.alejandria.module.modules.rendering.ProceduralSquare;
+import com.epicness.alejandria.module.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.module.modules.shaders.InvertShader;
 import com.epicness.alejandria.module.modules.shaders.ShakeShader;
 import com.epicness.alejandria.module.modules.shaders.VignetteShader;
@@ -32,8 +33,9 @@ public class ModuleHandler {
         moduleStorage.addModule(new VignetteShader());
         moduleStorage.addModule(new PixelPerfectCollisionDetection());
         moduleStorage.addModule(new AdvancedSplitScreen());
+        moduleStorage.addModule(new SpriteTransformAnimation());
 
-        changeModule(ADVANCED_SPLIT_SCREEN);
+        changeModule(SPRITE_TRANSFORM_ANIMATION);
     }
 
     public void update(float delta) {

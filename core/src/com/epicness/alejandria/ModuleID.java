@@ -2,6 +2,9 @@ package com.epicness.alejandria;
 
 public enum ModuleID {
 
+    // Animations
+    SPRITE_ANIMATION,
+    SPRITE_TRANSFORM_ANIMATION,
     // Masking
     ALPHA_MASKING,
     LAYERED_MASKING,
@@ -9,7 +12,6 @@ public enum ModuleID {
     SHAPE_RENDERER_MASKING,
     ADVANCED_MASK,
 
-    SIMPLE_ANIMATION,
     ANIMATED_BACKGROUNDS,
     // Pathfinding
     A_STAR,

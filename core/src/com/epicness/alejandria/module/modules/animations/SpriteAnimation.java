@@ -1,6 +1,6 @@
 package com.epicness.alejandria.module.modules.animations;
 
-import static com.epicness.alejandria.ModuleID.SIMPLE_ANIMATION;
+import static com.epicness.alejandria.ModuleID.SPRITE_ANIMATION;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,14 +9,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.module.modules.Module;
 
-public class SimpleAnimation extends Module {
+public class SpriteAnimation extends Module {
 
     private SpriteBatch spriteBatch;
     private Animation<Sprite> animation;
     private float time;
 
-    public SimpleAnimation() {
-        super(SIMPLE_ANIMATION);
+    public SpriteAnimation() {
+        super(SPRITE_ANIMATION);
     }
 
     @Override

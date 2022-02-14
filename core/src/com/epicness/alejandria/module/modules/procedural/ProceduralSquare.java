@@ -1,4 +1,4 @@
-package com.epicness.alejandria.module.modules.rendering;
+package com.epicness.alejandria.module.modules.procedural;
 
 import static com.badlogic.gdx.Input.Keys.NUM_7;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
