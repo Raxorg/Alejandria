@@ -36,7 +36,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
     public void setX(float x) {
         background.setX(x);
         label.setX(x);
-        icon.setX(x + background.getWidth() - icon.getWidth());
+        icon.setX(x + background.getWidth() - background.getHeight() / 2f - icon.getWidth() / 2f);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class IconedSpritedText implements Buttonable, Scrollable {
     public void setY(float y) {
         background.setY(y);
         label.setY(y + background.getHeight() / 2f);
-        icon.setY(y);
+        icon.setY(y + background.getHeight() / 2f - icon.getHeight() / 2f);
     }
 
     @Override
@@ -71,8 +71,9 @@ public class IconedSpritedText implements Buttonable, Scrollable {
         background.setSize(width, height);
         label.setTextTargetWidth(width - height);
         label.setY(background.getY() + height / 2f);
-        icon.setSize(height);
-        icon.setX(background.getX() + background.getWidth() - icon.getWidth());
+        icon.setSize(height * 0.65f);
+        icon.setX(background.getX() + width - height / 2f - icon.getWidth() / 2f);
+        icon.setY(background.getY() + height / 2f - icon.getHeight() / 2f);
     }
 
     public void setBackgroundColor(Color color) {

@@ -72,7 +72,11 @@ public class SpritedText implements Buttonable, Scrollable {
         label.setY(background.getY() + height / 2f);
     }
 
-    public void setColor(Color color) {
+    public Color getBackgroundColor() {
+        return background.getColor();
+    }
+
+    public void setBackgroundColor(Color color) {
         background.setColor(color);
     }
 
