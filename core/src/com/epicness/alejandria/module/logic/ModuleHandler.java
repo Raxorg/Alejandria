@@ -1,9 +1,10 @@
 package com.epicness.alejandria.module.logic;
 
-import static com.epicness.alejandria.ModuleID.SPRITE_TRANSFORM_ANIMATION;
+import static com.epicness.alejandria.ModuleID.POINT_AT_CURSOR;
 
 import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.modules.animations.SpriteTransformAnimation;
+import com.epicness.alejandria.module.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.module.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.modules.masking.LayeredMasking;
 import com.epicness.alejandria.module.modules.masking.ShapeRendererMasking;
@@ -24,6 +25,7 @@ public class ModuleHandler {
     public void setup() {
         ModuleStorage moduleStorage = stuff.getModuleStorage();
 
+        moduleStorage.addModule(new PointAtCursor());
         moduleStorage.addModule(new LayeredMasking());
         moduleStorage.addModule(new AlphaMasking());
         moduleStorage.addModule(new ShapeRendererMasking());
@@ -35,7 +37,7 @@ public class ModuleHandler {
         moduleStorage.addModule(new AdvancedSplitScreen());
         moduleStorage.addModule(new SpriteTransformAnimation());
 
-        changeModule(SPRITE_TRANSFORM_ANIMATION);
+        changeModule(POINT_AT_CURSOR);
     }
 
     public void update(float delta) {

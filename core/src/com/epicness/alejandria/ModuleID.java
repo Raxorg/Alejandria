@@ -5,6 +5,8 @@ public enum ModuleID {
     // Animations
     SPRITE_ANIMATION,
     SPRITE_TRANSFORM_ANIMATION,
+    // Cursor
+    POINT_AT_CURSOR,
     // Masking
     ALPHA_MASKING,
     LAYERED_MASKING,
