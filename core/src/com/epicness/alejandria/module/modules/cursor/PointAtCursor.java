@@ -1,6 +1,5 @@
 package com.epicness.alejandria.module.modules.cursor;
 
-import static com.badlogic.gdx.math.MathUtils.radDeg;
 import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.ModuleID.POINT_AT_CURSOR;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
@@ -10,9 +9,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.module.modules.Module;
+import com.epicness.fundamentals.utils.AngleUtils;
 
 public class PointAtCursor extends Module {
 
@@ -38,7 +37,7 @@ public class PointAtCursor extends Module {
         float spriteX = sprite.getX() + sprite.getOriginX();
         float spriteY = sprite.getY() + sprite.getOriginY();
 
-        sprite.setRotation(radDeg * MathUtils.atan2((cursorY - spriteY), (cursorX - spriteX)));
+        sprite.setRotation(AngleUtils.degreesBetweenPoints(cursorX, cursorY, spriteX, spriteY));
     }
 
     @Override

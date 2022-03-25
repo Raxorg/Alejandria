@@ -1,9 +1,10 @@
 package com.epicness.alejandria.module.logic;
 
-import static com.epicness.alejandria.ModuleID.POINT_AT_CURSOR;
+import static com.epicness.alejandria.ModuleID.BULLET_SPAWNING;
 
 import com.epicness.alejandria.ModuleID;
 import com.epicness.alejandria.module.modules.animations.SpriteTransformAnimation;
+import com.epicness.alejandria.module.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.module.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.module.modules.masking.AlphaMasking;
 import com.epicness.alejandria.module.modules.masking.LayeredMasking;
@@ -25,6 +26,8 @@ public class ModuleHandler {
     public void setup() {
         ModuleStorage moduleStorage = stuff.getModuleStorage();
 
+        moduleStorage.addModule(new SpriteTransformAnimation());
+        moduleStorage.addModule(new BulletSpawning());
         moduleStorage.addModule(new PointAtCursor());
         moduleStorage.addModule(new LayeredMasking());
         moduleStorage.addModule(new AlphaMasking());
@@ -35,9 +38,8 @@ public class ModuleHandler {
         moduleStorage.addModule(new VignetteShader());
         moduleStorage.addModule(new PixelPerfectCollisionDetection());
         moduleStorage.addModule(new AdvancedSplitScreen());
-        moduleStorage.addModule(new SpriteTransformAnimation());
 
-        changeModule(POINT_AT_CURSOR);
+        changeModule(BULLET_SPAWNING);
     }
 
     public void update(float delta) {
