@@ -10,11 +10,11 @@ import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class SpritedText implements Buttonable, Scrollable {
 
-    private final Sprite background;
+    private final Sprited background;
     private final Text label;
 
     public SpritedText(Sprite backgroundSprite, BitmapFont font) {
-        background = new Sprite(backgroundSprite);
+        background = new Sprited(backgroundSprite);
         label = new Text(font);
         label.setHorizontalAlignment(Align.center);
         label.setCenterVertical(true);

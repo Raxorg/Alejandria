@@ -1,12 +1,14 @@
 package com.epicness.fundamentals.input;
 
+import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.logic.Logic;
+import com.epicness.fundamentals.logic.LogicHandler;
+import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class InputHandler {
+public abstract class InputHandler extends LogicHandler {
 
     // Structure
-    private SharedInput input;
     protected Logic logic;
     protected Stuff stuff;
 
@@ -58,16 +60,9 @@ public abstract class InputHandler {
 
     }
 
-    // Structure
-    public void setInput(SharedInput input) {
-        this.input = input;
-    }
-
-    public void setLogic(Logic logic) {
+    @Override
+    public void setStructure(Assets assets, Logic logic, Renderer renderer, Stuff stuff) {
         this.logic = logic;
-    }
-
-    public void setStuff(Stuff stuff) {
         this.stuff = stuff;
     }
 }

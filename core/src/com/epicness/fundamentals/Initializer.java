@@ -22,13 +22,16 @@ public abstract class Initializer {
     public void initialize(SharedResources sharedResources) {
         SharedScreen screen = sharedResources.getScreen();
 
-        logic.setGame((Game) Gdx.app.getApplicationListener());
-        logic.setSharedAssets(sharedResources.getAssets());
-        logic.setAssets(assets);
-        logic.setInput(sharedResources.getInput());
-        logic.setScreen(screen);
-        logic.setSharedStuff(sharedResources.getStuff());
-        logic.setStuff(stuff);
+        logic.setStructure(
+                (Game) Gdx.app.getApplicationListener(),
+                sharedResources.getAssets(),
+                sharedResources.getInput(),
+                screen,
+                sharedResources.getStuff(),
+                assets,
+                renderer,
+                stuff
+        );
         renderer.setScreen(screen);
         renderer.setSharedStuff(sharedResources.getStuff());
         renderer.setStuff(stuff);

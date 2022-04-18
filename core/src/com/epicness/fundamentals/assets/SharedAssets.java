@@ -7,6 +7,7 @@ import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_INVERTED_PATH;
 import static com.epicness.fundamentals.SharedConstants.SQUARE_32_PATH;
 import static com.epicness.fundamentals.SharedConstants.TIMES_SQUARE_PATH;
+import static com.epicness.fundamentals.SharedConstants.TRIANGLE_PATH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 import com.badlogic.gdx.audio.Sound;
@@ -23,7 +24,7 @@ public class SharedAssets extends Assets {
     private Sprite glow;
     private Sprite pixel;
     private Sprite square, squareInverted;
-    private Sprite weirdShape;
+    private Sprite weirdShape, triangle;
 
     @Override
     public void queueAssetLoading() {
@@ -38,6 +39,7 @@ public class SharedAssets extends Assets {
         loadTexture(SQUARE_32_PATH);
         loadTexture(SQUARE_32_INVERTED_PATH);
         loadTexture(WEIRD_SHAPE_PATH);
+        loadTexture(TRIANGLE_PATH);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class SharedAssets extends Assets {
         square = new Sprite(getTexture(SQUARE_32_PATH));
         squareInverted = new Sprite(getTexture(SQUARE_32_INVERTED_PATH));
         weirdShape = new Sprite(getTexture(WEIRD_SHAPE_PATH));
+        triangle = new Sprite(getTexture(TRIANGLE_PATH));
     }
 
     // Audio
@@ -88,5 +91,9 @@ public class SharedAssets extends Assets {
 
     public Sprite getWeirdShape() {
         return weirdShape;
+    }
+
+    public Sprite getTriangle() {
+        return triangle;
     }
 }

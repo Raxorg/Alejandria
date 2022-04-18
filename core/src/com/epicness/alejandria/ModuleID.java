@@ -7,6 +7,8 @@ public enum ModuleID {
     SPRITE_TRANSFORM_ANIMATION,
     // Bullets
     BULLET_SPAWNING,
+    // Collisions
+    PIXEL_PERFECT_COLLISION_DETECTION,
     // Cursor
     POINT_AT_CURSOR,
     // Masking
@@ -20,7 +22,6 @@ public enum ModuleID {
     // Pathfinding
     A_STAR,
     // Pixmaps
-    PIXEL_PERFECT_COLLISION_DETECTION,
     // Rendering
     ORTHOGRAPHIC_EXAMPLE,
     PROCEDURAL_SQUARE,

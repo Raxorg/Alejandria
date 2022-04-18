@@ -34,6 +34,14 @@ public abstract class Renderer {
         shapeRenderer.setProjectionMatrix(screen.getDynamicCamera().combined);
     }
 
+    public SpriteBatch getSpriteBatch() {
+        return spriteBatch;
+    }
+
+    public ShapeRenderer getShapeRenderer() {
+        return shapeRenderer;
+    }
+
     // Structure
     public void setScreen(SharedScreen screen) {
         this.screen = screen;

@@ -20,6 +20,7 @@ public class SharedConstants {
     public static final String SQUARE_32_PATH = "fundamentals/images/square32.png";
     public static final String SQUARE_32_INVERTED_PATH = "fundamentals/images/square32Inverted.png";
     public static final String WEIRD_SHAPE_PATH = "fundamentals/images/weirdShape.png";
+    public static final String TRIANGLE_PATH = "fundamentals/images/triangle.png";
     // Colors
     public static final Color BLACK_CLEAR_25 = Color.BLACK.cpy().lerp(Color.CLEAR, 0.25f);
     public static final Color BLACK_CLEAR_50 = Color.BLACK.cpy().lerp(Color.CLEAR, 0.5f);
