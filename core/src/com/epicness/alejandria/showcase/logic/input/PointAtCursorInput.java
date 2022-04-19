@@ -7,6 +7,6 @@ public class PointAtCursorInput extends ModuleInput {
     @Override
     public void mouseMoved(float x, float y) {
         PointAtCursor pointAtCursor = (PointAtCursor) logic.getHandler(PointAtCursor.class);
-        pointAtCursor.update(x, y);
+        pointAtCursor.mouseMoved(x, y);
     }
 }

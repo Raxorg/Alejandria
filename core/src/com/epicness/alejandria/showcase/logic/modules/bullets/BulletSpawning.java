@@ -1,8 +1,9 @@
 package com.epicness.alejandria.showcase.logic.modules.bullets;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
+import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.bullets.BulletSpawningDrawable;
@@ -21,40 +22,46 @@ public class BulletSpawning extends Module {
 
     @Override
     public Drawable setup() {
+        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
+        inputHandler.setModuleInputHandler(new BulletSpawningInput());
+
         bulletSpeed = new Vector2();
 
         return drawable = new BulletSpawningDrawable(assets.getGun(), sharedAssets.getGlow());
     }
 
-    @Override
-    public void update(float delta) {
+    public void mouseMoved(float x, float y) {
         Sprited gun = drawable.getGun();
-        Sprited bullet = drawable.getBullet();
 
-        float cursorX = Gdx.input.getX();
-        float cursorY = Gdx.graphics.getHeight() - Gdx.input.getY();
         float spriteX = gun.getX() + gun.getOriginX();
         float spriteY = gun.getY() + gun.getOriginY();
 
-        gun.setRotation(AngleUtils.degreesBetweenPoints(cursorX, cursorY, spriteX, spriteY));
-        bullet.translate(bulletSpeed.x * delta, bulletSpeed.y * delta);
+        gun.setRotation(AngleUtils.degreesBetweenPoints(x, y, spriteX, spriteY));
+    }
 
-        if (Gdx.input.justTouched()) {
-            float distance = gun.getWidth() / 2f;
-            // Center of sprite
-            float x = gun.getX() + gun.getWidth() / 2f;
-            float y = gun.getY() + gun.getHeight() * 0.85f;
+    public void touchDown() {
+        Sprited gun = drawable.getGun();
+        Sprited bullet = drawable.getBullet();
 
-            float cos = MathUtils.cosDeg(gun.getRotation());
-            float sin = MathUtils.sinDeg(gun.getRotation());
+        float distance = gun.getWidth() / 2f;
+        // Center of sprite
+        float centerX = gun.getX() + gun.getWidth() / 2f;
+        float centerY = gun.getY() + gun.getHeight() * 0.85f;
 
-            x += cos * distance;
-            y += sin * distance;
+        float cos = MathUtils.cosDeg(gun.getRotation());
+        float sin = MathUtils.sinDeg(gun.getRotation());
 
-            bullet.setOriginBasedPosition(x, y);
+        centerX += cos * distance;
+        centerY += sin * distance;
 
-            bulletSpeed.x = cos * 200f;
-            bulletSpeed.y = sin * 200f;
-        }
+        bullet.setOriginBasedPosition(centerX, centerY);
+
+        bulletSpeed.x = cos * 200f;
+        bulletSpeed.y = sin * 200f;
+    }
+
+    @Override
+    public void update(float delta) {
+        drawable.getBullet().translate(bulletSpeed.x * delta, bulletSpeed.y * delta);
     }
 }

@@ -24,7 +24,7 @@ public class PointAtCursor extends Module {
         return drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
     }
 
-    public void update(float cursorX, float cursorY) {
+    public void mouseMoved(float cursorX, float cursorY) {
         Sprited sprite = drawable.getTriangle();
         float spriteX = sprite.getX() + sprite.getOriginX();
         float spriteY = sprite.getY() + sprite.getOriginY();
