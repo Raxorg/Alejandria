@@ -18,6 +18,10 @@ public abstract class LogicHandler {
     protected SharedScreen screen;
     protected SharedStuff sharedStuff;
 
+    protected void init() {
+
+    }
+
     protected final void setSharedStructure(
             Game game,
             SharedAssets assets,

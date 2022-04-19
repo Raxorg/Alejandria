@@ -6,6 +6,7 @@ import static com.epicness.alejandria.AssetPaths.VIGNETTE_SHADER_PATH;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.shaders.VignetteShaderDrawable;
 
 public class VignetteShader extends Module {
@@ -18,17 +19,16 @@ public class VignetteShader extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new VignetteShaderDrawable(
+    public Drawable setup() {
+        ShaderProgram.pedantic = false;
+        shader = new ShaderProgram(Gdx.files.internal(VERTEX_SHADER_PATH), Gdx.files.internal(VIGNETTE_SHADER_PATH));
+        renderer.getSpriteBatch().setShader(shader);
+
+        return drawable = new VignetteShaderDrawable(
                 sharedAssets.getSquare(),
                 sharedAssets.getWeirdShape(),
                 sharedAssets.getSquare()
         );
-        stuff.getShowcase().setDrawable(drawable);
-
-        ShaderProgram.pedantic = false;
-        shader = new ShaderProgram(Gdx.files.internal(VERTEX_SHADER_PATH), Gdx.files.internal(VIGNETTE_SHADER_PATH));
-        renderer.getSpriteBatch().setShader(shader);
     }
 
     @Override

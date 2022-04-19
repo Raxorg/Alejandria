@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.masking;
 
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.AnimatedBackgroundsDrawable;
 
 public class AnimatedBackgrounds extends Module {
@@ -12,13 +13,12 @@ public class AnimatedBackgrounds extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new AnimatedBackgroundsDrawable(
+    public Drawable setup() {
+        return drawable = new AnimatedBackgroundsDrawable(
                 sharedAssets.getPixel(),
                 sharedAssets.getWeirdShape(),
                 screen.getStaticCamera()
         );
-        stuff.getShowcase().setDrawable(drawable);
     }
 
     @Override

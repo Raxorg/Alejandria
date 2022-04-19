@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.procedural.ProceduralSquareDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.procedural.helpers.Pixel;
 
@@ -22,9 +23,8 @@ public class ProceduralSquare extends Module {
     }
 
     @Override
-    public void setup() {
+    public Drawable setup() {
         drawable = new ProceduralSquareDrawable();
-        stuff.getShowcase().setDrawable(drawable);
 
         List<List<Pixel>> pixels = drawable.getPixels();
         int size = 30;
@@ -36,6 +36,7 @@ public class ProceduralSquare extends Module {
                 pixels.get(column).add(pixel);
             }
         }
+        return drawable;
     }
 
     private float tunnel(int column, int row, float size, float factor) {

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AStarDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers.PathfindingCell;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers.PathfindingGrid;
@@ -31,9 +32,8 @@ public class AStar extends Module {
     }
 
     @Override
-    public void setup() {
+    public Drawable setup() {
         drawable = new AStarDrawable();
-        stuff.getShowcase().setDrawable(drawable);
 
         PathfindingGrid grid = drawable.getGrid();
         PathfindingCell[][] cells = drawable.getGrid().getCells();
@@ -61,6 +61,8 @@ public class AStar extends Module {
         time = 0f;
         interval = 0.03f;
         finished = false;
+
+        return drawable;
     }
 
     @Override

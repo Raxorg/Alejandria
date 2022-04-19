@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.rendering;
 
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.rendering.OrthographicExampleDrawable;
 
 public class OrthographicExample extends Module {
@@ -12,9 +13,8 @@ public class OrthographicExample extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new OrthographicExampleDrawable(sharedAssets.getWeirdShape());
-        stuff.getShowcase().setDrawable(drawable);
+    public Drawable setup() {
+        return drawable = new OrthographicExampleDrawable(sharedAssets.getWeirdShape());
     }
 
     @Override

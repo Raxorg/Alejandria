@@ -12,7 +12,8 @@ public abstract class InputHandler extends LogicHandler {
     protected Logic logic;
     protected Stuff stuff;
 
-    public void setupInput() {
+    @Override
+    public void init() {
         input.setInputHandler(this);
         input.setEnabled(true);
     }

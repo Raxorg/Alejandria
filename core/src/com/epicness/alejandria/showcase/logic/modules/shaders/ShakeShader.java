@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.shaders.ShakeShaderDrawable;
 
 public class ShakeShader extends Module {
 
+    private ShakeShaderDrawable drawable;
     private ShaderProgram shader;
 
     public ShakeShader() {
@@ -14,12 +17,14 @@ public class ShakeShader extends Module {
     }
 
     @Override
-    public void setup() {
+    public Drawable setup() {
         ShaderProgram.pedantic = false;
         shader = new ShaderProgram(
                 Gdx.files.internal("modules/shaders/shake.glsl"),
                 Gdx.files.internal("modules/shaders/shared/fragment.glsl"));
         renderer.getSpriteBatch().setShader(shader);
+
+        return drawable = new ShakeShaderDrawable(sharedAssets.getWeirdShape());
     }
 
     @Override

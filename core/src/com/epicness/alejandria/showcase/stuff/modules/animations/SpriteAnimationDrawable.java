@@ -1,5 +1,8 @@
 package com.epicness.alejandria.showcase.stuff.modules.animations;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -10,19 +13,19 @@ public class SpriteAnimationDrawable implements Drawable {
 
     private final SpritedAnimation animation;
 
-    public SpriteAnimationDrawable(Sprite pixel, Sprite weirdShape) {
-        Sprite[] sprites = new Sprite[2];
-        sprites[0] = new Sprite(pixel);
-        sprites[0].setSize(100f, 100f);
-        sprites[1] = new Sprite(weirdShape);
-        sprites[1].setSize(100f, 100f);
-        animation = new SpritedAnimation(sprites, 0.1f);
+    public SpriteAnimationDrawable(Sprite[] animationFrames) {
+        animation = new SpritedAnimation(animationFrames, 0.05f);
+        animation.setScale(2f);
+        animation.setOriginCenter();
+        animation.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
         animation.enableLooping();
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        spriteBatch.begin();
         animation.draw(spriteBatch);
+        spriteBatch.end();
     }
 
     public SpritedAnimation getAnimation() {

@@ -22,7 +22,11 @@ public abstract class Logic {
         logicHandlers = new ArrayList<>();
     }
 
-    public abstract void initialLogic();
+    public void initialLogic() {
+        for (int i = 0; i < logicHandlers.size(); i++) {
+            logicHandlers.get(i).init();
+        }
+    }
 
     public abstract void update(float delta);
 

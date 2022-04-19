@@ -3,6 +3,7 @@ package com.epicness.alejandria.showcase.logic.modules.cursor;
 import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.cursor.PointAtCursorDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
@@ -16,12 +17,11 @@ public class PointAtCursor extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
-        stuff.getShowcase().setDrawable(drawable);
-        stuff.getShowcase().setTitle(title);
+    public Drawable setup() {
         ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
         inputHandler.setModuleInputHandler(new PointAtCursorInput());
+
+        return drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
     }
 
     public void update(float cursorX, float cursorY) {

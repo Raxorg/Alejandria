@@ -10,7 +10,7 @@ public class ShowcaseStuff extends Stuff {
     @Override
     public void initializeStuff() {
         ShowcaseAssets assets = (ShowcaseAssets) this.assets;
-        showcase = new Showcase(sharedAssets.getPixel(), assets.getBigPixelFont());
+        showcase = new Showcase(sharedAssets.getPixel(), assets.getBigPixelFont(), assets.getArrow());
     }
 
     public Showcase getShowcase() {

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.collisions.PixelPerfectCollisionDetectionDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -17,9 +18,8 @@ public class PixelPerfectCollisionDetection extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new PixelPerfectCollisionDetectionDrawable();
-        stuff.getShowcase().setDrawable(drawable);
+    public Drawable setup() {
+        return drawable = new PixelPerfectCollisionDetectionDrawable();
     }
 
     @Override

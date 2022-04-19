@@ -18,6 +18,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.viewports.AdvancedSplitScreenDrawable;
 import com.epicness.fundamentals.stuff.Circle;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -31,9 +32,8 @@ public class AdvancedSplitScreen extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new AdvancedSplitScreenDrawable(sharedAssets.getSquare(), sharedAssets.getPixel());
-        stuff.getShowcase().setDrawable(drawable);
+    public Drawable setup() {
+        return drawable = new AdvancedSplitScreenDrawable(sharedAssets.getSquare(), sharedAssets.getPixel());
     }
 
     @Override

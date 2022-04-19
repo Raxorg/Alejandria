@@ -3,6 +3,7 @@ package com.epicness.alejandria.showcase.logic.modules.rendering;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.rendering.FrameBufferExampleDrawable;
 
 public class FrameBufferExample extends Module {
@@ -14,9 +15,8 @@ public class FrameBufferExample extends Module {
     }
 
     @Override
-    public void setup() {
-        drawable = new FrameBufferExampleDrawable();
-        stuff.getShowcase().setDrawable(drawable);
+    public Drawable setup() {
+        return drawable = new FrameBufferExampleDrawable();
     }
 
     @Override
