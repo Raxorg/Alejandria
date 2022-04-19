@@ -17,6 +17,10 @@ public class ProceduralSquare extends Module {
 
     private ProceduralSquareDrawable drawable;
 
+    public ProceduralSquare() {
+        super("Procedural Square");
+    }
+
     @Override
     public void setup() {
         drawable = new ProceduralSquareDrawable();

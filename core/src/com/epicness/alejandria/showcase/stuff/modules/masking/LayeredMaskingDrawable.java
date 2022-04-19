@@ -1,10 +1,11 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
 
@@ -32,9 +33,9 @@ public class LayeredMaskingDrawable implements Drawable {
 
     public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
         mask = new Sprited(weirdShape);
-        mask.setOrigin(INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE * 2f);
-        mask.setOriginBasedPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 2f);
-        mask.setSize(INITIAL_WINDOW_SIZE * 2f, INITIAL_WINDOW_SIZE * 2f);
+        mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
+        mask.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
+        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);
@@ -57,12 +58,12 @@ public class LayeredMaskingDrawable implements Drawable {
             }
         }
 
-        circle1 = new Circle(INITIAL_WINDOW_SIZE / 4f);
-        circle1.setPosition(INITIAL_WINDOW_SIZE / 2f, (INITIAL_WINDOW_SIZE / 4f) * 3f);
+        circle1 = new Circle(CAMERA_HEIGHT / 4f);
+        circle1.setPosition(CAMERA_WIDTH / 2f, (CAMERA_HEIGHT / 4f) * 3f);
         circle1.setColor(Color.BLACK);
 
-        circle2 = new Circle(INITIAL_WINDOW_SIZE / 4f);
-        circle2.setPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 4f);
+        circle2 = new Circle(CAMERA_HEIGHT / 4f);
+        circle2.setPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 4f);
         circle2.setColor(Color.BLACK);
 
         Sprite backgroundSprite = new Sprite(pixel);
@@ -78,7 +79,7 @@ public class LayeredMaskingDrawable implements Drawable {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, INITIAL_WINDOW_SIZE * 0.375f);
+            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.375f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.PURPLE);
             shapes.add(shape);
@@ -86,7 +87,7 @@ public class LayeredMaskingDrawable implements Drawable {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, INITIAL_WINDOW_SIZE * 0.75f);
+            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.75f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.GREEN);
             shapes.add(shape);

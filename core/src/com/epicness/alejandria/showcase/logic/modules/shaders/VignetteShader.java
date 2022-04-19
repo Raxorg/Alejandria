@@ -13,6 +13,10 @@ public class VignetteShader extends Module {
     private VignetteShaderDrawable drawable;
     private ShaderProgram shader;
 
+    public VignetteShader() {
+        super("Vignette Shader");
+    }
+
     @Override
     public void setup() {
         drawable = new VignetteShaderDrawable(

@@ -8,8 +8,8 @@ import com.epicness.fundamentals.SharedResources;
 
 public class ShowcaseInitializer extends Initializer {
 
-    public ShowcaseInitializer() {
-        super(new ShowcaseAssets());
+    public ShowcaseInitializer(ShowcaseAssets showcaseAssets) {
+        super(showcaseAssets);
     }
 
     @Override

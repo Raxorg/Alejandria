@@ -26,6 +26,10 @@ public class AdvancedSplitScreen extends Module {
 
     private AdvancedSplitScreenDrawable drawable;
 
+    public AdvancedSplitScreen() {
+        super("Advanced Split Screen");
+    }
+
     @Override
     public void setup() {
         drawable = new AdvancedSplitScreenDrawable(sharedAssets.getSquare(), sharedAssets.getPixel());

@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.bullets;
 
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +20,7 @@ public class BulletSpawningDrawable implements Drawable {
         // Gun
         gun = new Sprited(gunSprite);
         gun.setOriginCenter();
-        gun.setOriginBasedPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 2f);
+        gun.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
         gun.setOrigin(gun.getWidth() / 2f, gun.getHeight() * 0.85f); // Gun end is higher than the center
         // Bullet
         bullet = new Sprited(glowSprite);

@@ -1,11 +1,7 @@
 package com.epicness.alejandria.showcase.logic.meta;
 
-import com.epicness.alejandria.showcase.logic.modules.Module;
+import com.epicness.alejandria.showcase.logic.ShowcaseLogicHandler;
 
-public class ModuleSelector extends Module {
+public class ModuleSelector extends ShowcaseLogicHandler {
 
-    @Override
-    public void setup() {
-
-    }
 }

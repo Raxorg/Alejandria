@@ -9,6 +9,10 @@ public class SpriteTransformAnimation extends Module {
     private SpriteTransformAnimationDrawable drawable;
     private float time;
 
+    public SpriteTransformAnimation() {
+        super("Sprite Transform Animation");
+    }
+
     @Override
     public void setup() {
         drawable = new SpriteTransformAnimationDrawable(sharedAssets.getPixel(), sharedAssets.getWeirdShape());

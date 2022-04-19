@@ -7,6 +7,10 @@ public class OrthographicExample extends Module {
 
     private OrthographicExampleDrawable drawable;
 
+    public OrthographicExample() {
+        super("Orthographic Example");
+    }
+
     @Override
     public void setup() {
         drawable = new OrthographicExampleDrawable(sharedAssets.getWeirdShape());

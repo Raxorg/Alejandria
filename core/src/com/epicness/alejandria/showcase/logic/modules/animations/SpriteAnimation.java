@@ -8,6 +8,10 @@ public class SpriteAnimation extends Module {
     private SpriteAnimationDrawable drawable;
     private float time;
 
+    public SpriteAnimation() {
+        super("Sprite Animation");
+    }
+
     @Override
     public void setup() {
         drawable = new SpriteAnimationDrawable(sharedAssets.getPixel(), sharedAssets.getWeirdShape());

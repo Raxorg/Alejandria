@@ -9,6 +9,10 @@ public class FrameBufferExample extends Module {
 
     private FrameBufferExampleDrawable drawable;
 
+    public FrameBufferExample() {
+        super("Frame Buffer Example");
+    }
+
     @Override
     public void setup() {
         drawable = new FrameBufferExampleDrawable();

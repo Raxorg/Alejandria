@@ -8,6 +8,10 @@ public class AlphaMasking extends Module {
 
     private AlphaMaskingDrawable drawable;
 
+    public AlphaMasking() {
+        super("Alpha Masking");
+    }
+
     @Override
     public void setup() {
         drawable = new AlphaMaskingDrawable(sharedAssets.getWeirdShape(), assets.getGlow());

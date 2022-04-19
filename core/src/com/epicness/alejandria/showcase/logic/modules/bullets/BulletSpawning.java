@@ -14,6 +14,10 @@ public class BulletSpawning extends Module {
 
     private Vector2 bulletSpeed;
 
+    public BulletSpawning() {
+        super("Bullet Spawning");
+    }
+
     @Override
     public void setup() {
         drawable = new BulletSpawningDrawable(assets.getGun(), sharedAssets.getGlow());

@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.cursor;
 
-import com.badlogic.gdx.Gdx;
+import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
+import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.modules.cursor.PointAtCursorDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -10,25 +11,31 @@ public class PointAtCursor extends Module {
 
     private PointAtCursorDrawable drawable;
 
+    public PointAtCursor() {
+        super("Point at Cursor");
+    }
+
     @Override
     public void setup() {
         drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
         stuff.getShowcase().setDrawable(drawable);
+        stuff.getShowcase().setTitle(title);
+        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
+        inputHandler.setModuleInputHandler(new PointAtCursorInput());
     }
 
-    @Override
-    public void update(float delta) {
-        float cursorX = Gdx.input.getX();
-        float cursorY = Gdx.graphics.getHeight() - Gdx.input.getY();
+    public void update(float cursorX, float cursorY) {
         Sprited sprite = drawable.getTriangle();
         float spriteX = sprite.getX() + sprite.getOriginX();
         float spriteY = sprite.getY() + sprite.getOriginY();
 
-        sprite.setRotation(AngleUtils.degreesBetweenPoints(cursorX, cursorY, spriteX, spriteY));
+        sprite.setRotation(AngleUtils.degreesBetweenPoints(cursorX, cursorY, spriteX, spriteY) - 90f);
     }
 
     @Override
     public void exit() {
         drawable = null;
+        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
+        inputHandler.setModuleInputHandler(null);
     }
 }

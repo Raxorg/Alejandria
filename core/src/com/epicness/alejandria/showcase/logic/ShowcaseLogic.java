@@ -28,8 +28,4 @@ public class ShowcaseLogic extends Logic {
     public void update(float delta) {
         showcaseHandler.update(delta);
     }
-
-    public ShowcaseHandler getModuleHandler() {
-        return showcaseHandler;
-    }
 }

@@ -26,6 +26,10 @@ public class AStar extends Module {
     private float time, interval;
     private boolean finished;
 
+    public AStar() {
+        super("A Star Pathfinding");
+    }
+
     @Override
     public void setup() {
         drawable = new AStarDrawable();

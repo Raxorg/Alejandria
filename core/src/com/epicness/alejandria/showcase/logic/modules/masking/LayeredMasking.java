@@ -1,7 +1,8 @@
 package com.epicness.alejandria.showcase.logic.modules.masking;
 
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.modules.Module;
@@ -15,6 +16,10 @@ import java.util.List;
 public class LayeredMasking extends Module {
 
     private LayeredMaskingDrawable drawable;
+
+    public LayeredMasking() {
+        super("Layered Masking");
+    }
 
     @Override
     public void setup() {
@@ -36,21 +41,21 @@ public class LayeredMasking extends Module {
         for (int i = 0; i < shapes.size(); i++) {
             DualSprited shape = shapes.get(i);
             shape.translateY(delta * 30f);
-            if (shape.getY() >= INITIAL_WINDOW_SIZE) {
+            if (shape.getY() >= CAMERA_HEIGHT) {
                 shape.setY(-SHAPE_SIZE);
             }
         }
 
         Circle circle1 = drawable.getCircle1();
         circle1.translateX(delta * 100f);
-        if (circle1.getX() - circle1.getRadius() >= INITIAL_WINDOW_SIZE) {
+        if (circle1.getX() - circle1.getRadius() >= CAMERA_WIDTH) {
             circle1.setX(-circle1.getRadius());
         }
 
         Circle circle2 = drawable.getCircle2();
         circle2.translateX(-delta * 100f);
         if (circle2.getX() + circle2.getRadius() <= 0f) {
-            circle2.setX(INITIAL_WINDOW_SIZE + circle2.getRadius());
+            circle2.setX(CAMERA_WIDTH + circle2.getRadius());
         }
     }
 

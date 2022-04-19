@@ -12,6 +12,10 @@ public class PixelPerfectCollisionDetection extends Module {
 
     private PixelPerfectCollisionDetectionDrawable drawable;
 
+    public PixelPerfectCollisionDetection() {
+        super("Pixel Perfect Collision Detection");
+    }
+
     @Override
     public void setup() {
         drawable = new PixelPerfectCollisionDetectionDrawable();

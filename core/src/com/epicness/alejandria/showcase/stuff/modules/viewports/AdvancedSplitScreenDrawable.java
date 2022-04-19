@@ -2,7 +2,6 @@ package com.epicness.alejandria.showcase.stuff.modules.viewports;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.CELL_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_ROWS;
@@ -10,6 +9,8 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 import static com.epicness.fundamentals.SharedConstants.DIRT;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
@@ -49,7 +50,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         camera2 = new OrthographicCamera();
         camera2.setToOrtho(false, MAX_VIEWPORT_SIZE, MAX_VIEWPORT_SIZE);
         camera3 = new OrthographicCamera();
-        camera3.setToOrtho(false, INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE);
+        camera3.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 
     private void initGrid(Sprite cellSprite) {
@@ -78,18 +79,18 @@ public class AdvancedSplitScreenDrawable implements Drawable {
 
     private void initMask(Sprite maskSprite) {
         mask = new Sprited(maskSprite);
-        mask.setOrigin(INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE * 2f);
-        mask.setSize(INITIAL_WINDOW_SIZE * 2f, INITIAL_WINDOW_SIZE * 2f);
-        mask.setOriginBasedPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 2f);
+        mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
+        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
+        mask.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
         mask.rotate(90f);
         mask.setColor(BLACK_CLEAR_50);
     }
 
     private void initDivider(Sprite dividerSprite) {
         divider = new Sprited(dividerSprite);
-        divider.setSize(INITIAL_WINDOW_SIZE * 2f, CELL_SIZE / 5f);
+        divider.setSize(CAMERA_WIDTH * 2f, CELL_SIZE / 5f);
         divider.setOriginCenter();
-        divider.setOriginBasedPosition(INITIAL_WINDOW_SIZE / 2f, INITIAL_WINDOW_SIZE / 2f);
+        divider.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
         divider.setColor(BLACK);
     }
 

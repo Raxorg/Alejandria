@@ -9,6 +9,10 @@ public class ShakeShader extends Module {
 
     private ShaderProgram shader;
 
+    public ShakeShader() {
+        super("Shake Shader");
+    }
+
     @Override
     public void setup() {
         ShaderProgram.pedantic = false;

@@ -7,6 +7,12 @@ import com.epicness.alejandria.showcase.logic.ShowcaseLogicHandler;
  **/
 public abstract class Module extends ShowcaseLogicHandler {
 
+    protected final String title;
+
+    public Module(String title) {
+        this.title = title;
+    }
+
     public abstract void setup();
 
     public void update(float delta) {

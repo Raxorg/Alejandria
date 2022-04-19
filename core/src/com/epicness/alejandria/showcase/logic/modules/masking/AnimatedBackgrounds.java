@@ -7,6 +7,10 @@ public class AnimatedBackgrounds extends Module {
 
     private AnimatedBackgroundsDrawable drawable;
 
+    public AnimatedBackgrounds() {
+        super("Animated Backgrounds");
+    }
+
     @Override
     public void setup() {
         drawable = new AnimatedBackgroundsDrawable(

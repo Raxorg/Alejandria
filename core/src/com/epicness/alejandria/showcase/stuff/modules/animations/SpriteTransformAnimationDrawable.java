@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.animations;
 
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,8 +15,8 @@ public class SpriteTransformAnimationDrawable implements Drawable {
 
     public SpriteTransformAnimationDrawable(Sprite sprite1, Sprite sprite2) {
         sprited1 = new Sprited(sprite1);
-        float x1 = INITIAL_WINDOW_SIZE / 3f;
-        float y1 = INITIAL_WINDOW_SIZE / 3f;
+        float x1 = CAMERA_WIDTH / 3f;
+        float y1 = CAMERA_HEIGHT / 3f;
         sprited1.setOriginCenter();
         sprited1.setOriginBasedPosition(x1, y1);
 

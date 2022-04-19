@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.collisions;
 
-import static com.epicness.alejandria.Constants.INITIAL_WINDOW_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 import com.badlogic.gdx.Gdx;
@@ -26,7 +27,8 @@ public class PixelPerfectCollisionDetectionDrawable implements Drawable {
             shapes[i] = new Sprited(sprite);
             float size = MathUtils.random(50, 70);
             shapes[i].setSize(size, size);
-            shapes[i].setPosition(MathUtils.random(0, INITIAL_WINDOW_SIZE - size), MathUtils.random(0, INITIAL_WINDOW_SIZE - size));
+            shapes[i].setX(MathUtils.random(0, CAMERA_WIDTH - size));
+            shapes[i].setY(MathUtils.random(0, CAMERA_HEIGHT - size));
         }
     }
 

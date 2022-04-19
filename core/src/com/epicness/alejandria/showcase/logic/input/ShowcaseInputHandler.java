@@ -23,7 +23,9 @@ public class ShowcaseInputHandler extends InputHandler {
     }
 
     public void setModuleInputHandler(ModuleInput moduleInput) {
-        moduleInput.setStructure(null, logic, null, stuff);
         this.moduleInput = moduleInput;
+        if (moduleInput != null) {
+            moduleInput.setStructure(null, logic, null, stuff);
+        }
     }
 }

@@ -9,6 +9,10 @@ public class InvertShader extends Module {
 
     private InvertShaderDrawable drawable;
 
+    public InvertShader() {
+        super("Invert Shader");
+    }
+
     @Override
     public void setup() {
         drawable = new InvertShaderDrawable(sharedAssets.getWeirdShape());
