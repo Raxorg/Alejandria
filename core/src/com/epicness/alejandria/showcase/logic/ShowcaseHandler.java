@@ -3,6 +3,7 @@ package com.epicness.alejandria.showcase.logic;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
+import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -19,6 +20,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     public void init() {
         modules = new ArrayList<>();
         modules.add((Module) logic.getHandler(SpriteAnimation.class));
+        modules.add((Module) logic.getHandler(SpriteRotationAnimation.class));
         modules.add((Module) logic.getHandler(PointAtCursor.class));
 
         changeModule(0);

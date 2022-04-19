@@ -11,6 +11,7 @@ import com.epicness.fundamentals.stuff.Stuff;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public abstract class Logic {
 
@@ -62,6 +63,6 @@ public abstract class Logic {
                 return logicHandler;
             }
         }
-        return null;
+        throw new NoSuchElementException("No handler of class \"" + handlerClass.getSimpleName() + "\" registered");
     }
 }
