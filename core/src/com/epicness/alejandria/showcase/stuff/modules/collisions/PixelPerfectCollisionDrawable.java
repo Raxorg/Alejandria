@@ -14,18 +14,18 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class PixelPerfectCollisionDetectionDrawable implements Drawable {
+public class PixelPerfectCollisionDrawable implements Drawable {
 
     private final Pixmap pixmap;
     private final Sprited[] shapes;
 
-    public PixelPerfectCollisionDetectionDrawable() {
+    public PixelPerfectCollisionDrawable() {
         pixmap = new Pixmap(Gdx.files.internal(WEIRD_SHAPE_PATH));
         Sprite sprite = new Sprite(new Texture(pixmap));
-        shapes = new Sprited[50];
+        shapes = new Sprited[10];
         for (int i = 0; i < shapes.length; i++) {
             shapes[i] = new Sprited(sprite);
-            float size = MathUtils.random(50, 70);
+            float size = MathUtils.random(150, 200);
             shapes[i].setSize(size, size);
             shapes[i].setX(MathUtils.random(0, CAMERA_WIDTH - size));
             shapes[i].setY(MathUtils.random(0, CAMERA_HEIGHT - size));

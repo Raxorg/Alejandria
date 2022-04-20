@@ -5,6 +5,7 @@ import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
+import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -25,6 +26,9 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         modules.add((Module) logic.getHandler(SpriteRotationAnimation.class));
         // Bullets
         modules.add((Module) logic.getHandler(BulletSpawning.class));
+        // Collisions
+        modules.add((Module) logic.getHandler(PixelPerfectCollision.class));
+
         modules.add((Module) logic.getHandler(PointAtCursor.class));
 
         changeModule(0);
