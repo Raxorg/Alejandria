@@ -1,7 +1,11 @@
 package com.epicness.alejandria.showcase.stuff.modules.bullets;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.BULLET_SIZE;
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_WIDTH;
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.MUZZLE_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_X;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_Y;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 
 import com.badlogic.gdx.graphics.Color;
@@ -14,19 +18,24 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 public class BulletSpawningDrawable implements Drawable {
 
-    private final Sprited gun, bullet;
+    private final Sprited gun, bullet, center;
 
     public BulletSpawningDrawable(Sprite gunSprite, Sprite glowSprite) {
         // Gun
         gun = new Sprited(gunSprite);
-        gun.setOriginCenter();
-        gun.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
-        gun.setOrigin(gun.getWidth() / 2f, gun.getHeight() * 0.85f); // Gun end is higher than the center
+        gun.setSize(GUN_WIDTH, GUN_HEIGHT);
+        gun.setOrigin(GUN_WIDTH / 2f, MUZZLE_HEIGHT); // The muzzle is higher than the center
+        gun.setOriginBasedPosition(CENTER_X, CENTER_Y);
         // Bullet
         bullet = new Sprited(glowSprite);
-        bullet.setSize(gun.getHeight() / 5f, gun.getHeight() / 5f);
+        bullet.setSize(BULLET_SIZE, BULLET_SIZE);
         bullet.setOriginCenter();
-        bullet.setColor(Color.RED);
+        // Center
+        center = new Sprited(glowSprite);
+        center.setSize(BULLET_SIZE, BULLET_SIZE);
+        center.setOriginCenter();
+        center.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        center.setColor(Color.RED);
     }
 
     @Override
@@ -35,6 +44,7 @@ public class BulletSpawningDrawable implements Drawable {
         spriteBatch.begin();
         gun.draw(spriteBatch);
         bullet.draw(spriteBatch);
+        center.draw(spriteBatch);
         spriteBatch.end();
     }
 

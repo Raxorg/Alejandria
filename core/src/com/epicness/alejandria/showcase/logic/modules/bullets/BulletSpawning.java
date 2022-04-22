@@ -1,5 +1,8 @@
 package com.epicness.alejandria.showcase.logic.modules.bullets;
 
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.BARREL_LENGTH;
+import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.BULLET_SPEED;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
@@ -9,6 +12,7 @@ import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.bullets.BulletSpawningDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
+import com.epicness.fundamentals.utils.Random;
 
 public class BulletSpawning extends Module {
 
@@ -32,32 +36,25 @@ public class BulletSpawning extends Module {
 
     public void mouseMoved(float x, float y) {
         Sprited gun = drawable.getGun();
-
-        float spriteX = gun.getX() + gun.getOriginX();
-        float spriteY = gun.getY() + gun.getOriginY();
-
-        gun.setRotation(AngleUtils.degreesBetweenPoints(x, y, spriteX, spriteY));
+        float rotation = AngleUtils.degreesBetweenPoints(x, y, gun.getOriginBasedX(), gun.getOriginBasedY());
+        gun.setRotation(rotation);
     }
 
     public void touchDown() {
         Sprited gun = drawable.getGun();
         Sprited bullet = drawable.getBullet();
 
-        float distance = gun.getWidth() / 2f;
-        // Center of sprite
-        float centerX = gun.getX() + gun.getWidth() / 2f;
-        float centerY = gun.getY() + gun.getHeight() * 0.85f;
-
         float cos = MathUtils.cosDeg(gun.getRotation());
         float sin = MathUtils.sinDeg(gun.getRotation());
 
-        centerX += cos * distance;
-        centerY += sin * distance;
+        float muzzleX = gun.getOriginBasedX() + cos * BARREL_LENGTH;
+        float muzzleY = gun.getOriginBasedY() + sin * BARREL_LENGTH;
 
-        bullet.setOriginBasedPosition(centerX, centerY);
+        bullet.setOriginBasedPosition(muzzleX, muzzleY);
+        bullet.setColor(Random.fullyRandomColor());
 
-        bulletSpeed.x = cos * 200f;
-        bulletSpeed.y = sin * 200f;
+        bulletSpeed.x = cos * BULLET_SPEED;
+        bulletSpeed.y = sin * BULLET_SPEED;
     }
 
     @Override

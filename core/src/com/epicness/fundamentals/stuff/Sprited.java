@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
 
@@ -51,6 +52,10 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setX(x);
     }
 
+    public float getCenterX() {
+        return sprite.getX() + sprite.getWidth() / 2f;
+    }
+
     public float getY() {
         return sprite.getY();
     }
@@ -59,8 +64,32 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setY(y);
     }
 
+    public float getCenterY() {
+        return sprite.getY() + sprite.getHeight() / 2f;
+    }
+
+    public Vector2 getPosition() {
+        return new Vector2(sprite.getX(), sprite.getY());
+    }
+
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
+    }
+
+    public Vector2 getCenter() {
+        return new Vector2(getCenterX(), getCenterY());
+    }
+
+    public float getOriginBasedX() {
+        return sprite.getX() + sprite.getOriginX();
+    }
+
+    public float getOriginBasedY() {
+        return sprite.getY() + sprite.getOriginY();
+    }
+
+    public Vector2 getOriginBasedCenter() {
+        return new Vector2(getOriginBasedX(), getOriginBasedY());
     }
 
     public void setOriginBasedPosition(float x, float y) {

@@ -13,6 +13,7 @@ public class Circle {
 
     public Circle(float radius) {
         this.radius = radius;
+        color = Color.WHITE;
     }
 
     public void draw(ShapeRenderer shapeRenderer) {
