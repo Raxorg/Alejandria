@@ -1,4 +1,4 @@
-package com.epicness.alejandria.standalone.masking;
+package com.epicness.standalone.masking;
 
 import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
 import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;

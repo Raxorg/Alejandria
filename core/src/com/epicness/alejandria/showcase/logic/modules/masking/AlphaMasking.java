@@ -15,7 +15,8 @@ public class AlphaMasking extends Module {
 
     @Override
     public Drawable setup() {
-        return drawable = new AlphaMaskingDrawable(sharedAssets.getWeirdShape(), assets.getGlow());
+        drawable = new AlphaMaskingDrawable(sharedAssets.getWeirdShape(), assets.getGlow());
+        return drawable;
     }
 
     @Override

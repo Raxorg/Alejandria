@@ -1,9 +1,9 @@
 package com.epicness.alejandria.showcase.stuff.modules.animations;
 
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_X;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_Y;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_1_SIZE;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_2_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,35 +14,36 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 public class SpriteRotationAnimationDrawable implements Drawable {
 
-    private final Sprited sprited1, sprited2;
+    private final Sprited pixel, weirdShape;
 
-    public SpriteRotationAnimationDrawable(Sprite sprite1, Sprite sprite2) {
-        sprited1 = new Sprited(sprite1);
-        sprited1.setSize(SPRITED_1_SIZE);
-        sprited1.setOriginCenter();
-        sprited1.setOriginBasedPosition(CENTER_X, CENTER_Y);
+    public SpriteRotationAnimationDrawable(Sprite pixelSprite, Sprite weirdShapeSprite) {
+        pixel = new Sprited(pixelSprite);
+        pixel.setSize(SPRITED_1_SIZE);
+        pixel.setOriginCenter();
+        pixel.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        pixel.setColor(Color.NAVY);
 
-        sprited2 = new Sprited(sprite2);
-        sprited2.setSize(SPRITED_2_SIZE);
-        sprited2.setX(CENTER_X - SPRITED_2_SIZE - SPRITED_1_SIZE);
-        sprited2.setY(CENTER_Y - SPRITED_2_SIZE - SPRITED_1_SIZE);
-        sprited2.setOrigin(SPRITED_2_SIZE + SPRITED_1_SIZE, SPRITED_2_SIZE + SPRITED_1_SIZE);
-        sprited2.setColor(Color.ORANGE);
+        weirdShape = new Sprited(weirdShapeSprite);
+        weirdShape.setSize(SPRITED_2_SIZE);
+        weirdShape.setX(CENTER_X - SPRITED_2_SIZE - SPRITED_1_SIZE);
+        weirdShape.setY(CENTER_Y - SPRITED_2_SIZE - SPRITED_1_SIZE);
+        weirdShape.setOrigin(SPRITED_2_SIZE + SPRITED_1_SIZE, SPRITED_2_SIZE + SPRITED_1_SIZE);
+        weirdShape.setColor(Color.BROWN);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         spriteBatch.begin();
-        sprited1.draw(spriteBatch);
-        sprited2.draw(spriteBatch);
+        pixel.draw(spriteBatch);
+        weirdShape.draw(spriteBatch);
         spriteBatch.end();
     }
 
-    public Sprited getSprited1() {
-        return sprited1;
+    public Sprited getPixel() {
+        return pixel;
     }
 
-    public Sprited getSprited2() {
-        return sprited2;
+    public Sprited getWeirdShape() {
+        return weirdShape;
     }
 }

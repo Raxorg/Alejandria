@@ -4,6 +4,9 @@ import static com.badlogic.gdx.graphics.Pixmap.Format.RGBA8888;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_50;
 
 import com.badlogic.gdx.Gdx;
@@ -19,6 +22,7 @@ import com.epicness.fundamentals.stuff.SpritedText;
 
 public class Showcase {
 
+    private final Sprited background;
     private final SpritedText topStripe;
     private final FrameBuffer frameBuffer;
     private Drawable drawable;
@@ -26,6 +30,12 @@ public class Showcase {
     private final Sprited previous, next;
 
     public Showcase(Sprite pixel, BitmapFont font, Sprite arrow) {
+        background = new Sprited(pixel);
+        background.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
+        background.setOriginCenter();
+        background.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        background.setColor(GRASS);
+
         topStripe = new SpritedText(pixel, font);
         topStripe.setSize(CAMERA_WIDTH, 100f);
         topStripe.setY(CAMERA_HEIGHT - 100f);
@@ -50,7 +60,7 @@ public class Showcase {
 
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         frameBuffer.bind();
-        ScreenUtils.clear(Color.NAVY);
+        ScreenUtils.clear(Color.CLEAR);
         if (drawable != null) {
             drawable.draw(spriteBatch, shapeRenderer);
         }
@@ -58,6 +68,7 @@ public class Showcase {
         moduleSprite.setRegion(frameBuffer.getColorBufferTexture());
         moduleSprite.flip(false, true);
         spriteBatch.begin();
+        background.draw(spriteBatch);
         topStripe.draw(spriteBatch);
         moduleSprite.draw(spriteBatch);
         previous.draw(spriteBatch);

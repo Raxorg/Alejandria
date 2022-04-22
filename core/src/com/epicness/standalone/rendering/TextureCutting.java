@@ -1,4 +1,4 @@
-package com.epicness.alejandria.standalone.rendering;
+package com.epicness.standalone.rendering;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;

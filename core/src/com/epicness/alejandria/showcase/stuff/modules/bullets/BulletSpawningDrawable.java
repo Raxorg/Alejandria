@@ -4,15 +4,13 @@ import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_WIDTH;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.MUZZLE_HEIGHT;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_X;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.CENTER_Y;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -40,7 +38,6 @@ public class BulletSpawningDrawable implements Drawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        ScreenUtils.clear(GRASS);
         spriteBatch.begin();
         gun.draw(spriteBatch);
         bullet.draw(spriteBatch);

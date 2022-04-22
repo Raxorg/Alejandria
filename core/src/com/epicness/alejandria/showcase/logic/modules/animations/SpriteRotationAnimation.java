@@ -21,7 +21,7 @@ public class SpriteRotationAnimation extends Module {
 
     @Override
     public void update(float delta) {
-        drawable.getSprited1().rotate(90f * delta);
-        drawable.getSprited2().rotate(-90f * delta);
+        drawable.getPixel().rotate(90f * delta);
+        drawable.getWeirdShape().rotate(-90f * delta);
     }
 }

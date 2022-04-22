@@ -25,11 +25,18 @@ public class PointAtCursor extends Module {
     }
 
     public void mouseMoved(float cursorX, float cursorY) {
-        Sprited sprite = drawable.getTriangle();
-        float spriteX = sprite.getX() + sprite.getOriginX();
-        float spriteY = sprite.getY() + sprite.getOriginY();
-
-        sprite.setRotation(AngleUtils.degreesBetweenPoints(cursorX, cursorY, spriteX, spriteY) - 90f);
+        // Triangle 1
+        Sprited triangle = drawable.getTriangle1();
+        float triangleX = triangle.getOriginBasedX();
+        float triangleY = triangle.getOriginBasedY();
+        float rotation = AngleUtils.degreesBetweenPoints(cursorX, cursorY, triangleX, triangleY);
+        triangle.setRotation(rotation - 90f);
+        // Triangle 2
+        triangle = drawable.getTriangle2();
+        triangleX = triangle.getOriginBasedX();
+        triangleY = triangle.getOriginBasedY();
+        rotation = AngleUtils.degreesBetweenPoints(cursorX, cursorY, triangleX, triangleY);
+        triangle.setRotation(rotation - 90f);
     }
 
     @Override

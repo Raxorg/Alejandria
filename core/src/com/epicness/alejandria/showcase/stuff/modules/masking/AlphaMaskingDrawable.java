@@ -1,5 +1,9 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,31 +16,36 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 public class AlphaMaskingDrawable implements Drawable {
 
-    private final Sprited sprited, alphaMask;
+    private final Sprited maskedSprite, mask;
 
     public AlphaMaskingDrawable(Sprite weirdShape, Sprite glow) {
-        sprited = new Sprited(weirdShape);
-        weirdShape.setColor(Color.RED);
+        maskedSprite = new Sprited(weirdShape);
+        maskedSprite.setOriginCenter();
+        maskedSprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        maskedSprite.setColor(Color.RED);
 
-        alphaMask = new Sprited(glow);
+        mask = new Sprited(glow);
+        mask.setOriginCenter();
+        mask.setOriginBasedPosition(CENTER_X, CENTER_Y);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        ScreenUtils.clear(Color.BLACK);
-
+        // Needed to mimic the showcase background, the framebuffer used
+        // for the showcase drawable doesn't know about it otherwise
+        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
         spriteBatch.begin();
         // Draw the alpha mask
-        drawAlphaMask(spriteBatch);
+        drawMask(spriteBatch);
         // Draw our foreground elements
-        drawForeground(spriteBatch);
+        drawMasked(spriteBatch);
 
         spriteBatch.end();
         // Back to default blend function
         spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
-    private void drawAlphaMask(SpriteBatch spriteBatch) {
+    private void drawMask(SpriteBatch spriteBatch) {
         // Disable RGB color, only enable ALPHA to the frame buffer
         Gdx.gl.glColorMask(false, false, false, true);
 
@@ -44,33 +53,28 @@ public class AlphaMaskingDrawable implements Drawable {
         spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ZERO);
 
         // Draw alpha mask sprite(s)
-        alphaMask.draw(spriteBatch);
+        mask.draw(spriteBatch);
 
-        spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        // Change the blending function to remove pixels from the alpha map where alpha = 1
+        spriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_SRC_ALPHA);
 
-        sprited.draw(spriteBatch);
+        // Remove the masked sprite's inverse alpha from the map
+        maskedSprite.draw(spriteBatch);
 
         // Flush the batch to the GPU
         spriteBatch.flush();
     }
 
-    private void drawForeground(SpriteBatch spriteBatch) {
+    private void drawMasked(SpriteBatch spriteBatch) {
         // Now that the buffer has our alpha, we simply draw the sprite with the mask applied
         Gdx.gl.glColorMask(true, true, true, true);
 
         spriteBatch.setBlendFunction(GL20.GL_DST_ALPHA, GL20.GL_ONE_MINUS_DST_ALPHA);
 
-        // The scissor test is optional, but it depends
-        Gdx.gl.glEnable(GL20.GL_SCISSOR_TEST);
-        // Gdx.gl.glScissor(25, 50, 250, 250);
-
         // Draw our sprite to be masked
-        sprited.draw(spriteBatch);
+        maskedSprite.draw(spriteBatch);
 
         // Remember to flush before changing GL states again
         spriteBatch.flush();
-
-        // Disable scissor before continuing
-        Gdx.gl.glDisable(GL20.GL_SCISSOR_TEST);
     }
 }

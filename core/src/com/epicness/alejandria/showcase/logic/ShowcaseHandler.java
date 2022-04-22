@@ -7,6 +7,7 @@ import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationA
 import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
+import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.fundamentals.stuff.Sprited;
 
 import java.util.ArrayList;
@@ -28,8 +29,10 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         modules.add((Module) logic.getHandler(BulletSpawning.class));
         // Collisions
         modules.add((Module) logic.getHandler(PixelPerfectCollision.class));
-
+        // Cursor
         modules.add((Module) logic.getHandler(PointAtCursor.class));
+        // Masking
+        modules.add((Module) logic.getHandler(AlphaMasking.class));
 
         changeModule(0);
     }
