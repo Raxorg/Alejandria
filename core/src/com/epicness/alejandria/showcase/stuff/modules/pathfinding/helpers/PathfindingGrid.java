@@ -2,11 +2,8 @@ package com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers;
 
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
-import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -17,17 +14,15 @@ public class PathfindingGrid {
 
     private final PathfindingCell[][] cells;
 
-    public PathfindingGrid() {
+    public PathfindingGrid(Sprite cellSprite, float cellSize) {
         int columns = GRID_COLUMNS, rows = GRID_ROWS;
-        float cellSize = (Gdx.graphics.getWidth() - columns) / (float) columns;
-        Sprite cellSprite = new Sprite(new Texture(Gdx.files.internal(PIXEL_PATH)));
         cells = new PathfindingCell[columns][];
 
         for (int column = 0; column < columns; column++) {
             cells[column] = new PathfindingCell[rows];
             for (int row = 0; row < rows; row++) {
                 cells[column][row] = new PathfindingCell(column, row, cellSprite, cellSize);
-                cells[column][row].setPosition(column * cellSize + column, row * cellSize + row);
+                cells[column][row].setPosition(column * cellSize, row * cellSize);
             }
         }
         List<PathfindingCell> neighbors;

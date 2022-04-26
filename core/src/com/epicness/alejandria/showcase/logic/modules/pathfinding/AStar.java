@@ -1,14 +1,18 @@
 package com.epicness.alejandria.showcase.logic.modules.pathfinding;
 
-import static com.badlogic.gdx.Input.Keys.NUM_1;
-import static com.badlogic.gdx.Input.Keys.NUM_2;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
+import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.SharedConstants.DIRT;
+import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.fundamentals.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.alejandria.showcase.logic.input.AStarInput;
+import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AStarDrawable;
@@ -33,36 +37,48 @@ public class AStar extends Module {
 
     @Override
     public Drawable setup() {
-        drawable = new AStarDrawable();
+        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
+        inputHandler.setModuleInputHandler(new AStarInput());
+        drawable = new AStarDrawable(sharedAssets.getSquare());
+
+        initialize();
+
+        return drawable;
+    }
+
+    public void initialize() {
+        openCells = new ArrayList<>();
+        closedCells = new ArrayList<>();
+        obstacleCells = new ArrayList<>();
 
         PathfindingGrid grid = drawable.getGrid();
         PathfindingCell[][] cells = drawable.getGrid().getCells();
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
+                PathfindingCell cell = cells[column][row];
+                cell.setColor(LIGHT_GRASS.cpy().lerp(DARK_GRASS, MathUtils.random(0f, 0.25f)));
                 if (MathUtils.randomBoolean(0.1f)) {
-                    cells[column][row].setColor(Color.BLACK);
-                    obstacleCells.add(cells[column][row]);
+                    cell.setColor(Color.BLACK);
+                    obstacleCells.add(cell);
                 }
             }
         }
 
-        openCells = new ArrayList<>();
-        closedCells = new ArrayList<>();
-        obstacleCells = new ArrayList<>();
-
-        start = grid.getCells()[10][5];
-        start.setColor(Color.GREEN);
-        target = grid.getCells()[30][40];
+        start = grid.getCells()[5][5];
+        start.setColor(Color.BLUE);
+        target = grid.getCells()[25][25];
         target.setColor(Color.RED);
         openCells.add(start);
         obstacleCells.remove(start);
         obstacleCells.remove(target);
 
         time = 0f;
-        interval = 0.03f;
+        interval = 0.01f;
         finished = false;
+    }
 
-        return drawable;
+    public void toggleInterval() {
+        interval = interval == 0.7f ? 0.01f : 0.7f;
     }
 
     @Override
@@ -71,12 +87,6 @@ public class AStar extends Module {
         if (time >= interval) {
             step();
             time = 0f;
-        }
-        if (Gdx.input.isKeyJustPressed(NUM_1)) {
-            setup();
-        }
-        if (Gdx.input.isKeyJustPressed(NUM_2)) {
-            interval = interval == 1f ? 0.03f : 1f;
         }
     }
 
@@ -109,10 +119,10 @@ public class AStar extends Module {
 
     private void tintCells(PathfindingCell bestCell) {
         for (int i = 0; i < closedCells.size(); i++) {
-            closedCells.get(i).setColor(Color.TAN);
+            closedCells.get(i).setColor(LIGHT_DIRT);
         }
         while (bestCell.getPrevious() != null) {
-            bestCell.setColor(Color.CHARTREUSE);
+            bestCell.setColor(GRASS);
             bestCell = bestCell.getPrevious();
         }
         start.setColor(Color.BLUE);
@@ -135,7 +145,7 @@ public class AStar extends Module {
             float tentativeDistance = bestCell.getDistanceFromStart() + euclideanHeuristic(bestCell, neighbor);
             if (!openCells.contains(neighbor)) {
                 openCells.add(neighbor);
-                neighbor.setColor(Color.ORANGE);
+                neighbor.setColor(DIRT);
             } else if (tentativeDistance >= neighbor.getDistanceFromStart()) {
                 continue;
             }

@@ -10,6 +10,7 @@ import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.ClippedAnimation;
 import com.epicness.alejandria.showcase.logic.modules.masking.LayeredMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.ShapeRendererMasking;
+import com.epicness.alejandria.showcase.logic.modules.pathfinding.AStar;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -36,6 +37,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ClippedAnimation());
         registerHandler(new LayeredMasking());
         registerHandler(new ShapeRendererMasking());
+        // Pathfinding
+        registerHandler(new AStar());
     }
 
     @Override
