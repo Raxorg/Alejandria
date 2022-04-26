@@ -23,14 +23,14 @@ public class AnimatedBackground {
     protected Vector2[] positions;
 
     public AnimatedBackground(float x, float y, float w, float h, Color color, Sprite repeatedImage, Sprite backgroundImage,
-                              OrthographicCamera camera, int imageRows, int imageColumns, float speed) {
+                              OrthographicCamera camera, int imageColumns, int imageRows, float speed) {
         bounds = new Rectangle(x, y, w, h);
         this.color = color;
         this.repeatedImage = repeatedImage;
         this.backgroundImage = backgroundImage;
         this.camera = camera;
-        this.imageRows = imageRows + (imageRows % 2 == 0 ? 0 : 1);
         this.imageColumns = imageColumns;
+        this.imageRows = imageRows + (imageRows % 2 == 0 ? 0 : 1);
         this.speed = speed;
         initialize();
     }

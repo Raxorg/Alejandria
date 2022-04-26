@@ -1,5 +1,8 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -10,12 +13,12 @@ import com.epicness.fundamentals.stuff.AnimatedBackground;
 
 public class AnimatedBackgroundsDrawable implements Drawable {
 
-    private final AnimatedBackground background3, background2, background1;
+    private final AnimatedBackground background1, background2, background3;
 
     public AnimatedBackgroundsDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
         background1 = new AnimatedBackground(
                 50f, 50f,
-                700f, 700f,
+                CAMERA_WIDTH - 100f, CAMERA_HEIGHT - 100f,
                 Color.BLUE,
                 weirdShape,
                 pixel,
@@ -24,32 +27,34 @@ public class AnimatedBackgroundsDrawable implements Drawable {
                 15,
                 15f);
         background2 = new AnimatedBackground(
-                300f, 300f,
-                300f, 200f,
+                100f, 500f,
+                CAMERA_WIDTH - 200f, 400f,
                 Color.GREEN,
                 pixel,
                 pixel,
                 camera,
-                5,
+                8,
                 5,
                 25f);
         background3 = new AnimatedBackground(
                 100f, 100f,
-                400f, 300f,
+                500f, 500f,
                 Color.RED,
                 pixel,
                 weirdShape,
                 camera,
-                10,
-                10,
+                7,
+                7,
                 50f);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        spriteBatch.begin();
         background1.draw(spriteBatch);
         background2.draw(spriteBatch);
         background3.draw(spriteBatch);
+        spriteBatch.end();
     }
 
     public AnimatedBackground getBackground1() {
