@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.stuff;
 
 import static com.badlogic.gdx.graphics.Pixmap.Format.RGBA8888;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
@@ -10,7 +11,6 @@ import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_50;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -27,7 +27,7 @@ public class Showcase {
     private final FrameBuffer frameBuffer;
     private Drawable drawable;
     private final Sprite moduleSprite;
-    private final Sprited previous, next;
+    private final Sprited bottomStripe, previous, next;
 
     public Showcase(Sprite pixel, BitmapFont font, Sprite arrow) {
         background = new Sprited(pixel);
@@ -48,6 +48,10 @@ public class Showcase {
         moduleSprite.setOriginCenter();
         moduleSprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
 
+        bottomStripe = new Sprited(pixel);
+        bottomStripe.setSize(CAMERA_WIDTH, 100f);
+        bottomStripe.setColor(WHITE_CLEAR_50);
+
         previous = new Sprited(arrow);
         previous.setSize(100f);
         previous.setOriginCenter();
@@ -60,7 +64,7 @@ public class Showcase {
 
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         frameBuffer.bind();
-        ScreenUtils.clear(Color.CLEAR);
+        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
         if (drawable != null) {
             drawable.draw(spriteBatch, shapeRenderer);
         }
@@ -71,6 +75,7 @@ public class Showcase {
         background.draw(spriteBatch);
         topStripe.draw(spriteBatch);
         moduleSprite.draw(spriteBatch);
+        bottomStripe.draw(spriteBatch);
         previous.draw(spriteBatch);
         next.draw(spriteBatch);
         spriteBatch.end();

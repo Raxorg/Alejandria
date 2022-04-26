@@ -18,10 +18,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
+import com.epicness.fundamentals.stuff.shapes.Circle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +34,10 @@ public class LayeredMaskingDrawable implements Drawable {
     private final List<DualSprited> shapes;
 
     public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
-        mask = new Sprited(weirdShape);
+        mask = new Sprited(pixel);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CENTER_X, CENTER_Y);
-        mask.setSize(CENTER_X, CENTER_Y);
+        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);

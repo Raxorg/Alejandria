@@ -1,6 +1,5 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.fundamentals.SharedConstants.CENTER_X;
 import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
@@ -10,7 +9,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -31,9 +29,6 @@ public class AlphaMaskingDrawable implements Drawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        // Needed to mimic the showcase background, the framebuffer used
-        // for the showcase drawable doesn't know about it otherwise
-        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
         spriteBatch.begin();
         // Draw the alpha mask
         drawMask(spriteBatch);

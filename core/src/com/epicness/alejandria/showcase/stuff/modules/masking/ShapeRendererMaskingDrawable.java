@@ -2,7 +2,6 @@ package com.epicness.alejandria.showcase.stuff.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.fundamentals.SharedConstants.CENTER_X;
 import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
@@ -12,7 +11,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.shapes.Triangle;
@@ -40,7 +38,6 @@ public class ShapeRendererMaskingDrawable implements Drawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
         shapeRenderer.begin();
 
         drawMasks(shapeRenderer);
