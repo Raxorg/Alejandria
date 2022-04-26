@@ -18,7 +18,7 @@ public class ShapeRendererMaskingStandalone extends Game {
     public void create() {
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
-        Gdx.gl.glLineWidth(2);
+        Gdx.gl.glLineWidth(2f);
     }
 
     @Override

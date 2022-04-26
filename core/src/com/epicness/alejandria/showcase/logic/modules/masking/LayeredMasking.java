@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.LayeredMaskingDrawable;
-import com.epicness.fundamentals.stuff.Circle;
+import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -49,13 +49,13 @@ public class LayeredMasking extends Module {
 
         Circle circle1 = drawable.getCircle1();
         circle1.translateX(delta * 100f);
-        if (circle1.getX() - circle1.getRadius() >= CAMERA_WIDTH) {
+        if (circle1.getCenterX() - circle1.getRadius() >= CAMERA_WIDTH) {
             circle1.setX(-circle1.getRadius());
         }
 
         Circle circle2 = drawable.getCircle2();
         circle2.translateX(-delta * 100f);
-        if (circle2.getX() + circle2.getRadius() <= 0f) {
+        if (circle2.getCenterX() + circle2.getRadius() <= 0f) {
             circle2.setX(CAMERA_WIDTH + circle2.getRadius());
         }
     }

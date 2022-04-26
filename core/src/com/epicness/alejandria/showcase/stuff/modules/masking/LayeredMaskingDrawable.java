@@ -6,6 +6,8 @@ import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
 
@@ -16,7 +18,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.fundamentals.stuff.Circle;
+import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
@@ -34,8 +36,8 @@ public class LayeredMaskingDrawable implements Drawable {
     public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
         mask = new Sprited(weirdShape);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
-        mask.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
-        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
+        mask.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        mask.setSize(CENTER_X, CENTER_Y);
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);
@@ -58,12 +60,12 @@ public class LayeredMaskingDrawable implements Drawable {
             }
         }
 
-        circle1 = new Circle(CAMERA_HEIGHT / 4f);
-        circle1.setPosition(CAMERA_WIDTH / 2f, (CAMERA_HEIGHT / 4f) * 3f);
+        circle1 = new Circle(CENTER_Y / 2f);
+        circle1.setPosition(CENTER_X, (CENTER_Y / 2f) * 3f);
         circle1.setColor(Color.BLACK);
 
-        circle2 = new Circle(CAMERA_HEIGHT / 4f);
-        circle2.setPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 4f);
+        circle2 = new Circle(CENTER_Y / 2f);
+        circle2.setPosition(CENTER_X, CENTER_Y / 2f);
         circle2.setColor(Color.BLACK);
 
         Sprite backgroundSprite = new Sprite(pixel);

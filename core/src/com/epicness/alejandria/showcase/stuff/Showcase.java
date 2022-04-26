@@ -46,7 +46,7 @@ public class Showcase {
         moduleSprite = new Sprite();
         moduleSprite.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
         moduleSprite.setOriginCenter();
-        moduleSprite.setOriginBasedPosition(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
+        moduleSprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
 
         previous = new Sprited(arrow);
         previous.setSize(100f);

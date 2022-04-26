@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.rendering;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,7 +15,7 @@ public class OrthographicExampleDrawable implements Drawable {
 
     public OrthographicExampleDrawable(Sprite weirdShapeSprite) {
         weirdShape = new Sprited(weirdShapeSprite);
-        weirdShape.setSize(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f);
+        weirdShape.setSize(CENTER_X, CENTER_Y);
     }
 
     @Override
