@@ -41,7 +41,7 @@ public class Showcase {
         topStripe.setY(CAMERA_HEIGHT - 100f);
         topStripe.setBackgroundColor(WHITE_CLEAR_50);
 
-        frameBuffer = new FrameBuffer(RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+        frameBuffer = new FrameBuffer(RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 
         moduleSprite = new Sprite();
         moduleSprite.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
