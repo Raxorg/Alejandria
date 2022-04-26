@@ -4,8 +4,8 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 import static com.epicness.fundamentals.SharedConstants.CENTER_X;
 import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.DARK_DIRT;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -23,7 +23,7 @@ public class ShapeRendererMaskingDrawable implements Drawable {
     public ShapeRendererMaskingDrawable() {
         maskedCircle = new Circle(200f);
         maskedCircle.setPosition(CENTER_X, CENTER_Y);
-        maskedCircle.setColor(DIRT);
+        maskedCircle.setColor(DARK_DIRT);
 
         circleMask = new Circle(100f);
         circleMask.setPosition(CENTER_X, CENTER_Y + 100f);

@@ -21,7 +21,7 @@ public class ShapeRendererMasking extends Module {
 
     @Override
     public Drawable setup() {
-        Gdx.gl.glLineWidth(2f);
+        Gdx.gl.glLineWidth(3f);
         drawable = new ShapeRendererMaskingDrawable();
         return drawable;
     }

@@ -32,6 +32,7 @@ public class SharedConstants {
     public static final Color NAVY_GRAY_50 = Color.NAVY.cpy().lerp(Color.GRAY, 0.5f);
     public static final Color DIRT = new Color(0xeea160ff);
     public static final Color LIGHT_DIRT = new Color(0xf4cca1ff);
+    public static final Color DARK_DIRT = new Color(0x8e4100ff);
     public static final Color GRASS = new Color(0x71aa34ff);
     public static final Color LIGHT_GRASS = new Color(0xb6d53cff);
     public static final Color DARK_GRASS = new Color(0x003000ff);
