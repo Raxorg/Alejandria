@@ -2,19 +2,19 @@ package com.epicness.alejandria.showcase.logic.modules.masking;
 
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.alejandria.showcase.stuff.modules.masking.ClippedAnimationDrawable;
+import com.epicness.alejandria.showcase.stuff.modules.masking.ClippingDrawable;
 
-public class ClippedAnimation extends Module {
+public class Clipping extends Module {
 
-    private ClippedAnimationDrawable drawable;
+    private ClippingDrawable drawable;
 
-    public ClippedAnimation() {
-        super("Clipped Animation");
+    public Clipping() {
+        super("Clipping");
     }
 
     @Override
     public Drawable setup() {
-        return drawable = new ClippedAnimationDrawable(
+        return drawable = new ClippingDrawable(
                 sharedAssets.getPixel(),
                 sharedAssets.getWeirdShape(),
                 screen.getStaticCamera()
