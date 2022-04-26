@@ -7,7 +7,8 @@ import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
-import com.epicness.alejandria.showcase.logic.modules.masking.AnimatedBackgrounds;
+import com.epicness.alejandria.showcase.logic.modules.masking.ClippedAnimation;
+import com.epicness.alejandria.showcase.logic.modules.masking.LayeredMasking;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -31,7 +32,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new PointAtCursor());
         // Masking
         registerHandler(new AlphaMasking());
-        registerHandler(new AnimatedBackgrounds());
+        registerHandler(new ClippedAnimation());
+        registerHandler(new LayeredMasking());
     }
 
     @Override

@@ -17,11 +17,9 @@ public abstract class Module extends ShowcaseLogicHandler {
     public abstract Drawable setup();
 
     public void update(float delta) {
-
     }
 
     public void exit() {
-
     }
 
     public String getTitle() {

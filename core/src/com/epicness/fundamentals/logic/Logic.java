@@ -56,6 +56,10 @@ public abstract class Logic {
         }
     }
 
+    public List<LogicHandler> getHandlers() {
+        return logicHandlers;
+    }
+
     public LogicHandler getHandler(Class<? extends LogicHandler> handlerClass) {
         for (int i = 0; i < logicHandlers.size(); i++) {
             LogicHandler logicHandler = logicHandlers.get(i);

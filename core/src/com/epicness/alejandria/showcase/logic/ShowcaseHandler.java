@@ -2,13 +2,7 @@ package com.epicness.alejandria.showcase.logic;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
-import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
-import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
-import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
-import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
-import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
-import com.epicness.alejandria.showcase.logic.modules.masking.AnimatedBackgrounds;
+import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.stuff.Sprited;
 
 import java.util.ArrayList;
@@ -23,19 +17,12 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     @Override
     public void init() {
         modules = new ArrayList<>();
-        // Animations
-        modules.add((Module) logic.getHandler(SpriteAnimation.class));
-        modules.add((Module) logic.getHandler(SpriteRotationAnimation.class));
-        // Bullets
-        modules.add((Module) logic.getHandler(BulletSpawning.class));
-        // Collisions
-        modules.add((Module) logic.getHandler(PixelPerfectCollision.class));
-        // Cursor
-        modules.add((Module) logic.getHandler(PointAtCursor.class));
-        // Masking
-        modules.add((Module) logic.getHandler(AlphaMasking.class));
-        modules.add((Module) logic.getHandler(AnimatedBackgrounds.class));
-
+        for (int i = 0; i < logic.getHandlers().size(); i++) {
+            LogicHandler handler = logic.getHandlers().get(i);
+            if (handler instanceof Module) {
+                modules.add((Module) handler);
+            }
+        }
         changeModule(0);
     }
 

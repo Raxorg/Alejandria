@@ -11,11 +11,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
 
-public class AnimatedBackgroundsDrawable implements Drawable {
+public class ClippedAnimationDrawable implements Drawable {
 
     private final AnimatedBackground background1, background2, background3;
 
-    public AnimatedBackgroundsDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
+    public ClippedAnimationDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
         background1 = new AnimatedBackground(
                 50f, 50f,
                 CAMERA_WIDTH - 100f, CAMERA_HEIGHT - 100f,
