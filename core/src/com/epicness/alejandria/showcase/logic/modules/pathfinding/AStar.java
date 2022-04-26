@@ -57,16 +57,16 @@ public class AStar extends Module {
             for (int row = 0; row < GRID_ROWS; row++) {
                 PathfindingCell cell = cells[column][row];
                 cell.setColor(LIGHT_GRASS.cpy().lerp(DARK_GRASS, MathUtils.random(0f, 0.25f)));
-                if (MathUtils.randomBoolean(0.1f)) {
+                if (MathUtils.randomBoolean(0.15f)) {
                     cell.setColor(Color.BLACK);
                     obstacleCells.add(cell);
                 }
             }
         }
 
-        start = grid.getCells()[5][5];
+        start = grid.getCells()[1][4];
         start.setColor(Color.BLUE);
-        target = grid.getCells()[25][25];
+        target = grid.getCells()[28][25];
         target.setColor(Color.RED);
         openCells.add(start);
         obstacleCells.remove(start);
