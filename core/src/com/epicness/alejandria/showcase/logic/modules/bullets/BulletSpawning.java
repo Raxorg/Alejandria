@@ -61,4 +61,9 @@ public class BulletSpawning extends Module {
     public void update(float delta) {
         drawable.getBullet().translate(bulletSpeed.x * delta, bulletSpeed.y * delta);
     }
+
+    @Override
+    public void exit() {
+        drawable = null;
+    }
 }

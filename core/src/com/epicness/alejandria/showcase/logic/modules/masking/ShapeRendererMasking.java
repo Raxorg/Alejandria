@@ -14,11 +14,12 @@ public class ShapeRendererMasking extends Module {
 
     @Override
     public Drawable setup() {
-        return drawable = new ShapeRendererMaskingDrawable();
+        drawable = new ShapeRendererMaskingDrawable();
+        return drawable;
     }
 
     @Override
-    public void update(float delta) {
-
+    public void exit() {
+        drawable = null;
     }
 }

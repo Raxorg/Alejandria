@@ -47,4 +47,9 @@ public class PixelPerfectCollision extends Module {
             }
         }
     }
+
+    @Override
+    public void exit() {
+        drawable = null;
+    }
 }

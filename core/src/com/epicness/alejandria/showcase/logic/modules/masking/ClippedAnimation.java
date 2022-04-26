@@ -27,4 +27,9 @@ public class ClippedAnimation extends Module {
         drawable.getBackground2().update(delta);
         drawable.getBackground3().update(delta);
     }
+
+    @Override
+    public void exit() {
+        drawable = null;
+    }
 }

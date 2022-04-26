@@ -21,4 +21,9 @@ public class SpriteAnimation extends Module {
     public void update(float delta) {
         drawable.getAnimation().addTime(delta);
     }
+
+    @Override
+    public void exit() {
+        drawable = null;
+    }
 }
