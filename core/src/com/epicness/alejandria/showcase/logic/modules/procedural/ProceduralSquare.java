@@ -1,6 +1,8 @@
 package com.epicness.alejandria.showcase.logic.modules.procedural;
 
 import static com.badlogic.gdx.Input.Keys.NUM_7;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_SIZE;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_A;
 import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_B;
 
 import com.badlogic.gdx.Gdx;
@@ -27,12 +29,12 @@ public class ProceduralSquare extends Module {
         drawable = new ProceduralSquareDrawable();
 
         List<List<Pixel>> pixels = drawable.getPixels();
-        int size = 30;
-        for (int column = 0; column < size; column++) {
+        for (int column = 0; column < GRID_SIZE; column++) {
             pixels.add(new ArrayList<>());
-            for (int row = 0; row < size; row++) {
-                float lerpValue = tunnel(column, row, size, 1f);
+            for (int row = 0; row < GRID_SIZE; row++) {
+                float lerpValue = tunnel(column, row, GRID_SIZE, 1f);
                 Pixel pixel = new Pixel(Color.WHITE.cpy().lerp(Color.BLACK, lerpValue));
+                pixel.setSize(PIXEL_SIZE_A);
                 pixels.get(column).add(pixel);
             }
         }

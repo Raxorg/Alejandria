@@ -1,13 +1,12 @@
 package com.epicness.alejandria.showcase.stuff.modules.procedural;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.procedural.helpers.Pixel;
 
@@ -24,19 +23,17 @@ public class ProceduralSquareDrawable implements Drawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        ScreenUtils.clear(DIRT);
         shapeRenderer.begin(Filled);
-        for (int x = 0; x < pixels.size(); x++) {
-            List<Pixel> squareRow = pixels.get(x);
-            for (int y = 0; y < pixels.get(x).size(); y++) {
-                Pixel pixel = squareRow.get(y);
+        float pixelSize = pixels.get(0).get(0).getSize();
+        float gridSize = pixelSize * GRID_SIZE;
+        for (int column = 0; column < pixels.size(); column++) {
+            List<Pixel> squareRow = pixels.get(column);
+            for (int row = 0; row < squareRow.size(); row++) {
+                Pixel pixel = squareRow.get(row);
                 shapeRenderer.setColor(pixel.getColor());
-                float size = pixel.getSize();
-                shapeRenderer.rect(x * size, y * size, size, size);
-                shapeRenderer.setColor(GRASS);
-                shapeRenderer.rect(x * size + pixels.size() * size, y * size, size, size);
-                shapeRenderer.setColor(Color.BLACK);
-                shapeRenderer.rect(x * size, y * size + pixels.size() * size, size, size);
+                float x = column * pixelSize + CENTER_X - gridSize / 2f;
+                float y = row * pixelSize + CENTER_Y - gridSize / 2f;
+                shapeRenderer.rect(x, y, pixelSize, pixelSize);
             }
         }
         shapeRenderer.end();

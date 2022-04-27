@@ -11,6 +11,7 @@ import com.epicness.alejandria.showcase.logic.modules.masking.Clipping;
 import com.epicness.alejandria.showcase.logic.modules.masking.LayeredMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.showcase.logic.modules.pathfinding.AStar;
+import com.epicness.alejandria.showcase.logic.modules.procedural.ProceduralSquare;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -39,6 +40,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ShapeRendererMasking());
         // Pathfinding
         registerHandler(new AStar());
+        // Procedural
+        registerHandler(new ProceduralSquare());
     }
 
     @Override
