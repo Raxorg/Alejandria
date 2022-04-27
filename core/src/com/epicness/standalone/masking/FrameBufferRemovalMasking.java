@@ -1,5 +1,9 @@
 package com.epicness.standalone.masking;
 
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -11,9 +15,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 
 public class FrameBufferRemovalMasking extends Game {
 
@@ -27,7 +28,7 @@ public class FrameBufferRemovalMasking extends Game {
         shapeRenderer.setAutoShapeType(true);
         Gdx.gl20.glLineWidth(2);
 
-        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
 
         spriteBatch = new SpriteBatch();
     }

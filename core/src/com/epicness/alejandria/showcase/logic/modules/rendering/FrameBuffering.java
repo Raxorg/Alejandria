@@ -4,19 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.alejandria.showcase.stuff.modules.rendering.FrameBufferExampleDrawable;
+import com.epicness.alejandria.showcase.stuff.modules.rendering.FrameBufferingDrawable;
 
-public class FrameBufferExample extends Module {
+public class FrameBuffering extends Module {
 
-    private FrameBufferExampleDrawable drawable;
+    private FrameBufferingDrawable drawable;
 
-    public FrameBufferExample() {
+    public FrameBuffering() {
         super("Frame Buffer Example");
     }
 
     @Override
     public Drawable setup() {
-        return drawable = new FrameBufferExampleDrawable();
+        return drawable = new FrameBufferingDrawable(
+                sharedAssets.getWeirdShape(),
+                stuff.getShowcase().getFrameBuffer()
+        );
     }
 
     @Override

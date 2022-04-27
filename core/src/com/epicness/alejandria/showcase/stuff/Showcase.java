@@ -3,6 +3,7 @@ package com.epicness.alejandria.showcase.stuff;
 import static com.badlogic.gdx.graphics.Pixmap.Format.RGBA8888;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CENTER_X;
@@ -10,7 +11,6 @@ import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_50;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -41,7 +41,7 @@ public class Showcase {
         topStripe.setY(CAMERA_HEIGHT - 100f);
         topStripe.setBackgroundColor(WHITE_CLEAR_50);
 
-        frameBuffer = new FrameBuffer(RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+        frameBuffer = new FrameBuffer(RGBA8888, WINDOW_SIZE, WINDOW_SIZE, true);
 
         moduleSprite = new Sprite();
         moduleSprite.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
@@ -71,6 +71,7 @@ public class Showcase {
         frameBuffer.end();
         moduleSprite.setRegion(frameBuffer.getColorBufferTexture());
         moduleSprite.flip(false, true);
+
         spriteBatch.begin();
         background.draw(spriteBatch);
         topStripe.draw(spriteBatch);
@@ -79,6 +80,10 @@ public class Showcase {
         previous.draw(spriteBatch);
         next.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    public FrameBuffer getFrameBuffer() {
+        return frameBuffer;
     }
 
     public void setDrawable(Drawable drawable) {
