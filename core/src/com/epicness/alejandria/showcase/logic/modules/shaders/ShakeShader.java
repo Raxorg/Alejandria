@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.shaders;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
@@ -9,7 +10,6 @@ import com.epicness.alejandria.showcase.stuff.modules.shaders.ShakeShaderDrawabl
 
 public class ShakeShader extends Module {
 
-    private ShakeShaderDrawable drawable;
     private ShaderProgram shader;
 
     public ShakeShader() {
@@ -24,7 +24,7 @@ public class ShakeShader extends Module {
                 Gdx.files.internal("modules/shaders/shared/fragment.glsl"));
         renderer.getSpriteBatch().setShader(shader);
 
-        return drawable = new ShakeShaderDrawable(sharedAssets.getWeirdShape());
+        return new ShakeShaderDrawable(sharedAssets.getWeirdShape());
     }
 
     @Override
@@ -33,5 +33,10 @@ public class ShakeShader extends Module {
         float shakeX = MathUtils.random() * shakeStrength - shakeStrength / 2f;
         float shakeY = MathUtils.random() * shakeStrength - shakeStrength / 2f;
         shader.setUniformf("u_distort", shakeX, shakeY, 0f, 0f);
+    }
+
+    @Override
+    public void exit() {
+        renderer.getSpriteBatch().setShader(new SpriteBatch().getShader());
     }
 }

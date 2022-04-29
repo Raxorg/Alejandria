@@ -2,6 +2,7 @@ package com.epicness.alejandria.showcase.logic.modules.shaders;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.shaders.InvertShaderDrawable;
@@ -24,5 +25,10 @@ public class InvertShader extends Module {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             drawable.toggleShader();
         }
+    }
+
+    @Override
+    public void exit() {
+        renderer.getSpriteBatch().setShader(new SpriteBatch().getShader());
     }
 }

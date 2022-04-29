@@ -15,6 +15,7 @@ import com.epicness.alejandria.showcase.logic.modules.procedural.ProceduralSquar
 import com.epicness.alejandria.showcase.logic.modules.rendering.FrameBuffering;
 import com.epicness.alejandria.showcase.logic.modules.rendering.OrthographicExample;
 import com.epicness.alejandria.showcase.logic.modules.shaders.InvertShader;
+import com.epicness.alejandria.showcase.logic.modules.shaders.ShakeShader;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -50,6 +51,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new OrthographicExample());
         // Shaders
         registerHandler(new InvertShader());
+        registerHandler(new ShakeShader());
     }
 
     @Override

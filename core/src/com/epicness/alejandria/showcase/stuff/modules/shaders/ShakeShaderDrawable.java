@@ -1,6 +1,8 @@
 package com.epicness.alejandria.showcase.stuff.modules.shaders;
 
-import com.badlogic.gdx.Gdx;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,10 +16,9 @@ public class ShakeShaderDrawable implements Drawable {
 
     public ShakeShaderDrawable(Sprite weirdShapeSprite) {
         weirdShape = new Sprited(weirdShapeSprite);
-        float x = Gdx.graphics.getWidth() / 2f - weirdShape.getWidth() / 2f;
-        float y = Gdx.graphics.getHeight() / 2f - weirdShape.getHeight() / 2f;
-        weirdShape.setPosition(x, y);
-        weirdShape.setColor(Color.ORANGE);
+        weirdShape.setOriginCenter();
+        weirdShape.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        weirdShape.setColor(Color.RED);
     }
 
     @Override
