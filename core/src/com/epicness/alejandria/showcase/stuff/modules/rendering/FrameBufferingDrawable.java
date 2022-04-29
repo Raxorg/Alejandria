@@ -27,7 +27,7 @@ public class FrameBufferingDrawable implements Drawable {
         this.showcaseBuffer = showcaseBuffer;
 
         sprite = new Sprite(weirdShapeSprite);
-        sprite.setColor(Color.BLUE);
+        sprite.setColor(Color.RED);
         sprite.setOriginCenter();
         sprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
 
@@ -67,6 +67,6 @@ public class FrameBufferingDrawable implements Drawable {
 
     public void toggleDrawDirect() {
         drawDirect = !drawDirect;
-        sprite.setColor(drawDirect ? Color.RED : Color.BLUE);
+        sprite.setColor(drawDirect ? Color.BLUE : Color.RED);
     }
 }

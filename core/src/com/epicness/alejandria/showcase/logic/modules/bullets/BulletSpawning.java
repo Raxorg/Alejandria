@@ -65,5 +65,7 @@ public class BulletSpawning extends Module {
     @Override
     public void exit() {
         drawable = null;
+        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
+        inputHandler.setModuleInputHandler(null);
     }
 }
