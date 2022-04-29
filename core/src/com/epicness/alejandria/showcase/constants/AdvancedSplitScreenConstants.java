@@ -1,10 +1,11 @@
 package com.epicness.alejandria.showcase.constants;
 
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.HALF_CAMERA_WIDTH;
 
 public class AdvancedSplitScreenConstants {
 
-    public static final float MIN_VIEWPORT_SIZE = CAMERA_WIDTH / 2f;
+    public static final float MIN_VIEWPORT_SIZE = HALF_CAMERA_WIDTH;
     public static final float MAX_VIEWPORT_SIZE = CAMERA_WIDTH;
     public static final float MAX_DISTANCE = MAX_VIEWPORT_SIZE / 2f;
 

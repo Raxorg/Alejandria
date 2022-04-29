@@ -11,6 +11,8 @@ public class SharedConstants {
     public static final float CAMERA_WIDTH = CAMERA_HEIGHT * RATIO;
     public static final float CENTER_X = CAMERA_WIDTH / 2f;
     public static final float CENTER_Y = CAMERA_HEIGHT / 2f;
+    public static final float HALF_CAMERA_WIDTH = CAMERA_WIDTH / 2f;
+    public static final float HALF_CAMERA_HEIGHT = CAMERA_HEIGHT / 2f;
     // Asset paths
     public static final String EXPLOSION_PATH = "fundamentals/audio/explosionSound.wav";
 

@@ -4,14 +4,15 @@ import static com.epicness.alejandria.AssetPaths.VERTEX_SHADER_PATH;
 import static com.epicness.alejandria.AssetPaths.VIGNETTE_SHADER_PATH;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.shaders.VignetteShaderDrawable;
 
+// TODO: 29/4/2022 Add a message to point how the shader is applied twice
 public class VignetteShader extends Module {
 
-    private VignetteShaderDrawable drawable;
     private ShaderProgram shader;
 
     public VignetteShader() {
@@ -24,11 +25,7 @@ public class VignetteShader extends Module {
         shader = new ShaderProgram(Gdx.files.internal(VERTEX_SHADER_PATH), Gdx.files.internal(VIGNETTE_SHADER_PATH));
         renderer.getSpriteBatch().setShader(shader);
 
-        return drawable = new VignetteShaderDrawable(
-                sharedAssets.getSquare(),
-                sharedAssets.getWeirdShape(),
-                sharedAssets.getSquare()
-        );
+        return new VignetteShaderDrawable(sharedAssets.getSquare());
     }
 
     @Override
@@ -39,6 +36,6 @@ public class VignetteShader extends Module {
 
     @Override
     public void exit() {
-        drawable = null;
+        renderer.getSpriteBatch().setShader(new SpriteBatch().getShader());
     }
 }
