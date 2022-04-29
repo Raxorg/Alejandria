@@ -29,7 +29,7 @@ public abstract class Renderer {
         shapeRenderer.setProjectionMatrix(screen.getStaticCamera().combined);
     }
 
-    protected void useDynamicCamera() {
+    public void useDynamicCamera() {
         spriteBatch.setProjectionMatrix(screen.getDynamicCamera().combined);
         shapeRenderer.setProjectionMatrix(screen.getDynamicCamera().combined);
     }

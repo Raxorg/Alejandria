@@ -41,7 +41,7 @@ public class ClippingDrawable implements Drawable {
                 500f, 500f,
                 Color.RED,
                 pixel,
-                weirdShape,
+                pixel,
                 camera,
                 7,
                 7,

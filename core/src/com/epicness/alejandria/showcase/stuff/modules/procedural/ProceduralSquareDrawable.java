@@ -1,45 +1,77 @@
 package com.epicness.alejandria.showcase.stuff.modules.procedural;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_SIZE;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_DIMENSION_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.SPACING_A;
 import static com.epicness.fundamentals.SharedConstants.CENTER_X;
 import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.alejandria.showcase.stuff.modules.procedural.helpers.Pixel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProceduralSquareDrawable implements Drawable {
 
-    private final List<List<Pixel>> pixels;
+    private Color[][] pixels;
+    private float pixelSize;
+    private float spacingFactor;
 
     public ProceduralSquareDrawable() {
-        pixels = new ArrayList<>();
+        setDimension(GRID_DIMENSION_A);
+        setPixelSize(PIXEL_SIZE_A);
+        setSpacingFactor(SPACING_A);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         shapeRenderer.begin(Filled);
-        float pixelSize = pixels.get(0).get(0).getSize();
-        float gridSize = pixelSize * GRID_SIZE;
-        for (int column = 0; column < pixels.size(); column++) {
-            List<Pixel> squareRow = pixels.get(column);
-            for (int row = 0; row < squareRow.size(); row++) {
-                Pixel pixel = squareRow.get(row);
-                shapeRenderer.setColor(pixel.getColor());
-                float x = column * pixelSize + CENTER_X - gridSize / 2f;
-                float y = row * pixelSize + CENTER_Y - gridSize / 2f;
+        float gridDimension = pixels.length;
+        float gridSize = pixelSize * gridDimension + gridDimension * spacingFactor;
+        for (int column = 0; column < gridDimension; column++) {
+            Color[] pixelRow = pixels[column];
+            for (int row = 0; row < gridDimension; row++) {
+                Color pixel = pixelRow[row];
+                shapeRenderer.setColor(pixel);
+                float x = column * pixelSize + CENTER_X - gridSize / 2f + column * spacingFactor;
+                float y = row * pixelSize + CENTER_Y - gridSize / 2f + row * spacingFactor;
                 shapeRenderer.rect(x, y, pixelSize, pixelSize);
             }
         }
         shapeRenderer.end();
     }
 
-    public List<List<Pixel>> getPixels() {
+    public Color[][] getPixels() {
         return pixels;
+    }
+
+    public int getDimension() {
+        return pixels.length;
+    }
+
+    public void setDimension(int dimension) {
+        pixels = new Color[dimension][dimension];
+        for (int column = 0; column < dimension; column++) {
+            for (int row = 0; row < dimension; row++) {
+                pixels[column][row] = new Color();
+            }
+        }
+    }
+
+    public float getPixelSize() {
+        return pixelSize;
+    }
+
+    public void setPixelSize(float pixelSize) {
+        this.pixelSize = pixelSize;
+    }
+
+    public float getSpacingFactor() {
+        return spacingFactor;
+    }
+
+    public void setSpacingFactor(float spacingFactor) {
+        this.spacingFactor = spacingFactor;
     }
 }

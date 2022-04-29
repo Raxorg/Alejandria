@@ -13,6 +13,7 @@ import com.epicness.alejandria.showcase.logic.modules.masking.ShapeRendererMaski
 import com.epicness.alejandria.showcase.logic.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.logic.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.logic.modules.rendering.FrameBuffering;
+import com.epicness.alejandria.showcase.logic.modules.rendering.OrthographicExample;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -45,6 +46,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ProceduralSquare());
         // Rendering
         registerHandler(new FrameBuffering());
+        registerHandler(new OrthographicExample());
     }
 
     @Override
