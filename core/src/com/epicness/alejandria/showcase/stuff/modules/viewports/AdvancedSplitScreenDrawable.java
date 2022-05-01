@@ -26,33 +26,34 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
+import com.epicness.fundamentals.stuff.shapes.Circle;
 
 public class AdvancedSplitScreenDrawable implements Drawable {
 
     private Grid grid;
     private Circle player1, player2;
     private Sprited mask, divider;
-    private OrthographicCamera camera1, camera2, camera3;
+    private OrthographicCamera camera1, camera2, staticCamera;
     private boolean playersClose, camerasClose;
 
-    public AdvancedSplitScreenDrawable(Sprite cellSprite, Sprite pixelSprite) {
-        initCameras();
+    public AdvancedSplitScreenDrawable(Sprite cellSprite, Sprite pixelSprite, OrthographicCamera staticCamera) {
+        initCameras(staticCamera);
         initGrid(cellSprite);
         initPlayers();
         initMask(pixelSprite);
         initDivider(pixelSprite);
+        playersClose = true;
+        camerasClose = true;
     }
 
-    private void initCameras() {
+    private void initCameras(OrthographicCamera staticCamera) {
         camera1 = new OrthographicCamera();
         camera1.setToOrtho(false, MAX_VIEWPORT_SIZE, MAX_VIEWPORT_SIZE);
         camera2 = new OrthographicCamera();
         camera2.setToOrtho(false, MAX_VIEWPORT_SIZE, MAX_VIEWPORT_SIZE);
-        camera3 = new OrthographicCamera();
-        camera3.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
+        this.staticCamera = staticCamera;
     }
 
     private void initGrid(Sprite cellSprite) {
@@ -108,20 +109,22 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     }
 
     private void drawUnmasked(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        spriteBatch.begin();
         spriteBatch.setProjectionMatrix(camera1.combined);
+        spriteBatch.begin();
         grid.draw(spriteBatch);
         spriteBatch.end();
+        spriteBatch.setProjectionMatrix(staticCamera.combined);
 
         shapeRenderer.setProjectionMatrix(camera1.combined);
         shapeRenderer.begin(Filled);
         player1.draw(shapeRenderer);
         player2.draw(shapeRenderer);
         shapeRenderer.end();
+        shapeRenderer.setProjectionMatrix(staticCamera.combined);
     }
 
     private void applyMask(SpriteBatch spriteBatch) {
-        spriteBatch.setProjectionMatrix(camera3.combined);
+        spriteBatch.setProjectionMatrix(staticCamera.combined);
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -162,7 +165,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     private void drawUnmasked2(SpriteBatch spriteBatch) {
         // 6. Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
-        spriteBatch.setProjectionMatrix(camera3.combined);
+        spriteBatch.setProjectionMatrix(staticCamera.combined);
         spriteBatch.begin();
         divider.draw(spriteBatch);
         spriteBatch.end();

@@ -13,6 +13,7 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MIN_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
+import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_SPEED;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -20,8 +21,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.viewports.AdvancedSplitScreenDrawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.shapes.Circle;
 
 public class AdvancedSplitScreen extends Module {
 
@@ -33,7 +34,11 @@ public class AdvancedSplitScreen extends Module {
 
     @Override
     public Drawable setup() {
-        return drawable = new AdvancedSplitScreenDrawable(sharedAssets.getSquare(), sharedAssets.getPixel());
+        return drawable = new AdvancedSplitScreenDrawable(
+                sharedAssets.getSquare(),
+                sharedAssets.getPixel(),
+                screen.getStaticCamera()
+        );
     }
 
     @Override
@@ -44,15 +49,12 @@ public class AdvancedSplitScreen extends Module {
         updateCameraZoom();
         limitCameraPositions();
         updateMask();
-        Circle player1 = drawable.getPlayer1(), player2 = drawable.getPlayer2();
-        drawable.setPlayersClose(player1.getPosition().dst(player2.getPosition()) < MAX_DISTANCE);
-        Camera camera1 = drawable.getCamera1(), camera2 = drawable.getCamera2();
-        drawable.setCamerasClose(camera1.position.dst(camera2.position) == 0f);
+        updateCloseState();
     }
 
     private void handleInput(float delta) {
         Circle player1 = drawable.getPlayer1(), player2 = drawable.getPlayer2();
-        float translation = 300f * delta;
+        float translation = PLAYER_SPEED * delta;
         if (Gdx.input.isKeyPressed(W)) {
             player1.translateY(translation);
         }
@@ -147,6 +149,13 @@ public class AdvancedSplitScreen extends Module {
         angle += 90f;
         mask.setRotation(angle);
         divider.setRotation(angle);
+    }
+
+    private void updateCloseState() {
+        Circle player1 = drawable.getPlayer1(), player2 = drawable.getPlayer2();
+        drawable.setPlayersClose(player1.getPosition().dst(player2.getPosition()) < MAX_DISTANCE);
+        Camera camera1 = drawable.getCamera1(), camera2 = drawable.getCamera2();
+        drawable.setCamerasClose(camera1.position.dst(camera2.position) == 0f);
     }
 
     @Override

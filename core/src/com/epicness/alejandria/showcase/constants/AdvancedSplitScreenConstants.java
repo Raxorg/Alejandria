@@ -14,4 +14,5 @@ public class AdvancedSplitScreenConstants {
     public static final float CELL_SIZE = GRID_SIZE / GRID_COLUMNS;
 
     public static final float PLAYER_RADIUS = 20;
+    public static final float PLAYER_SPEED = 500f;
 }

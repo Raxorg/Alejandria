@@ -17,6 +17,7 @@ import com.epicness.alejandria.showcase.logic.modules.rendering.OrthographicExam
 import com.epicness.alejandria.showcase.logic.modules.shaders.InvertShader;
 import com.epicness.alejandria.showcase.logic.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.logic.modules.shaders.VignetteShader;
+import com.epicness.alejandria.showcase.logic.modules.viewports.AdvancedSplitScreen;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.SharedLogic;
 
@@ -54,6 +55,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new InvertShader());
         registerHandler(new ShakeShader());
         registerHandler(new VignetteShader());
+        // Viewports
+        registerHandler(new AdvancedSplitScreen());
     }
 
     @Override
