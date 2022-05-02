@@ -29,4 +29,4 @@ This app is a showcase of a variety of libGDX capabilities/features/techniques/a
 ### Viewports
 - Advanced Split Screen
 
-The code features some standalone modules you can run separately directly from the `DesktopLauncher`, those are later to be replaced by corresponding `Module` subclasses.
+The project also features a standalone package with some `Game` subclasses you can run directly from the `DesktopLauncher` by replacing `AlejandriaApp`
