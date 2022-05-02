@@ -53,6 +53,15 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
     }
 
+    public void keyDown(boolean left) {
+        int currentIndex = modules.indexOf(currentModule);
+        if (left) {
+            changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
+        } else {
+            changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
+        }
+    }
+
     private void changeModule(int index) {
         if (currentModule != null) {
             currentModule.exit();
