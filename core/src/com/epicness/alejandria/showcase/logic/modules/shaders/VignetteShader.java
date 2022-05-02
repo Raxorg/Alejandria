@@ -2,6 +2,7 @@ package com.epicness.alejandria.showcase.logic.modules.shaders;
 
 import static com.epicness.alejandria.AssetPaths.VERTEX_SHADER_PATH;
 import static com.epicness.alejandria.AssetPaths.VIGNETTE_SHADER_PATH;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,7 +32,7 @@ public class VignetteShader extends Module {
     @Override
     public void update(float delta) {
         // If not set each frame, use shader.bind();
-        shader.setUniformf("u_resolution", Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        shader.setUniformf("u_resolution", WINDOW_SIZE, WINDOW_SIZE);
     }
 
     @Override

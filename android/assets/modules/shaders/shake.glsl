@@ -1,3 +1,9 @@
+#version 100
+
+#ifdef GL_ES
+precision mediump float;
+#endif
+
 uniform mat4 u_projTrans;
 uniform vec4 u_distort;
 

@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.logic.modules.shaders;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -18,10 +19,14 @@ public class ShakeShader extends Module {
 
     @Override
     public Drawable setup() {
+        Gdx.app.setLogLevel(Application.LOG_ERROR);
         ShaderProgram.pedantic = false;
         shader = new ShaderProgram(
                 Gdx.files.internal("modules/shaders/shake.glsl"),
                 Gdx.files.internal("modules/shaders/shared/fragment.glsl"));
+        if (!shader.isCompiled()) {
+            Gdx.app.error("SHADER", shader.getLog());
+        }
         renderer.getSpriteBatch().setShader(shader);
 
         return new ShakeShaderDrawable(sharedAssets.getWeirdShape());
