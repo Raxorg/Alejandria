@@ -1,29 +1,32 @@
 # Alejandria
-This app is made up of different modules, each showcasing a different aspect/feature/technique of libGDX.
+This app is a showcase of a variety of libGDX capabilities/features/techniques/aspects organized into bite-sized "modules", each consisting of its logic and visible parts.
 ## Current modules
 ### Animations
-- Sprite animation
-- Sprite transform animation
+- Sprite Animation
+- Sprite Rotation Animation
+### Bullets
+- Bullet Spawning
+### Collisions
+- Pixel Perfect Collision
+### Cursor
+- Point At Cursor
 ### Masking
-- Alpha masking
-- Layered masking
-- Shape renderer masking
+- Alpha Masking
+- Clipping
+- Layered Masking
+- Shape Renderer Masking
 ### Pathfinding
-- A Star
-### Pixmaps
-- Pixel perfect collision detection
+- A Star (A*)
+### Procedural
+- Procedural Square
 ### Rendering
-- Orthographic example
-- Procedural square
+- Frame Buffering
+- Orthographic Example
 ### Shaders
-- Invert shader
-- Shake shader
-- Vignette shader
+- Invert Shader
+- Shake Shader
+- Vignette Shader
 ### Viewports
-- Advanced split screen
-### Other
-- Animated backgrounds
+- Advanced Split Screen
 
-The code features some standalone modules you can run separately directly from the `DesktopLauncher`, those are later to be replaced by corresponding `Module` classes.
-It also features some modules not taken into account by the `ModuleHandler` module initialization, the goal is to be able to cycle through the modules with a menu and
-"left" and "right" buttons
+The code features some standalone modules you can run separately directly from the `DesktopLauncher`, those are later to be replaced by corresponding `Module` subclasses.
