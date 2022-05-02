@@ -28,6 +28,7 @@ public class BulletSpawningDrawable implements Drawable {
         bullet = new Sprited(glowSprite);
         bullet.setSize(BULLET_SIZE, BULLET_SIZE);
         bullet.setOriginCenter();
+        bullet.setColor(Color.CLEAR);
         // Center
         center = new Sprited(glowSprite);
         center.setSize(BULLET_SIZE, BULLET_SIZE);
