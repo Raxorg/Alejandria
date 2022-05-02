@@ -31,7 +31,7 @@ public class VignetteShader extends Module {
 
     @Override
     public void update(float delta) {
-        // If not set each frame, use shader.bind();
+        shader.bind();
         shader.setUniformf("u_resolution", WINDOW_SIZE, WINDOW_SIZE);
     }
 

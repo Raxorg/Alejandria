@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 
 public class ShowcaseConstants {
 
-    public static final int WINDOW_SIZE = 800;
+    public static final int WINDOW_SIZE = 600;
 
     public static final float SHOWCASE_SIZE = 700f;
 
