@@ -12,6 +12,7 @@ public class DesktopLauncher {
         config.setWindowedMode(WINDOW_SIZE, WINDOW_SIZE);
         config.setResizable(false);
         new Lwjgl3Application(new AlejandriaApp(), config);
-        // The standalone package in the core module contains demos independent from the showcase app
+        // The standalone package in the core module contains demos independent
+        // from the showcase app (AlejandriaApp)
     }
 }
