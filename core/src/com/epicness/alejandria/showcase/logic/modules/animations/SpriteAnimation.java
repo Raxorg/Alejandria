@@ -9,7 +9,7 @@ public class SpriteAnimation extends Module {
     private SpriteAnimationDrawable drawable;
 
     public SpriteAnimation() {
-        super("Sprite Animation");
+        super("Sprite Animation", "This animation uses a Texture containing all the frames");
     }
 
     @Override

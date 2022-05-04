@@ -18,7 +18,7 @@ public class LayeredMasking extends Module {
     private LayeredMaskingDrawable drawable;
 
     public LayeredMasking() {
-        super("Layered Masking");
+        super("Layered Masking", "Too much happening here to explain xD");
     }
 
     @Override

@@ -11,7 +11,7 @@ public class FrameBuffering extends Module {
     private FrameBufferingDrawable drawable;
 
     public FrameBuffering() {
-        super("Frame Buffer Example");
+        super("Frame Buffer Example", "Red means we are using a frame buffer, blue means normal rendering");
     }
 
     @Override

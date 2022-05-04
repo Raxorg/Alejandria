@@ -27,9 +27,10 @@ public class Showcase {
     private final FrameBuffer frameBuffer;
     private Drawable drawable;
     private final Sprite moduleSprite;
-    private final Sprited bottomStripe, previous, next;
+    private final Sprited bottomStripe, previous, infoButton, next;
+    private final SpritedText information;
 
-    public Showcase(Sprite pixel, BitmapFont font, Sprite arrow) {
+    public Showcase(Sprite pixel, BitmapFont font, Sprite arrow, Sprite infoSprite) {
         background = new Sprited(pixel);
         background.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
         background.setOriginCenter();
@@ -57,9 +58,16 @@ public class Showcase {
         previous.setOriginCenter();
         previous.rotate(180f);
 
+        infoButton = new Sprited(infoSprite);
+        infoButton.setSize(100f);
+        infoButton.setX(CAMERA_WIDTH / 2f - infoButton.getWidth() / 2f);
+
         next = new Sprited(arrow);
         next.setSize(100f);
         next.setX(CAMERA_WIDTH - next.getWidth());
+
+        information = new SpritedText(pixel, font);
+        information.setSize(CAMERA_WIDTH,CAMERA_HEIGHT);
     }
 
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
@@ -78,7 +86,9 @@ public class Showcase {
         moduleSprite.draw(spriteBatch);
         bottomStripe.draw(spriteBatch);
         previous.draw(spriteBatch);
+        infoButton.draw(spriteBatch);
         next.draw(spriteBatch);
+        information.draw(spriteBatch);
         spriteBatch.end();
     }
 
@@ -98,7 +108,15 @@ public class Showcase {
         return previous;
     }
 
+    public Sprited getInfoButton() {
+        return infoButton;
+    }
+
     public Sprited getNext() {
         return next;
+    }
+
+    public SpritedText getInformation() {
+        return information;
     }
 }

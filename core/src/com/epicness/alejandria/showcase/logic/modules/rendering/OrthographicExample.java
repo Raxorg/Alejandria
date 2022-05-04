@@ -14,7 +14,7 @@ public class OrthographicExample extends Module {
     private OrthographicExampleDrawable drawable;
 
     public OrthographicExample() {
-        super("Orthographic Camera Example");
+        super("Orthographic Camera Example", "The sprite is not moving, the camera is");
     }
 
     @Override

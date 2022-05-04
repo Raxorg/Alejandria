@@ -16,7 +16,10 @@ public class ShapeRendererMasking extends Module {
     private boolean direction;
 
     public ShapeRendererMasking() {
-        super("Shape Renderer Masking");
+        super(
+                "Shape Renderer Masking",
+                "The moving shapes are the masks that determine which parts get rendered"
+        );
     }
 
     @Override

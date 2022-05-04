@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.ARROW_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GLOW_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GUN_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.INFO_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.PIXEL_FONT_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.STICKMAN_RUN_ATLAS;
 
@@ -17,7 +18,7 @@ public class ShowcaseAssets extends Assets {
     // Animations
     private Sprite[] stickmanRunFrames;
     // Sprites
-    private Sprite arrow;
+    private Sprite arrow, info;
     private Sprite gun, glow;
     // Fonts
     private BitmapFont bigPixelFont;
@@ -28,6 +29,7 @@ public class ShowcaseAssets extends Assets {
         loadTexture(STICKMAN_RUN_ATLAS);
         // Sprites
         loadTexture(ARROW_PATH);
+        loadTexture(INFO_PATH);
         loadTexture(GUN_PATH);
         loadTexture(GLOW_PATH);
         // Fonts
@@ -41,6 +43,7 @@ public class ShowcaseAssets extends Assets {
         stickmanRunFrames = AnimationUtils.split(getTexture(STICKMAN_RUN_ATLAS), 82, 110);
         // Sprites
         arrow = new Sprite(getTexture(ARROW_PATH));
+        info = new Sprite(getTexture(INFO_PATH));
         gun = new Sprite(getTexture(GUN_PATH));
         glow = new Sprite(getTexture(GLOW_PATH));
         // Fonts
@@ -56,6 +59,10 @@ public class ShowcaseAssets extends Assets {
     // Sprites
     public Sprite getArrow() {
         return arrow;
+    }
+
+    public Sprite getInfo() {
+        return info;
     }
 
     public Sprite getGun() {

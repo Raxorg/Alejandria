@@ -14,7 +14,7 @@ public class ShakeShader extends Module {
     private ShaderProgram shader;
 
     public ShakeShader() {
-        super("Shake Shader");
+        super("Shake Shader", "The sprites are not moving, it is the effect of the shader");
     }
 
     @Override

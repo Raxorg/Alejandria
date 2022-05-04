@@ -9,7 +9,7 @@ public class SpriteRotationAnimation extends Module {
     private SpriteRotationAnimationDrawable drawable;
 
     public SpriteRotationAnimation() {
-        super("Sprite Rotation Animation");
+        super("Sprite Rotation Animation", "Change the rotation pivot by changing the origin");
     }
 
     @Override

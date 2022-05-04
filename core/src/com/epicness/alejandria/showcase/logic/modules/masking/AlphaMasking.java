@@ -10,7 +10,7 @@ public class AlphaMasking extends Module {
     private AlphaMaskingDrawable drawable;
 
     public AlphaMasking() {
-        super("Alpha Masking");
+        super("Alpha Masking", "The mask defines the transparency of each pixel of the sprite");
     }
 
     @Override

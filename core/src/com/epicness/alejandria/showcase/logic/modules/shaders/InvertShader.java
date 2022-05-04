@@ -12,7 +12,10 @@ public class InvertShader extends Module {
     private InvertShaderDrawable drawable;
 
     public InvertShader() {
-        super("Invert Shader");
+        super(
+                "Invert Shader",
+                "This shader inverts the colors of everything notice how the background stays black"
+        );
     }
 
     @Override

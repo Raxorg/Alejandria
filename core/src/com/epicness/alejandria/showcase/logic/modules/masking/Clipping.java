@@ -9,7 +9,7 @@ public class Clipping extends Module {
     private ClippingDrawable drawable;
 
     public Clipping() {
-        super("Clipping");
+        super("Clipping", "Sprites won't be rendered outside defined clipping rectangles");
     }
 
     @Override

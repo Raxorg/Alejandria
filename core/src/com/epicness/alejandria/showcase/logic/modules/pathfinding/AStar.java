@@ -32,7 +32,7 @@ public class AStar extends Module {
     private boolean finished;
 
     public AStar() {
-        super("A Star Pathfinding");
+        super("A Star Pathfinding","1 to reset, 2 to change simulation speed");
     }
 
     @Override

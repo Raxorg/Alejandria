@@ -16,7 +16,10 @@ public class PixelPerfectCollision extends Module {
     private PixelPerfectCollisionDrawable drawable;
 
     public PixelPerfectCollision() {
-        super("Pixel Perfect Collision");
+        super(
+                "Pixel Perfect Collision",
+                "Click a shape to make it black, click on their transparent parts to make them random color"
+        );
     }
 
     @Override

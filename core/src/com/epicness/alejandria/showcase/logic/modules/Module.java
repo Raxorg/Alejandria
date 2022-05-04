@@ -9,9 +9,11 @@ import com.epicness.alejandria.showcase.stuff.Drawable;
 public abstract class Module extends ShowcaseLogicHandler {
 
     private final String title;
+    private final String information;
 
-    public Module(String title) {
+    public Module(String title, String information) {
         this.title = title;
+        this.information = information;
     }
 
     public abstract Drawable setup();
@@ -24,5 +26,9 @@ public abstract class Module extends ShowcaseLogicHandler {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getInformation() {
+        return information;
     }
 }

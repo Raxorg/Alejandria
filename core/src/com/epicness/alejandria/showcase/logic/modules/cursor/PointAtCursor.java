@@ -13,7 +13,7 @@ public class PointAtCursor extends Module {
     private PointAtCursorDrawable drawable;
 
     public PointAtCursor() {
-        super("Point at Cursor");
+        super("Point at Cursor", "Move your cursor");
     }
 
     @Override

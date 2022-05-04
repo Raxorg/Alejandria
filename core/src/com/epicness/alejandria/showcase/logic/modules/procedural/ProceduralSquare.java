@@ -24,7 +24,10 @@ public class ProceduralSquare extends Module {
     private float time;
 
     public ProceduralSquare() {
-        super("Procedural Square");
+        super(
+                "Procedural Square",
+                "1 to change the pixel size, 2 to change the grid size, Space to toggle pixel spacing"
+        );
     }
 
     @Override

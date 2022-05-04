@@ -29,7 +29,7 @@ public class AdvancedSplitScreen extends Module {
     private AdvancedSplitScreenDrawable drawable;
 
     public AdvancedSplitScreen() {
-        super("Advanced Split Screen");
+        super("Advanced Split Screen", "This split screen on steroids uses masking techniques");
     }
 
     @Override

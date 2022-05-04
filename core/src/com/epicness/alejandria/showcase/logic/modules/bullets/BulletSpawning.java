@@ -21,7 +21,7 @@ public class BulletSpawning extends Module {
     private Vector2 bulletSpeed;
 
     public BulletSpawning() {
-        super("Bullet Spawning");
+        super("Bullet Spawning", "Click the screen for pew pew!");
     }
 
     @Override
