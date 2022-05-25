@@ -28,6 +28,7 @@ allprojects {
         ashleyVersion = '1.7.4'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.1.0'
+        shapedrawerVersion = '2.5.0'
     }
 
     repositories {
@@ -115,6 +116,7 @@ project(":html") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-gwt:$gdxControllersVersion:sources"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
 
+        implementation "space.earlygrey:shapedrawer:$shapedrawerVersion:sources"
     }
 }
 
@@ -128,6 +130,6 @@ project(":core") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
 
-        implementation "space.earlygrey:shapedrawer:2.5.0"
+        implementation "space.earlygrey:shapedrawer:$shapedrawerVersion"
     }
 }
