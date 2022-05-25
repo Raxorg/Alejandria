@@ -9,6 +9,7 @@ import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.Clipping;
 import com.epicness.alejandria.showcase.logic.modules.masking.LayeredMasking;
+import com.epicness.alejandria.showcase.logic.modules.masking.ShapeDrawerMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.showcase.logic.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.logic.modules.procedural.ProceduralSquare;
@@ -43,6 +44,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new AlphaMasking());
         registerHandler(new Clipping());
         registerHandler(new LayeredMasking());
+        registerHandler(new ShapeDrawerMasking());
         registerHandler(new ShapeRendererMasking());
         // Pathfinding
         registerHandler(new AStar());
