@@ -8,10 +8,10 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.12'
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.16'
         classpath 'org.gretty:gretty:3.0.7'
         classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.12'
+        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.16'
 
     }
 }
@@ -22,7 +22,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "Alejandria"
-        gdxVersion = '1.10.0'
+        gdxVersion = '1.11.0'
         roboVMVersion = '2.3.12'
         box2DLightsVersion = '1.5'
         ashleyVersion = '1.7.4'
@@ -37,6 +37,7 @@ allprojects {
         gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -51,7 +52,7 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        
+
     }
 }
 
@@ -74,7 +75,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-android:$gdxControllersVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-        
+
     }
 }
 
@@ -91,7 +92,7 @@ project(":ios") {
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-ios:$gdxControllersVersion"
-        
+
     }
 }
 
@@ -113,7 +114,7 @@ project(":html") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-gwt:$gdxControllersVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-gwt:$gdxControllersVersion:sources"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
-        
+
     }
 }
 
@@ -126,6 +127,7 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-        
+
+        implementation "space.earlygrey:shapedrawer:2.5.0"
     }
 }
