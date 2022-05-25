@@ -14,6 +14,7 @@ This app is a showcase of a variety of libGDX capabilities/features/techniques/a
 - Alpha Masking
 - Clipping
 - Layered Masking
+- Shape Drawer Masking
 - Shape Renderer Masking
 ### Pathfinding
 - A Star (A*)
