@@ -1,17 +1,44 @@
 package com.epicness.alejandria.showcase.logic.modules.masking;
 
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.ShapeDrawerMaskingDrawable;
+import com.epicness.alejandria.showcase.stuff.modules.masking.helpers.SDCircle;
 
 public class ShapeDrawerMasking extends Module {
 
+    private ShapeDrawerMaskingDrawable drawable;
+    // Logic
+    private boolean goingLeft;
+
     public ShapeDrawerMasking() {
-        super("Shape Drawer Masking", "Masks a shape drawn by shape drawer with another");
+        super(
+                "Shape Drawer Masking",
+                "Masks 4 triangles with a circle, all of them drawn by a ShapeDrawer"
+        );
     }
 
     @Override
     public Drawable setup() {
-        return new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+        return drawable = new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+    }
+
+    @Override
+    public void update(float delta) {
+        SDCircle mask = drawable.getMask();
+        if (mask.getCenterX() >= CAMERA_WIDTH - mask.getRadius()) {
+            goingLeft = true;
+        } else if (mask.getCenterX() - mask.getRadius() <= 0f) {
+            goingLeft = false;
+        }
+        float translation = goingLeft ? -delta * 300f : delta * 300f;
+        mask.translateX(translation);
+    }
+
+    @Override
+    public void exit() {
+        drawable = null;
     }
 }

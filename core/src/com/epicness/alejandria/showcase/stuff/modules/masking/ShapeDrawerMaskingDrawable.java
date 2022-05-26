@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.masking.helpers.SDCircle;
 import com.epicness.alejandria.showcase.stuff.modules.masking.helpers.SDTriangle;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
@@ -17,14 +18,14 @@ import space.earlygrey.shapedrawer.ShapeDrawer;
 public class ShapeDrawerMaskingDrawable implements Drawable {
 
     private final ShapeDrawer shapeDrawer;
-    private final float size;
     private final SDTriangle triangle1, triangle2, triangle3, triangle4;
+    private final SDCircle mask;
 
     public ShapeDrawerMaskingDrawable(SpriteBatch spriteBatch, Sprite pixel) {
         shapeDrawer = new ShapeDrawer(spriteBatch);
         shapeDrawer.setTextureRegion(pixel);
 
-        size = 200f;
+        float size = 200f;
 
         triangle1 = new SDTriangle(
                 CENTER_X - size, CENTER_Y - size,
@@ -51,6 +52,8 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
                 CENTER_X, CENTER_Y,
                 CENTER_X - size, CENTER_Y + size);
         triangle4.setColor(Color.YELLOW);
+
+        mask = new SDCircle(CENTER_X, CENTER_Y, size);
     }
 
     @Override
@@ -78,7 +81,7 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
         spriteBatch.begin();
         Gdx.gl.glDepthMask(true);
 
-        shapeDrawer.filledCircle(CENTER_X, CENTER_Y, size);
+        mask.draw(shapeDrawer, true);
 
         spriteBatch.end();
     }
@@ -92,5 +95,9 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
         triangle3.draw(shapeDrawer, true);
         triangle4.draw(shapeDrawer, true);
         spriteBatch.end();
+    }
+
+    public SDCircle getMask() {
+        return mask;
     }
 }
