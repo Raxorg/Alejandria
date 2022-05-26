@@ -32,7 +32,6 @@ public abstract class Logic {
     public abstract void update(float delta);
 
     public void pause() {
-
     }
 
     public void registerHandler(LogicHandler logicHandler) {
