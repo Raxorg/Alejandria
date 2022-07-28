@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class Logic {
 
     protected final SharedLogic sharedLogic;
@@ -24,8 +25,8 @@ public abstract class Logic {
     }
 
     public void initialLogic() {
-        for (int i = 0; i < logicHandlers.size(); i++) {
-            logicHandlers.get(i).init();
+        for (LogicHandler logicHandler : logicHandlers) {
+            logicHandler.init();
         }
     }
 
@@ -48,8 +49,7 @@ public abstract class Logic {
             Renderer renderer,
             Stuff stuff
     ) {
-        for (int i = 0; i < logicHandlers.size(); i++) {
-            LogicHandler logicHandler = logicHandlers.get(i);
+        for (LogicHandler logicHandler : logicHandlers) {
             logicHandler.setSharedStructure(game, sharedAssets, input, sharedLogic, screen, sharedStuff);
             logicHandler.setStructure(assets, this, renderer, stuff);
         }
@@ -59,11 +59,10 @@ public abstract class Logic {
         return logicHandlers;
     }
 
-    public LogicHandler getHandler(Class<? extends LogicHandler> handlerClass) {
-        for (int i = 0; i < logicHandlers.size(); i++) {
-            LogicHandler logicHandler = logicHandlers.get(i);
+    public <H extends LogicHandler> H handler(Class<H> handlerClass) {
+        for (LogicHandler logicHandler : logicHandlers) {
             if (logicHandler.getClass().equals(handlerClass)) {
-                return logicHandler;
+                return handlerClass.cast(logicHandler);
             }
         }
         throw new NoSuchElementException("No handler of class \"" + handlerClass.getSimpleName() + "\" registered");

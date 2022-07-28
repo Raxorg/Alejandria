@@ -32,13 +32,14 @@ public class AStar extends Module {
     private boolean finished;
 
     public AStar() {
-        super("A Star Pathfinding","1 to reset, 2 to change simulation speed");
+        super("A Star Pathfinding", "1 to reset, 2 to change simulation speed");
     }
 
     @Override
     public Drawable setup() {
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(new AStarInput());
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.handler(AStarInput.class)
+        );
         drawable = new AStarDrawable(sharedAssets.getSquare());
 
         initialize();

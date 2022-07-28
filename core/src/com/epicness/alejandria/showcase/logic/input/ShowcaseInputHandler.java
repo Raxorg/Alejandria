@@ -4,16 +4,17 @@ import static com.badlogic.gdx.Input.Keys.LEFT;
 import static com.badlogic.gdx.Input.Keys.RIGHT;
 
 import com.epicness.alejandria.showcase.logic.ShowcaseHandler;
+import com.epicness.alejandria.showcase.logic.ShowcaseLogic;
+import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
 import com.epicness.fundamentals.input.InputHandler;
 
-public class ShowcaseInputHandler extends InputHandler {
+public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseStuff> {
 
     private ModuleInput moduleInput;
 
     @Override
     public void mouseMoved(float x, float y) {
-        ShowcaseHandler showcaseHandler = (ShowcaseHandler) logic.getHandler(ShowcaseHandler.class);
-        showcaseHandler.mouseMoved(x, y);
+        logic.handler(ShowcaseHandler.class).mouseMoved(x, y);
 
         if (moduleInput == null) {
             return;
@@ -23,8 +24,7 @@ public class ShowcaseInputHandler extends InputHandler {
 
     @Override
     public void touchDown(float x, float y) {
-        ShowcaseHandler showcaseHandler = (ShowcaseHandler) logic.getHandler(ShowcaseHandler.class);
-        showcaseHandler.touchDown(x, y);
+        logic.handler(ShowcaseHandler.class).touchDown(x, y);
 
         if (moduleInput == null) {
             return;
@@ -34,13 +34,12 @@ public class ShowcaseInputHandler extends InputHandler {
 
     @Override
     public void keyDown(int keycode) {
-        ShowcaseHandler showcaseHandler = (ShowcaseHandler) logic.getHandler(ShowcaseHandler.class);
         switch (keycode) {
             case LEFT:
-                showcaseHandler.keyDown(true);
+                logic.handler(ShowcaseHandler.class).keyDown(true);
                 return;
             case RIGHT:
-                showcaseHandler.keyDown(false);
+                logic.handler(ShowcaseHandler.class).keyDown(false);
                 return;
         }
         if (moduleInput == null) {
@@ -51,8 +50,5 @@ public class ShowcaseInputHandler extends InputHandler {
 
     public void setModuleInputHandler(ModuleInput moduleInput) {
         this.moduleInput = moduleInput;
-        if (moduleInput != null) {
-            moduleInput.setStructure(null, logic, null, stuff);
-        }
     }
 }

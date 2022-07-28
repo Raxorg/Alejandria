@@ -26,8 +26,9 @@ public class BulletSpawning extends Module {
 
     @Override
     public Drawable setup() {
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(new BulletSpawningInput());
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.handler(BulletSpawningInput.class)
+        );
 
         bulletSpeed = new Vector2();
 
@@ -65,7 +66,6 @@ public class BulletSpawning extends Module {
     @Override
     public void exit() {
         drawable = null;
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(null);
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }

@@ -6,11 +6,7 @@ import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class InputHandler extends LogicHandler {
-
-    // Structure
-    protected Logic logic;
-    protected Stuff stuff;
+public abstract class InputHandler<L extends Logic, S extends Stuff> extends LogicHandler<Assets, L, Renderer, S> {
 
     @Override
     public void init() {
@@ -59,11 +55,5 @@ public abstract class InputHandler extends LogicHandler {
 
     public void keyUp(int keycode) {
 
-    }
-
-    @Override
-    public void setStructure(Assets assets, Logic logic, Renderer renderer, Stuff stuff) {
-        this.logic = logic;
-        this.stuff = stuff;
     }
 }

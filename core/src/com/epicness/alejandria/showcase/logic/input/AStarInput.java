@@ -9,13 +9,12 @@ public class AStarInput extends ModuleInput {
 
     @Override
     public void keyDown(int keycode) {
-        AStar aStar = (AStar) logic.getHandler(AStar.class);
         switch (keycode) {
             case NUM_1:
-                aStar.initialize();
+                logic.handler(AStar.class).initialize();
                 break;
             case NUM_2:
-                aStar.toggleInterval();
+                logic.handler(AStar.class).toggleInterval();
                 break;
         }
     }

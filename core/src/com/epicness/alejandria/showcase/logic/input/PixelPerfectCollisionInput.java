@@ -13,8 +13,6 @@ public class PixelPerfectCollisionInput extends ModuleInput {
     public void touchDown(float x, float y) {
         x = MathUtils.map(150f, 150f + SHOWCASE_SIZE, 0f, CAMERA_WIDTH, x);
         y = MathUtils.map(150f, 150f + SHOWCASE_SIZE, 0f, CAMERA_HEIGHT, y);
-        PixelPerfectCollision pixelPerfectCollision;
-        pixelPerfectCollision = (PixelPerfectCollision) logic.getHandler(PixelPerfectCollision.class);
-        pixelPerfectCollision.touchDown(x, y);
+        logic.handler(PixelPerfectCollision.class).touchDown(x, y);
     }
 }
