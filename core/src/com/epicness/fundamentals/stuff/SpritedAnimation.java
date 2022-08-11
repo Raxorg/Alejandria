@@ -69,4 +69,8 @@ public class SpritedAnimation {
     public void addTime(float seconds) {
         time += seconds;
     }
+
+    public void resetTime() {
+        time = 0f;
+    }
 }

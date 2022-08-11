@@ -6,13 +6,11 @@ public class BulletSpawningInput extends ModuleInput {
 
     @Override
     public void mouseMoved(float x, float y) {
-        BulletSpawning bulletSpawning = (BulletSpawning) logic.getHandler(BulletSpawning.class);
-        bulletSpawning.mouseMoved(x, y);
+        logic.handler(BulletSpawning.class).mouseMoved(x, y);
     }
 
     @Override
     public void touchDown(float x, float y) {
-        BulletSpawning bulletSpawning = (BulletSpawning) logic.getHandler(BulletSpawning.class);
-        bulletSpawning.touchDown();
+        logic.handler(BulletSpawning.class).touchDown();
     }
 }

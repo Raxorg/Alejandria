@@ -108,8 +108,16 @@ public class Sprited implements Buttonable, Parallaxable {
         return sprite.getWidth();
     }
 
+    public void setWidth(float width) {
+        sprite.setSize(width, sprite.getHeight());
+    }
+
     public float getHeight() {
         return sprite.getHeight();
+    }
+
+    public void setHeight(float height) {
+        sprite.setSize(sprite.getWidth(), height);
     }
 
     public void setSize(float width, float height) {

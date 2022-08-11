@@ -1,10 +1,16 @@
 package com.epicness.alejandria.showcase.logic;
 
+import com.epicness.alejandria.showcase.logic.input.AStarInput;
+import com.epicness.alejandria.showcase.logic.input.BeamAimingInput;
+import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
+import com.epicness.alejandria.showcase.logic.input.PixelPerfectCollisionInput;
+import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
+import com.epicness.alejandria.showcase.logic.modules.cursor.BeamAiming;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.Clipping;
@@ -29,17 +35,20 @@ public class ShowcaseLogic extends Logic {
     public ShowcaseLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
-        registerHandler(showcaseHandler = new ShowcaseHandler());
-        registerHandler(new ShowcaseInputHandler());
         // Animations
         registerHandler(new SpriteAnimation());
         registerHandler(new SpriteRotationAnimation());
         // Bullets
         registerHandler(new BulletSpawning());
+        registerHandler(new BulletSpawningInput());
         // Collisions
         registerHandler(new PixelPerfectCollision());
+        registerHandler(new PixelPerfectCollisionInput());
         // Cursor
+        registerHandler(new BeamAiming());
+        registerHandler(new BeamAimingInput());
         registerHandler(new PointAtCursor());
+        registerHandler(new PointAtCursorInput());
         // Masking
         registerHandler(new AlphaMasking());
         registerHandler(new Clipping());
@@ -48,6 +57,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ShapeRendererMasking());
         // Pathfinding
         registerHandler(new AStar());
+        registerHandler(new AStarInput());
         // Procedural
         registerHandler(new ProceduralSquare());
         // Rendering
@@ -59,6 +69,9 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new VignetteShader());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
+
+        registerHandler(showcaseHandler = new ShowcaseHandler());
+        registerHandler(new ShowcaseInputHandler());
     }
 
     @Override

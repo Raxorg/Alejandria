@@ -18,8 +18,9 @@ public class PointAtCursor extends Module {
 
     @Override
     public Drawable setup() {
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(new PointAtCursorInput());
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.handler(PointAtCursorInput.class)
+        );
 
         return drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
     }
@@ -42,7 +43,6 @@ public class PointAtCursor extends Module {
     @Override
     public void exit() {
         drawable = null;
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(null);
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }

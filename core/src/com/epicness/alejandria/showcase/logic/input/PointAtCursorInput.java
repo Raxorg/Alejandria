@@ -13,7 +13,6 @@ public class PointAtCursorInput extends ModuleInput {
     public void mouseMoved(float x, float y) {
         x = MathUtils.map(150f, 150f + SHOWCASE_SIZE, 0f, CAMERA_WIDTH, x);
         y = MathUtils.map(150f, 150f + SHOWCASE_SIZE, 0f, CAMERA_HEIGHT, y);
-        PointAtCursor pointAtCursor = (PointAtCursor) logic.getHandler(PointAtCursor.class);
-        pointAtCursor.mouseMoved(x, y);
+        logic.handler(PointAtCursor.class).mouseMoved(x, y);
     }
 }

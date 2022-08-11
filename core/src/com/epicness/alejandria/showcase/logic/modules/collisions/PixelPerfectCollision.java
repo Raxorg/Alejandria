@@ -24,8 +24,9 @@ public class PixelPerfectCollision extends Module {
 
     @Override
     public Drawable setup() {
-        ShowcaseInputHandler inputHandler = (ShowcaseInputHandler) logic.getHandler(ShowcaseInputHandler.class);
-        inputHandler.setModuleInputHandler(new PixelPerfectCollisionInput());
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.handler(PixelPerfectCollisionInput.class)
+        );
         return drawable = new PixelPerfectCollisionDrawable();
     }
 

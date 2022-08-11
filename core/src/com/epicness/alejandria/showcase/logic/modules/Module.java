@@ -4,7 +4,7 @@ import com.epicness.alejandria.showcase.logic.ShowcaseLogicHandler;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 
 /**
- * The modules package is an exception to the conventional structuring of epicness games/apps
+ * The modules package is an exception to the conventional package structure of epicness games/apps
  **/
 public abstract class Module extends ShowcaseLogicHandler {
 
