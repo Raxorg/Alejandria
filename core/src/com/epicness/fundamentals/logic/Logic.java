@@ -62,7 +62,7 @@ public abstract class Logic {
     public <H extends LogicHandler> H handler(Class<H> handlerClass) {
         for (LogicHandler logicHandler : logicHandlers) {
             if (logicHandler.getClass().equals(handlerClass)) {
-                return handlerClass.cast(logicHandler);
+                return (H) logicHandler;
             }
         }
         throw new NoSuchElementException("No handler of class \"" + handlerClass.getSimpleName() + "\" registered");
