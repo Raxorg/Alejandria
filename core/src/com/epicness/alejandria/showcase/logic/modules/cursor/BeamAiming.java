@@ -5,6 +5,8 @@ import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.TRIANGLE_SPEED;
+import static com.epicness.fundamentals.SharedConstants.CENTER_X;
+import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.input.BeamAimingInput;
@@ -19,7 +21,7 @@ public class BeamAiming extends Module {
 
     private BeamAimingDrawable drawable;
     // Logic
-    private float lastCursorX, lastCursorY;
+    private float lastCursorX = CENTER_X, lastCursorY = CENTER_Y;
 
     public BeamAiming() {
         super("Beam Aiming", "Demonstration of rotating a sprite around a movable object aiming towards the cursor");
