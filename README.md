@@ -9,6 +9,7 @@ This app is a showcase of a variety of libGDX capabilities/features/techniques/a
 ### Collisions
 - Pixel Perfect Collision
 ### Cursor
+- Beam Aiming
 - Point At Cursor
 ### Masking
 - Alpha Masking
