@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.logic;
 
 import com.epicness.alejandria.showcase.logic.input.AStarInput;
+import com.epicness.alejandria.showcase.logic.input.BeamAimingInput;
 import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
 import com.epicness.alejandria.showcase.logic.input.PixelPerfectCollisionInput;
 import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
@@ -9,6 +10,7 @@ import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCollision;
+import com.epicness.alejandria.showcase.logic.modules.cursor.BeamAiming;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.Clipping;
@@ -43,6 +45,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new PixelPerfectCollision());
         registerHandler(new PixelPerfectCollisionInput());
         // Cursor
+        registerHandler(new BeamAiming());
+        registerHandler(new BeamAimingInput());
         registerHandler(new PointAtCursor());
         registerHandler(new PointAtCursorInput());
         // Masking
