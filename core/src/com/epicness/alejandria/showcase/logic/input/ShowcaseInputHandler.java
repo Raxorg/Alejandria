@@ -10,7 +10,7 @@ import com.epicness.fundamentals.input.InputHandler;
 
 public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseStuff> {
 
-    private ModuleInput moduleInput;
+    private ModuleInput<?> moduleInput;
 
     @Override
     public void mouseMoved(float x, float y) {
@@ -48,7 +48,7 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
         moduleInput.keyDown(keycode);
     }
 
-    public void setModuleInputHandler(ModuleInput moduleInput) {
+    public void setModuleInputHandler(ModuleInput<?> moduleInput) {
         this.moduleInput = moduleInput;
     }
 }

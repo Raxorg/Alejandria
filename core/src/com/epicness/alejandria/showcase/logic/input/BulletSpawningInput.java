@@ -2,15 +2,20 @@ package com.epicness.alejandria.showcase.logic.input;
 
 import com.epicness.alejandria.showcase.logic.modules.bullets.BulletSpawning;
 
-public class BulletSpawningInput extends ModuleInput {
+public class BulletSpawningInput extends ModuleInput<BulletSpawning> {
+
+    @Override
+    protected Class<BulletSpawning> setup() {
+        return BulletSpawning.class;
+    }
 
     @Override
     public void mouseMoved(float x, float y) {
-        logic.handler(BulletSpawning.class).mouseMoved(x, y);
+        module.mouseMoved(x, y);
     }
 
     @Override
     public void touchDown(float x, float y) {
-        logic.handler(BulletSpawning.class).touchDown();
+        module.touchDown();
     }
 }

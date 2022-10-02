@@ -13,6 +13,7 @@ import com.epicness.alejandria.showcase.logic.modules.collisions.PixelPerfectCol
 import com.epicness.alejandria.showcase.logic.modules.cursor.BeamAiming;
 import com.epicness.alejandria.showcase.logic.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.logic.modules.fun.BeepingBalls;
+import com.epicness.alejandria.showcase.logic.modules.grids.CrossChunkSelection;
 import com.epicness.alejandria.showcase.logic.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.logic.modules.masking.Clipping;
 import com.epicness.alejandria.showcase.logic.modules.masking.LayeredMasking;
@@ -52,6 +53,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new PointAtCursorInput());
         // Fun
         registerHandler(new BeepingBalls());
+        // Grids
+        registerHandler(new CrossChunkSelection());
         // Masking
         registerHandler(new AlphaMasking());
         registerHandler(new Clipping());

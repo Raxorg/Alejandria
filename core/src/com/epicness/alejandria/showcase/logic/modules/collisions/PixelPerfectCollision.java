@@ -6,14 +6,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.input.PixelPerfectCollisionInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.collisions.PixelPerfectCollisionDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.Random;
 
-public class PixelPerfectCollision extends Module {
-
-    private PixelPerfectCollisionDrawable drawable;
+public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable> {
 
     public PixelPerfectCollision() {
         super(
@@ -23,7 +20,7 @@ public class PixelPerfectCollision extends Module {
     }
 
     @Override
-    public Drawable setup() {
+    public PixelPerfectCollisionDrawable setup() {
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
                 logic.handler(PixelPerfectCollisionInput.class)
         );
@@ -50,10 +47,5 @@ public class PixelPerfectCollision extends Module {
                 shape.setColor(Color.BLACK);
             }
         }
-    }
-
-    @Override
-    public void exit() {
-        drawable = null;
     }
 }
