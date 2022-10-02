@@ -14,8 +14,8 @@ import java.util.List;
 public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     // Logic
-    private List<Module> modules;
-    private Module currentModule;
+    private List<Module<?>> modules;
+    private Module<?> currentModule;
 
     @Override
     public void init() {
@@ -23,7 +23,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         for (int i = 0; i < logic.getHandlers().size(); i++) {
             LogicHandler<?, ?, ?, ?> handler = logic.getHandlers().get(i);
             if (handler instanceof Module) {
-                modules.add((Module) handler);
+                modules.add((Module<?>) handler);
             }
         }
         changeModule(0);
@@ -76,7 +76,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private void changeModule(int index) {
         if (currentModule != null) {
-            currentModule.exit();
+            currentModule.exitModule();
         }
         currentModule = modules.get(index);
         stuff.getShowcase().setDrawable(currentModule.setup());

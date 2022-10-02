@@ -3,6 +3,7 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
@@ -69,6 +70,11 @@ public class DualSprited implements Buttonable, Scrollable {
         foreground.translateX(amount);
     }
 
+    public void translate(float xAmount, float yAmount) {
+        translateX(xAmount);
+        translateY(yAmount);
+    }
+
     public void setBackgroundSize(float size) {
         background.setSize(size, size);
     }
@@ -94,8 +100,22 @@ public class DualSprited implements Buttonable, Scrollable {
         background.setScale(scale);
     }
 
-    public void centerBackgroundOrigin() {
+    public void setBackgroundOriginCenter() {
         background.setOriginCenter();
+    }
+
+    public void setForegroundOriginCenter() {
+        foreground.setOriginCenter();
+    }
+
+    public void setOriginCenter() {
+        setBackgroundOriginCenter();
+        setForegroundOriginCenter();
+    }
+
+    public void setOriginBasedPosition(float x, float y) {
+        background.setOriginBasedPosition(x, y);
+        foreground.setOriginBasedPosition(x, y);
     }
 
     public void setFlip(boolean flipX, boolean flipY) {
@@ -122,5 +142,17 @@ public class DualSprited implements Buttonable, Scrollable {
     public void setColor(Color color) {
         setBackgroundColor(color);
         setForegroundColor(color);
+    }
+
+    public float getBackgroundCenterX() {
+        return background.getX() + background.getWidth() / 2f;
+    }
+
+    public float getBackgroundCenterY() {
+        return background.getY() + background.getHeight() / 2f;
+    }
+
+    public Vector2 getBackgroundCenter() {
+        return new Vector2(getBackgroundCenterX(), getBackgroundCenterY());
     }
 }
