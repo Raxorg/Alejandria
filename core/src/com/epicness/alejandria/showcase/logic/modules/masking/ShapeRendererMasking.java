@@ -4,15 +4,12 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.ShapeRendererMaskingDrawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.shapes.Triangle;
 
-public class ShapeRendererMasking extends Module {
+public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
 
-    private ShapeRendererMaskingDrawable drawable;
-    // Logic
     private boolean direction;
 
     public ShapeRendererMasking() {
@@ -23,10 +20,9 @@ public class ShapeRendererMasking extends Module {
     }
 
     @Override
-    public Drawable setup() {
+    public ShapeRendererMaskingDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        drawable = new ShapeRendererMaskingDrawable();
-        return drawable;
+        return new ShapeRendererMaskingDrawable();
     }
 
     @Override
@@ -46,7 +42,6 @@ public class ShapeRendererMasking extends Module {
 
     @Override
     public void exit() {
-        drawable = null;
         Gdx.gl.glLineWidth(1f);
     }
 }

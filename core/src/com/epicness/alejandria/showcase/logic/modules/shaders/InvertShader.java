@@ -4,12 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.shaders.InvertShaderDrawable;
 
-public class InvertShader extends Module {
-
-    private InvertShaderDrawable drawable;
+public class InvertShader extends Module<InvertShaderDrawable> {
 
     public InvertShader() {
         super(
@@ -19,8 +16,8 @@ public class InvertShader extends Module {
     }
 
     @Override
-    public Drawable setup() {
-        return drawable = new InvertShaderDrawable(sharedAssets.getWeirdShape());
+    public InvertShaderDrawable setup() {
+        return new InvertShaderDrawable(sharedAssets.getWeirdShape());
     }
 
     @Override

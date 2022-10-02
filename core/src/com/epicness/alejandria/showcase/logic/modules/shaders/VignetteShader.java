@@ -8,10 +8,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.shaders.VignetteShaderDrawable;
 
-public class VignetteShader extends Module {
+public class VignetteShader extends Module<VignetteShaderDrawable> {
 
     private ShaderProgram shader;
 
@@ -20,7 +19,7 @@ public class VignetteShader extends Module {
     }
 
     @Override
-    public Drawable setup() {
+    public VignetteShaderDrawable setup() {
         ShaderProgram.pedantic = false;
         shader = new ShaderProgram(Gdx.files.internal(VERTEX_SHADER_PATH), Gdx.files.internal(VIGNETTE_SHADER_PATH));
         renderer.getSpriteBatch().setShader(shader);

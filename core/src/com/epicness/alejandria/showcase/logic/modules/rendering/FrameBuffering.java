@@ -13,7 +13,7 @@ public class FrameBuffering extends Module<FrameBufferingDrawable> {
 
     @Override
     public FrameBufferingDrawable setup() {
-        return drawable = new FrameBufferingDrawable(
+        return new FrameBufferingDrawable(
                 sharedAssets.getWeirdShape(),
                 stuff.getShowcase().getFrameBuffer()
         );

@@ -3,14 +3,11 @@ package com.epicness.alejandria.showcase.logic.modules.masking;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.ShapeDrawerMaskingDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.helpers.SDCircle;
 
-public class ShapeDrawerMasking extends Module {
+public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
 
-    private ShapeDrawerMaskingDrawable drawable;
-    // Logic
     private boolean goingLeft;
 
     public ShapeDrawerMasking() {
@@ -21,8 +18,8 @@ public class ShapeDrawerMasking extends Module {
     }
 
     @Override
-    public Drawable setup() {
-        return drawable = new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+    public ShapeDrawerMaskingDrawable setup() {
+        return new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
     }
 
     @Override
@@ -35,10 +32,5 @@ public class ShapeDrawerMasking extends Module {
         }
         float translation = goingLeft ? -delta * 300f : delta * 300f;
         mask.translateX(translation);
-    }
-
-    @Override
-    public void exit() {
-        drawable = null;
     }
 }

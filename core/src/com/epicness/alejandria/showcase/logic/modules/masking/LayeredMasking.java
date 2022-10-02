@@ -6,26 +6,23 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.LayeredMaskingDrawable;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 
 import java.util.List;
 
-public class LayeredMasking extends Module {
-
-    private LayeredMaskingDrawable drawable;
+public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     public LayeredMasking() {
         super("Layered Masking", "Too much happening here to explain xD");
     }
 
     @Override
-    public Drawable setup() {
+    public LayeredMaskingDrawable setup() {
         Gdx.gl.glLineWidth(3f);
 
-        return drawable = new LayeredMaskingDrawable(
+        return new LayeredMaskingDrawable(
                 sharedAssets.getWeirdShape(),
                 sharedAssets.getSquare(),
                 sharedAssets.getSquareInverted(),
@@ -62,6 +59,5 @@ public class LayeredMasking extends Module {
     @Override
     public void exit() {
         Gdx.gl.glLineWidth(1f);
-        drawable = null;
     }
 }

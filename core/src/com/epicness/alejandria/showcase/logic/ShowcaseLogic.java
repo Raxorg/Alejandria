@@ -1,10 +1,7 @@
 package com.epicness.alejandria.showcase.logic;
 
 import com.epicness.alejandria.showcase.logic.input.AStarInput;
-import com.epicness.alejandria.showcase.logic.input.BeamAimingInput;
-import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
-import com.epicness.alejandria.showcase.logic.input.PixelPerfectCollisionInput;
-import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
+import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteRotationAnimation;
@@ -37,20 +34,18 @@ public class ShowcaseLogic extends Logic {
     public ShowcaseLogic(SharedLogic sharedLogic) {
         super(sharedLogic);
 
+        // Shared
+        registerHandler(new ModuleInputAdapter());
         // Animations
         registerHandler(new SpriteAnimation());
         registerHandler(new SpriteRotationAnimation());
         // Bullets
         registerHandler(new BulletSpawning());
-        registerHandler(new BulletSpawningInput());
         // Collisions
         registerHandler(new PixelPerfectCollision());
-        registerHandler(new PixelPerfectCollisionInput());
         // Cursor
         registerHandler(new BeamAiming());
-        registerHandler(new BeamAimingInput());
         registerHandler(new PointAtCursor());
-        registerHandler(new PointAtCursorInput());
         // Fun
         registerHandler(new BeepingBalls());
         // Grids
