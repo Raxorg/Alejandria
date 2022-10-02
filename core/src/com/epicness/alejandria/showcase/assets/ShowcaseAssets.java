@@ -2,12 +2,16 @@ package com.epicness.alejandria.showcase.assets;
 
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.ARROW_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.BALL_BEEP;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.CIRCLE_GLOW_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.CIRCLE_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GLOW_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GUN_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.INFO_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.PIXEL_FONT_PATH;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.STICKMAN_RUN_ATLAS;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
@@ -19,7 +23,11 @@ public class ShowcaseAssets extends Assets {
     private Sprite[] stickmanRunFrames;
     // Sprites
     private Sprite arrow, info;
-    private Sprite gun, glow;
+    private Sprite gun;
+    private Sprite circle, circleGlow;
+    private Sprite glow;
+    // Audio
+    private Sound ballBeep;
     // Fonts
     private BitmapFont bigPixelFont;
 
@@ -31,7 +39,13 @@ public class ShowcaseAssets extends Assets {
         loadTexture(ARROW_PATH);
         loadTexture(INFO_PATH);
         loadTexture(GUN_PATH);
+
+        loadTexture(CIRCLE_PATH);
+        loadTexture(CIRCLE_GLOW_PATH);
+
         loadTexture(GLOW_PATH);
+        // Audio
+        loadSound(BALL_BEEP);
         // Fonts
         loadFont(PIXEL_FONT_PATH);
     }
@@ -45,7 +59,13 @@ public class ShowcaseAssets extends Assets {
         arrow = new Sprite(getTexture(ARROW_PATH));
         info = new Sprite(getTexture(INFO_PATH));
         gun = new Sprite(getTexture(GUN_PATH));
+
+        circle = new Sprite(getTexture(CIRCLE_PATH));
+        circleGlow = new Sprite(getTexture(CIRCLE_GLOW_PATH));
+
         glow = new Sprite(getTexture(GLOW_PATH));
+        // Audio
+        ballBeep = getSound(BALL_BEEP);
         // Fonts
         bigPixelFont = getFont(PIXEL_FONT_PATH);
         bigPixelFont.getData().scale(3f);
@@ -69,8 +89,21 @@ public class ShowcaseAssets extends Assets {
         return gun;
     }
 
+    public Sprite getCircle() {
+        return circle;
+    }
+
+    public Sprite getCircleGlow() {
+        return circleGlow;
+    }
+
     public Sprite getGlow() {
         return glow;
+    }
+
+    // Audio
+    public Sound getBallBeep() {
+        return ballBeep;
     }
 
     // Fonts

@@ -37,6 +37,14 @@ public class Grid {
         }
     }
 
+    public void translate(float x, float y) {
+        for (int column = 0; column < columns; column++) {
+            for (int row = 0; row < rows; row++) {
+                cells[column][row].translate(x, y);
+            }
+        }
+    }
+
     public float getWidth() {
         return columns * cells[0][0].getWidth();
     }

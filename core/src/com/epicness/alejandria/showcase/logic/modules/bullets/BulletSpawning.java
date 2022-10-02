@@ -8,15 +8,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.input.BulletSpawningInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.bullets.BulletSpawningDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 import com.epicness.fundamentals.utils.Random;
 
-public class BulletSpawning extends Module {
+public class BulletSpawning extends Module<BulletSpawningDrawable> {
 
-    private BulletSpawningDrawable drawable;
     // Logic
     private Vector2 bulletSpeed;
 
@@ -25,7 +23,7 @@ public class BulletSpawning extends Module {
     }
 
     @Override
-    public Drawable setup() {
+    public BulletSpawningDrawable setup() {
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
                 logic.handler(BulletSpawningInput.class)
         );
@@ -65,7 +63,6 @@ public class BulletSpawning extends Module {
 
     @Override
     public void exit() {
-        drawable = null;
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }

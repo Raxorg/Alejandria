@@ -3,21 +3,18 @@ package com.epicness.alejandria.showcase.logic.modules.cursor;
 import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.cursor.PointAtCursorDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 
-public class PointAtCursor extends Module {
-
-    private PointAtCursorDrawable drawable;
+public class PointAtCursor extends Module<PointAtCursorDrawable> {
 
     public PointAtCursor() {
         super("Point at Cursor", "Move your cursor");
     }
 
     @Override
-    public Drawable setup() {
+    public PointAtCursorDrawable setup() {
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
                 logic.handler(PointAtCursorInput.class)
         );
@@ -42,7 +39,6 @@ public class PointAtCursor extends Module {
 
     @Override
     public void exit() {
-        drawable = null;
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }
