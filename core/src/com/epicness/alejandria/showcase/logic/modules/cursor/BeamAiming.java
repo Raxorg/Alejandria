@@ -9,8 +9,6 @@ import static com.epicness.fundamentals.SharedConstants.CENTER_X;
 import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 
 import com.badlogic.gdx.Gdx;
-import com.epicness.alejandria.showcase.logic.input.BeamAimingInput;
-import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.modules.cursor.BeamAimingDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -18,7 +16,6 @@ import com.epicness.fundamentals.utils.AngleUtils;
 
 public class BeamAiming extends Module<BeamAimingDrawable> {
 
-    // Logic
     private float lastCursorX = CENTER_X, lastCursorY = CENTER_Y;
 
     public BeamAiming() {
@@ -27,11 +24,7 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
 
     @Override
     public BeamAimingDrawable setup() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.handler(BeamAimingInput.class)
-        );
-
-        return drawable = new BeamAimingDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
+        return new BeamAimingDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
     }
 
     @Override
@@ -78,10 +71,5 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
     public void mouseMoved(float cursorX, float cursorY) {
         lastCursorX = cursorX;
         lastCursorY = cursorY;
-    }
-
-    @Override
-    public void exit() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }

@@ -8,6 +8,7 @@ import static com.badlogic.gdx.Input.Keys.K;
 import static com.badlogic.gdx.Input.Keys.L;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_DISTANCE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
@@ -19,14 +20,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.viewports.AdvancedSplitScreenDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 
-public class AdvancedSplitScreen extends Module {
-
-    private AdvancedSplitScreenDrawable drawable;
+public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     public AdvancedSplitScreen() {
         super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n" +
@@ -34,8 +32,8 @@ public class AdvancedSplitScreen extends Module {
     }
 
     @Override
-    public Drawable setup() {
-        return drawable = new AdvancedSplitScreenDrawable(
+    public AdvancedSplitScreenDrawable setup() {
+        return new AdvancedSplitScreenDrawable(
                 sharedAssets.getSquare(),
                 sharedAssets.getPixel(),
                 screen.getStaticCamera()
@@ -160,7 +158,8 @@ public class AdvancedSplitScreen extends Module {
     }
 
     @Override
-    public void exit() {
-        drawable = null;
+    protected void exit() {
+        renderer.getShapeRenderer().setColor(WHITE);
+        renderer.useStaticCamera();
     }
 }

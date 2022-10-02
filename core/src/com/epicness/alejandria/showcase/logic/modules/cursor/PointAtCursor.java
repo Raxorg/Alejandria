@@ -1,7 +1,5 @@
 package com.epicness.alejandria.showcase.logic.modules.cursor;
 
-import com.epicness.alejandria.showcase.logic.input.PointAtCursorInput;
-import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.modules.cursor.PointAtCursorDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -15,11 +13,7 @@ public class PointAtCursor extends Module<PointAtCursorDrawable> {
 
     @Override
     public PointAtCursorDrawable setup() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.handler(PointAtCursorInput.class)
-        );
-
-        return drawable = new PointAtCursorDrawable(sharedAssets.getTriangle());
+        return new PointAtCursorDrawable(sharedAssets.getTriangle());
     }
 
     public void mouseMoved(float cursorX, float cursorY) {
@@ -35,10 +29,5 @@ public class PointAtCursor extends Module<PointAtCursorDrawable> {
         triangleY = triangle.getOriginBasedY();
         rotation = AngleUtils.degreesBetweenPoints(cursorX, cursorY, triangleX, triangleY);
         triangle.setRotation(rotation - 90f);
-    }
-
-    @Override
-    public void exit() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
     }
 }

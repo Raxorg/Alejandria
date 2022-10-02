@@ -15,12 +15,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.procedural.ProceduralSquareDrawable;
 
-public class ProceduralSquare extends Module {
+public class ProceduralSquare extends Module<ProceduralSquareDrawable> {
 
-    private ProceduralSquareDrawable drawable;
     private float time;
 
     public ProceduralSquare() {
@@ -31,8 +29,8 @@ public class ProceduralSquare extends Module {
     }
 
     @Override
-    public Drawable setup() {
-        return drawable = new ProceduralSquareDrawable();
+    public ProceduralSquareDrawable setup() {
+        return new ProceduralSquareDrawable();
     }
 
     private float tunnel(int column, int row, float size, float factor) {

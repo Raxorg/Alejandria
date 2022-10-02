@@ -23,7 +23,6 @@ import java.util.List;
 
 public class AStar extends Module<AStarDrawable> {
 
-    // Logic
     private List<PathfindingCell> openCells, closedCells, obstacleCells;
     private PathfindingCell start, target;
     private float time, interval;

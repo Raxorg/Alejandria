@@ -34,4 +34,8 @@ public class CrossChunkSelectionDrawable implements Drawable {
         }
         shapeRenderer.end();
     }
+
+    public List<Chunk> getChunks() {
+        return chunks;
+    }
 }

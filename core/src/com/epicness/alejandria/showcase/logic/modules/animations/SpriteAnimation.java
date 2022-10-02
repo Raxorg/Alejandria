@@ -11,7 +11,7 @@ public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
 
     @Override
     public SpriteAnimationDrawable setup() {
-        return drawable = new SpriteAnimationDrawable(assets.getStickmanRunFrames());
+        return new SpriteAnimationDrawable(assets.getStickmanRunFrames());
     }
 
     @Override

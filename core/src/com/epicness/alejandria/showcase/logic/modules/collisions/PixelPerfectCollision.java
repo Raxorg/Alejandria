@@ -3,8 +3,6 @@ package com.epicness.alejandria.showcase.logic.modules.collisions;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.alejandria.showcase.logic.input.PixelPerfectCollisionInput;
-import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.alejandria.showcase.stuff.modules.collisions.PixelPerfectCollisionDrawable;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -21,10 +19,7 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
 
     @Override
     public PixelPerfectCollisionDrawable setup() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.handler(PixelPerfectCollisionInput.class)
-        );
-        return drawable = new PixelPerfectCollisionDrawable();
+        return new PixelPerfectCollisionDrawable();
     }
 
     public void touchDown(float x, float y) {

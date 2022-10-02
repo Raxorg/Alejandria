@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ShowcaseHandler extends ShowcaseLogicHandler {
 
-    // Logic
     private List<Module<?>> modules;
     private Module<?> currentModule;
 
@@ -79,7 +78,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             currentModule.exitModule();
         }
         currentModule = modules.get(index);
-        stuff.getShowcase().setDrawable(currentModule.setup());
+        stuff.getShowcase().setDrawable(currentModule.setupModule());
         stuff.getShowcase().setTitle(currentModule.getTitle());
         stuff.getShowcase().getInformation().setText(currentModule.getInformation());
         hideInformation();

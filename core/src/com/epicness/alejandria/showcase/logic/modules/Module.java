@@ -1,6 +1,8 @@
 package com.epicness.alejandria.showcase.logic.modules;
 
 import com.epicness.alejandria.showcase.logic.ShowcaseLogicHandler;
+import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
+import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 
 /**
@@ -17,17 +19,32 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
         this.information = information;
     }
 
-    public abstract D setup();
+    public final D setupModule() {
+        logic.handler(ModuleInputAdapter.class).setModuleClass((Class<? extends Module<?>>) getClass());
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.handler(ModuleInputAdapter.class)
+        );
+        return drawable = setup();
+    }
+
+    protected abstract D setup();
 
     public void update(float delta) {
     }
 
+    public void mouseMoved(float x, float y) {
+    }
+
+    public void touchDown(float x, float y) {
+    }
+
     public final void exitModule() {
         drawable = null;
+        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
         exit();
     }
 
-    public void exit() {
+    protected void exit() {
     }
 
     public String getTitle() {
