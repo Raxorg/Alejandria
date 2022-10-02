@@ -14,7 +14,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.input.AStarInput;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AStarDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers.PathfindingCell;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers.PathfindingGrid;
@@ -22,9 +21,8 @@ import com.epicness.alejandria.showcase.stuff.modules.pathfinding.helpers.Pathfi
 import java.util.ArrayList;
 import java.util.List;
 
-public class AStar extends Module {
+public class AStar extends Module<AStarDrawable> {
 
-    private AStarDrawable drawable;
     // Logic
     private List<PathfindingCell> openCells, closedCells, obstacleCells;
     private PathfindingCell start, target;
@@ -36,7 +34,7 @@ public class AStar extends Module {
     }
 
     @Override
-    public Drawable setup() {
+    public AStarDrawable setup() {
         logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
                 logic.handler(AStarInput.class)
         );
@@ -164,10 +162,5 @@ public class AStar extends Module {
     private float manhattanHeuristic(PathfindingCell start, PathfindingCell end) {
         // Doesn't take diagonals into account
         return Math.abs(start.getColumn() - end.getColumn()) + Math.abs(start.getRow() - end.getRow());
-    }
-
-    @Override
-    public void exit() {
-        drawable = null;
     }
 }
