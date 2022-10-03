@@ -1,8 +1,11 @@
 package com.epicness.alejandria.showcase.stuff.modules.grids;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CELL_SIZE;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_DIMENSION;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_SIZE;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.DIMENSION;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -17,11 +20,13 @@ public class CrossChunkSelectionDrawable implements Drawable {
 
     public CrossChunkSelectionDrawable() {
         chunks = new ArrayList<>();
-        int dimension = 5;
-        float w = CAMERA_WIDTH / dimension, h = CAMERA_HEIGHT / dimension;
-        for (int column = 0; column < 5; column++) {
-            for (int row = 0; row < 5; row++) {
-                chunks.add(new Chunk(column * w, row * h, w, h, 0, 3));
+        for (int column = 0; column < DIMENSION; column++) {
+            for (int row = 0; row < DIMENSION; row++) {
+                chunks.add(new Chunk(
+                        column * CHUNK_SIZE, row * CHUNK_SIZE,
+                        CHUNK_SIZE, CHUNK_SIZE,
+                        0, CHUNK_DIMENSION, CELL_SIZE)
+                );
             }
         }
     }
@@ -30,7 +35,11 @@ public class CrossChunkSelectionDrawable implements Drawable {
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         shapeRenderer.begin(Filled);
         for (int i = 0; i < chunks.size(); i++) {
-            chunks.get(i).draw(shapeRenderer);
+            chunks.get(i).drawCells(shapeRenderer);
+        }
+        shapeRenderer.set(Line);
+        for (int i = 0; i < chunks.size(); i++) {
+            chunks.get(i).drawBounds(shapeRenderer);
         }
         shapeRenderer.end();
     }

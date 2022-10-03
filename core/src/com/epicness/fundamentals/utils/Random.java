@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Random {
 
-    public static Color fullyRandomColor() {
+    public static Color randomOpaqueColor() {
         float r = MathUtils.random();
         float g = MathUtils.random();
         float b = MathUtils.random();
