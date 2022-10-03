@@ -44,7 +44,7 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
         float muzzleY = gun.getOriginBasedY() + sin * BARREL_LENGTH;
 
         bullet.setOriginBasedPosition(muzzleX, muzzleY);
-        bullet.setColor(Random.fullyRandomColor());
+        bullet.setColor(Random.randomOpaqueColor());
 
         bulletSpeed.x = cos * BULLET_SPEED;
         bulletSpeed.y = sin * BULLET_SPEED;
