@@ -8,6 +8,7 @@ i:fundamentals/fonts/pixelFont.png:fundamentals/fonts/pixelFont-fe0e99ea593da4cb
 t:fundamentals/fonts/timesSquare.fnt:fundamentals/fonts/timesSquare-17c19c8b35ba21f864577084cfc4b7c0.fnt:11017:application/unknown:1
 i:fundamentals/fonts/timesSquare.png:fundamentals/fonts/timesSquare-f5b4a25f675d15dfd64ea8e7784cc1f1.png:13451:image/png:1
 d:fundamentals/images:fundamentals/images:0:application/unknown:1
+i:fundamentals/images/circle.png:fundamentals/images/circle-c74c7a6fcd9a5752ee408d56369a19ed.png:8542:image/png:1
 i:fundamentals/images/glow.png:fundamentals/images/glow-8f05e7a6e2980e61f408c131c593454c.png:4939:image/png:1
 i:fundamentals/images/pixel.png:fundamentals/images/pixel-7633ab1e21935cde2f141cabb670592d.png:156:image/png:1
 i:fundamentals/images/square32.png:fundamentals/images/square32-7ff0a788aeebee26cd45c9c9d7716a07.png:178:image/png:1
@@ -17,6 +18,8 @@ i:fundamentals/images/weirdShape.png:fundamentals/images/weirdShape-e229518e9049
 d:modules:modules:0:application/unknown:1
 d:modules/animations:modules/animations:0:application/unknown:1
 i:modules/animations/stickmanRunAtlas.png:modules/animations/stickmanRunAtlas-36fa1970f71a2110d7684c465275016a.png:50741:image/png:1
+d:modules/audio:modules/audio:0:application/unknown:1
+a:modules/audio/ballBeep.ogg:modules/audio/ballBeep-e92eb62022a3d4034ea60974d7299916.ogg:5299:audio/ogg:1
 d:modules/fonts:modules/fonts:0:application/unknown:1
 t:modules/fonts/pixelFont.fnt:modules/fonts/pixelFont-551bb0cc9a5dc4e14e48cbdb6a97b3c6.fnt:7108:application/unknown:1
 i:modules/fonts/pixelFont.png:modules/fonts/pixelFont-fe0e99ea593da4cb7cd3eefbb82e9f92.png:1038:image/png:1
@@ -24,6 +27,9 @@ d:modules/images:modules/images:0:application/unknown:1
 i:modules/images/arrow.png:modules/images/arrow-24326e78f334ec6a7344cd2bb5d1486a.png:10585:image/png:1
 d:modules/images/bullets:modules/images/bullets:0:application/unknown:1
 i:modules/images/bullets/gun.png:modules/images/bullets/gun-2ed207a9cd488380dee5cdb4aa07f5ab.png:642:image/png:1
+d:modules/images/fun:modules/images/fun:0:application/unknown:1
+i:modules/images/fun/circle.png:modules/images/fun/circle-96d56cdbbb5815bfa9374ad537c2700d.png:1629:image/png:1
+i:modules/images/fun/circleGlow.png:modules/images/fun/circleGlow-37fce29ad6eda7a3f4fb59427d659361.png:5909:image/png:1
 i:modules/images/info.png:modules/images/info-be8c4aaa84338759e03a06c47679b095.png:10240:image/png:1
 d:modules/images/masking:modules/images/masking:0:application/unknown:1
 i:modules/images/masking/glow.png:modules/images/masking/glow-7e3f902bfcbb4be5f89d77950fc67464.png:49828:image/png:1
