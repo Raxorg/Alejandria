@@ -9,7 +9,7 @@ import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.SharedStuff;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class LogicHandler<A extends Assets, L extends Logic, R extends Renderer, S extends Stuff> {
+public abstract class LogicHandler<A extends Assets, L extends Logic, R extends Renderer<?>, S extends Stuff<?>> {
 
     protected Game game;
     protected SharedAssets sharedAssets;

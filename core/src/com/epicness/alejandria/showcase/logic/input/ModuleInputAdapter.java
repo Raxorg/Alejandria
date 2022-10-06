@@ -7,7 +7,7 @@ import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation
 public class ModuleInputAdapter extends ModuleInput {
 
     public void setModuleClass(Class<? extends Module<?>> moduleClass) {
-        module = logic.handler(moduleClass);
+        module = logic.get(moduleClass);
     }
 
     @Override

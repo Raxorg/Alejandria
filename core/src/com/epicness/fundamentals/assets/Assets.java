@@ -4,7 +4,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class Assets {
 
@@ -59,6 +61,20 @@ public abstract class Assets {
         return assetManager.get(path, Texture.class);
     }
 
+    protected final Texture getTexture(String path, TextureFilter filter) {
+        Texture texture = getTexture(path);
+        texture.setFilter(filter, filter);
+        return texture;
+    }
+
+    protected final Sprite getSprite(String path) {
+        return new Sprite(getTexture(path));
+    }
+
+    protected final Sprite getSprite(String path, TextureFilter filter) {
+        return new Sprite(getTexture(path, filter));
+    }
+
     protected final Music getMusic(String path) {
         return assetManager.get(path, Music.class);
     }
@@ -69,5 +85,11 @@ public abstract class Assets {
 
     protected final BitmapFont getFont(String path) {
         return assetManager.get(path, BitmapFont.class);
+    }
+
+    protected final BitmapFont getFont(String path, float scale) {
+        BitmapFont font = getFont(path);
+        font.getData().setScale(scale);
+        return font;
     }
 }

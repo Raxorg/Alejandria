@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.cursor;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,11 +16,11 @@ public class PointAtCursorDrawable implements Drawable {
     public PointAtCursorDrawable(Sprite triangleSprite) {
         triangle1 = new Sprited(triangleSprite);
         triangle1.setOriginCenter();
-        triangle1.setOriginBasedPosition(CENTER_X + 200f, CENTER_Y);
+        triangle1.setOriginBasedPosition(CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT);
 
         triangle2 = new Sprited(triangleSprite);
         triangle2.setOriginCenter();
-        triangle2.setOriginBasedPosition(CENTER_X - 200f, CENTER_Y);
+        triangle2.setOriginBasedPosition(CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT);
     }
 
     @Override

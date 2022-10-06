@@ -52,10 +52,6 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setX(x);
     }
 
-    public float getCenterX() {
-        return sprite.getX() + sprite.getWidth() / 2f;
-    }
-
     public float getY() {
         return sprite.getY();
     }
@@ -64,16 +60,28 @@ public class Sprited implements Buttonable, Parallaxable {
         sprite.setY(y);
     }
 
-    public float getCenterY() {
-        return sprite.getY() + sprite.getHeight() / 2f;
-    }
-
     public Vector2 getPosition() {
         return new Vector2(sprite.getX(), sprite.getY());
     }
 
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
+    }
+
+    public void setPosition(Vector2 position) {
+        setPosition(position.x, position.y);
+    }
+
+    public void setOriginBasedPosition(float x, float y) {
+        sprite.setOriginBasedPosition(x, y);
+    }
+
+    public float getCenterX() {
+        return sprite.getX() + sprite.getWidth() / 2f;
+    }
+
+    public float getCenterY() {
+        return sprite.getY() + sprite.getHeight() / 2f;
     }
 
     public Vector2 getCenter() {
@@ -92,16 +100,13 @@ public class Sprited implements Buttonable, Parallaxable {
         return new Vector2(getOriginBasedX(), getOriginBasedY());
     }
 
-    public void setOriginBasedPosition(float x, float y) {
-        sprite.setOriginBasedPosition(x, y);
-    }
-
     public void translateY(float amount) {
         sprite.translateY(amount);
     }
 
     public void translate(float xAmount, float yAmount) {
-        sprite.translate(xAmount, yAmount);
+        translateX(xAmount);
+        translateY(yAmount);
     }
 
     public float getWidth() {
@@ -109,7 +114,7 @@ public class Sprited implements Buttonable, Parallaxable {
     }
 
     public void setWidth(float width) {
-        sprite.setSize(width, sprite.getHeight());
+        sprite.setSize(width, getHeight());
     }
 
     public float getHeight() {
@@ -117,7 +122,7 @@ public class Sprited implements Buttonable, Parallaxable {
     }
 
     public void setHeight(float height) {
-        sprite.setSize(sprite.getWidth(), height);
+        sprite.setSize(getWidth(), height);
     }
 
     public void setSize(float width, float height) {
@@ -126,6 +131,10 @@ public class Sprited implements Buttonable, Parallaxable {
 
     public void setSize(float size) {
         setSize(size, size);
+    }
+
+    public Vector2 getScale() {
+        return new Vector2(sprite.getScaleX(), sprite.getScaleY());
     }
 
     public void setScale(float scale) {

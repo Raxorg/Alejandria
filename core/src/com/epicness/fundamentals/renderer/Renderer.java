@@ -6,12 +6,12 @@ import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.stuff.SharedStuff;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class Renderer {
+public abstract class Renderer<S extends Stuff<?>> {
 
     // Structure
     protected SharedScreen screen;
     protected SharedStuff sharedStuff;
-    protected Stuff stuff;
+    protected S stuff;
     // Rendering related
     protected final SpriteBatch spriteBatch;
     protected final ShapeRenderer shapeRenderer;
@@ -51,7 +51,7 @@ public abstract class Renderer {
         this.sharedStuff = sharedStuff;
     }
 
-    public void setStuff(Stuff stuff) {
+    public void setStuff(S stuff) {
         this.stuff = stuff;
     }
 }

@@ -15,12 +15,13 @@ import java.util.List;
 public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     public LayeredMasking() {
-        super("Layered Masking", "Too much happening here to explain xD");
+        super("Layered Masking", "Too much happening here to explain xD" +
+                "\nCheck the source code");
     }
 
     @Override
     public LayeredMaskingDrawable setup() {
-        Gdx.gl.glLineWidth(3f);
+        Gdx.gl.glLineWidth(5f);
 
         return new LayeredMaskingDrawable(
                 sharedAssets.getWeirdShape(),

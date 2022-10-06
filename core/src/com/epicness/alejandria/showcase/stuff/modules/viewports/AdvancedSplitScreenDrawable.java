@@ -11,8 +11,8 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 import static com.epicness.fundamentals.SharedConstants.DIRT;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
@@ -84,7 +84,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         mask = new Sprited(maskSprite);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
-        mask.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         mask.rotate(90f);
         mask.setColor(BLACK_CLEAR_50);
     }
@@ -93,7 +93,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         divider = new Sprited(dividerSprite);
         divider.setSize(CAMERA_WIDTH * 2f, CELL_SIZE / 5f);
         divider.setOriginCenter();
-        divider.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        divider.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         divider.setColor(BLACK);
     }
 

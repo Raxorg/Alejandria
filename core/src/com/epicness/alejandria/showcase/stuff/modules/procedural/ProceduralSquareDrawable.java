@@ -4,8 +4,8 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_DIMENSION_A;
 import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_A;
 import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.SPACING_A;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -34,8 +34,8 @@ public class ProceduralSquareDrawable implements Drawable {
             for (int row = 0; row < gridDimension; row++) {
                 Color pixel = pixelRow[row];
                 shapeRenderer.setColor(pixel);
-                float x = column * pixelSize + CENTER_X - gridSize / 2f + column * spacingFactor;
-                float y = row * pixelSize + CENTER_Y - gridSize / 2f + row * spacingFactor;
+                float x = column * pixelSize + CAMERA_HALF_WIDTH - gridSize / 2f + column * spacingFactor;
+                float y = row * pixelSize + CAMERA_HALF_HEIGHT - gridSize / 2f + row * spacingFactor;
                 shapeRenderer.rect(x, y, pixelSize, pixelSize);
             }
         }

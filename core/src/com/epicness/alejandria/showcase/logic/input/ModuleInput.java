@@ -17,7 +17,7 @@ public abstract class ModuleInput<M extends Module<?>> extends InputHandler<Show
     @Override
     public void init() {
         super.init();
-        module = logic.handler(setup());
+        module = logic.get(setup());
     }
 
     @Override

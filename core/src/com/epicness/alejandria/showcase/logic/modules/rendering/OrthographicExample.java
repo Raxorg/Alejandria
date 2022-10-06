@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.rendering;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
@@ -32,7 +32,7 @@ public class OrthographicExample extends Module<OrthographicExampleDrawable> {
 
     @Override
     public void exit() {
-        screen.getDynamicCamera().position.set(CENTER_X, CENTER_Y, 0f);
+        screen.getDynamicCamera().position.set(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, 0f);
         screen.getDynamicCamera().update();
         renderer.useStaticCamera();
     }

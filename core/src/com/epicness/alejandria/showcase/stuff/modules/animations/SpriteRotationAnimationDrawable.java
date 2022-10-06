@@ -2,8 +2,8 @@ package com.epicness.alejandria.showcase.stuff.modules.animations;
 
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_1_SIZE;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_2_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,13 +20,13 @@ public class SpriteRotationAnimationDrawable implements Drawable {
         pixel = new Sprited(pixelSprite);
         pixel.setSize(SPRITED_1_SIZE);
         pixel.setOriginCenter();
-        pixel.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        pixel.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         pixel.setColor(Color.NAVY);
 
         weirdShape = new Sprited(weirdShapeSprite);
         weirdShape.setSize(SPRITED_2_SIZE);
-        weirdShape.setX(CENTER_X - SPRITED_2_SIZE - SPRITED_1_SIZE);
-        weirdShape.setY(CENTER_Y - SPRITED_2_SIZE - SPRITED_1_SIZE);
+        weirdShape.setX(CAMERA_HALF_WIDTH - SPRITED_2_SIZE - SPRITED_1_SIZE);
+        weirdShape.setY(CAMERA_HALF_HEIGHT - SPRITED_2_SIZE - SPRITED_1_SIZE);
         weirdShape.setOrigin(SPRITED_2_SIZE + SPRITED_1_SIZE, SPRITED_2_SIZE + SPRITED_1_SIZE);
         weirdShape.setColor(Color.BROWN);
     }

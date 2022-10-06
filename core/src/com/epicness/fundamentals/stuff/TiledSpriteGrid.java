@@ -25,6 +25,7 @@ public class TiledSpriteGrid {
             for (int row = 0; row < rows; row++) {
                 sprites[column][row] = new Sprited(tiledSprite);
                 sprites[column][row].setSize(spriteSize);
+                sprites[column][row].setOriginCenter();
                 sprites[column][row].setRotation(45f);
             }
         }

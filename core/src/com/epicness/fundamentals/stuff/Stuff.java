@@ -3,11 +3,11 @@ package com.epicness.fundamentals.stuff;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.assets.SharedAssets;
 
-public abstract class Stuff {
+public abstract class Stuff<A extends Assets> {
 
     // Structure
     protected SharedAssets sharedAssets;
-    protected Assets assets;
+    protected A assets;
 
     public abstract void initializeStuff();
 
@@ -16,7 +16,7 @@ public abstract class Stuff {
         this.sharedAssets = sharedAssets;
     }
 
-    public void setAssets(Assets assets) {
+    public void setAssets(A assets) {
         this.assets = assets;
     }
 }

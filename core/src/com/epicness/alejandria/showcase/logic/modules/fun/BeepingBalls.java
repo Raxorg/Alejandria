@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.B
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.VOLUME;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
@@ -26,7 +26,7 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
         for (int i = 0; i < BALLS; i++) {
             BeepingBall ball = balls[i];
             ball.startingX = 100f + i * SPACING;
-            ball.startingY = CENTER_Y - i * SPACING;
+            ball.startingY = CAMERA_HALF_HEIGHT - i * SPACING;
             ball.finalX = CAMERA_WIDTH - 100f - i * SPACING;
             ball.setOriginBasedPosition(ball.startingX, ball.startingY);
         }

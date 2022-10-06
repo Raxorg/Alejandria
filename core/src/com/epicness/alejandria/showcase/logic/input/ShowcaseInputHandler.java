@@ -14,7 +14,7 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
 
     @Override
     public void mouseMoved(float x, float y) {
-        logic.handler(ShowcaseHandler.class).mouseMoved(x, y);
+        logic.get(ShowcaseHandler.class).mouseMoved(x, y);
 
         if (moduleInput == null) {
             return;
@@ -24,7 +24,7 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
 
     @Override
     public void touchDown(float x, float y) {
-        logic.handler(ShowcaseHandler.class).touchDown(x, y);
+        logic.get(ShowcaseHandler.class).touchDown(x, y);
 
         if (moduleInput == null) {
             return;
@@ -36,10 +36,10 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
     public void keyDown(int keycode) {
         switch (keycode) {
             case LEFT:
-                logic.handler(ShowcaseHandler.class).keyDown(true);
+                logic.get(ShowcaseHandler.class).keyDown(true);
                 return;
             case RIGHT:
-                logic.handler(ShowcaseHandler.class).keyDown(false);
+                logic.get(ShowcaseHandler.class).keyDown(false);
                 return;
         }
         if (moduleInput == null) {

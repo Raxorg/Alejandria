@@ -6,7 +6,7 @@ import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.B
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALL_COLORS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -34,8 +34,8 @@ public class BeepingBallsDrawable implements Drawable {
         ScreenUtils.clear(BLACK.cpy().lerp(WHITE, 0.1f));
 
         shapeRenderer.begin();
-        shapeRenderer.line(100f, CENTER_Y, 100f + SPACING * BALLS, CENTER_Y - SPACING * BALLS);
-        shapeRenderer.line(CAMERA_WIDTH - 100f, CENTER_Y, CAMERA_WIDTH - 100f - SPACING * BALLS, CENTER_Y - SPACING * BALLS);
+        shapeRenderer.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+        shapeRenderer.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
         for (int i = 0; i < BALLS; i++) {
             if (i >= BALLS - 1) {
                 continue;

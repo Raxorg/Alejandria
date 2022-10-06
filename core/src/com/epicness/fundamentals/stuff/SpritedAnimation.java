@@ -28,6 +28,10 @@ public class SpritedAnimation {
         animation.getKeyFrame(time).drawDebug(shapeRenderer);
     }
 
+    public void addTime(float seconds) {
+        time += seconds;
+    }
+
     public boolean contains(float x, float y) {
         return animation.getKeyFrame(time).contains(x, y);
     }
@@ -44,10 +48,14 @@ public class SpritedAnimation {
         }
     }
 
-    public void setSize(float size) {
+    public void setSize(float width, float height) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
-            animation.getKeyFrames()[i].setSize(size, size);
+            animation.getKeyFrames()[i].setSize(width, height);
         }
+    }
+
+    public void setSize(float size) {
+        setSize(size, size);
     }
 
     public void setOriginCenter() {
@@ -64,10 +72,6 @@ public class SpritedAnimation {
 
     public void enableLooping() {
         animation.setPlayMode(LOOP);
-    }
-
-    public void addTime(float seconds) {
-        time += seconds;
     }
 
     public void resetTime() {

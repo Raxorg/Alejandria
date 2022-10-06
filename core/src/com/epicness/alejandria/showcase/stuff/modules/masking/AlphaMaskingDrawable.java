@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -19,12 +19,12 @@ public class AlphaMaskingDrawable implements Drawable {
     public AlphaMaskingDrawable(Sprite weirdShape, Sprite glow) {
         maskedSprite = new Sprited(weirdShape);
         maskedSprite.setOriginCenter();
-        maskedSprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        maskedSprite.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         maskedSprite.setColor(Color.RED);
 
         mask = new Sprited(glow);
         mask.setOriginCenter();
-        mask.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
     }
 
     @Override
