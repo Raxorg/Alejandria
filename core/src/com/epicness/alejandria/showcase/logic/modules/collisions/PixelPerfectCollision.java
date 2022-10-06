@@ -37,7 +37,7 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
             Color pixelColor = new Color();
             Color.rgba8888ToColor(pixelColor, pixmap.getPixel(pixmapX, pixmapY));
             if (pixelColor.a == 0) {
-                shape.setColor(Random.randomOpaqueColor());
+                shape.setColor(Random.opaqueColor());
             } else {
                 shape.setColor(Color.BLACK);
             }

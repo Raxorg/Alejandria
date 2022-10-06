@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.shaders;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -21,7 +21,7 @@ public class InvertShaderDrawable implements Drawable {
     public InvertShaderDrawable(Sprite weirdShapeSprite) {
         weirdShape = new Sprited(weirdShapeSprite);
         weirdShape.setOriginCenter();
-        weirdShape.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        weirdShape.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         weirdShape.setColor(Color.RED);
 
         ShaderProgram.pedantic = false;

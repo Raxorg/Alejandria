@@ -46,16 +46,15 @@ public class Text implements Buttonable, Scrollable {
         );
     }
 
+    protected void calculateSize() {
+        bounds.height = TextUtils.getTextHeight(getFont(), text, bounds.width, horizontalAlignment, true, truncate);
+    }
+
     @Override
     public boolean contains(float x, float y) {
         return bounds.contains(x, y);
     }
 
-    protected void calculateSize() {
-        bounds.height = TextUtils.getTextHeight(getFont(), text, bounds.width, horizontalAlignment, true, truncate);
-    }
-
-    // Getters & Setters
     @Override
     public float getY() {
         return bounds.y;
@@ -71,6 +70,10 @@ public class Text implements Buttonable, Scrollable {
         bounds.y += y;
     }
 
+    public float getX() {
+        return bounds.x;
+    }
+
     public void setX(float x) {
         bounds.x = x;
     }
@@ -82,6 +85,14 @@ public class Text implements Buttonable, Scrollable {
 
     public void translateX(float x) {
         bounds.x += x;
+    }
+
+    public float getWidth() {
+        return TextUtils.getTextWidth(this);
+    }
+
+    public float getHeight() {
+        return TextUtils.getTextHeight(this);
     }
 
     public BitmapFont getFont() {
@@ -107,8 +118,16 @@ public class Text implements Buttonable, Scrollable {
     }
 
     // Advanced
+    public float getTextTargetWidth() {
+        return bounds.width;
+    }
+
     public void setTextTargetWidth(float textWidth) {
         bounds.width = textWidth;
+    }
+
+    public int getHorizontalAlignment() {
+        return horizontalAlignment;
     }
 
     public void setHorizontalAlignment(int horizontalAlignment) {
@@ -117,6 +136,10 @@ public class Text implements Buttonable, Scrollable {
 
     public void setCenterVertical(boolean centerVertical) {
         this.centerVertical = centerVertical;
+    }
+
+    public String getTruncate() {
+        return truncate;
     }
 
     public void setTruncate(String truncate) {

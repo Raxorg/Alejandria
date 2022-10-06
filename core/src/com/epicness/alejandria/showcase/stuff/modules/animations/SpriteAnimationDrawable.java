@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.animations;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +17,7 @@ public class SpriteAnimationDrawable implements Drawable {
         animation = new SpritedAnimation(animationFrames, 0.05f);
         animation.setScale(2f);
         animation.setOriginCenter();
-        animation.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        animation.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         animation.enableLooping();
     }
 

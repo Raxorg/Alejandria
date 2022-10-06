@@ -34,8 +34,8 @@ public class AStar extends Module<AStarDrawable> {
 
     @Override
     public AStarDrawable setup() {
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.handler(AStarInput.class)
+        logic.get(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.get(AStarInput.class)
         );
         drawable = new AStarDrawable(sharedAssets.getSquare());
 

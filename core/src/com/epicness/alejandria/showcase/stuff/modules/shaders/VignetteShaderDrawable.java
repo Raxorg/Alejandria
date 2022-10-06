@@ -1,8 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.shaders;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
-import static com.epicness.fundamentals.SharedConstants.HALF_CAMERA_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -21,19 +20,19 @@ public class VignetteShaderDrawable implements Drawable {
         square3 = new Sprited(squareSprite);
         square4 = new Sprited(squareSprite);
 
-        square1.setSize(HALF_CAMERA_WIDTH);
+        square1.setSize(CAMERA_HALF_WIDTH);
         square1.setColor(Color.ORANGE);
 
-        square2.setPosition(CENTER_X, CENTER_Y);
-        square2.setSize(HALF_CAMERA_WIDTH);
+        square2.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        square2.setSize(CAMERA_HALF_WIDTH);
         square2.setColor(Color.PURPLE);
 
-        square3.setPosition(0f, CENTER_Y);
-        square3.setSize(HALF_CAMERA_WIDTH);
+        square3.setPosition(0f, CAMERA_HALF_HEIGHT);
+        square3.setSize(CAMERA_HALF_WIDTH);
         square3.setColor(Color.CHARTREUSE);
 
-        square4.setPosition(CENTER_X, 0f);
-        square4.setSize(HALF_CAMERA_WIDTH);
+        square4.setPosition(CAMERA_HALF_WIDTH, 0f);
+        square4.setSize(CAMERA_HALF_WIDTH);
         square4.setColor(Color.CYAN);
     }
 

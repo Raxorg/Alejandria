@@ -10,7 +10,7 @@ public class Fader {
     private SharedStuff stuff;
     // Logic
     private float time, fadeTime;
-    private boolean fadingIn, fadingOut, enabled;
+    private boolean fadingIn, fadingOut, enabled, completionHandled;
     private CompletionListener completionListener;
 
     public void setup(float fadeTime) {
@@ -33,11 +33,11 @@ public class Fader {
             color = Color.BLACK.cpy().lerp(Color.CLEAR, progress);
             stuff.getFader().setColor(color);
         }
-        if (completionListener != null && progress == 1f) {
+        if (completionListener != null && !completionHandled && progress == 1f) {
             fadingIn = false;
             fadingOut = false;
+            completionHandled = true;
             completionListener.onComplete();
-            completionListener = null;
         }
         time += delta;
     }
@@ -50,6 +50,7 @@ public class Fader {
 
     public void fadeIn(CompletionListener completionListener) {
         fadeIn();
+        completionHandled = false;
         this.completionListener = completionListener;
     }
 
@@ -61,6 +62,7 @@ public class Fader {
 
     public void fadeOut(CompletionListener completionListener) {
         fadeOut();
+        completionHandled = false;
         this.completionListener = completionListener;
     }
 

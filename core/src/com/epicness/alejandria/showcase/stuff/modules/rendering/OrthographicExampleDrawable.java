@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.rendering;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -12,15 +12,15 @@ import com.epicness.fundamentals.renderer.Renderer;
 
 public class OrthographicExampleDrawable implements Drawable {
 
-    private final Renderer renderer;
+    private final Renderer<?> renderer;
     private final Sprite weirdShape;
 
-    public OrthographicExampleDrawable(Renderer renderer, Sprite weirdShapeSprite) {
+    public OrthographicExampleDrawable(Renderer<?> renderer, Sprite weirdShapeSprite) {
         this.renderer = renderer;
 
         weirdShape = new Sprite(weirdShapeSprite);
         weirdShape.setOriginCenter();
-        weirdShape.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        weirdShape.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         weirdShape.setColor(Color.RED);
     }
 

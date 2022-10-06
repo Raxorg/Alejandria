@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.epicness.fundamentals.assets.SharedAssets;
+import com.epicness.fundamentals.initializer.Initializer;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.SharedLogic;
 import com.epicness.fundamentals.stuff.SharedStuff;
@@ -15,7 +16,7 @@ public class SharedResources {
     private final SharedInput input;
     private final SharedScreen screen;
     private final SharedStuff stuff;
-    private final Array<Initializer> initializers;
+    private final Array<Initializer<?, ?, ?>> initializers;
 
     public SharedResources() {
         assets = new SharedAssets();
@@ -58,10 +59,10 @@ public class SharedResources {
         return stuff;
     }
 
-    public Initializer findInitializer(Initializer initializer) {
+    public Initializer<?, ?, ?> findInitializer(Initializer<?, ?, ?> initializer) {
         String initializerName = initializer.getClass().getName();
         for (int i = 0; i < initializers.size; i++) {
-            Initializer currentInitializer = initializers.get(i);
+            Initializer<?, ?, ?> currentInitializer = initializers.get(i);
             String currentName = currentInitializer.getClass().getName();
             if (currentName.equals(initializerName)) {
                 return currentInitializer;

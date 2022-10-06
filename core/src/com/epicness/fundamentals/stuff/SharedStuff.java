@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.SharedAssets;
 
-public class SharedStuff extends Stuff {
+public class SharedStuff extends Stuff<SharedAssets> {
 
     // Structure
     private SharedAssets assets;

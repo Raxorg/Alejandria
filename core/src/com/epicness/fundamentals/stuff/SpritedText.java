@@ -10,11 +10,11 @@ import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
 public class SpritedText implements Buttonable, Scrollable {
 
-    private final Sprited background;
+    private final Sprite background;
     private final Text label;
 
     public SpritedText(Sprite backgroundSprite, BitmapFont font) {
-        background = new Sprited(backgroundSprite);
+        background = new Sprite(backgroundSprite);
         label = new Text(font);
         label.setHorizontalAlignment(Align.center);
         label.setCenterVertical(true);
@@ -28,6 +28,10 @@ public class SpritedText implements Buttonable, Scrollable {
     @Override
     public boolean contains(float x, float y) {
         return background.getBoundingRectangle().contains(x, y);
+    }
+
+    public float getX() {
+        return background.getX();
     }
 
     public void setX(float x) {
@@ -60,6 +64,14 @@ public class SpritedText implements Buttonable, Scrollable {
     public void translateX(float x) {
         background.translateX(x);
         label.translateX(x);
+    }
+
+    public float getWidth() {
+        return background.getWidth();
+    }
+
+    public float getHeight() {
+        return background.getHeight();
     }
 
     public void setSize(float size) {

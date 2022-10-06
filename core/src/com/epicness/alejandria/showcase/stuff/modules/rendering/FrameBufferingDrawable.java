@@ -4,8 +4,8 @@ import static com.badlogic.gdx.graphics.Pixmap.Format.RGBA8888;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,7 +29,7 @@ public class FrameBufferingDrawable implements Drawable {
         sprite = new Sprite(weirdShapeSprite);
         sprite.setColor(Color.RED);
         sprite.setOriginCenter();
-        sprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        sprite.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
 
         bufferSprite = new Sprite();
         bufferSprite.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);

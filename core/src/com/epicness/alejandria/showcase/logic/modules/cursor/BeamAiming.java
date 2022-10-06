@@ -5,8 +5,8 @@ import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.TRIANGLE_SPEED;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.modules.Module;
@@ -16,10 +16,11 @@ import com.epicness.fundamentals.utils.AngleUtils;
 
 public class BeamAiming extends Module<BeamAimingDrawable> {
 
-    private float lastCursorX = CENTER_X, lastCursorY = CENTER_Y;
+    private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
 
     public BeamAiming() {
-        super("Beam Aiming", "Demonstration of rotating a sprite around a movable object aiming towards the cursor");
+        super("Beam Aiming", "Demonstration of rotating a sprite around a movable object aiming towards the cursor" +
+                "\nWASD to move the triangle");
     }
 
     @Override

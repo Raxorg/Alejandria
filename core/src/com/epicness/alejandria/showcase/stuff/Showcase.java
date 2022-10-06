@@ -4,12 +4,12 @@ import static com.badlogic.gdx.graphics.Pixmap.Format.RGBA8888;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_25;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -34,24 +34,24 @@ public class Showcase {
         background = new Sprited(pixel);
         background.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
         background.setOriginCenter();
-        background.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        background.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         background.setColor(GRASS);
 
         topStripe = new SpritedText(pixel, font);
         topStripe.setSize(CAMERA_WIDTH, 100f);
         topStripe.setY(CAMERA_HEIGHT - 100f);
-        topStripe.setBackgroundColor(WHITE_CLEAR_50);
+        topStripe.setBackgroundColor(WHITE_CLEAR_25);
 
         frameBuffer = new FrameBuffer(RGBA8888, WINDOW_SIZE, WINDOW_SIZE, true);
 
         moduleSprite = new Sprite();
         moduleSprite.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
         moduleSprite.setOriginCenter();
-        moduleSprite.setOriginBasedPosition(CENTER_X, CENTER_Y);
+        moduleSprite.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
 
         bottomStripe = new Sprited(pixel);
         bottomStripe.setSize(CAMERA_WIDTH, 100f);
-        bottomStripe.setColor(WHITE_CLEAR_50);
+        bottomStripe.setColor(WHITE_CLEAR_25);
 
         previous = new Sprited(arrow);
         previous.setSize(100f);
@@ -60,14 +60,14 @@ public class Showcase {
 
         infoButton = new Sprited(infoSprite);
         infoButton.setSize(100f);
-        infoButton.setX(CAMERA_WIDTH / 2f - infoButton.getWidth() / 2f);
+        infoButton.setX(CAMERA_HALF_WIDTH - infoButton.getWidth() / 2f);
 
         next = new Sprited(arrow);
         next.setSize(100f);
         next.setX(CAMERA_WIDTH - next.getWidth());
 
         information = new SpritedText(pixel, font);
-        information.setSize(CAMERA_WIDTH,CAMERA_HEIGHT);
+        information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
     }
 
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {

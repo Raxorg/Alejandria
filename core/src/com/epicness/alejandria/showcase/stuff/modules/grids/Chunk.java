@@ -20,7 +20,7 @@ public class Chunk {
     public Chunk(float x, float y, float w, float h, float spacing, int dimension, float cellSize) {
         bounds = new Rectangle(x, y, w, h);
         cells = new ArrayList<>();
-        Color chunkColor = Random.randomOpaqueColor();
+        Color chunkColor = Random.opaqueColor();
         for (int column = 0; column < dimension; column++) {
             for (int row = 0; row < dimension; row++) {
                 Color cellColor = chunkColor.cpy().lerp(BLACK, MathUtils.random(0.2f, 0.7f));

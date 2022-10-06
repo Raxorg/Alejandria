@@ -8,7 +8,7 @@ import com.epicness.fundamentals.SharedScreen;
 
 public class SharedInput extends InputAdapter {
 
-    private InputHandler inputHandler;
+    private InputHandler<?, ?> inputHandler;
     private OrthographicCamera staticCamera, dynamicCamera;
     private boolean enabled;
     private Vector3 unprojected;
@@ -99,7 +99,7 @@ public class SharedInput extends InputAdapter {
         dynamicCamera = screen.getDynamicCamera();
     }
 
-    public void setInputHandler(InputHandler inputHandler) {
+    public void setInputHandler(InputHandler<?, ?> inputHandler) {
         this.inputHandler = inputHandler;
     }
 }

@@ -2,8 +2,8 @@ package com.epicness.alejandria.showcase.stuff.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.DARK_DIRT;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 
@@ -22,17 +22,17 @@ public class ShapeRendererMaskingDrawable implements Drawable {
 
     public ShapeRendererMaskingDrawable() {
         maskedCircle = new Circle(200f);
-        maskedCircle.setPosition(CENTER_X, CENTER_Y);
+        maskedCircle.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         maskedCircle.setColor(DARK_DIRT);
 
         circleMask = new Circle(100f);
-        circleMask.setPosition(CENTER_X, CENTER_Y + 100f);
+        circleMask.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT + 100f);
         circleMask.setColor(DARK_GRASS);
 
         triangleMask = new Triangle(
-                CENTER_X - 200f, CENTER_Y - 200f,
-                CENTER_X, CENTER_Y,
-                CENTER_X + 200f, CENTER_Y - 200f
+                CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT - 200f,
+                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+                CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT - 200f
         );
     }
 

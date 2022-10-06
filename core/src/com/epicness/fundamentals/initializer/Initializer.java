@@ -1,22 +1,27 @@
-package com.epicness.fundamentals;
+package com.epicness.fundamentals.initializer;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.epicness.fundamentals.SharedResources;
+import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class Initializer {
+public abstract class Initializer<A extends Assets, R extends Renderer<S>, S extends Stuff<A>> {
 
-    protected final Assets assets;
+    protected final A assets;
     protected Logic logic;
-    protected Renderer renderer;
-    protected Stuff stuff;
+    protected R renderer;
+    protected S stuff;
     private boolean initialized;
 
-    public Initializer(Assets assets) {
+    public Initializer(A assets, Logic logic, R renderer, S stuff) {
         this.assets = assets;
+        this.logic = logic;
+        this.renderer = renderer;
+        this.stuff = stuff;
     }
 
     public void initialize(SharedResources sharedResources) {
@@ -26,6 +31,7 @@ public abstract class Initializer {
                 (Game) Gdx.app.getApplicationListener(),
                 sharedResources.getAssets(),
                 sharedResources.getInput(),
+                sharedResources.getLogic(),
                 screen,
                 sharedResources.getStuff(),
                 assets,

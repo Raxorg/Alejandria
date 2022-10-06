@@ -20,10 +20,10 @@ public class AnimatedBackgroundDeluxe extends AnimatedBackground {
     private Color spriteColor;
 
     public AnimatedBackgroundDeluxe(float x, float y, float w, float h, Color color, Sprite repeatedImage, Sprite backgroundImage,
-                                    OrthographicCamera camera, int imageRows, int imageColumns, float speed) {
-        super(x, y, w, h, color, repeatedImage, backgroundImage, camera, imageRows, imageColumns, speed);
+                                    OrthographicCamera camera, int imageColumns, int imageRows, float speed) {
+        super(x, y, w, h, color, repeatedImage, backgroundImage, camera, imageColumns, imageRows, speed);
         a = color;
-        b = Random.exclusiveRandomColor(a);
+        b = Random.rainbowExcludedColor(a);
         time = 0;
         colorTransitionEnabled = true;
         followBackgroundColor = true;
@@ -58,7 +58,7 @@ public class AnimatedBackgroundDeluxe extends AnimatedBackground {
             if (time >= 1) {
                 time = 0;
                 a = color;
-                b = Random.exclusiveRandomColor(color);
+                b = Random.rainbowExcludedColor(color);
             }
             color = a.cpy().lerp(b, time);
         }

@@ -25,15 +25,12 @@ import com.epicness.alejandria.showcase.logic.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.logic.modules.shaders.VignetteShader;
 import com.epicness.alejandria.showcase.logic.modules.viewports.AdvancedSplitScreen;
 import com.epicness.fundamentals.logic.Logic;
-import com.epicness.fundamentals.logic.SharedLogic;
 
 public class ShowcaseLogic extends Logic {
 
     private final ShowcaseHandler showcaseHandler;
 
-    public ShowcaseLogic(SharedLogic sharedLogic) {
-        super(sharedLogic);
-
+    public ShowcaseLogic() {
         // Shared
         registerHandler(new ModuleInputAdapter());
         // Animations
@@ -77,6 +74,9 @@ public class ShowcaseLogic extends Logic {
 
     @Override
     public void update(float delta) {
+        if (delta >= 0.4f) {
+            return;
+        }
         showcaseHandler.update(delta);
     }
 }

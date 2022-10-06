@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@SuppressWarnings({"rawtypes"})
+@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class Logic {
 
-    protected final SharedLogic sharedLogic;
+    protected SharedLogic sharedLogic;
     private final List<LogicHandler> logicHandlers;
 
-    public Logic(SharedLogic sharedLogic) {
-        this.sharedLogic = sharedLogic;
+    protected Logic() {
         logicHandlers = new ArrayList<>();
     }
 
@@ -43,12 +42,14 @@ public abstract class Logic {
             Game game,
             SharedAssets sharedAssets,
             SharedInput input,
+            SharedLogic sharedLogic,
             SharedScreen screen,
             SharedStuff sharedStuff,
             Assets assets,
             Renderer renderer,
             Stuff stuff
     ) {
+        this.sharedLogic = sharedLogic;
         for (LogicHandler logicHandler : logicHandlers) {
             logicHandler.setSharedStructure(game, sharedAssets, input, sharedLogic, screen, sharedStuff);
             logicHandler.setStructure(assets, this, renderer, stuff);
@@ -59,7 +60,7 @@ public abstract class Logic {
         return logicHandlers;
     }
 
-    public <H extends LogicHandler> H handler(Class<H> handlerClass) {
+    public <H extends LogicHandler> H get(Class<H> handlerClass) {
         for (LogicHandler logicHandler : logicHandlers) {
             if (logicHandler.getClass().equals(handlerClass)) {
                 return (H) logicHandler;

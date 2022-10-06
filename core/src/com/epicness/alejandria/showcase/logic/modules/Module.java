@@ -20,9 +20,9 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
     }
 
     public final D setupModule() {
-        logic.handler(ModuleInputAdapter.class).setModuleClass((Class<? extends Module<?>>) getClass());
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.handler(ModuleInputAdapter.class)
+        logic.get(ModuleInputAdapter.class).setModuleClass((Class<? extends Module<?>>) getClass());
+        logic.get(ShowcaseInputHandler.class).setModuleInputHandler(
+                logic.get(ModuleInputAdapter.class)
         );
         return drawable = setup();
     }
@@ -40,7 +40,7 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
 
     public final void exitModule() {
         drawable = null;
-        logic.handler(ShowcaseInputHandler.class).setModuleInputHandler(null);
+        logic.get(ShowcaseInputHandler.class).setModuleInputHandler(null);
         exit();
     }
 

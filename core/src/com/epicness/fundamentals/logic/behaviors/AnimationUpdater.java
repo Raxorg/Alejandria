@@ -7,15 +7,18 @@ public class AnimationUpdater {
     private SpritedAnimation animation;
     private boolean enabled;
 
-    public void setup(SpritedAnimation animation) {
+    public void setAnimation(SpritedAnimation animation) {
         this.animation = animation;
         enabled = true;
     }
 
     public void update(float delta) {
-        if (!enabled) {
-            return;
+        if (enabled) {
+            animation.addTime(delta);
         }
-        animation.addTime(delta);
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

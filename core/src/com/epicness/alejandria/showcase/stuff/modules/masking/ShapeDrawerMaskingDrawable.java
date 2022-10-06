@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
-import static com.epicness.fundamentals.SharedConstants.CENTER_X;
-import static com.epicness.fundamentals.SharedConstants.CENTER_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -28,32 +28,32 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
         float size = 200f;
 
         triangle1 = new SDTriangle(
-                CENTER_X - size, CENTER_Y - size,
-                CENTER_X, CENTER_Y,
-                CENTER_X + size, CENTER_Y - size);
+                CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT - size,
+                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+                CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT - size);
         triangle1.setColor(Color.BLUE);
 
         triangle2 = new SDTriangle(
-                CENTER_X + size, CENTER_Y + size,
-                CENTER_X, CENTER_Y,
-                CENTER_X + size, CENTER_Y - size);
+                CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT + size,
+                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+                CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT - size);
         triangle2.setColor(Color.GREEN);
 
         triangle3 = new SDTriangle(
-                CENTER_X - size, CENTER_Y + size,
-                CENTER_X, CENTER_Y,
-                CENTER_X + size, CENTER_Y + size);
+                CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT + size,
+                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+                CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT + size);
         triangle3.setColor1(Color.RED);
         triangle3.setColor2(Color.CLEAR);
         triangle3.setColor3(Color.CLEAR);
 
         triangle4 = new SDTriangle(
-                CENTER_X - size, CENTER_Y - size,
-                CENTER_X, CENTER_Y,
-                CENTER_X - size, CENTER_Y + size);
+                CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT - size,
+                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+                CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT + size);
         triangle4.setColor(Color.YELLOW);
 
-        mask = new SDCircle(CENTER_X, CENTER_Y, size);
+        mask = new SDCircle(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, size);
     }
 
     @Override

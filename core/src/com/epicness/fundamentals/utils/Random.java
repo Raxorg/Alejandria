@@ -6,14 +6,14 @@ import com.badlogic.gdx.utils.Array;
 
 public class Random {
 
-    public static Color randomOpaqueColor() {
+    public static Color opaqueColor() {
         float r = MathUtils.random();
         float g = MathUtils.random();
         float b = MathUtils.random();
         return new Color(r, g, b, 1f);
     }
 
-    public static Color randomColor() {
+    public static Color rainbowColor() {
         int random = MathUtils.random(10);
         switch (random) {
             case 0:
@@ -42,10 +42,10 @@ public class Random {
         }
     }
 
-    public static Color exclusiveRandomColor(Color excludedColor) {
+    public static Color rainbowExcludedColor(Color excludedColor) {
         Color color;
         do {
-            color = randomColor();
+            color = rainbowColor();
         } while (color.equals(excludedColor));
         return color;
     }
@@ -55,7 +55,7 @@ public class Random {
         for (int i = 0; i < quantity; i++) {
             Color color;
             do {
-                color = randomColor();
+                color = rainbowColor();
             }
             while (colors.contains(color, true));
             colors.add(color);

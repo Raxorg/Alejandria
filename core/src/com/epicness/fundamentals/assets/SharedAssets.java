@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.assets;
 
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+import static com.epicness.fundamentals.SharedConstants.CIRCLE_PATH;
 import static com.epicness.fundamentals.SharedConstants.EXPLOSION_PATH;
 import static com.epicness.fundamentals.SharedConstants.GLOW_PATH;
 import static com.epicness.fundamentals.SharedConstants.PIXEL_FONT_PATH;
@@ -21,10 +23,11 @@ public class SharedAssets extends Assets {
     // Fonts
     private BitmapFont pixelFont, timesSquare;
     // Sprites
+    private Sprite circle, triangle;
     private Sprite glow;
     private Sprite pixel;
     private Sprite square, squareInverted;
-    private Sprite weirdShape, triangle;
+    private Sprite weirdShape;
 
     @Override
     public void queueAssetLoading() {
@@ -34,12 +37,13 @@ public class SharedAssets extends Assets {
         loadFont(PIXEL_FONT_PATH);
         loadFont(TIMES_SQUARE_PATH);
         // Sprites
+        loadTexture(CIRCLE_PATH);
+        loadTexture(TRIANGLE_PATH);
         loadTexture(GLOW_PATH);
         loadTexture(PIXEL_PATH);
         loadTexture(SQUARE_32_PATH);
         loadTexture(SQUARE_32_INVERTED_PATH);
         loadTexture(WEIRD_SHAPE_PATH);
-        loadTexture(TRIANGLE_PATH);
     }
 
     @Override
@@ -50,12 +54,13 @@ public class SharedAssets extends Assets {
         pixelFont = getFont(PIXEL_FONT_PATH);
         timesSquare = getFont(TIMES_SQUARE_PATH);
         // Sprites
-        glow = new Sprite(getTexture(GLOW_PATH));
-        pixel = new Sprite(getTexture(PIXEL_PATH));
-        square = new Sprite(getTexture(SQUARE_32_PATH));
-        squareInverted = new Sprite(getTexture(SQUARE_32_INVERTED_PATH));
-        weirdShape = new Sprite(getTexture(WEIRD_SHAPE_PATH));
-        triangle = new Sprite(getTexture(TRIANGLE_PATH));
+        circle = getSprite(CIRCLE_PATH, Linear);
+        triangle = getSprite(TRIANGLE_PATH, Linear);
+        glow = getSprite(GLOW_PATH);
+        pixel = getSprite(PIXEL_PATH);
+        square = getSprite(SQUARE_32_PATH);
+        squareInverted = getSprite(SQUARE_32_INVERTED_PATH);
+        weirdShape = getSprite(WEIRD_SHAPE_PATH);
     }
 
     // Audio
@@ -73,6 +78,14 @@ public class SharedAssets extends Assets {
     }
 
     // Sprites
+    public Sprite getCircle() {
+        return circle;
+    }
+
+    public Sprite getTriangle() {
+        return triangle;
+    }
+
     public Sprite getGlow() {
         return glow;
     }
@@ -91,9 +104,5 @@ public class SharedAssets extends Assets {
 
     public Sprite getWeirdShape() {
         return weirdShape;
-    }
-
-    public Sprite getTriangle() {
-        return triangle;
     }
 }
