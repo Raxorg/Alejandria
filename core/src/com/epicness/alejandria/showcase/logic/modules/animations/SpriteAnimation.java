@@ -6,12 +6,15 @@ import com.epicness.alejandria.showcase.stuff.modules.animations.SpriteAnimation
 public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
 
     public SpriteAnimation() {
-        super("Sprite Animation", "This animation uses a Texture containing all the frames");
+        super(
+                "Sprite Animation",
+                "The Texture in the background contains all the frames of the animation"
+        );
     }
 
     @Override
     public SpriteAnimationDrawable setup() {
-        return new SpriteAnimationDrawable(assets.getStickmanRunFrames());
+        return new SpriteAnimationDrawable(assets.getFrames(), assets.getStickmanRunFrames());
     }
 
     @Override

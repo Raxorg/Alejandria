@@ -24,7 +24,7 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         this.stuff = stuff;
     }
 
-    public void initialize(SharedResources sharedResources) {
+    public final void initialize(SharedResources sharedResources) {
         SharedScreen screen = sharedResources.getScreen();
 
         logic.setStructure(

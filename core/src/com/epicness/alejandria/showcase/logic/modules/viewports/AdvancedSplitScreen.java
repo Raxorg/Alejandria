@@ -27,7 +27,7 @@ import com.epicness.fundamentals.stuff.shapes.Circle;
 public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     public AdvancedSplitScreen() {
-        super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n" +
+        super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n\n" +
                 "WASD and IJKL to move the dots");
     }
 

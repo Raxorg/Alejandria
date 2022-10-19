@@ -1,5 +1,8 @@
 package com.epicness.alejandria.showcase.logic.modules.shaders;
 
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.FRAGMENT_SHADER_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.SHAKE_SHADER_PATH;
+
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,8 +24,8 @@ public class ShakeShader extends Module<ShakeShaderDrawable> {
         Gdx.app.setLogLevel(Application.LOG_ERROR);
         ShaderProgram.pedantic = false;
         shader = new ShaderProgram(
-                Gdx.files.internal("modules/shaders/shake.glsl"),
-                Gdx.files.internal("modules/shaders/shared/fragment.glsl"));
+                Gdx.files.internal(SHAKE_SHADER_PATH),
+                Gdx.files.internal(FRAGMENT_SHADER_PATH));
         if (!shader.isCompiled()) {
             Gdx.app.error("SHADER", shader.getLog());
         }

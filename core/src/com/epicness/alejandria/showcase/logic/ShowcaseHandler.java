@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.logic;
 
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_25;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.alejandria.showcase.logic.modules.Module;
@@ -78,7 +78,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             currentModule.exitModule();
         }
         currentModule = modules.get(index);
-        stuff.getShowcase().setDrawable(currentModule.setupModule());
+        stuff.getShowcase().setModuleDrawable(currentModule.setupModule());
         stuff.getShowcase().setTitle(currentModule.getTitle());
         stuff.getShowcase().getInformation().setText(currentModule.getInformation());
         hideInformation();
@@ -86,11 +86,11 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private void showInformation() {
         SpritedText information = stuff.getShowcase().getInformation();
-        if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_25.toFloatBits()) {
+        if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
             hideInformation();
             return;
         }
-        information.setBackgroundColor(BLACK_CLEAR_25);
+        information.setBackgroundColor(BLACK_CLEAR_50);
         information.setTextColor(Color.WHITE);
     }
 

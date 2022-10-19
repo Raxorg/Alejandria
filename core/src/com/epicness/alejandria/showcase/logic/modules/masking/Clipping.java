@@ -6,7 +6,7 @@ import com.epicness.alejandria.showcase.stuff.modules.masking.ClippingDrawable;
 public class Clipping extends Module<ClippingDrawable> {
 
     public Clipping() {
-        super("Clipping", "Sprites won't be rendered outside defined clipping rectangles");
+        super("Clipping", "Sprites won't be rendered outside of the defined clipping rectangles");
     }
 
     @Override

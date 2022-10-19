@@ -6,7 +6,7 @@ import com.epicness.alejandria.showcase.stuff.modules.animations.SpriteRotationA
 public class SpriteRotationAnimation extends Module<SpriteRotationAnimationDrawable> {
 
     public SpriteRotationAnimation() {
-        super("Sprite Rotation Animation", "Change the rotation pivot by changing the origin");
+        super("Sprite Rotation Animation", "Rotation around center and rotation around a custom origin");
     }
 
     @Override

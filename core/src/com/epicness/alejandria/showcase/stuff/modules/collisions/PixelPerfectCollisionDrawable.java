@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.collisions;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
@@ -27,8 +28,8 @@ public class PixelPerfectCollisionDrawable implements Drawable {
             shapes[i] = new Sprited(sprite);
             float size = MathUtils.random(150, 200);
             shapes[i].setSize(size, size);
-            shapes[i].setX(MathUtils.random(0, CAMERA_WIDTH - size));
-            shapes[i].setY(MathUtils.random(0, CAMERA_HEIGHT - size));
+            shapes[i].setX(MathUtils.random(0f, CAMERA_WIDTH - size));
+            shapes[i].setY(MathUtils.random(SHOWCASE_Y, SHOWCASE_Y + SHOWCASE_SIZE - size));
         }
     }
 

@@ -5,7 +5,7 @@ import com.epicness.fundamentals.stuff.DualSprited;
 
 public class BeepingBall extends DualSprited {
 
-    public float startingX, finalX, startingY, angle;
+    public float startingX, finalX, startingY, angle, pitch;
     public boolean forward;
 
     public BeepingBall(Sprite ballGlow, Sprite ball) {

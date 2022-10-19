@@ -3,9 +3,10 @@ package com.epicness.alejandria.showcase.logic.modules.grids;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CELL_SIZE;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_DIMENSION;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_SIZE;
-import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.DIMENSION;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_DIMENSION;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_SIZE;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_X;
+import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_Y;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
 
 import com.badlogic.gdx.Gdx;
@@ -34,7 +35,7 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
 
     @Override
     public void touchDown(float x, float y) {
-        if (x < 0 || x >= CAMERA_WIDTH || y < 0 || y >= CAMERA_HEIGHT) {
+        if (!drawable.getBackground().contains(x, y)) {
             return;
         }
         RectangleCell cell = find(x, y);
@@ -43,10 +44,12 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
     }
 
     private RectangleCell find(float x, float y) {
+        x -= GRID_X;
+        y -= GRID_Y;
         List<Chunk> chunks = drawable.getChunks();
         int column = (int) (x / CHUNK_SIZE);
         int row = (int) (y / CHUNK_SIZE);
-        Chunk chunk = chunks.get(row + column * DIMENSION);
+        Chunk chunk = chunks.get(row + column * GRID_DIMENSION);
         List<RectangleCell> cells = chunk.cells;
         column = (int) ((x % CHUNK_SIZE) / CELL_SIZE);
         row = (int) ((y % CHUNK_SIZE) / CELL_SIZE);
@@ -65,7 +68,7 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
                 for (int row = -1; row < 2; row++) {
                     float offsetX = x + column * margin;
                     float offsetY = y + row * margin;
-                    if (offsetX < 0 || offsetX >= CAMERA_WIDTH || offsetY < 0 || offsetY >= CAMERA_HEIGHT) {
+                    if (offsetX < GRID_X || offsetX >= GRID_X + GRID_SIZE || offsetY < GRID_Y || offsetY >= GRID_Y + GRID_SIZE) {
                         continue;
                     }
                     RectangleCell cell = find(offsetX, offsetY);

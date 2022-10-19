@@ -22,6 +22,7 @@ public class ShowcaseAssets extends Assets {
     // Animations
     private Sprite[] stickmanRunFrames;
     // Sprites
+    private Sprite frames;
     private Sprite arrow, info;
     private Sprite gun;
     private Sprite circle, circleGlow;
@@ -56,9 +57,10 @@ public class ShowcaseAssets extends Assets {
         getTexture(STICKMAN_RUN_ATLAS).setFilter(Linear, Linear);
         stickmanRunFrames = AnimationUtils.split(getTexture(STICKMAN_RUN_ATLAS), 82, 110);
         // Sprites
-        arrow = new Sprite(getTexture(ARROW_PATH));
-        info = new Sprite(getTexture(INFO_PATH));
-        gun = new Sprite(getTexture(GUN_PATH));
+        frames = getSprite(STICKMAN_RUN_ATLAS);
+        arrow = getSprite(ARROW_PATH);
+        info = getSprite(INFO_PATH);
+        gun = getSprite(GUN_PATH);
 
         circle = new Sprite(getTexture(CIRCLE_PATH));
         circleGlow = new Sprite(getTexture(CIRCLE_GLOW_PATH));
@@ -77,6 +79,10 @@ public class ShowcaseAssets extends Assets {
     }
 
     // Sprites
+    public Sprite getFrames() {
+        return frames;
+    }
+
     public Sprite getArrow() {
         return arrow;
     }

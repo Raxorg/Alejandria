@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.logic.modules.shaders;
 
-import static com.epicness.alejandria.AssetPaths.VERTEX_SHADER_PATH;
-import static com.epicness.alejandria.AssetPaths.VIGNETTE_SHADER_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.VERTEX_SHADER_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.VIGNETTE_SHADER_PATH;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 
 import com.badlogic.gdx.Gdx;
@@ -15,13 +15,16 @@ public class VignetteShader extends Module<VignetteShaderDrawable> {
     private ShaderProgram shader;
 
     public VignetteShader() {
-        super("Vignette Shader", "Notice how this effect is applied twice, this is demonstratively on purpose");
+        super("Vignette Shader", "The shader is being applied to the whole screen");
     }
 
     @Override
     public VignetteShaderDrawable setup() {
         ShaderProgram.pedantic = false;
-        shader = new ShaderProgram(Gdx.files.internal(VERTEX_SHADER_PATH), Gdx.files.internal(VIGNETTE_SHADER_PATH));
+        shader = new ShaderProgram(
+                Gdx.files.internal(VERTEX_SHADER_PATH),
+                Gdx.files.internal(VIGNETTE_SHADER_PATH)
+        );
         renderer.getSpriteBatch().setShader(shader);
 
         return new VignetteShaderDrawable(sharedAssets.getSquare());

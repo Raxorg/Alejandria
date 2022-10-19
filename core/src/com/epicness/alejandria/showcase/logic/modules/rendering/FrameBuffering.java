@@ -8,15 +8,15 @@ import com.epicness.alejandria.showcase.stuff.modules.rendering.FrameBufferingDr
 public class FrameBuffering extends Module<FrameBufferingDrawable> {
 
     public FrameBuffering() {
-        super("Frame Buffer Example", "Red means we are using a frame buffer, blue means normal rendering");
+        super(
+                "Frame Buffer Example",
+                "Red means we are using a frame buffer\n\nBlue means normal rendering\n\nSpace to toggle"
+        );
     }
 
     @Override
     public FrameBufferingDrawable setup() {
-        return new FrameBufferingDrawable(
-                sharedAssets.getWeirdShape(),
-                stuff.getShowcase().getFrameBuffer()
-        );
+        return new FrameBufferingDrawable(sharedAssets.getGlow());
     }
 
     @Override

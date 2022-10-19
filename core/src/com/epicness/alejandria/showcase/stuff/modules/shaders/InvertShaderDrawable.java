@@ -1,7 +1,9 @@
 package com.epicness.alejandria.showcase.stuff.modules.shaders;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.INVERT_SHADER_PATH;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.VERTEX_SHADER_PATH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -27,23 +29,18 @@ public class InvertShaderDrawable implements Drawable {
         ShaderProgram.pedantic = false;
         normalShader = new SpriteBatch().getShader();
         invertShader = new ShaderProgram(
-                Gdx.files.internal("modules/shaders/shared/vertex.glsl"),
-                Gdx.files.internal("modules/shaders/invert.glsl"));
+                Gdx.files.internal(VERTEX_SHADER_PATH),
+                Gdx.files.internal(INVERT_SHADER_PATH));
         currentShader = invertShader;
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        // Let's change the whole showcase shader for fun >:3 for that we will change the
-        // shader at the end, and use the default shader at the start so we don't invert the
-        // colors twice (happens because we're using a framebuffer to render the modules)
-        spriteBatch.setShader(normalShader);
-
+        // Let's invert the colors of the whole showcase for fun >:3
+        spriteBatch.setShader(currentShader);
         spriteBatch.begin();
         weirdShape.draw(spriteBatch);
         spriteBatch.end();
-
-        spriteBatch.setShader(currentShader);
     }
 
     public void toggleShader() {

@@ -5,8 +5,8 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALL_COLORS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,7 +31,7 @@ public class BeepingBallsDrawable implements Drawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        ScreenUtils.clear(BLACK.cpy().lerp(WHITE, 0.1f));
+        ScreenUtils.clear(BLACK);
 
         shapeRenderer.begin();
         shapeRenderer.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);

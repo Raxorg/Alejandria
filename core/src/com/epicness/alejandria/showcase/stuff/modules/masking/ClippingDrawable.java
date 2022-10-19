@@ -1,7 +1,8 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,8 +18,8 @@ public class ClippingDrawable implements Drawable {
 
     public ClippingDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
         background1 = new AnimatedBackground(
-                50f, 50f,
-                CAMERA_WIDTH - 100f, CAMERA_HEIGHT - 100f,
+                100f, SHOWCASE_Y,
+                SHOWCASE_SIZE, SHOWCASE_SIZE,
                 Color.BLUE,
                 weirdShape,
                 pixel,
@@ -27,8 +28,8 @@ public class ClippingDrawable implements Drawable {
                 15,
                 15f);
         background2 = new AnimatedBackground(
-                100f, 500f,
-                CAMERA_WIDTH - 200f, 400f,
+                200f, CAMERA_HALF_HEIGHT,
+                SHOWCASE_SIZE - 200f, 300f,
                 Color.GREEN,
                 pixel,
                 pixel,
@@ -37,8 +38,8 @@ public class ClippingDrawable implements Drawable {
                 5,
                 25f);
         background3 = new AnimatedBackground(
-                100f, 100f,
-                500f, 500f,
+                200f, 200f,
+                SHOWCASE_SIZE / 2f, SHOWCASE_SIZE / 2f,
                 Color.RED,
                 pixel,
                 pixel,

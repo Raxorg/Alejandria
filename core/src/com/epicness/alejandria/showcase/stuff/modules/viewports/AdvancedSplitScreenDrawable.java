@@ -3,16 +3,17 @@ package com.epicness.alejandria.showcase.stuff.modules.viewports;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.CELL_SIZE;
+import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.DIVIDER_THICKNESS;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 import static com.epicness.fundamentals.SharedConstants.DIRT;
 import static com.epicness.fundamentals.SharedConstants.GRASS;
@@ -91,7 +92,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
 
     private void initDivider(Sprite dividerSprite) {
         divider = new Sprited(dividerSprite);
-        divider.setSize(CAMERA_WIDTH * 2f, CELL_SIZE / 5f);
+        divider.setSize(CAMERA_WIDTH * 2f, DIVIDER_THICKNESS);
         divider.setOriginCenter();
         divider.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         divider.setColor(BLACK);

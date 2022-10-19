@@ -18,4 +18,10 @@ public class ShowcaseAssetPaths {
     public static final String BALL_BEEP = "modules/audio/ballBeep.ogg";
     // Fonts
     public static final String PIXEL_FONT_PATH = "modules/fonts/pixelFont.fnt";
+    // Shaders
+    public static final String FRAGMENT_SHADER_PATH = "modules/shaders/shared/fragment.glsl";
+    public static final String VERTEX_SHADER_PATH = "modules/shaders/shared/vertex.glsl";
+    public static final String INVERT_SHADER_PATH = "modules/shaders/invert.glsl";
+    public static final String SHAKE_SHADER_PATH = "modules/shaders/shake.glsl";
+    public static final String VIGNETTE_SHADER_PATH = "modules/shaders/vignette.glsl";
 }

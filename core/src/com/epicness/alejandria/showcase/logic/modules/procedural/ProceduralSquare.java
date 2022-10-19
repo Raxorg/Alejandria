@@ -24,7 +24,7 @@ public class ProceduralSquare extends Module<ProceduralSquareDrawable> {
     public ProceduralSquare() {
         super(
                 "Procedural Square",
-                "1 to change the pixel size, 2 to change the grid size, Space to toggle pixel spacing"
+                "1 to change the pixel size\n2 to change grid size\nSpace to toggle pixel spacing"
         );
     }
 

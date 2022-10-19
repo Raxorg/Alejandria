@@ -1,33 +1,32 @@
 package com.epicness.alejandria.showcase.stuff.modules.animations;
 
-import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_1_SIZE;
-import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SPRITED_2_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SQUARE_SIZE;
+import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.WEIRD_SHAPE_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.Drawable;
-import com.epicness.fundamentals.stuff.Sprited;
 
 public class SpriteRotationAnimationDrawable implements Drawable {
 
-    private final Sprited pixel, weirdShape;
+    private final Sprite pixel, weirdShape;
 
     public SpriteRotationAnimationDrawable(Sprite pixelSprite, Sprite weirdShapeSprite) {
-        pixel = new Sprited(pixelSprite);
-        pixel.setSize(SPRITED_1_SIZE);
+        pixel = new Sprite(pixelSprite);
+        pixel.setSize(SQUARE_SIZE, SQUARE_SIZE);
         pixel.setOriginCenter();
         pixel.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         pixel.setColor(Color.NAVY);
 
-        weirdShape = new Sprited(weirdShapeSprite);
-        weirdShape.setSize(SPRITED_2_SIZE);
-        weirdShape.setX(CAMERA_HALF_WIDTH - SPRITED_2_SIZE - SPRITED_1_SIZE);
-        weirdShape.setY(CAMERA_HALF_HEIGHT - SPRITED_2_SIZE - SPRITED_1_SIZE);
-        weirdShape.setOrigin(SPRITED_2_SIZE + SPRITED_1_SIZE, SPRITED_2_SIZE + SPRITED_1_SIZE);
+        weirdShape = new Sprite(weirdShapeSprite);
+        weirdShape.setSize(WEIRD_SHAPE_SIZE, WEIRD_SHAPE_SIZE);
+        weirdShape.setX(CAMERA_HALF_WIDTH - WEIRD_SHAPE_SIZE - SQUARE_SIZE);
+        weirdShape.setY(CAMERA_HALF_HEIGHT - WEIRD_SHAPE_SIZE - SQUARE_SIZE);
+        weirdShape.setOrigin(WEIRD_SHAPE_SIZE + SQUARE_SIZE, WEIRD_SHAPE_SIZE + SQUARE_SIZE);
         weirdShape.setColor(Color.BROWN);
     }
 
@@ -39,11 +38,11 @@ public class SpriteRotationAnimationDrawable implements Drawable {
         spriteBatch.end();
     }
 
-    public Sprited getPixel() {
+    public Sprite getPixel() {
         return pixel;
     }
 
-    public Sprited getWeirdShape() {
+    public Sprite getWeirdShape() {
         return weirdShape;
     }
 }

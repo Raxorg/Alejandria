@@ -3,8 +3,8 @@ package com.epicness.alejandria.showcase.logic.modules.fun;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.VOLUME;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
@@ -28,6 +28,7 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
             ball.startingX = 100f + i * SPACING;
             ball.startingY = CAMERA_HALF_HEIGHT - i * SPACING;
             ball.finalX = CAMERA_WIDTH - 100f - i * SPACING;
+            ball.pitch = MathUtils.map(0, BALLS - 1, 1f, 0.5f, i);
             ball.setOriginBasedPosition(ball.startingX, ball.startingY);
         }
         return drawable;
@@ -39,21 +40,20 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
         for (int i = 0; i < BALLS; i++) {
 
             BeepingBall ball = balls[i];
-            float pitch = MathUtils.map(0, BALLS - 1, 1f, 0.5f, i);
             float speedModifier = MathUtils.map(0, BALLS - 1, 1f, 0.75f, i);
             if (ball.forward) {
                 ball.angle += delta * 180f * speedModifier;
                 if (ball.angle > 180f) {
                     ball.angle = 180f - (ball.angle - 180f);
                     ball.forward = false;
-                    assets.getBallBeep().play(VOLUME, pitch, 0f);
+                    assets.getBallBeep().play(VOLUME, ball.pitch, 0f);
                 }
             } else {
                 ball.angle -= delta * 180f * speedModifier;
                 if (ball.angle < 0f) {
                     ball.angle = -ball.angle;
                     ball.forward = true;
-                    assets.getBallBeep().play(VOLUME, pitch, 0f);
+                    assets.getBallBeep().play(VOLUME, ball.pitch, 0f);
                 }
             }
             float x = MathUtils.map(0f, 180f, ball.startingX, ball.finalX, ball.angle);
