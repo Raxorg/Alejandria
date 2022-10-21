@@ -14,6 +14,7 @@ public class ShowcaseConstants {
 
     public static final float SHOWCASE_BUTTON_SIZE = 100f;
     public static final float SHOWCASE_SIZE = CAMERA_HEIGHT - STRIPE_HEIGHT * 2f;
+    public static final float SHOWCASE_X = SHOWCASE_BUTTON_SIZE;
     public static final float SHOWCASE_Y = STRIPE_HEIGHT;
     public static final Color SHOWCASE_BACKGROUND_COLOR = GRASS;
 }

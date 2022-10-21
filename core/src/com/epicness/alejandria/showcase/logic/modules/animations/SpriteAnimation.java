@@ -8,7 +8,7 @@ public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
     public SpriteAnimation() {
         super(
                 "Sprite Animation",
-                "The Texture in the background contains all the frames of the animation"
+                "The Texture in the left contains all the frames of the animation"
         );
     }
 

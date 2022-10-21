@@ -1,19 +1,29 @@
 package com.epicness.alejandria.showcase.stuff.modules.masking;
 
 import static com.badlogic.gdx.graphics.Color.RED;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_X;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.Drawable;
 
 public class AlphaMaskingDrawable implements Drawable {
 
     private final Sprite maskedSprite, mask, visibleMask, originalMaskedSprite;
+    private final FrameBuffer frameBuffer;
+    private final Sprite bufferSprite;
 
     public AlphaMaskingDrawable(Sprite weirdShape, Sprite glow) {
         maskedSprite = new Sprite(weirdShape);
@@ -33,10 +43,19 @@ public class AlphaMaskingDrawable implements Drawable {
         originalMaskedSprite.setOriginCenter();
         originalMaskedSprite.setOriginBasedPosition(CAMERA_HALF_WIDTH + mask.getWidth() + 20f, CAMERA_HALF_HEIGHT);
         originalMaskedSprite.setColor(RED);
+
+        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
+
+        bufferSprite = new Sprite();
+        bufferSprite.setSize(SHOWCASE_SIZE, SHOWCASE_SIZE);
+        bufferSprite.setPosition(SHOWCASE_X, SHOWCASE_Y);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+        frameBuffer.bind();
+        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR); // Draw the elements the background instead of just clearing the screen
+
         spriteBatch.begin();
         // Draw the alpha mask
         drawMask(spriteBatch);
@@ -47,6 +66,15 @@ public class AlphaMaskingDrawable implements Drawable {
         // Draw the sprites used
         visibleMask.draw(spriteBatch);
         originalMaskedSprite.draw(spriteBatch);
+        spriteBatch.end();
+
+        frameBuffer.end();
+
+        bufferSprite.setRegion(frameBuffer.getColorBufferTexture());
+        bufferSprite.flip(false, true);
+
+        spriteBatch.begin();
+        bufferSprite.draw(spriteBatch);
         spriteBatch.end();
     }
 
