@@ -3,8 +3,8 @@ d:fundamentals:fundamentals:0:application/unknown:1
 d:fundamentals/audio:fundamentals/audio:0:application/unknown:1
 a:fundamentals/audio/explosionSound.wav:fundamentals/audio/explosionSound-9a51fbddc6193d0ab3c2c5b41eae8bdf.wav:22420:audio/x-wav:1
 d:fundamentals/fonts:fundamentals/fonts:0:application/unknown:1
-t:fundamentals/fonts/pixelFont.fnt:fundamentals/fonts/pixelFont-551bb0cc9a5dc4e14e48cbdb6a97b3c6.fnt:7108:application/unknown:1
-i:fundamentals/fonts/pixelFont.png:fundamentals/fonts/pixelFont-fe0e99ea593da4cb7cd3eefbb82e9f92.png:1038:image/png:1
+t:fundamentals/fonts/pixelFont.fnt:fundamentals/fonts/pixelFont-cffc6caf88be6e0765f5f101559d71d9.fnt:7332:application/unknown:1
+i:fundamentals/fonts/pixelFont.png:fundamentals/fonts/pixelFont-c519e1cdfd67d183916b0d7f9e49e902.png:1073:image/png:1
 t:fundamentals/fonts/timesSquare.fnt:fundamentals/fonts/timesSquare-17c19c8b35ba21f864577084cfc4b7c0.fnt:11017:application/unknown:1
 i:fundamentals/fonts/timesSquare.png:fundamentals/fonts/timesSquare-f5b4a25f675d15dfd64ea8e7784cc1f1.png:13451:image/png:1
 d:fundamentals/images:fundamentals/images:0:application/unknown:1
@@ -21,8 +21,8 @@ i:modules/animations/stickmanRunAtlas.png:modules/animations/stickmanRunAtlas-36
 d:modules/audio:modules/audio:0:application/unknown:1
 a:modules/audio/ballBeep.ogg:modules/audio/ballBeep-e92eb62022a3d4034ea60974d7299916.ogg:5299:audio/ogg:1
 d:modules/fonts:modules/fonts:0:application/unknown:1
-t:modules/fonts/pixelFont.fnt:modules/fonts/pixelFont-551bb0cc9a5dc4e14e48cbdb6a97b3c6.fnt:7108:application/unknown:1
-i:modules/fonts/pixelFont.png:modules/fonts/pixelFont-fe0e99ea593da4cb7cd3eefbb82e9f92.png:1038:image/png:1
+t:modules/fonts/pixelFont.fnt:modules/fonts/pixelFont-cffc6caf88be6e0765f5f101559d71d9.fnt:7332:application/unknown:1
+i:modules/fonts/pixelFont.png:modules/fonts/pixelFont-c519e1cdfd67d183916b0d7f9e49e902.png:1073:image/png:1
 d:modules/images:modules/images:0:application/unknown:1
 i:modules/images/arrow.png:modules/images/arrow-24326e78f334ec6a7344cd2bb5d1486a.png:10585:image/png:1
 d:modules/images/bullets:modules/images/bullets:0:application/unknown:1
