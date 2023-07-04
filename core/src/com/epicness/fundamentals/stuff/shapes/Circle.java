@@ -1,19 +1,38 @@
 package com.epicness.fundamentals.stuff.shapes;
 
+import static com.badlogic.gdx.graphics.Color.GRAY;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
 
-public class Circle {
+public class Circle implements Movable {
 
-    private float x, y, radius;
-    private Color color;
+    public float x, y, radius;
+    private final Color color;
+
+    public Circle(float x, float y, float radius, Color color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+    }
+
+    public Circle(float x, float y, float radius) {
+        this(x, y, radius, GRAY);
+    }
+
+    public Circle(float x, float y, Color color) {
+        this(x, y, 5f, color);
+    }
+
+    public Circle(float x, float y) {
+        this(x, y, 5f);
+    }
 
     public Circle(float radius) {
-        this.radius = radius;
-        color = Color.GRAY;
+        this(0f, 0f, radius);
     }
 
     public void draw(ShapeRenderer shapeRenderer) {
@@ -35,44 +54,27 @@ public class Circle {
         return x + radius;
     }
 
-    public void setX(float x) {
-        this.x = x;
+    @Override
+    public float getX() {
+        return x;
     }
 
+    @Override
     public float getY() {
         return y;
     }
 
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    public Vector2 getPosition() {
-        return new Vector2(x, y);
-    }
-
-    public void setPosition(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-
+    @Override
     public void translateX(float amount) {
         x += amount;
     }
 
+    @Override
     public void translateY(float amount) {
         y += amount;
     }
 
-    public float getRadius() {
-        return radius;
-    }
-
-    public void setRadius(float radius) {
-        this.radius = radius;
-    }
-
     public void setColor(Color color) {
-        this.color = color;
+        this.color.set(color);
     }
 }

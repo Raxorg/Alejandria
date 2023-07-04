@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.stuff;
 
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -233,5 +235,10 @@ public class DualSprited implements Buttonable, Scrollable {
 
     public Vector2 getBackgroundCenter() {
         return new Vector2(getBackgroundCenterX(), getBackgroundCenterY());
+    }
+
+    public void useBilinearFilter() {
+        background.getTexture().setFilter(Linear, Linear);
+        foreground.getTexture().setFilter(Linear, Linear);
     }
 }
