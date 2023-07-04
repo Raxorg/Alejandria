@@ -1,5 +1,7 @@
 package com.epicness.standalone.rendering;
 
+import static com.epicness.fundamentals.assets.SharedAssetPaths.WEIRDSHAPE_SPRITE;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -8,8 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
-
-import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
 
 public class TextureCutting extends Game {
 
@@ -21,7 +21,7 @@ public class TextureCutting extends Game {
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        texture = new Texture(WEIRD_SHAPE_PATH);
+        texture = new Texture(WEIRDSHAPE_SPRITE.fileName);
         sprites = new ArrayList<>();
         Sprite sprite1 = new Sprite(texture, texture.getWidth() / 2, texture.getHeight());
         sprites.add(sprite1);

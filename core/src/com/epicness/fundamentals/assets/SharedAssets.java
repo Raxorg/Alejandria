@@ -1,74 +1,55 @@
 package com.epicness.fundamentals.assets;
 
-import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.fundamentals.SharedConstants.CIRCLE_PATH;
-import static com.epicness.fundamentals.SharedConstants.EXPLOSION_PATH;
-import static com.epicness.fundamentals.SharedConstants.GLOW_PATH;
-import static com.epicness.fundamentals.SharedConstants.PIXEL_FONT_PATH;
-import static com.epicness.fundamentals.SharedConstants.PIXEL_PATH;
-import static com.epicness.fundamentals.SharedConstants.SQUARE_32_INVERTED_PATH;
-import static com.epicness.fundamentals.SharedConstants.SQUARE_32_PATH;
-import static com.epicness.fundamentals.SharedConstants.TIMES_SQUARE_PATH;
-import static com.epicness.fundamentals.SharedConstants.TRIANGLE_PATH;
-import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.*;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import java.lang.Override;
 
 public class SharedAssets extends Assets {
-
-    // Audio
     private Sound explosionSound;
-    // Fonts
-    private BitmapFont pixelFont, timesSquare;
-    // Sprites
-    private Sprite circle, triangle;
+
+    private BitmapFont pixelFont;
+
+    private BitmapFont timesSquare;
+
+    private Sprite circle;
+
     private Sprite glow;
+
     private Sprite pixel;
-    private Sprite square, squareInverted;
+
+    private Sprite square32;
+
+    private Sprite square32Inverted;
+
+    private Sprite triangle;
+
     private Sprite weirdShape;
 
-    @Override
-    public void queueAssetLoading() {
-        // Audio
-        loadSound(EXPLOSION_PATH);
-        // Fonts
-        loadFont(PIXEL_FONT_PATH);
-        loadFont(TIMES_SQUARE_PATH);
-        // Sprites
-        loadTexture(CIRCLE_PATH);
-        loadTexture(TRIANGLE_PATH);
-        loadTexture(GLOW_PATH);
-        loadTexture(PIXEL_PATH);
-        loadTexture(SQUARE_32_PATH);
-        loadTexture(SQUARE_32_INVERTED_PATH);
-        loadTexture(WEIRD_SHAPE_PATH);
+    public SharedAssets() {
+        super(ASSETS);
     }
 
     @Override
     public void initializeAssets() {
-        // Audio
-        explosionSound = getSound(EXPLOSION_PATH);
-        // Fonts
-        pixelFont = getFont(PIXEL_FONT_PATH);
-        timesSquare = getFont(TIMES_SQUARE_PATH);
-        // Sprites
-        circle = getSprite(CIRCLE_PATH, Linear);
-        triangle = getSprite(TRIANGLE_PATH, Linear);
-        glow = getSprite(GLOW_PATH);
-        pixel = getSprite(PIXEL_PATH);
-        square = getSprite(SQUARE_32_PATH);
-        squareInverted = getSprite(SQUARE_32_INVERTED_PATH);
-        weirdShape = getSprite(WEIRD_SHAPE_PATH);
+        explosionSound = get(EXPLOSIONSOUND_SOUND);
+        pixelFont = get(PIXELFONT_FONT);
+        timesSquare = get(TIMESSQUARE_FONT);
+        circle = get(CIRCLE_SPRITE);
+        glow = get(GLOW_SPRITE);
+        pixel = get(PIXEL_SPRITE);
+        square32 = get(SQUARE32_SPRITE);
+        square32Inverted = get(SQUARE32INVERTED_SPRITE);
+        triangle = get(TRIANGLE_SPRITE);
+        weirdShape = get(WEIRDSHAPE_SPRITE);
     }
 
-    // Audio
     public Sound getExplosionSound() {
         return explosionSound;
     }
 
-    // Fonts
     public BitmapFont getPixelFont() {
         return pixelFont;
     }
@@ -77,13 +58,8 @@ public class SharedAssets extends Assets {
         return timesSquare;
     }
 
-    // Sprites
     public Sprite getCircle() {
         return circle;
-    }
-
-    public Sprite getTriangle() {
-        return triangle;
     }
 
     public Sprite getGlow() {
@@ -94,12 +70,16 @@ public class SharedAssets extends Assets {
         return pixel;
     }
 
-    public Sprite getSquare() {
-        return square;
+    public Sprite getSquare32() {
+        return square32;
     }
 
-    public Sprite getSquareInverted() {
-        return squareInverted;
+    public Sprite getSquare32Inverted() {
+        return square32Inverted;
+    }
+
+    public Sprite getTriangle() {
+        return triangle;
     }
 
     public Sprite getWeirdShape() {

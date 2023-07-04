@@ -76,7 +76,8 @@ char id=120   x=35    y=29   width=7    height=9    xoffset=0    yoffset=0    xa
 char id=121   x=0     y=38   width=7    height=9    xoffset=0    yoffset=0    xadvance=7    page=0    chnl=0
 char id=122   x=7     y=38   width=7    height=9    xoffset=0    yoffset=0    xadvance=7    page=0    chnl=0
 
-char id=46   x=0      y=56   width=3    height=3    xoffset=0    yoffset=6    xadvance=3    page=0    chnl=0
-char id=44   x=3      y=56   width=4    height=5    xoffset=0    yoffset=6    xadvance=4    page=0    chnl=0
+char id=44   x=3      y=56   width=4    height=5    xoffset=0    yoffset=6    xadvance=5    page=0    chnl=0
+char id=46   x=0      y=56   width=3    height=3    xoffset=1    yoffset=6    xadvance=5    page=0    chnl=0
+char id=58   x=7      y=56   width=3    height=7    xoffset=1    yoffset=2    xadvance=5    page=0    chnl=0
 
 kernings count=0
