@@ -1,98 +1,101 @@
 package com.epicness.alejandria.showcase.assets;
 
-import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.ARROW_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.BALL_BEEP;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.CIRCLE_GLOW_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.CIRCLE_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GLOW_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GUN_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.INFO_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.PIXEL_FONT_PATH;
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.STICKMAN_RUN_ATLAS;
+import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.*;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.fundamentals.assets.Assets;
-import com.epicness.fundamentals.utils.AnimationUtils;
+import java.lang.Override;
 
 public class ShowcaseAssets extends Assets {
+    private Sprite stickmanRun;
 
-    // Animations
     private Sprite[] stickmanRunFrames;
-    // Sprites
-    private Sprite frames;
-    private Sprite arrow, info;
-    private Sprite gun;
-    private Sprite circle, circleGlow;
-    private Sprite glow;
-    // Audio
+
     private Sound ballBeep;
-    // Fonts
-    private BitmapFont bigPixelFont;
 
-    @Override
-    public void queueAssetLoading() {
-        // Animations
-        loadTexture(STICKMAN_RUN_ATLAS);
-        // Sprites
-        loadTexture(ARROW_PATH);
-        loadTexture(INFO_PATH);
-        loadTexture(GUN_PATH);
+    private BitmapFont pixelFont;
 
-        loadTexture(CIRCLE_PATH);
-        loadTexture(CIRCLE_GLOW_PATH);
+    private Sprite gun;
 
-        loadTexture(GLOW_PATH);
-        // Audio
-        loadSound(BALL_BEEP);
-        // Fonts
-        loadFont(PIXEL_FONT_PATH);
+    private Sprite arrow;
+
+    private Sprite gitHub;
+
+    private Sprite info;
+
+    private Sprite circle;
+
+    private Sprite circleGlow;
+
+    private Sprite glow;
+
+    private Sprite smiley_color;
+
+    private Sprite smiley_outline;
+
+    private ShaderProgram invert;
+
+    private ShaderProgram shake;
+
+    private ShaderProgram vignette;
+
+    public ShowcaseAssets() {
+        super(ASSETS);
     }
 
     @Override
     public void initializeAssets() {
-        // Animations
-        getTexture(STICKMAN_RUN_ATLAS).setFilter(Linear, Linear);
-        stickmanRunFrames = AnimationUtils.split(getTexture(STICKMAN_RUN_ATLAS), 82, 110);
-        // Sprites
-        frames = getSprite(STICKMAN_RUN_ATLAS);
-        arrow = getSprite(ARROW_PATH);
-        info = getSprite(INFO_PATH);
-        gun = getSprite(GUN_PATH);
-
-        circle = new Sprite(getTexture(CIRCLE_PATH));
-        circleGlow = new Sprite(getTexture(CIRCLE_GLOW_PATH));
-
-        glow = new Sprite(getTexture(GLOW_PATH));
-        // Audio
-        ballBeep = getSound(BALL_BEEP);
-        // Fonts
-        bigPixelFont = getFont(PIXEL_FONT_PATH);
-        bigPixelFont.getData().scale(3f);
+        stickmanRun = get(STICKMANRUN_SPRITE);
+        stickmanRunFrames = get(STICKMANRUNFRAMES_ANIMATION);
+        ballBeep = get(BALLBEEP_SOUND);
+        pixelFont = get(PIXELFONT_FONT);
+        gun = get(GUN_SPRITE);
+        arrow = get(ARROW_SPRITE);
+        gitHub = get(GITHUB_SPRITE);
+        info = get(INFO_SPRITE);
+        circle = get(CIRCLE_SPRITE);
+        circleGlow = get(CIRCLEGLOW_SPRITE);
+        glow = get(GLOW_SPRITE);
+        smiley_color = get(SMILEY_COLOR_SPRITE);
+        smiley_outline = get(SMILEY_OUTLINE_SPRITE);
+        invert = get(INVERT_SHADER_PROGRAM);
+        shake = get(SHAKE_SHADER_PROGRAM);
+        vignette = get(VIGNETTE_SHADER_PROGRAM);
     }
 
-    // Animations
+    public Sprite getStickmanRun() {
+        return stickmanRun;
+    }
+
     public Sprite[] getStickmanRunFrames() {
         return stickmanRunFrames;
     }
 
-    // Sprites
-    public Sprite getFrames() {
-        return frames;
+    public Sound getBallBeep() {
+        return ballBeep;
+    }
+
+    public BitmapFont getPixelFont() {
+        return pixelFont;
+    }
+
+    public Sprite getGun() {
+        return gun;
     }
 
     public Sprite getArrow() {
         return arrow;
     }
 
-    public Sprite getInfo() {
-        return info;
+    public Sprite getGitHub() {
+        return gitHub;
     }
 
-    public Sprite getGun() {
-        return gun;
+    public Sprite getInfo() {
+        return info;
     }
 
     public Sprite getCircle() {
@@ -107,13 +110,23 @@ public class ShowcaseAssets extends Assets {
         return glow;
     }
 
-    // Audio
-    public Sound getBallBeep() {
-        return ballBeep;
+    public Sprite getSmiley_color() {
+        return smiley_color;
     }
 
-    // Fonts
-    public BitmapFont getBigPixelFont() {
-        return bigPixelFont;
+    public Sprite getSmiley_outline() {
+        return smiley_outline;
+    }
+
+    public ShaderProgram getInvert() {
+        return invert;
+    }
+
+    public ShaderProgram getShake() {
+        return shake;
+    }
+
+    public ShaderProgram getVignette() {
+        return vignette;
     }
 }

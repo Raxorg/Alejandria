@@ -1,23 +1,44 @@
 package com.epicness.fundamentals.assets;
 
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.epicness.fundamentals.assets.loaders.ExplicitMusicLoader;
+import com.epicness.fundamentals.assets.loaders.ExplicitSoundLoader;
+import com.epicness.fundamentals.assets.loaders.ShaderLoader;
+import com.epicness.fundamentals.assets.loaders.ShaderProgramLoader;
+import com.epicness.fundamentals.assets.loaders.SpriteArrayLoader;
+import com.epicness.fundamentals.assets.loaders.SpriteLoader;
+
+import java.util.List;
 
 public abstract class Assets {
 
-    private final AssetManager assetManager;
+    protected final AssetManager assetManager;
+    private final List<AssetDescriptor<?>> assetDescriptors;
     private boolean assetsInitialized = false;
 
-    public Assets() {
+    public Assets(List<AssetDescriptor<?>> assetDescriptors) {
         assetManager = new AssetManager();
+        FileHandleResolver resolver = assetManager.getFileHandleResolver();
+        assetManager.setLoader(Music.class, new ExplicitMusicLoader(resolver));
+        assetManager.setLoader(Shader.class, new ShaderLoader(resolver));
+        assetManager.setLoader(ShaderProgram.class, new ShaderProgramLoader(resolver));
+        assetManager.setLoader(Sound.class, new ExplicitSoundLoader(resolver));
+        assetManager.setLoader(Sprite.class, new SpriteLoader(resolver));
+        assetManager.setLoader(Sprite[].class, new SpriteArrayLoader(resolver));
+        this.assetDescriptors = assetDescriptors;
     }
 
-    public abstract void queueAssetLoading();
+    public final void queueAssetLoading() {
+        for (int i = 0; i < assetDescriptors.size(); i++) {
+            assetManager.load(assetDescriptors.get(i));
+        }
+    }
 
     /* Default recommended way of loading assets -> async */
     public final boolean loadAssets() {
@@ -39,57 +60,7 @@ public abstract class Assets {
         return assetsInitialized;
     }
 
-    // Loading
-    protected final void loadTexture(String path) {
-        assetManager.load(path, Texture.class);
-    }
-
-    protected final void loadMusic(String path) {
-        assetManager.load(path, Music.class);
-    }
-
-    protected final void loadSound(String path) {
-        assetManager.load(path, Sound.class);
-    }
-
-    protected final void loadFont(String path) {
-        assetManager.load(path, BitmapFont.class);
-    }
-
-    // Getting
-    protected final Texture getTexture(String path) {
-        return assetManager.get(path, Texture.class);
-    }
-
-    protected final Texture getTexture(String path, TextureFilter filter) {
-        Texture texture = getTexture(path);
-        texture.setFilter(filter, filter);
-        return texture;
-    }
-
-    protected final Sprite getSprite(String path) {
-        return new Sprite(getTexture(path));
-    }
-
-    protected final Sprite getSprite(String path, TextureFilter filter) {
-        return new Sprite(getTexture(path, filter));
-    }
-
-    protected final Music getMusic(String path) {
-        return assetManager.get(path, Music.class);
-    }
-
-    protected final Sound getSound(String path) {
-        return assetManager.get(path, Sound.class);
-    }
-
-    protected final BitmapFont getFont(String path) {
-        return assetManager.get(path, BitmapFont.class);
-    }
-
-    protected final BitmapFont getFont(String path, float scale) {
-        BitmapFont font = getFont(path);
-        font.getData().setScale(scale);
-        return font;
+    protected final <T> T get(AssetDescriptor<T> assetDescriptor) {
+        return assetManager.get(assetDescriptor);
     }
 }

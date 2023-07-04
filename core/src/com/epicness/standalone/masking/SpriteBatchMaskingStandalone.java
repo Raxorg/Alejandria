@@ -1,7 +1,7 @@
 package com.epicness.standalone.masking;
 
-import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.GLOW_PATH;
-import static com.epicness.fundamentals.SharedConstants.WEIRD_SHAPE_PATH;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.GLOW_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.WEIRDSHAPE_SPRITE;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -21,9 +21,9 @@ public class SpriteBatchMaskingStandalone extends Game {
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        mask = new Sprite(new Texture(GLOW_PATH));
+        mask = new Sprite(new Texture(GLOW_SPRITE.fileName));
 
-        maskedSprite = new Sprite(new Texture(WEIRD_SHAPE_PATH));
+        maskedSprite = new Sprite(new Texture(WEIRDSHAPE_SPRITE.fileName));
         maskedSprite.setColor(Color.RED);
     }
 

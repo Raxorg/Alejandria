@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.logic.input;
 
-import com.epicness.alejandria.showcase.logic.modules.Module;
-import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
+import com.epicness.alejandria.showcase.logic.Module;
+import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 
 @SuppressWarnings("rawtypes")
 public class ModuleInputAdapter extends ModuleInput {

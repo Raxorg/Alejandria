@@ -16,20 +16,26 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
     public void mouseMoved(float x, float y) {
         logic.get(ShowcaseHandler.class).mouseMoved(x, y);
 
-        if (moduleInput == null) {
-            return;
-        }
-        moduleInput.mouseMoved(x, y);
+        if (moduleInput != null) moduleInput.mouseMoved(x, y);
     }
 
     @Override
     public void touchDown(float x, float y) {
-        logic.get(ShowcaseHandler.class).touchDown(x, y);
+        if (moduleInput != null) moduleInput.touchDown(x, y);
+    }
 
-        if (moduleInput == null) {
-            return;
-        }
-        moduleInput.touchDown(x, y);
+    @Override
+    public void touchDragged(float x, float y) {
+        logic.get(ShowcaseHandler.class).mouseMoved(x, y);
+
+        if (moduleInput != null) moduleInput.touchDragged(x, y);
+    }
+
+    @Override
+    public void touchUp(float x, float y) {
+        logic.get(ShowcaseHandler.class).touchUp(x, y);
+
+        if (moduleInput != null) moduleInput.touchUp(x, y);
     }
 
     @Override
@@ -42,10 +48,12 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
                 logic.get(ShowcaseHandler.class).keyDown(false);
                 return;
         }
-        if (moduleInput == null) {
-            return;
-        }
-        moduleInput.keyDown(keycode);
+        if (moduleInput != null) moduleInput.keyDown(keycode);
+    }
+
+    @Override
+    public void keyUp(int keycode) {
+        if (moduleInput != null) moduleInput.keyUp(keycode);
     }
 
     public void setModuleInputHandler(ModuleInput<?> moduleInput) {

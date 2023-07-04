@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.stuff;
 
+import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -183,5 +185,9 @@ public class Sprited implements Buttonable, Parallaxable {
 
     public void setColor(Color color) {
         sprite.setColor(color);
+    }
+
+    public void useBilinearFilter() {
+        sprite.getTexture().setFilter(Linear, Linear);
     }
 }

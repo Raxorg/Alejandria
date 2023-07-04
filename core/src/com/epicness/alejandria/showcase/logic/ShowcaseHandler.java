@@ -1,9 +1,11 @@
 package com.epicness.alejandria.showcase.logic;
 
+import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
@@ -15,9 +17,16 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private List<Module<?>> modules;
     private Module<?> currentModule;
+    // Stuff
+    private Sprited previous, gitHub, info, next;
 
     @Override
     public void init() {
+        previous = stuff.getPrevious();
+        gitHub = stuff.getGitHubButton();
+        info = stuff.getInfoButton();
+        next = stuff.getNext();
+
         modules = new ArrayList<>();
         for (int i = 0; i < logic.getHandlers().size(); i++) {
             LogicHandler<?, ?, ?, ?> handler = logic.getHandlers().get(i);
@@ -33,35 +42,28 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     }
 
     public void mouseMoved(float x, float y) {
-        Sprited previous = stuff.getShowcase().getPrevious();
-        Sprited info = stuff.getShowcase().getInfoButton();
-        Sprited next = stuff.getShowcase().getNext();
-        previous.setColor(Color.WHITE);
-        info.setColor(Color.WHITE);
-        next.setColor(Color.WHITE);
-        if (previous.contains(x, y)) {
-            previous.setColor(Color.CHARTREUSE);
-        } else if (info.contains(x, y)) {
-            info.setColor(Color.CHARTREUSE);
-        } else if (next.contains(x, y)) {
-            next.setColor(Color.CHARTREUSE);
-        }
+        previous.setColor(WHITE);
+        gitHub.setColor(WHITE);
+        info.setColor(WHITE);
+        next.setColor(WHITE);
+        if (previous.contains(x, y)) previous.setColor(CHARTREUSE);
+        else if (info.contains(x, y)) info.setColor(CHARTREUSE);
+        else if (gitHub.contains(x, y)) gitHub.setColor(CHARTREUSE);
+        else if (next.contains(x, y)) next.setColor(CHARTREUSE);
     }
 
-    public void touchDown(float x, float y) {
-        Sprited previous = stuff.getShowcase().getPrevious();
-        Sprited info = stuff.getShowcase().getInfoButton();
-        Sprited next = stuff.getShowcase().getNext();
+    public void touchUp(float x, float y) {
         int currentIndex = modules.indexOf(currentModule);
-        if (previous.contains(x, y)) {
+        if (previous.contains(x, y))
             changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
-        } else if (next.contains(x, y)) {
+        else if (next.contains(x, y))
             changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
-        } else if (info.contains(x, y)) {
+        else if (gitHub.contains(x, y))
+            Gdx.net.openURI(currentModule.gitHubPath);
+        else if (info.contains(x, y))
             showInformation();
-        } else {
+        else
             hideInformation();
-        }
     }
 
     public void keyDown(boolean left) {
@@ -79,23 +81,23 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
         currentModule = modules.get(index);
         stuff.getShowcase().setModuleDrawable(currentModule.setupModule());
-        stuff.getShowcase().setTitle(currentModule.getTitle());
-        stuff.getShowcase().getInformation().setText(currentModule.getInformation());
+        stuff.getTitle().setText(currentModule.title);
+        stuff.getInformation().setText(currentModule.information);
         hideInformation();
     }
 
     private void showInformation() {
-        SpritedText information = stuff.getShowcase().getInformation();
+        SpritedText information = stuff.getInformation();
         if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
             hideInformation();
             return;
         }
         information.setBackgroundColor(BLACK_CLEAR_50);
-        information.setTextColor(Color.WHITE);
+        information.setTextColor(WHITE);
     }
 
     private void hideInformation() {
-        SpritedText information = stuff.getShowcase().getInformation();
+        SpritedText information = stuff.getInformation();
         information.setBackgroundColor(Color.CLEAR);
         information.setTextColor(Color.CLEAR);
     }

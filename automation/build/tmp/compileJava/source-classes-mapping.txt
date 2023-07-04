@@ -1,0 +1,15 @@
+com/epicness/alejandria/desktop/TypeSpecWithStaticImports.java
+ com.epicness.alejandria.desktop.TypeSpecWithStaticImports
+ com.epicness.alejandria.desktop.TypeSpecWithStaticImports$StaticImport
+com/epicness/alejandria/desktop/AssetsTypeSpecGenerator.java
+ com.epicness.alejandria.desktop.AssetsTypeSpecGenerator
+com/epicness/alejandria/desktop/AssetDescriptorGatherer.java
+ com.epicness.alejandria.desktop.AssetDescriptorGatherer
+com/epicness/alejandria/desktop/Extension.java
+ com.epicness.alejandria.desktop.Extension
+com/epicness/alejandria/desktop/AssetAutomator.java
+ com.epicness.alejandria.desktop.AssetAutomator
+com/epicness/alejandria/desktop/AutomationLauncher.java
+ com.epicness.alejandria.desktop.AutomationLauncher
+com/epicness/alejandria/desktop/AssetPathsTypeSpecGenerator.java
+ com.epicness.alejandria.desktop.AssetPathsTypeSpecGenerator

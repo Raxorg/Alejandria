@@ -1,38 +1,36 @@
 # Alejandria
 
-This app is a showcase of a variety of libGDX capabilities/features/techniques/aspects organized into bite-sized "modules", each consisting of its
-logic and graphic parts.
+This desktop+web app showcases a variety of libGDX features/capabilities/techniques/aspects with code organized into bite-sized
+"modules", each consisting of its logic and graphic parts
 
 ## Current modules
 
 ### Animations
-
 - Sprite Animation
 - Sprite Rotation Animation
 
 ### Bullets
-
 - Bullet Spawning
 
 ### Collisions
-
 - Pixel Perfect Collision
 
 ### Cursor
-
 - Beam Aiming
 - Point At Cursor
 
 ### Fun
-
 - Beeping Balls
 
 ### Grids
-
 - Cross Chunk Selection
+- Hexagon Radial Selection
+
+### Kinematics
+- Forward Kinematics
+- Inverse Kinematics
 
 ### Masking
-
 - Alpha Masking
 - Clipping
 - Layered Masking
@@ -40,27 +38,30 @@ logic and graphic parts.
 - Shape Renderer Masking
 
 ### Pathfinding
-
 - A Star (A*)
 
-### Procedural
+### Patterns
+- Phyllotaxis
 
+### Procedural
 - Procedural Square
 
 ### Rendering
-
 - Frame Buffering
 - Orthographic Example
 
-### Shaders
+### Rendering 3D
+- Decal Visualization
+- Textured Cube Visualization
 
+### Shaders
 - Invert Shader
 - Shake Shader
 - Vignette Shader
 
 ### Viewports
-
 - Advanced Split Screen
 
-The project also features standalone demos you can run directly from the `StandaloneLauncher` in the desktop module, check the standalone package in
-the core module
+The project also features standalone demos you can run directly from the 
+[StandaloneLauncher](/desktop/src/com/epicness/alejandria/desktop/DesktopLauncher.java) in the desktop module, check the
+[standalone package](/core/src/com/epicness/standalone) in the core module

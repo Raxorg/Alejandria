@@ -10,6 +10,7 @@ public class BeepingBall extends DualSprited {
 
     public BeepingBall(Sprite ballGlow, Sprite ball) {
         super(ballGlow, ball);
+        useBilinearFilter();
         forward = true;
     }
 }

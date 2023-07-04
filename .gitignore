@@ -59,13 +59,6 @@ com_crashlytics_export_strings.xml
 /html/nbproject/private/
 /ios/nbproject/private/
 
-/build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
-
 /nbbuild/
 /android/nbbuild/
 /core/nbbuild/
@@ -101,6 +94,7 @@ gradle-app.setting
 /desktop/build/
 /html/build/
 /ios/build/
+/automation/build/
 
 ## OS Specific
 .DS_Store
@@ -113,3 +107,6 @@ Thumbs.db
 /ios/xcode/native/
 /ios/IOSLauncher.app
 /ios/IOSLauncher.app.dSYM
+
+## Automation
+/automation/out/

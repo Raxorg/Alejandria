@@ -77,4 +77,8 @@ public class SpritedAnimation {
     public void resetTime() {
         time = 0f;
     }
+
+    public void useBilinearFilter() {
+        animation.getKeyFrames()[0].useBilinearFilter();
+    }
 }
