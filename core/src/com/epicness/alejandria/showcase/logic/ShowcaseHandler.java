@@ -1,9 +1,10 @@
 package com.epicness.alejandria.showcase.logic;
 
+import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
 import com.badlogic.gdx.graphics.Color;
-import com.epicness.alejandria.showcase.logic.modules.Module;
 import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
@@ -48,10 +49,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
     }
 
-    public void touchDown(float x, float y) {
-        Sprited previous = stuff.getShowcase().getPrevious();
-        Sprited info = stuff.getShowcase().getInfoButton();
-        Sprited next = stuff.getShowcase().getNext();
+    public void touchUp(float x, float y) {
         int currentIndex = modules.indexOf(currentModule);
         if (previous.contains(x, y)) {
             changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
@@ -59,9 +57,8 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
         } else if (info.contains(x, y)) {
             showInformation();
-        } else {
+        else
             hideInformation();
-        }
     }
 
     public void keyDown(boolean left) {
@@ -79,23 +76,23 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
         currentModule = modules.get(index);
         stuff.getShowcase().setModuleDrawable(currentModule.setupModule());
-        stuff.getShowcase().setTitle(currentModule.getTitle());
-        stuff.getShowcase().getInformation().setText(currentModule.getInformation());
+        stuff.getTitle().setText(currentModule.title);
+        stuff.getInformation().setText(currentModule.information);
         hideInformation();
     }
 
     private void showInformation() {
-        SpritedText information = stuff.getShowcase().getInformation();
+        SpritedText information = stuff.getInformation();
         if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
             hideInformation();
             return;
         }
         information.setBackgroundColor(BLACK_CLEAR_50);
-        information.setTextColor(Color.WHITE);
+        information.setTextColor(WHITE);
     }
 
     private void hideInformation() {
-        SpritedText information = stuff.getShowcase().getInformation();
+        SpritedText information = stuff.getInformation();
         information.setBackgroundColor(Color.CLEAR);
         information.setTextColor(Color.CLEAR);
     }
