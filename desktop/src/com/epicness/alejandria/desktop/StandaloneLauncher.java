@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDO
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.epicness.standalone.masking.ShaderPixmapMaskingStandalone;
+import com.epicness.standalone.ShaderYoutubeTest;
 
 /**
  * Used to launch the standalone @{@link com.badlogic.gdx.Game}s found within the core module's standalone package
@@ -16,6 +16,6 @@ public class StandaloneLauncher {
         config.setWindowedMode(WINDOW_SIZE, WINDOW_SIZE);
         config.setResizable(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 4);
-        new Lwjgl3Application(new ShaderPixmapMaskingStandalone(), config);
+        new Lwjgl3Application(new ShaderYoutubeTest(), config);
     }
 }
