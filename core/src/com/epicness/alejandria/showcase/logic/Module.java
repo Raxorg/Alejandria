@@ -1,6 +1,7 @@
-package com.epicness.alejandria.showcase.logic.modules;
+package com.epicness.alejandria.showcase.logic;
 
-import com.epicness.alejandria.showcase.logic.ShowcaseLogicHandler;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHUB_ROOT;
+
 import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.stuff.Drawable;
@@ -10,13 +11,15 @@ import com.epicness.alejandria.showcase.stuff.Drawable;
  **/
 public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
 
-    private final String title;
-    private final String information;
+    protected final String title;
+    protected final String information;
+    protected final String gitHubPath;
     protected D drawable;
 
     public Module(String title, String information) {
         this.title = title;
         this.information = information;
+        gitHubPath = GITHUB_ROOT + getClass().getName().replace(".", "/") + ".java";
     }
 
     public final D setupModule() {

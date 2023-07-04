@@ -55,7 +55,6 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ShapeRendererMasking());
         // Pathfinding
         registerHandler(new AStar());
-        registerHandler(new AStarInput());
         // Procedural
         registerHandler(new ProceduralSquare());
         // Rendering

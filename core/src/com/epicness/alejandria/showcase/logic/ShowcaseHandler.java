@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -16,9 +17,16 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private List<Module<?>> modules;
     private Module<?> currentModule;
+    // Stuff
+    private Sprited previous, gitHub, info, next;
 
     @Override
     public void init() {
+        previous = stuff.getPrevious();
+        gitHub = stuff.getGitHubButton();
+        info = stuff.getInfoButton();
+        next = stuff.getNext();
+
         modules = new ArrayList<>();
         for (int i = 0; i < logic.getHandlers().size(); i++) {
             LogicHandler<?, ?, ?, ?> handler = logic.getHandlers().get(i);
@@ -34,28 +42,25 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     }
 
     public void mouseMoved(float x, float y) {
-        Sprited previous = stuff.getShowcase().getPrevious();
-        Sprited info = stuff.getShowcase().getInfoButton();
-        Sprited next = stuff.getShowcase().getNext();
-        previous.setColor(Color.WHITE);
-        info.setColor(Color.WHITE);
-        next.setColor(Color.WHITE);
-        if (previous.contains(x, y)) {
-            previous.setColor(Color.CHARTREUSE);
-        } else if (info.contains(x, y)) {
-            info.setColor(Color.CHARTREUSE);
-        } else if (next.contains(x, y)) {
-            next.setColor(Color.CHARTREUSE);
-        }
+        previous.setColor(WHITE);
+        gitHub.setColor(WHITE);
+        info.setColor(WHITE);
+        next.setColor(WHITE);
+        if (previous.contains(x, y)) previous.setColor(CHARTREUSE);
+        else if (info.contains(x, y)) info.setColor(CHARTREUSE);
+        else if (gitHub.contains(x, y)) gitHub.setColor(CHARTREUSE);
+        else if (next.contains(x, y)) next.setColor(CHARTREUSE);
     }
 
     public void touchUp(float x, float y) {
         int currentIndex = modules.indexOf(currentModule);
-        if (previous.contains(x, y)) {
+        if (previous.contains(x, y))
             changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
-        } else if (next.contains(x, y)) {
+        else if (next.contains(x, y))
             changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
-        } else if (info.contains(x, y)) {
+        else if (gitHub.contains(x, y))
+            Gdx.net.openURI(currentModule.gitHubPath);
+        else if (info.contains(x, y))
             showInformation();
         else
             hideInformation();
