@@ -1,6 +1,5 @@
 package com.epicness.alejandria.showcase.logic;
 
-import com.epicness.alejandria.showcase.logic.input.AStarInput;
 import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.alejandria.showcase.logic.modules.animations.SpriteAnimation;
@@ -47,6 +46,12 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new BeepingBalls());
         // Grids
         registerHandler(new CrossChunkSelection());
+        registerHandler(new HexagonSelection());
+        // Kinematics
+        registerHandler(new ForwardKinematics());
+        registerHandler(new InverseKinematics());
+        // Patterns
+        registerHandler(new Phyllotaxis());
         // Masking
         registerHandler(new AlphaMasking());
         registerHandler(new Clipping());
