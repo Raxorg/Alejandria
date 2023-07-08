@@ -2,8 +2,6 @@ package com.epicness.alejandria.showcase.logic;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHUB_ROOT;
 
-import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
-import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
 import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 /**
@@ -23,10 +21,7 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
     }
 
     public final D setupModule() {
-        logic.get(ModuleInputAdapter.class).setModuleClass((Class<? extends Module<?>>) getClass());
-        logic.get(ShowcaseInputHandler.class).setModuleInputHandler(
-                logic.get(ModuleInputAdapter.class)
-        );
+        logic.get(ShowcaseInputHandler.class).setModule(this);
         return drawable = setup();
     }
 
@@ -55,7 +50,7 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
 
     public final void exitModule() {
         drawable = null;
-        logic.get(ShowcaseInputHandler.class).setModuleInputHandler(null);
+        logic.get(ShowcaseInputHandler.class).setModule(null);
         exit();
     }
 

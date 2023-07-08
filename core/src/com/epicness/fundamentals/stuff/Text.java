@@ -56,13 +56,18 @@ public class Text implements Buttonable, Movable {
     }
 
     @Override
-    public float getY() {
-        return bounds.y;
+    public float getX() {
+        return bounds.x;
     }
 
     @Override
-    public void setY(float y) {
-        bounds.y = y;
+    public void translateX(float x) {
+        bounds.x += x;
+    }
+
+    @Override
+    public float getY() {
+        return bounds.y;
     }
 
     @Override
@@ -70,24 +75,7 @@ public class Text implements Buttonable, Movable {
         bounds.y += y;
     }
 
-    public float getX() {
-        return bounds.x;
-    }
-
-    public void setX(float x) {
-        bounds.x = x;
-    }
-
-    public void setPosition(float x, float y) {
-        setX(x);
-        setY(y);
-    }
-
-    public void translateX(float x) {
-        bounds.x += x;
-    }
-
-    public float getWidth() {
+    public float getTextWidth() {
         return TextUtils.getTextWidth(this);
     }
 

@@ -17,6 +17,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private List<Module<?>> modules;
     private Module<?> currentModule;
+    private boolean showingInformation;
     // Stuff
     private Sprited previous, gitHub, info, next;
 
@@ -35,6 +36,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             }
         }
         changeModule(0);
+        showingInformation = false;
     }
 
     public void update(float delta) {
@@ -59,9 +61,9 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         else if (next.contains(x, y))
             changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
         else if (gitHub.contains(x, y))
-            Gdx.net.openURI(currentModule.gitHubPath);
+            openGitHub();
         else if (info.contains(x, y))
-            showInformation();
+            toggleInformation();
         else
             hideInformation();
     }
@@ -86,6 +88,18 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         hideInformation();
     }
 
+    public void openGitHub() {
+        Gdx.net.openURI(currentModule.gitHubPath);
+    }
+
+    public void toggleInformation() {
+        if (showingInformation) {
+            hideInformation();
+        } else {
+            showInformation();
+        }
+    }
+
     private void showInformation() {
         SpritedText information = stuff.getInformation();
         if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
@@ -94,11 +108,13 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
         information.setBackgroundColor(BLACK_CLEAR_50);
         information.setTextColor(WHITE);
+        showingInformation = true;
     }
 
     private void hideInformation() {
         SpritedText information = stuff.getInformation();
         information.setBackgroundColor(Color.CLEAR);
         information.setTextColor(Color.CLEAR);
+        showingInformation = false;
     }
 }

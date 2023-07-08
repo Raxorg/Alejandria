@@ -59,7 +59,6 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         information = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
         information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         information.setTextTargetWidth(CAMERA_WIDTH * 0.9f);
-        information.centerTextOnTargetWidth();
     }
 
     public SpritedText getTitle() {

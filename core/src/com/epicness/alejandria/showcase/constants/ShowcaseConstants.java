@@ -15,8 +15,8 @@ public class ShowcaseConstants {
     public static final float TOP_STRIPE_Y = CAMERA_HEIGHT - STRIPE_HEIGHT;
 
     public static final float SHOWCASE_BUTTON_SIZE = 100f;
-    public static final float GITHUB_BUTTON_X = CAMERA_HALF_WIDTH - SHOWCASE_BUTTON_SIZE;
-    public static final float INFO_BUTTON_X = CAMERA_HALF_WIDTH;
+    public static final float GITHUB_BUTTON_X = CAMERA_HALF_WIDTH - SHOWCASE_BUTTON_SIZE * 1.25f;
+    public static final float INFO_BUTTON_X = CAMERA_HALF_WIDTH + SHOWCASE_BUTTON_SIZE * 0.25f;
     public static final float NEXT_BUTTON_X = CAMERA_WIDTH - SHOWCASE_BUTTON_SIZE;
 
     public static final float SHOWCASE_SIZE = CAMERA_HEIGHT - STRIPE_HEIGHT * 2f;

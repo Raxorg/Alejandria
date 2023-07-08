@@ -1,41 +1,41 @@
-package com.epicness.alejandria.showcase.logic.input;
+package com.epicness.alejandria.showcase.logic;
 
+import static com.badlogic.gdx.Input.Keys.G;
+import static com.badlogic.gdx.Input.Keys.I;
 import static com.badlogic.gdx.Input.Keys.LEFT;
 import static com.badlogic.gdx.Input.Keys.RIGHT;
 
-import com.epicness.alejandria.showcase.logic.ShowcaseHandler;
-import com.epicness.alejandria.showcase.logic.ShowcaseLogic;
 import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
 import com.epicness.fundamentals.input.InputHandler;
 
 public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseStuff> {
 
-    private ModuleInput<?> moduleInput;
+    private Module<?> module;
 
     @Override
     public void mouseMoved(float x, float y) {
         logic.get(ShowcaseHandler.class).mouseMoved(x, y);
 
-        if (moduleInput != null) moduleInput.mouseMoved(x, y);
+        if (module != null) module.mouseMoved(x, y);
     }
 
     @Override
     public void touchDown(float x, float y) {
-        if (moduleInput != null) moduleInput.touchDown(x, y);
+        if (module != null) module.touchDown(x, y);
     }
 
     @Override
     public void touchDragged(float x, float y) {
         logic.get(ShowcaseHandler.class).mouseMoved(x, y);
 
-        if (moduleInput != null) moduleInput.touchDragged(x, y);
+        if (module != null) module.touchDragged(x, y);
     }
 
     @Override
     public void touchUp(float x, float y) {
         logic.get(ShowcaseHandler.class).touchUp(x, y);
 
-        if (moduleInput != null) moduleInput.touchUp(x, y);
+        if (module != null) module.touchUp(x, y);
     }
 
     @Override
@@ -47,16 +47,22 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
             case RIGHT:
                 logic.get(ShowcaseHandler.class).keyDown(false);
                 return;
+            case I:
+                logic.get(ShowcaseHandler.class).toggleInformation();
+                return;
+            case G:
+                logic.get(ShowcaseHandler.class).openGitHub();
+                return;
         }
-        if (moduleInput != null) moduleInput.keyDown(keycode);
+        if (module != null) module.keyDown(keycode);
     }
 
     @Override
     public void keyUp(int keycode) {
-        if (moduleInput != null) moduleInput.keyUp(keycode);
+        if (module != null) module.keyUp(keycode);
     }
 
-    public void setModuleInputHandler(ModuleInput<?> moduleInput) {
-        this.moduleInput = moduleInput;
+    public void setModule(Module<?> module) {
+        this.module = module;
     }
 }
