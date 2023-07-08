@@ -10,10 +10,10 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class BeepingBallsDrawable implements Drawable {
 
@@ -31,27 +31,36 @@ public class BeepingBallsDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         ScreenUtils.clear(BLACK);
 
-        shapeRenderer.begin();
-        shapeRenderer.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
-        shapeRenderer.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+        shapeBatch.begin();
+        shapeBatch.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+        shapeBatch.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
         for (int i = 0; i < BALLS; i++) {
             if (i >= BALLS - 1) {
                 continue;
             }
             BeepingBall ball = balls[i];
             BeepingBall nextBall = balls[i + 1];
-            shapeRenderer.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter());
+            shapeBatch.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter());
         }
-        shapeRenderer.end();
+        shapeBatch.end();
 
         spriteBatch.begin();
         for (int i = 0; i < BALLS; i++) {
             balls[i].draw(spriteBatch);
         }
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.begin();
+        for (int i = 0; i < BALLS; i++) {
+            balls[i].drawDebug(shapeBatch);
+        }
+        shapeBatch.end();
     }
 
     public BeepingBall[] getBalls() {

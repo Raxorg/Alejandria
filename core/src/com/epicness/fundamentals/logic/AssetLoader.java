@@ -2,35 +2,38 @@ package com.epicness.fundamentals.logic;
 
 import com.epicness.fundamentals.assets.Assets;
 
+import java.util.List;
+
 public class AssetLoader {
 
-    // Logic
-    private Assets assets;
-    private boolean assetsAssigned;
+    private List<Assets> pendingAssets;
+    private CompletionListener listener;
 
-    protected void startLoadingAssets(Assets assetsToLoad) {
-        if (assetsToLoad.areAssetsInitialized()) {
-            return;
+    protected void beginLoading(List<Assets> assetsToLoad, CompletionListener completionListener) {
+        pendingAssets = assetsToLoad;
+        for (int i = 0; i < pendingAssets.size(); i++) {
+            if (pendingAssets.get(i).areAssetsInitialized()) continue;
+            pendingAssets.get(i).queueAssetLoading();
         }
-        assets = assetsToLoad;
-        assets.queueAssetLoading();
-        assetsAssigned = true;
+        listener = completionListener;
     }
 
-    public void update() {
-        if (!assetsAssigned) {
+    protected void update() {
+        if (pendingAssets == null) {
             return;
         }
-        if (assets.areAssetsInitialized()) {
-            return;
-        }
-        if (assets.loadAssets()) {
-            assets.initializeAssets();
-            assets.assetsInitialized();
-        }
-    }
 
-    public Assets getAssets() {
-        return assets;
+        for (int i = 0; i < pendingAssets.size(); i++) {
+            Assets assets = pendingAssets.get(i);
+            if (assets.areAssetsInitialized()) {
+                continue;
+            }
+            if (assets.loadAssets()) {
+                assets.initializeAssets();
+            }
+            return;
+        }
+        pendingAssets = null;
+        listener.onComplete();
     }
 }

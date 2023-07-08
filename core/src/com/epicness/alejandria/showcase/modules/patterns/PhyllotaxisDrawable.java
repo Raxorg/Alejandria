@@ -4,8 +4,8 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.PHYLLOTAXIS_CIRCLES;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 
 public class PhyllotaxisDrawable implements Drawable {
@@ -17,12 +17,16 @@ public class PhyllotaxisDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        shapeRenderer.begin(Filled);
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        shapeBatch.begin(Filled);
         for (int i = 0; i < PHYLLOTAXIS_CIRCLES; i++) {
-            circles[i].draw(shapeRenderer);
+            circles[i].draw(shapeBatch);
         }
-        shapeRenderer.end();
+        shapeBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Circle[] getCircles() {

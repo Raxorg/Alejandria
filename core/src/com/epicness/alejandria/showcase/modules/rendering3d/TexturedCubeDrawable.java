@@ -23,8 +23,8 @@ import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class TexturedCubeDrawable implements Drawable {
 
@@ -57,12 +57,16 @@ public class TexturedCubeDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         modelBatch.begin(camera);
         modelBatch.render(modelInstance1, environment);
         modelBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Camera getCamera() {

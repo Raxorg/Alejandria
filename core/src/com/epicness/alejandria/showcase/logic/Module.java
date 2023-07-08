@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHU
 
 import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
 import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 /**
  * The modules package is an exception to the conventional package structure of epicness games/apps

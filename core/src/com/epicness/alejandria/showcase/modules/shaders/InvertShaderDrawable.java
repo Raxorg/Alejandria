@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class InvertShaderDrawable implements Drawable {
 
@@ -30,12 +30,16 @@ public class InvertShaderDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         // Let's invert the colors of the whole showcase for fun >:3
         spriteBatch.setShader(currentShader);
         spriteBatch.begin();
         weirdShape.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public void toggleShader() {

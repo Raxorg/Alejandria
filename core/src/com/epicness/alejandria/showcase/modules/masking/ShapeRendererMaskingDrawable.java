@@ -2,16 +2,16 @@ package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.DARK_DIRT;
 import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 import com.epicness.fundamentals.stuff.shapes.Triangle;
 
@@ -37,17 +37,17 @@ public class ShapeRendererMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        shapeRenderer.begin();
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        shapeBatch.begin();
 
-        drawMasks(shapeRenderer);
-        drawMasked(shapeRenderer);
-        drawContours(shapeRenderer);
+        drawMasks(shapeBatch);
+        drawMasked(shapeBatch);
+        drawContours(shapeBatch);
 
-        shapeRenderer.end();
+        shapeBatch.end();
     }
 
-    private void drawMasks(ShapeRenderer shapeRenderer) {
+    private void drawMasks(ShapeBatch shapeBatch) {
         // 1. Clear our depth buffer info from previous frame
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -60,28 +60,32 @@ public class ShapeRendererMaskingDrawable implements Drawable {
         // 4. Disable RGBA color writing
         Gdx.gl.glColorMask(false, false, false, false);
 
-        shapeRenderer.set(Filled);
-        circleMask.draw(shapeRenderer);
-        triangleMask.draw(shapeRenderer);
-        shapeRenderer.flush();
+        shapeBatch.set(Filled);
+        circleMask.draw(shapeBatch);
+        triangleMask.draw(shapeBatch);
+        shapeBatch.flush();
     }
 
-    private void drawMasked(ShapeRenderer shapeRenderer) {
+    private void drawMasked(ShapeBatch shapeBatch) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
 
-        maskedCircle.draw(shapeRenderer);
-        shapeRenderer.flush();
+        maskedCircle.draw(shapeBatch);
+        shapeBatch.flush();
     }
 
-    private void drawContours(ShapeRenderer shapeRenderer) {
+    private void drawContours(ShapeBatch shapeBatch) {
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
-        shapeRenderer.set(Line);
+        shapeBatch.set(Line);
         // The masks
-        circleMask.draw(shapeRenderer);
-        triangleMask.draw(shapeRenderer);
+        circleMask.draw(shapeBatch);
+        triangleMask.draw(shapeBatch);
         // The masked circle
-        maskedCircle.draw(shapeRenderer);
+        maskedCircle.draw(shapeBatch);
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Circle getCircleMask() {

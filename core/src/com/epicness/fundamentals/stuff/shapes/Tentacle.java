@@ -1,7 +1,5 @@
 package com.epicness.fundamentals.stuff.shapes;
 
-import static com.epicness.alejandria.showcase.constants.KinematicsConstants.IK_LINES;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -69,8 +67,8 @@ public class Tentacle implements Movable {
         }
 
         if (lockPosition != null) {
-            lines[IK_LINES - 1].setA(lockPosition);
-            for (int i = IK_LINES - 2; i >= 0; i--) {
+            lines[lines.length - 1].setA(lockPosition);
+            for (int i = lines.length - 2; i >= 0; i--) {
                 lines[i].setA(lines[i + 1].getB());
             }
         }

@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class ClippingDrawable implements Drawable {
 
@@ -50,12 +50,16 @@ public class ClippingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         background1.draw(spriteBatch);
         background2.draw(spriteBatch);
         background3.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public AnimatedBackground getBackground1() {

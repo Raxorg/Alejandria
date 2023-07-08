@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Actor;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Scrollable;
 
-public class DualSprited implements Buttonable, Scrollable {
+public class DualSprited implements Actor, Buttonable {
 
     protected final Sprite background, foreground;
     private boolean backgroundButtonable;
@@ -28,19 +29,38 @@ public class DualSprited implements Buttonable, Scrollable {
         foreground.draw(spriteBatch);
     }
 
-    public void draw(SpriteBatch spriteBatch) {
-        background.draw(spriteBatch);
-        foreground.draw(spriteBatch);
+    @Override
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        drawBackground(spriteBatch);
+        drawForeground(spriteBatch);
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.rect(background.getBoundingRectangle());
+        shapeBatch.rect(foreground.getBoundingRectangle());
     }
 
     @Override
     public boolean contains(float x, float y) {
-        return (backgroundButtonable && background.getBoundingRectangle().contains(x, y))
-                || (!backgroundButtonable && foreground.getBoundingRectangle().contains(x, y));
+        return backgroundButtonable
+                ? background.getBoundingRectangle().contains(x, y)
+                : foreground.getBoundingRectangle().contains(x, y);
     }
 
     public void setBackgroundButtonable(boolean backgroundButtonable) {
         this.backgroundButtonable = backgroundButtonable;
+    }
+
+    @Override
+    public float getX() {
+        return background.getX();
+    }
+
+    @Override
+    public void translateX(float amount) {
+        background.translateX(amount);
+        foreground.translateX(amount);
     }
 
     @Override
@@ -49,33 +69,61 @@ public class DualSprited implements Buttonable, Scrollable {
     }
 
     @Override
-    public void setY(float y) {
-        background.setY(y);
-        foreground.setY(y);
-    }
-
-    @Override
     public void translateY(float amount) {
         background.translateY(amount);
         foreground.translateY(amount);
     }
 
-    public float getX() {
-        return background.getX();
+    public void stretchBackgroundWidth(float amount) {
+        background.setSize(background.getWidth() + amount, background.getHeight());
     }
 
-    public void setX(float x) {
-        background.setX(x);
-        foreground.setX(x);
+    public void stretchForegroundWidth(float amount) {
+        foreground.setSize(foreground.getWidth() + amount, foreground.getHeight());
     }
 
-    public void setPosition(float x, float y) {
-        background.setPosition(x, y);
-        foreground.setPosition(x, y);
+    @Override
+    public void stretchWidth(float amount) {
+        stretchBackgroundWidth(amount);
+        stretchForegroundWidth(amount);
     }
 
-    public void setPosition(Vector2 position) {
-        setPosition(position.x, position.y);
+    public void stretchBackgroundHeight(float amount) {
+        background.setSize(background.getWidth(), background.getHeight() + amount);
+    }
+
+    public void stretchForegroundHeight(float amount) {
+        foreground.setSize(foreground.getWidth(), foreground.getHeight() + amount);
+    }
+
+    @Override
+    public void stretchHeight(float amount) {
+        stretchBackgroundHeight(amount);
+        stretchForegroundHeight(amount);
+    }
+
+    @Override
+    public float getWidth() {
+        return background.getWidth();
+    }
+
+    @Override
+    public float getHeight() {
+        return background.getHeight();
+    }
+
+    public void rotateBackground(float degrees) {
+        background.rotate(degrees);
+    }
+
+    public void rotateForeground(float degrees) {
+        foreground.rotate(degrees);
+    }
+
+    @Override
+    public void rotate(float degrees) {
+        rotateBackground(degrees);
+        rotateForeground(degrees);
     }
 
     public void setForegroundOriginBasedPosition(float x, float y) {
@@ -97,16 +145,6 @@ public class DualSprited implements Buttonable, Scrollable {
 
     public Vector2 getForegroundCenter() {
         return new Vector2(getForegroundCenterX(), getForegroundCenterY());
-    }
-
-    public void translateX(float amount) {
-        background.translateX(amount);
-        foreground.translateX(amount);
-    }
-
-    public void translate(float xAmount, float yAmount) {
-        translateX(xAmount);
-        translateY(yAmount);
     }
 
     public void setBackgroundSize(float width, float height) {
@@ -135,28 +173,6 @@ public class DualSprited implements Buttonable, Scrollable {
 
     public Vector2 getBackgroundSize() {
         return new Vector2(getBackgroundWidth(), getBackgroundHeight());
-    }
-
-    public void setSize(float width, float height) {
-        background.setSize(width, height);
-        foreground.setSize(width, height);
-    }
-
-    public void setSize(float size) {
-        setSize(size, size);
-    }
-
-    public void rotateBackground(float degrees) {
-        background.rotate(degrees);
-    }
-
-    public void rotateForeground(float degrees) {
-        foreground.rotate(degrees);
-    }
-
-    public void rotate(float degrees) {
-        rotateBackground(degrees);
-        rotateForeground(degrees);
     }
 
     public Vector2 getBackgroundScale() {

@@ -158,7 +158,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     @Override
     protected void exit() {
-        renderer.getShapeRenderer().setColor(WHITE);
+        renderer.getShapeBatch().setColor(WHITE);
         renderer.useStaticCamera();
     }
 }

@@ -1,10 +1,10 @@
 package com.epicness.alejandria.showcase.modules.grids;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Hexagon;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 import java.util.Arrays;
 
@@ -68,14 +68,25 @@ public class HexagonDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        shapeRenderer.begin();
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        shapeBatch.begin();
         for (int column = 0; column < COLUMNS; column++) {
             for (int row = 0; row < ROWS; row++) {
-                hexagons[column][row].draw(shapeRenderer);
+                hexagons[column][row].draw(shapeBatch);
             }
         }
-        shapeRenderer.end();
+        shapeBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.begin();
+        for (int column = 0; column < COLUMNS; column++) {
+            for (int row = 0; row < ROWS; row++) {
+                hexagons[column][row].draw(shapeBatch);
+            }
+        }
+        shapeBatch.end();
     }
 
     public Hexagon[][] getHexagons() {

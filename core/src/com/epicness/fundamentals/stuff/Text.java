@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Scrollable;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.utils.TextUtils;
 
-public class Text implements Buttonable, Scrollable {
+public class Text implements Buttonable, Movable {
 
     protected Rectangle bounds;
     private BitmapFont font;

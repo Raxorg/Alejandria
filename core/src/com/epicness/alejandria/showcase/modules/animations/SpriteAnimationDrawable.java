@@ -5,10 +5,10 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class SpriteAnimationDrawable implements Drawable {
 
@@ -31,11 +31,19 @@ public class SpriteAnimationDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         frames.draw(spriteBatch);
         animation.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.begin();
+        shapeBatch.rect(frames.getBoundingRectangle());
+        shapeBatch.rect(animation.getBoundingRectangle());
+        shapeBatch.end();
     }
 
     public SpritedAnimation getAnimation() {

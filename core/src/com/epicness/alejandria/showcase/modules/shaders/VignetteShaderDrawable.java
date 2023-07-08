@@ -6,9 +6,9 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class VignetteShaderDrawable implements Drawable {
 
@@ -37,12 +37,16 @@ public class VignetteShaderDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         square1.draw(spriteBatch);
         square2.draw(spriteBatch);
         square3.draw(spriteBatch);
         square4.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 }

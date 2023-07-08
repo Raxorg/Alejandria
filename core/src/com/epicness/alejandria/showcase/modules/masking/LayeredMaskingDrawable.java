@@ -17,10 +17,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 
 import java.util.ArrayList;
@@ -97,12 +98,12 @@ public class LayeredMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         drawUnmasked(spriteBatch);
-        drawMask(spriteBatch, shapeRenderer);
-        drawMasked(spriteBatch, shapeRenderer);
-        drawMask2(spriteBatch, shapeRenderer);
-        drawMasked2(spriteBatch, shapeRenderer);
+        drawMask(spriteBatch, shapeBatch);
+        drawMasked(spriteBatch, shapeBatch);
+        drawMask2(spriteBatch, shapeBatch);
+        drawMasked2(spriteBatch, shapeBatch);
         // Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
@@ -194,6 +195,10 @@ public class LayeredMaskingDrawable implements Drawable {
         shapeRenderer.begin(Filled);
         circle2.drawContour(shapeRenderer);
         shapeRenderer.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Sprited getMask() {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({"rawtypes"})
 public abstract class Logic {
 
     protected SharedLogic sharedLogic;
@@ -36,6 +36,10 @@ public abstract class Logic {
 
     public void registerHandler(LogicHandler logicHandler) {
         logicHandlers.add(logicHandler);
+    }
+
+    public void registerHandler(int index, LogicHandler logicHandler) {
+        logicHandlers.add(index, logicHandler);
     }
 
     public void setStructure(

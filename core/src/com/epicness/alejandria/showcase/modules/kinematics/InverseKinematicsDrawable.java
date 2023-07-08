@@ -9,10 +9,10 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Tentacle;
 import com.epicness.fundamentals.utils.Random;
 
@@ -38,12 +38,16 @@ public class InverseKinematicsDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         for (int i = 0; i < tentacles.length; i++) {
             tentacles[i].draw(shapeDrawer);
         }
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Tentacle[] getTentacles() {
