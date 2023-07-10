@@ -26,6 +26,7 @@ import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
 import com.epicness.alejandria.showcase.modules.shaders.InvertShader;
 import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
+import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
 import com.epicness.fundamentals.logic.Logic;
 
@@ -74,6 +75,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new InvertShader());
         registerHandler(new ShakeShader());
         registerHandler(new VignetteShader());
+        // UI
+        registerHandler(new DragAndDrop());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
 
