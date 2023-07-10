@@ -8,12 +8,12 @@ import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 import java.util.Arrays;
 
-public class HexagonDrawable implements Drawable {
+public class HexagonSelectionDrawable implements Drawable {
 
     private final Hexagon[][] hexagons;
     public static final int COLUMNS = 9, ROWS = 6;
 
-    public HexagonDrawable() {
+    public HexagonSelectionDrawable() {
         float size = 96f;
         float[] vertices = new float[12];
         vertices[0] = 0f;
