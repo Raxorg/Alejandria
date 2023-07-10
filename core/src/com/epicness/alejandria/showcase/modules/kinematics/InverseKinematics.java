@@ -6,7 +6,7 @@ import com.epicness.fundamentals.stuff.shapes.Tentacle;
 public class InverseKinematics extends Module<InverseKinematicsDrawable> {
 
     public InverseKinematics() {
-        super("Inverse Kinematics", "Click or touch to lock");
+        super("Inverse Kinematics", "Click or touch to toggle tentacle lock");
     }
 
     @Override
