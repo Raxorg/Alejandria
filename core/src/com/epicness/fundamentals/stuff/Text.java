@@ -5,11 +5,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.utils.TextUtils;
 
-public class Text implements Buttonable, Movable {
+public class Text implements Buttonable, Drawable, Movable {
 
     protected Rectangle bounds;
     private BitmapFont font;
@@ -30,13 +32,14 @@ public class Text implements Buttonable, Movable {
         centerVertical = false;
     }
 
-    public void draw(SpriteBatch spriteBatch) {
+    @Override
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         font.setColor(color);
         getFont().draw(
                 spriteBatch,
                 text,
                 bounds.x,
-                centerVertical ? bounds.y + bounds.height / 2f : bounds.y,
+                centerVertical ? bounds.y + bounds.height / 2f : bounds.y + bounds.height,
                 0,
                 text.length(),
                 bounds.width,
@@ -46,8 +49,12 @@ public class Text implements Buttonable, Movable {
         );
     }
 
-    protected void calculateSize() {
-        bounds.height = TextUtils.getTextHeight(getFont(), text, bounds.width, horizontalAlignment, true, truncate);
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.rect(
+                bounds.x, centerVertical ? bounds.y - bounds.height / 2f : bounds.y,
+                bounds.width, bounds.height
+        );
     }
 
     @Override
@@ -73,6 +80,10 @@ public class Text implements Buttonable, Movable {
     @Override
     public void translateY(float y) {
         bounds.y += y;
+    }
+
+    protected void calculateSize() {
+        bounds.height = TextUtils.getTextHeight(this);
     }
 
     public float getTextWidth() {
