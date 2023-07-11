@@ -20,6 +20,7 @@ import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
+import com.epicness.alejandria.showcase.modules.rendering.ManualScreenClear;
 import com.epicness.alejandria.showcase.modules.rendering.OrthographicExample;
 import com.epicness.alejandria.showcase.modules.rendering3d.Decal;
 import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
@@ -67,6 +68,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ProceduralSquare());
         // Rendering
         registerHandler(new FrameBuffering());
+        registerHandler(new ManualScreenClear());
         registerHandler(new OrthographicExample());
         // Rendering 3D
         registerHandler(new Decal());

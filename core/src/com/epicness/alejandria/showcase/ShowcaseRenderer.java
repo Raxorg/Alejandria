@@ -8,9 +8,11 @@ import com.epicness.fundamentals.renderer.Renderer;
 
 public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
 
+    public boolean clearScreen = true;
+
     @Override
     public void render() {
-        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
+        if (clearScreen) ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
 
         stuff.getShowcase().draw(spriteBatch, shapeBatch);
 
