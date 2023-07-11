@@ -38,11 +38,11 @@ public class ShaderYoutubeTest extends ApplicationAdapter {
     @Override
     public void render() {
         time += Gdx.graphics.getDeltaTime();
-        //rendering
+        // Apply and update the shader
         batch.setShader(shader);
         shader.setUniformf("u_resolution", Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         shader.setUniformf("time", time);
-        //drawing a sprite on which the shader will be generated
+        // Draw a sprite on which the shader will be generated
         batch.begin();
         sprite1.draw(batch);
         batch.end();

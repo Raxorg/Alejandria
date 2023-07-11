@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.logic;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_75;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -104,11 +104,11 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private void showInformation() {
         SpritedText information = stuff.getInformation();
-        if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
+        if (information.getBackgroundColor().equals(BLACK_CLEAR_75)) {
             hideInformation();
             return;
         }
-        information.setBackgroundColor(BLACK_CLEAR_50);
+        information.setBackgroundColor(BLACK_CLEAR_75);
         information.setTextColor(WHITE);
         showingInformation = true;
     }
