@@ -32,10 +32,10 @@ public class WelcomeDrawable implements Drawable {
         shader.bind();
         ShaderProgram.pedantic = false;
         if (!shader.isCompiled()) {
-            System.out.println("ERROR: Failed to compile shaders");
+            Gdx.app.error("SHADER", "Failed to compile shader");
         }
         if (!shader.getLog().isEmpty()) {
-            System.out.println("SHADER LOG: " + shader.getLog());
+            Gdx.app.error("SHADER LOG:", shader.getLog());
         }
         canvas = new Sprited(pixel);
         canvas.setSize(CANVAS_SIZE);

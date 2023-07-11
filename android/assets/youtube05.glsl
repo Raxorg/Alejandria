@@ -29,7 +29,7 @@ void main() {
     vec2 originalUV = uv;
     vec3 finalColor = vec3(0.0);
 
-    float iterations = 3.0;
+    const float iterations = 3.0;
     for (float i = 0.0; i < iterations; i++) {
         uv = fract(uv * 1.5) - 0.5;
 
