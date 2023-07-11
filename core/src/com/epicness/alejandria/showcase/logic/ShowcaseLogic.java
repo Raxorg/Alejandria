@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.logic;
 
+import com.epicness.alejandria.showcase.modules.Welcome;
 import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.modules.bullets.BulletSpawning;
@@ -36,6 +37,8 @@ public class ShowcaseLogic extends Logic {
     private final ShowcaseHandler showcaseHandler;
 
     public ShowcaseLogic() {
+        // Welcome
+        registerHandler(new Welcome());
         // Animations
         registerHandler(new SpriteAnimation());
         registerHandler(new SpriteRotationAnimation());
