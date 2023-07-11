@@ -16,7 +16,7 @@ public class HexagonSelection extends Module<HexagonSelectionDrawable> {
     private int radius;
 
     public HexagonSelection() {
-        super("Hexagon selection", "Select a hexagon\npress 1 to 4 to change the radius");
+        super("Hexagon selection", "Select a hexagon\n\npress 1 to 4 to change the selection radius");
     }
 
     @Override

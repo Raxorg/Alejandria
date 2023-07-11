@@ -28,7 +28,7 @@ public class AStar extends Module<AStarDrawable> {
     private boolean finished;
 
     public AStar() {
-        super("A Star Pathfinding", "1 to reset\n2 to change simulation speed\nUses euclidean heuristic");
+        super("A Star Pathfinding", "1 to reset\n\n2 to change simulation speed\n\nUses euclidean heuristic");
     }
 
     @Override

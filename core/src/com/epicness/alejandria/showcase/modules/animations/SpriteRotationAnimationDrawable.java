@@ -1,11 +1,12 @@
 package com.epicness.alejandria.showcase.modules.animations;
 
+import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SQUARE_SIZE;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.WEIRD_SHAPE_SIZE;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.renderer.ShapeBatch;
@@ -20,14 +21,14 @@ public class SpriteRotationAnimationDrawable implements Drawable {
         pixel.setSize(SQUARE_SIZE, SQUARE_SIZE);
         pixel.setOriginCenter();
         pixel.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
-        pixel.setColor(Color.NAVY);
+        pixel.setColor(BLUE);
 
         weirdShape = new Sprite(weirdShapeSprite);
         weirdShape.setSize(WEIRD_SHAPE_SIZE, WEIRD_SHAPE_SIZE);
         weirdShape.setX(CAMERA_HALF_WIDTH - WEIRD_SHAPE_SIZE - SQUARE_SIZE);
         weirdShape.setY(CAMERA_HALF_HEIGHT - WEIRD_SHAPE_SIZE - SQUARE_SIZE);
         weirdShape.setOrigin(WEIRD_SHAPE_SIZE + SQUARE_SIZE, WEIRD_SHAPE_SIZE + SQUARE_SIZE);
-        weirdShape.setColor(Color.BROWN);
+        weirdShape.setColor(RED);
     }
 
     @Override

@@ -1,5 +1,9 @@
 package com.epicness.alejandria.showcase.modules.collisions;
 
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.MathUtils;
@@ -9,20 +13,29 @@ import com.epicness.fundamentals.utils.Random;
 
 public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable> {
 
+    private Sprited[] shapes;
+
     public PixelPerfectCollision() {
         super(
                 "Pixel Perfect Collision",
-                "Click a shape to make it black, if you click on their transparent pixels they will turn into a random color"
+                "Clicking on a transparent pixel inside the regular bounding box will change the shape color\n\n" +
+                        "Clicking on an opaque pixel will reposition the shape"
+
         );
     }
 
     @Override
     public PixelPerfectCollisionDrawable setup() {
-        return new PixelPerfectCollisionDrawable(sharedAssets.getWeirdShape());
+        drawable = new PixelPerfectCollisionDrawable(sharedAssets.getWeirdShape());
+        shapes = drawable.getShapes();
+        for (int i = 0; i < shapes.length; i++) {
+            randomizePosition(shapes[i]);
+        }
+        return drawable;
     }
 
+    @Override
     public void touchDown(float x, float y) {
-        Sprited[] shapes = drawable.getShapes();
         Pixmap pixmap = drawable.getPixmap();
         for (int i = 0; i < shapes.length; i++) {
             Sprited shape = shapes[i];
@@ -38,8 +51,14 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
             if (pixelColor.a == 0) {
                 shape.setColor(Random.opaqueColor());
             } else {
-                shape.setColor(Color.BLACK);
+                randomizePosition(shape);
             }
         }
+    }
+
+    private void randomizePosition(Sprited shape) {
+        float size = shape.getWidth();
+        shape.setX(MathUtils.random(0f, CAMERA_WIDTH - size));
+        shape.setY(MathUtils.random(SHOWCASE_Y, SHOWCASE_Y + SHOWCASE_SIZE - size));
     }
 }
