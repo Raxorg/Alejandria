@@ -12,10 +12,10 @@ import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionCons
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Chunk;
 import com.epicness.alejandria.showcase.stuff.modules.grids.RectangleCell;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,17 +41,24 @@ public class CrossChunkSelectionDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        shapeRenderer.begin(Filled);
-        background.draw(shapeRenderer);
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        shapeBatch.begin(Filled);
+        background.draw(shapeBatch);
         for (int i = 0; i < chunks.size(); i++) {
-            chunks.get(i).drawCells(shapeRenderer);
+            chunks.get(i).drawCells(shapeBatch);
         }
-        shapeRenderer.set(Line);
+        shapeBatch.set(Line);
         for (int i = 0; i < chunks.size(); i++) {
-            chunks.get(i).drawBounds(shapeRenderer);
+            chunks.get(i).drawBounds(shapeBatch);
         }
-        shapeRenderer.end();
+        shapeBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        for (int i = 0; i < chunks.size(); i++) {
+            chunks.get(i).drawBounds(shapeBatch);
+        }
     }
 
     public RectangleCell getBackground() {

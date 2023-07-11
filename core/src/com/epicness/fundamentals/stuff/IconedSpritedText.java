@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Scrollable;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
 
-public class IconedSpritedText implements Buttonable, Scrollable {
+public class IconedSpritedText implements Buttonable, Movable {
 
     private final Sprited background;
     private final Text label;
@@ -33,6 +33,12 @@ public class IconedSpritedText implements Buttonable, Scrollable {
         return background.getBoundingRectangle().contains(x, y);
     }
 
+    @Override
+    public float getX() {
+        return background.getX();
+    }
+
+    @Override
     public void setX(float x) {
         background.setX(x);
         label.setX(x);
@@ -52,15 +58,17 @@ public class IconedSpritedText implements Buttonable, Scrollable {
     }
 
     @Override
-    public void translateY(float y) {
-        background.translateY(y);
-        label.translateY(y);
-        icon.translateY(y);
+    public void translateX(float amount) {
+        background.translateX(amount);
+        label.translateX(amount);
+        icon.translateX(amount);
     }
 
-    public void setPosition(float x, float y) {
-        setX(x);
-        setY(y);
+    @Override
+    public void translateY(float amount) {
+        background.translateY(amount);
+        label.translateY(amount);
+        icon.translateY(amount);
     }
 
     public void setSize(float size) {

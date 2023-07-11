@@ -25,10 +25,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.Grid;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.shapes.Circle;
 
 public class AdvancedSplitScreenDrawable implements Drawable {
@@ -99,29 +99,29 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        drawUnmasked(spriteBatch, shapeRenderer);
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+        drawUnmasked(spriteBatch, shapeBatch);
         if (playersClose || camerasClose) {
             return;
         }
         applyMask(spriteBatch);
-        drawMasked(spriteBatch, shapeRenderer);
+        drawMasked(spriteBatch, shapeBatch);
         drawUnmasked2(spriteBatch);
     }
 
-    private void drawUnmasked(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawUnmasked(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.setProjectionMatrix(camera1.combined);
         spriteBatch.begin();
         grid.draw(spriteBatch);
         spriteBatch.end();
         spriteBatch.setProjectionMatrix(staticCamera.combined);
 
-        shapeRenderer.setProjectionMatrix(camera1.combined);
-        shapeRenderer.begin(Filled);
-        player1.draw(shapeRenderer);
-        player2.draw(shapeRenderer);
-        shapeRenderer.end();
-        shapeRenderer.setProjectionMatrix(staticCamera.combined);
+        shapeBatch.setProjectionMatrix(camera1.combined);
+        shapeBatch.begin(Filled);
+        player1.draw(shapeBatch);
+        player2.draw(shapeBatch);
+        shapeBatch.end();
+        shapeBatch.setProjectionMatrix(staticCamera.combined);
     }
 
     private void applyMask(SpriteBatch spriteBatch) {
@@ -147,7 +147,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         spriteBatch.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawMasked(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
 
@@ -156,11 +156,11 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         grid.draw(spriteBatch);
         spriteBatch.end();
 
-        shapeRenderer.setProjectionMatrix(camera2.combined);
-        shapeRenderer.begin(Filled);
-        player1.draw(shapeRenderer);
-        player2.draw(shapeRenderer);
-        shapeRenderer.end();
+        shapeBatch.setProjectionMatrix(camera2.combined);
+        shapeBatch.begin(Filled);
+        player1.draw(shapeBatch);
+        player2.draw(shapeBatch);
+        shapeBatch.end();
     }
 
     private void drawUnmasked2(SpriteBatch spriteBatch) {
@@ -170,6 +170,10 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         spriteBatch.begin();
         divider.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public Circle getPlayer1() {

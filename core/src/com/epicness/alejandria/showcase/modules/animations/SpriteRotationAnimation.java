@@ -5,7 +5,10 @@ import com.epicness.alejandria.showcase.logic.Module;
 public class SpriteRotationAnimation extends Module<SpriteRotationAnimationDrawable> {
 
     public SpriteRotationAnimation() {
-        super("Sprite Rotation Animation", "Rotation around center and rotation around a custom origin");
+        super(
+                "Sprite Rotation Animation",
+                "Demonstration of rotation around center and rotation around a custom origin"
+        );
     }
 
     @Override

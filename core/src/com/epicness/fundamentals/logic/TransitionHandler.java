@@ -1,25 +1,35 @@
 package com.epicness.fundamentals.logic;
 
 import com.epicness.fundamentals.SharedResources;
+import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.initializer.Initializer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransitionHandler {
 
     // Structure
     private SharedResources sharedResources;
-    private Initializer<?, ?, ?> initializer;
+    private Initializer<?, ?, ?> nextInitializer;
     private SharedLogic logic;
     // Logic
     private boolean transitionAllowed;
 
-    public void startTransition(Initializer<?, ?, ?> nextInitializer) {
-        initializer = sharedResources.findInitializer(nextInitializer);
-        logic.getAssetLoader().startLoadingAssets(initializer.getAssets());
+    public void startTransition(CompletionListener completionListener, Initializer<?, ?, ?> nextInitializer,
+                                Initializer<?, ?, ?>... additionalInitializers) {
+        this.nextInitializer = nextInitializer;
+        List<Assets> assetsList = new ArrayList<>();
+        for (int i = 0; i < additionalInitializers.length; i++) {
+            Initializer<?, ?, ?> initializer = sharedResources.findInitializer(additionalInitializers[i]);
+            assetsList.add(initializer.getAssets());
+        }
+        logic.getAssetLoader().beginLoading(assetsList, completionListener);
     }
 
     public void update() {
         logic.getAssetLoader().update();
-        if (initializer.getAssets().areAssetsInitialized() && transitionAllowed) {
+        if (transitionAllowed) {
             showNewScreen();
             transitionAllowed = false;
         }
@@ -30,12 +40,12 @@ public class TransitionHandler {
     }
 
     private void showNewScreen() {
-        if (initializer.wasInitialized()) {
-            initializer.fastInitialize(sharedResources);
+        if (nextInitializer.wasInitialized()) {
+            nextInitializer.fastInitialize(sharedResources);
             return;
         }
-        initializer.initialize(sharedResources);
-        initializer.initialized();
+        nextInitializer.initialize(sharedResources);
+        nextInitializer.setInitialized();
     }
 
     public void setSharedResources(SharedResources sharedResources) {

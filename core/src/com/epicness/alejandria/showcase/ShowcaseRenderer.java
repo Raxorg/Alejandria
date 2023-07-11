@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
+import static com.epicness.alejandria.showcase.logic.ShowcaseHandler.debug;
 
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
@@ -8,11 +9,13 @@ import com.epicness.fundamentals.renderer.Renderer;
 
 public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
 
+    public boolean clearScreen = true;
+
     @Override
     public void render() {
-        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
+        if (clearScreen) ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
 
-        stuff.getShowcase().draw(spriteBatch, shapeRenderer);
+        stuff.getShowcase().draw(spriteBatch, shapeBatch);
 
         spriteBatch.begin();
         stuff.getTitle().draw(spriteBatch);
@@ -23,5 +26,13 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
         stuff.getNext().draw(spriteBatch);
         stuff.getInformation().draw(spriteBatch);
         spriteBatch.end();
+
+        if (debug) renderDebug();
+    }
+
+    public void renderDebug() {
+        shapeBatch.begin();
+        stuff.getShowcase().drawDebug(shapeBatch);
+        shapeBatch.end();
     }
 }

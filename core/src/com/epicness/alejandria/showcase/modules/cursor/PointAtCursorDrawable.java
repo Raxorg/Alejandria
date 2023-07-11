@@ -1,13 +1,13 @@
 package com.epicness.alejandria.showcase.modules.cursor;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class PointAtCursorDrawable implements Drawable {
 
@@ -25,11 +25,17 @@ public class PointAtCursorDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         triangle1.draw(spriteBatch);
         triangle2.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.rect(triangle1.getBoundingRectangle());
+        shapeBatch.rect(triangle2.getBoundingRectangle());
     }
 
     public Sprited getTriangle1() {

@@ -6,9 +6,9 @@ import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.fundamentals.renderer.Renderer;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class OrthographicExampleDrawable implements Drawable {
 
@@ -25,11 +25,15 @@ public class OrthographicExampleDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         renderer.useDynamicCamera();
         spriteBatch.begin();
         weirdShape.draw(spriteBatch);
         spriteBatch.end();
         renderer.useStaticCamera();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 }

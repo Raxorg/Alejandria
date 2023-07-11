@@ -1,18 +1,17 @@
 package com.epicness.fundamentals.logic.behaviors;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.fundamentals.stuff.interfaces.Scrollable;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
 
 public class ScrollBehavior {
 
-    // Logic
-    private Scrollable scrollable;
+    private Movable movable;
     private float pivot, speed, progress;
     private float minY, maxY;
     private boolean enabled;
 
-    public void setup(Scrollable scrollable, float minY, float maxY) {
-        this.scrollable = scrollable;
+    public void setup(Movable movable, float minY, float maxY) {
+        this.movable = movable;
         this.minY = minY;
         this.maxY = maxY;
         enabled = true;
@@ -31,16 +30,16 @@ public class ScrollBehavior {
     }
 
     public void update(float delta) {
-        if (scrollable == null || !enabled) {
+        if (movable == null || !enabled) {
             return;
         }
-        scrollable.translateY(-speed);
+        movable.translateY(-speed);
 
-        if (scrollable.getY() > maxY) {
-            scrollable.setY(maxY);
+        if (movable.getY() > maxY) {
+            movable.setY(maxY);
         }
-        if (scrollable.getY() < minY) {
-            scrollable.setY(minY);
+        if (movable.getY() < minY) {
+            movable.setY(minY);
         }
 
         speed = MathUtils.lerp(speed, 0f, progress);

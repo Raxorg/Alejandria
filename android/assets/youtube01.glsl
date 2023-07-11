@@ -12,7 +12,7 @@ uniform vec2 u_resolution;
 uniform float time;
 
 void main() {
-    vec2 pos = gl_FragCoord;
+    vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
     vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
 

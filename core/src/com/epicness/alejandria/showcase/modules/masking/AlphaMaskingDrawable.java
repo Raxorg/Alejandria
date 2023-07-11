@@ -15,9 +15,9 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class AlphaMaskingDrawable implements Drawable {
 
@@ -52,7 +52,7 @@ public class AlphaMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         frameBuffer.bind();
         ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR); // Draw the elements the background instead of just clearing the screen
 
@@ -109,5 +109,9 @@ public class AlphaMaskingDrawable implements Drawable {
 
         // Remember to flush before changing GL states again
         spriteBatch.flush();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 }

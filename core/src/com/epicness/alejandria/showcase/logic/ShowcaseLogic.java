@@ -1,7 +1,6 @@
 package com.epicness.alejandria.showcase.logic;
 
-import com.epicness.alejandria.showcase.logic.input.ModuleInputAdapter;
-import com.epicness.alejandria.showcase.logic.input.ShowcaseInputHandler;
+import com.epicness.alejandria.showcase.modules.Welcome;
 import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.modules.bullets.BulletSpawning;
@@ -22,12 +21,14 @@ import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
+import com.epicness.alejandria.showcase.modules.rendering.ManualScreenClear;
 import com.epicness.alejandria.showcase.modules.rendering.OrthographicExample;
 import com.epicness.alejandria.showcase.modules.rendering3d.Decal;
 import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
 import com.epicness.alejandria.showcase.modules.shaders.InvertShader;
 import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
+import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
 import com.epicness.fundamentals.logic.Logic;
 
@@ -36,8 +37,8 @@ public class ShowcaseLogic extends Logic {
     private final ShowcaseHandler showcaseHandler;
 
     public ShowcaseLogic() {
-        // Shared
-        registerHandler(new ModuleInputAdapter());
+        // Welcome
+        registerHandler(new Welcome());
         // Animations
         registerHandler(new SpriteAnimation());
         registerHandler(new SpriteRotationAnimation());
@@ -70,6 +71,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new ProceduralSquare());
         // Rendering
         registerHandler(new FrameBuffering());
+        registerHandler(new ManualScreenClear());
         registerHandler(new OrthographicExample());
         // Rendering 3D
         registerHandler(new Decal());
@@ -78,6 +80,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new InvertShader());
         registerHandler(new ShakeShader());
         registerHandler(new VignetteShader());
+        // UI
+        registerHandler(new DragAndDrop());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
 

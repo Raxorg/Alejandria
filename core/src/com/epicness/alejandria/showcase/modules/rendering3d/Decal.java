@@ -8,7 +8,7 @@ public class Decal extends Module<DecalDrawable> {
     private FirstPersonCameraController controller;
 
     public Decal() {
-        super("Decal", "Demonstrates rendering of a textured decal\n\nWASD and mouse to move");
+        super("Decal", "Demonstrates rendering of a textured decal\n\nWASD and drag to move");
     }
 
     @Override

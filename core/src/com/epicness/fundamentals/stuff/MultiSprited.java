@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Parallaxable;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
 
-public class MultiSprited implements Buttonable, Parallaxable {
+public class MultiSprited implements Buttonable, Movable {
 
     private final Array<Sprite> sprites;
 
@@ -36,13 +36,15 @@ public class MultiSprited implements Buttonable, Parallaxable {
         return sprites.get(0).getBoundingRectangle().contains(x, y);
     }
 
+    @Override
     public float getX() {
         return sprites.get(0).getX();
     }
 
-    public void setX(float x) {
+    @Override
+    public void translateX(float amount) {
         for (int i = 0; i < sprites.size; i++) {
-            sprites.get(i).setX(x);
+            sprites.get(i).translateX(amount);
         }
     }
 
@@ -50,28 +52,12 @@ public class MultiSprited implements Buttonable, Parallaxable {
         sprites.get(index).setX(x);
     }
 
+    @Override
     public float getY() {
         return sprites.get(0).getY();
     }
 
-    public void setY(float y) {
-        for (int i = 0; i < sprites.size; i++) {
-            sprites.get(i).setY(y);
-        }
-    }
-
-    public void setPosition(float x, float y) {
-        for (int i = 0; i < sprites.size; i++) {
-            sprites.get(i).setPosition(x, y);
-        }
-    }
-
-    public void translateX(float amount) {
-        for (int i = 0; i < sprites.size; i++) {
-            sprites.get(i).translateX(amount);
-        }
-    }
-
+    @Override
     public void translateY(float amount) {
         for (int i = 0; i < sprites.size; i++) {
             sprites.get(i).translateY(amount);

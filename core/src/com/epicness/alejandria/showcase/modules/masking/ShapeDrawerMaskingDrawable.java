@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDTriangle;
+import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
@@ -57,7 +57,7 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         drawMask(spriteBatch);
         drawMasked(spriteBatch);
         // Back to default depth test
@@ -95,6 +95,10 @@ public class ShapeDrawerMaskingDrawable implements Drawable {
         triangle3.draw(shapeDrawer, true);
         triangle4.draw(shapeDrawer, true);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
     }
 
     public SDCircle getMask() {

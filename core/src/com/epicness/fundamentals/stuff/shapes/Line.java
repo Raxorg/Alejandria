@@ -1,7 +1,6 @@
 package com.epicness.fundamentals.stuff.shapes;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.alejandria.showcase.constants.KinematicsConstants.IK_LINE_LENGTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -13,7 +12,7 @@ import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class Line implements Movable {
 
-    private Vector2 a, b;
+    private final Vector2 a, b;
     private float angleDeg;
     private final float length;
     private final Color color;
@@ -88,7 +87,7 @@ public class Line implements Movable {
     public void follow(Vector2 target) {
         Vector2 dir = target.cpy().sub(a);
         setRotation(dir.angleDeg());
-        dir.setLength(IK_LINE_LENGTH);
+        dir.setLength(length);
         dir.scl(-1f);
         setA(target.cpy().add(dir));
     }
@@ -102,7 +101,7 @@ public class Line implements Movable {
     }
 
     public void setA(Vector2 position) {
-        a = position;
+        a.set(position);
         calculateB();
     }
 

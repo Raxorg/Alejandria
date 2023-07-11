@@ -11,8 +11,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class BulletSpawningDrawable implements Drawable {
 
@@ -39,12 +40,17 @@ public class BulletSpawningDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeRenderer) {
         spriteBatch.begin();
         gun.draw(spriteBatch);
         bullet.draw(spriteBatch);
         center.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+
     }
 
     public Sprited getGun() {

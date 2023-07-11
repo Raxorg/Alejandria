@@ -1,15 +1,15 @@
 package com.epicness.alejandria.showcase.modules.cursor;
 
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.BEAM_THICKNESS;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.alejandria.showcase.stuff.Drawable;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 public class BeamAimingDrawable implements Drawable {
 
@@ -29,11 +29,17 @@ public class BeamAimingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
         spriteBatch.begin();
         triangle.draw(spriteBatch);
         beam.draw(spriteBatch);
         spriteBatch.end();
+    }
+
+    @Override
+    public void drawDebug(ShapeBatch shapeBatch) {
+        shapeBatch.rect(triangle.getBoundingRectangle());
+        shapeBatch.rect(beam.getBoundingRectangle());
     }
 
     public Sprited getTriangle() {

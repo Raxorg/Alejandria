@@ -1,7 +1,5 @@
 package com.epicness.fundamentals.stuff.shapes;
 
-import static com.epicness.alejandria.showcase.constants.KinematicsConstants.IK_LINES;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -13,7 +11,8 @@ public class Tentacle implements Movable {
 
     private final Line[] lines;
     private final Vector2 target;
-    private Vector2 lockPosition;
+    private final Vector2 lockPosition;
+    private boolean locked;
 
     public Tentacle(int lineAmount, float lineLength) {
         lines = new Line[lineAmount];
@@ -22,6 +21,8 @@ public class Tentacle implements Movable {
             lines[i] = new Line(lines[i - 1], lineLength);
         }
         target = new Vector2();
+        lockPosition = new Vector2();
+        locked = false;
     }
 
     public Tentacle(int lineAmount, float lineLength, float startingWidth, float finalWidth, Color color1, Color color2) {
@@ -68,9 +69,9 @@ public class Tentacle implements Movable {
             lines[i].follow(target);
         }
 
-        if (lockPosition != null) {
-            lines[IK_LINES - 1].setA(lockPosition);
-            for (int i = IK_LINES - 2; i >= 0; i--) {
+        if (locked) {
+            lines[lines.length - 1].setA(lockPosition);
+            for (int i = lines.length - 2; i >= 0; i--) {
                 lines[i].setA(lines[i + 1].getB());
             }
         }
@@ -85,18 +86,16 @@ public class Tentacle implements Movable {
     }
 
     public void lock() {
-        lockPosition = lines[lines.length - 1].getA();
+        lockPosition.set(lines[lines.length - 1].getA());
+        locked = true;
     }
 
     public void unlock() {
-        lockPosition = null;
+        locked = false;
     }
 
     public void toggleLock() {
-        if (lockPosition == null) {
-            lock();
-        } else {
-            unlock();
-        }
+        if (locked) unlock();
+        else lock();
     }
 }

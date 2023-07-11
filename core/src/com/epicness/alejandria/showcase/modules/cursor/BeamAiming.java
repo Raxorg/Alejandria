@@ -18,8 +18,13 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
     private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
 
     public BeamAiming() {
-        super("Beam Aiming", "Demonstration of rotating a sprite around a movable object aiming towards the cursor" +
-                "\nWASD to move the triangle");
+        super(
+                "Beam Aiming",
+                "The sprite in blue has dynamic width\n\n" +
+                        "Rotation is calculated so that one end of it is anchored to the triangle " +
+                        "and the other end to the cursor\n\n" +
+                        "WASD to move the triangle"
+        );
     }
 
     @Override
@@ -68,6 +73,7 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
         beam.setWidth(distance + beam.getHeight() / 2f);
     }
 
+    @Override
     public void mouseMoved(float cursorX, float cursorY) {
         lastCursorX = cursorX;
         lastCursorY = cursorY;

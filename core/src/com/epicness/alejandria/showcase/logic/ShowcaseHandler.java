@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.logic;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_75;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -17,6 +17,8 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private List<Module<?>> modules;
     private Module<?> currentModule;
+    private boolean showingInformation;
+    public static boolean debug;
     // Stuff
     private Sprited previous, gitHub, info, next;
 
@@ -35,6 +37,8 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             }
         }
         changeModule(0);
+        showingInformation = false;
+        debug = false;
     }
 
     public void update(float delta) {
@@ -59,9 +63,9 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         else if (next.contains(x, y))
             changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
         else if (gitHub.contains(x, y))
-            Gdx.net.openURI(currentModule.gitHubPath);
+            openGitHub();
         else if (info.contains(x, y))
-            showInformation();
+            toggleInformation();
         else
             hideInformation();
     }
@@ -86,19 +90,37 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         hideInformation();
     }
 
+    public void openGitHub() {
+        Gdx.net.openURI(currentModule.gitHubPath);
+    }
+
+    public void toggleInformation() {
+        if (showingInformation) {
+            hideInformation();
+        } else {
+            showInformation();
+        }
+    }
+
     private void showInformation() {
         SpritedText information = stuff.getInformation();
-        if (information.getBackgroundColor().toFloatBits() == BLACK_CLEAR_50.toFloatBits()) {
+        if (information.getBackgroundColor().equals(BLACK_CLEAR_75)) {
             hideInformation();
             return;
         }
-        information.setBackgroundColor(BLACK_CLEAR_50);
+        information.setBackgroundColor(BLACK_CLEAR_75);
         information.setTextColor(WHITE);
+        showingInformation = true;
     }
 
     private void hideInformation() {
         SpritedText information = stuff.getInformation();
         information.setBackgroundColor(Color.CLEAR);
         information.setTextColor(Color.CLEAR);
+        showingInformation = false;
+    }
+
+    public void toggleDebug() {
+        debug = !debug;
     }
 }

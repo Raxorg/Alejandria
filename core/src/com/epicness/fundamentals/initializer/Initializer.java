@@ -65,7 +65,7 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         return assets;
     }
 
-    public void initialized() {
+    public void setInitialized() {
         initialized = true;
     }
 

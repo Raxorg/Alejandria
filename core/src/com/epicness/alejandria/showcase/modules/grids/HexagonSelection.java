@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.grids;
 
-import static com.epicness.alejandria.showcase.modules.grids.HexagonDrawable.COLUMNS;
-import static com.epicness.alejandria.showcase.modules.grids.HexagonDrawable.ROWS;
+import static com.epicness.alejandria.showcase.modules.grids.HexagonSelectionDrawable.COLUMNS;
+import static com.epicness.alejandria.showcase.modules.grids.HexagonSelectionDrawable.ROWS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,19 +11,19 @@ import com.epicness.alejandria.showcase.stuff.modules.grids.Hexagon;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HexagonSelection extends Module<HexagonDrawable> {
+public class HexagonSelection extends Module<HexagonSelectionDrawable> {
 
     private int radius;
 
     public HexagonSelection() {
-        super("Hexagon selection", "Select a hexagon, press 1 to 4 to change the radius");
+        super("Hexagon selection", "Select a hexagon\n\npress 1 to 4 to change the selection radius");
     }
 
     @Override
-    protected HexagonDrawable setup() {
+    protected HexagonSelectionDrawable setup() {
         radius = 1;
         Gdx.gl.glLineWidth(3f);
-        return new HexagonDrawable();
+        return new HexagonSelectionDrawable();
     }
 
     @Override

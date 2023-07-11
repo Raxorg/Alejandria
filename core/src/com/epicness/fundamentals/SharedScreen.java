@@ -11,7 +11,7 @@ import com.epicness.fundamentals.renderer.Renderer;
 public class SharedScreen extends ScreenAdapter {
 
     private Logic logic;
-    private Renderer renderer;
+    private Renderer<?> renderer;
     private final OrthographicCamera dynamicCamera, staticCamera;
 
     public SharedScreen() {
@@ -44,7 +44,7 @@ public class SharedScreen extends ScreenAdapter {
         this.logic = logic;
     }
 
-    public void setRenderer(Renderer renderer) {
+    public void setRenderer(Renderer<?> renderer) {
         this.renderer = renderer;
     }
 }

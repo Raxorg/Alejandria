@@ -4,21 +4,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public interface Movable {
 
-    void translateX(float amount);
-
-    void translateY(float amount);
-
-    default void translate(float xAmount, float yAmount) {
-        translateX(xAmount);
-        translateY(yAmount);
-    }
-
-    default void translate(Vector2 amount) {
-        translateX(amount.x);
-        translateY(amount.y);
-    }
-
     float getX();
+
+    void translateX(float amount);
 
     default void setX(float x) {
         translateX(x - getX());
@@ -30,12 +18,24 @@ public interface Movable {
 
     float getY();
 
+    void translateY(float amount);
+
     default void setY(float y) {
         translateY(y - getY());
     }
 
     default void copyY(Movable other) {
         setY(other.getY());
+    }
+
+    default void translate(float xAmount, float yAmount) {
+        translateX(xAmount);
+        translateY(yAmount);
+    }
+
+    default void translate(Vector2 amount) {
+        translateX(amount.x);
+        translateY(amount.y);
     }
 
     default Vector2 getPosition() {

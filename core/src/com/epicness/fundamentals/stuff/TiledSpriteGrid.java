@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 
 public class TiledSpriteGrid {
 
@@ -53,20 +53,20 @@ public class TiledSpriteGrid {
         }
     }
 
-    public void drawDebug(Camera camera, ShapeRenderer shapeRenderer) {
+    public void drawDebug(Camera camera, ShapeBatch shapeBatch) {
         // Scissors
-        ScissorStack.calculateScissors(camera, shapeRenderer.getTransformMatrix(), bounds, scissors);
+        ScissorStack.calculateScissors(camera, shapeBatch.getTransformMatrix(), bounds, scissors);
         boolean pop = ScissorStack.pushScissors(scissors);
         // Background
-        background.drawDebug(shapeRenderer);
+        background.drawDebug(shapeBatch);
         // Sprites
         for (int column = 0; column < sprites.length; column++) {
             for (int row = 0; row < sprites[column].length; row++) {
-                sprites[column][row].drawDebug(shapeRenderer);
+                sprites[column][row].drawDebug(shapeBatch);
             }
         }
         // Returning to normal rendering
-        shapeRenderer.flush();
+        shapeBatch.flush();
         if (pop) {
             ScissorStack.popScissors();
         }

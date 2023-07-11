@@ -4,9 +4,9 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
+import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.utils.Random;
 
 import java.util.ArrayList;
@@ -31,16 +31,16 @@ public class Chunk {
         }
     }
 
-    public void drawCells(ShapeRenderer shapeRenderer) {
+    public void drawCells(ShapeBatch shapeBatch) {
         for (int i = 0; i < cells.size(); i++) {
             RectangleCell cell = cells.get(i);
-            shapeRenderer.setColor(cell.color);
-            shapeRenderer.rect(cell.x, cell.y, cell.width, cell.height);
+            shapeBatch.setColor(cell.color);
+            shapeBatch.rect(cell);
         }
     }
 
-    public void drawBounds(ShapeRenderer shapeRenderer) {
-        shapeRenderer.setColor(WHITE);
-        shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height);
+    public void drawBounds(ShapeBatch shapeBatch) {
+        shapeBatch.setColor(WHITE);
+        shapeBatch.rect(bounds);
     }
 }

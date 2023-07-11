@@ -9,6 +9,7 @@ varying vec2 v_texCoord0;
 
 uniform sampler2D u_texture;
 uniform vec2 u_resolution;
+uniform vec2 u_position;
 uniform float time;
 
 const vec3 a = vec3(0.5, 0.5, 0.5);
@@ -21,14 +22,14 @@ vec3 palette(in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {
 }
 
 void main() {
-    vec2 pos = gl_FragCoord.xy;
+    vec2 pos = gl_FragCoord.xy - u_position;
     vec2 reso = u_resolution;
 
     vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
     vec2 originalUV = uv;
     vec3 finalColor = vec3(0.0);
 
-    float iterations = 3.0;
+    const float iterations = 3.0;
     for (float i = 0.0; i < iterations; i++) {
         uv = fract(uv * 1.5) - 0.5;
 
