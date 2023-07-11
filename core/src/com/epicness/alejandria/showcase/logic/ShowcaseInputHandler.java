@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.logic;
 
+import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.G;
 import static com.badlogic.gdx.Input.Keys.I;
 import static com.badlogic.gdx.Input.Keys.LEFT;
@@ -52,6 +53,9 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
                 return;
             case G:
                 logic.get(ShowcaseHandler.class).openGitHub();
+                return;
+            case D:
+                logic.get(ShowcaseHandler.class).toggleDebug();
                 return;
         }
         if (module != null) module.keyDown(keycode);

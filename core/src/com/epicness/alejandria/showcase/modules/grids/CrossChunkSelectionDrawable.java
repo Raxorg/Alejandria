@@ -56,11 +56,9 @@ public class CrossChunkSelectionDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         for (int i = 0; i < chunks.size(); i++) {
             chunks.get(i).drawBounds(shapeBatch);
         }
-        shapeBatch.end();
     }
 
     public RectangleCell getBackground() {

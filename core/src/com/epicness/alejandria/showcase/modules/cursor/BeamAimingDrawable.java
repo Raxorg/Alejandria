@@ -38,10 +38,8 @@ public class BeamAimingDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         shapeBatch.rect(triangle.getBoundingRectangle());
         shapeBatch.rect(beam.getBoundingRectangle());
-        shapeBatch.end();
     }
 
     public Sprited getTriangle() {

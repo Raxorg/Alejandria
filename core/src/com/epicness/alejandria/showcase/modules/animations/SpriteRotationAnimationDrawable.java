@@ -40,10 +40,8 @@ public class SpriteRotationAnimationDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         shapeBatch.rect(pixel.getBoundingRectangle());
         shapeBatch.rect(weirdShape.getBoundingRectangle());
-        shapeBatch.end();
     }
 
     public Sprite getPixel() {

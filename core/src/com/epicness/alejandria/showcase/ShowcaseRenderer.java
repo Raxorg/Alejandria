@@ -1,6 +1,7 @@
 package com.epicness.alejandria.showcase;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
+import static com.epicness.alejandria.showcase.logic.ShowcaseHandler.debug;
 
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
@@ -25,5 +26,13 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
         stuff.getNext().draw(spriteBatch);
         stuff.getInformation().draw(spriteBatch);
         spriteBatch.end();
+
+        if (debug) renderDebug();
+    }
+
+    public void renderDebug() {
+        shapeBatch.begin();
+        stuff.getShowcase().drawDebug(shapeBatch);
+        shapeBatch.end();
     }
 }

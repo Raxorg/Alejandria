@@ -40,10 +40,8 @@ public class SpriteAnimationDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         shapeBatch.rect(frames.getBoundingRectangle());
         shapeBatch.rect(animation.getBoundingRectangle());
-        shapeBatch.end();
     }
 
     public SpritedAnimation getAnimation() {

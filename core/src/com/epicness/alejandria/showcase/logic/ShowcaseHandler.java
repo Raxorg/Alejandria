@@ -18,6 +18,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     private List<Module<?>> modules;
     private Module<?> currentModule;
     private boolean showingInformation;
+    public static boolean debug;
     // Stuff
     private Sprited previous, gitHub, info, next;
 
@@ -37,6 +38,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
         changeModule(0);
         showingInformation = false;
+        debug = false;
     }
 
     public void update(float delta) {
@@ -116,5 +118,9 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         information.setBackgroundColor(Color.CLEAR);
         information.setTextColor(Color.CLEAR);
         showingInformation = false;
+    }
+
+    public void toggleDebug() {
+        debug = !debug;
     }
 }

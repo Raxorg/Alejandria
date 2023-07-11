@@ -56,11 +56,9 @@ public class BeepingBallsDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         for (int i = 0; i < BALLS; i++) {
             balls[i].drawDebug(shapeBatch);
         }
-        shapeBatch.end();
     }
 
     public BeepingBall[] getBalls() {

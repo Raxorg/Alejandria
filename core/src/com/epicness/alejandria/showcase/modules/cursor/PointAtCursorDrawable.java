@@ -34,10 +34,8 @@ public class PointAtCursorDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         shapeBatch.rect(triangle1.getBoundingRectangle());
         shapeBatch.rect(triangle2.getBoundingRectangle());
-        shapeBatch.end();
     }
 
     public Sprited getTriangle1() {

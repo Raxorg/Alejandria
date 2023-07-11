@@ -80,13 +80,11 @@ public class HexagonSelectionDrawable implements Drawable {
 
     @Override
     public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.begin();
         for (int column = 0; column < COLUMNS; column++) {
             for (int row = 0; row < ROWS; row++) {
                 hexagons[column][row].draw(shapeBatch);
             }
         }
-        shapeBatch.end();
     }
 
     public Hexagon[][] getHexagons() {
