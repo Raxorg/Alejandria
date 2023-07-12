@@ -14,6 +14,7 @@ public class HtmlLauncher extends GwtApplication {
         GwtApplicationConfiguration config = new GwtApplicationConfiguration(WINDOW_SIZE, WINDOW_SIZE, true);
         config.padHorizontal = 0;
         config.padVertical = 0;
+        config.preserveDrawingBuffer = true;
         return config;
     }
 
