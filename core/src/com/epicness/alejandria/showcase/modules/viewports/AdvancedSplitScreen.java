@@ -27,7 +27,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     public AdvancedSplitScreen() {
         super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n\n" +
-                "WASD and IJKL to move the dots");
+                "WASD and UHJK to move the dots");
     }
 
     @Override
