@@ -12,7 +12,11 @@ public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
     private Sprited weirdShape;
 
     public ManualScreenClear() {
-        super("Manual Screen Clear", "Press space to toggle screen clearing");
+        super(
+                "Manual Screen Clear",
+                "Press space to toggle screen clearing\n\n" +
+                        "We cannot control this in web deployments as this is handled by the browser"
+        );
     }
 
     @Override

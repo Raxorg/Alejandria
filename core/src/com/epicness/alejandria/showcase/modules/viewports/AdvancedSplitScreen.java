@@ -2,11 +2,11 @@ package com.epicness.alejandria.showcase.modules.viewports;
 
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
-import static com.badlogic.gdx.Input.Keys.I;
+import static com.badlogic.gdx.Input.Keys.H;
 import static com.badlogic.gdx.Input.Keys.J;
 import static com.badlogic.gdx.Input.Keys.K;
-import static com.badlogic.gdx.Input.Keys.L;
 import static com.badlogic.gdx.Input.Keys.S;
+import static com.badlogic.gdx.Input.Keys.U;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
@@ -65,16 +65,16 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
         if (Gdx.input.isKeyPressed(D)) {
             player1.translateX(translation);
         }
-        if (Gdx.input.isKeyPressed(I)) {
+        if (Gdx.input.isKeyPressed(U)) {
             player2.translateY(translation);
         }
-        if (Gdx.input.isKeyPressed(J)) {
+        if (Gdx.input.isKeyPressed(H)) {
             player2.translateX(-translation);
         }
-        if (Gdx.input.isKeyPressed(K)) {
+        if (Gdx.input.isKeyPressed(J)) {
             player2.translateY(-translation);
         }
-        if (Gdx.input.isKeyPressed(L)) {
+        if (Gdx.input.isKeyPressed(K)) {
             player2.translateX(translation);
         }
     }
