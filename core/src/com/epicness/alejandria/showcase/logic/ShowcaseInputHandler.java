@@ -56,7 +56,7 @@ public class ShowcaseInputHandler extends InputHandler<ShowcaseLogic, ShowcaseSt
                 return;
             case D:
                 logic.get(ShowcaseHandler.class).toggleDebug();
-                return;
+                break;
         }
         if (module != null) module.keyDown(keycode);
     }
