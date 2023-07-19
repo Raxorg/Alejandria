@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.assets.SharedAssets;
+import com.epicness.fundamentals.input.LogicInputHandler;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.SharedStuff;
@@ -26,6 +27,8 @@ public abstract class Logic {
     public void initialLogic() {
         for (LogicHandler logicHandler : logicHandlers) {
             logicHandler.init();
+            if (logicHandler instanceof LogicInputHandler)
+                ((LogicInputHandler) logicHandler).register();
         }
     }
 

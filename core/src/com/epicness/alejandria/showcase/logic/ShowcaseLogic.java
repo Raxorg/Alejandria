@@ -86,7 +86,6 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new AdvancedSplitScreen());
 
         registerHandler(showcaseHandler = new ShowcaseHandler());
-        registerHandler(new ShowcaseInputHandler());
     }
 
     @Override

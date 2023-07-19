@@ -21,7 +21,7 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
     }
 
     public final D setupModule() {
-        logic.get(ShowcaseInputHandler.class).setModule(this);
+        input.addInputHandler(this);
         return drawable = setup();
     }
 
@@ -30,27 +30,9 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
     public void update(float delta) {
     }
 
-    public void mouseMoved(float x, float y) {
-    }
-
-    public void touchDown(float x, float y) {
-    }
-
-    public void touchDragged(float x, float y) {
-    }
-
-    public void touchUp(float x, float y) {
-    }
-
-    public void keyDown(int keycode) {
-    }
-
-    public void keyUp(int keycode) {
-    }
-
     public final void exitModule() {
         drawable = null;
-        logic.get(ShowcaseInputHandler.class).setModule(null);
+        input.removeInputHandler(this);
         exit();
     }
 

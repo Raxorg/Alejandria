@@ -71,4 +71,8 @@ public class SharedResources {
         initializers.add(initializer);
         return initializer;
     }
+
+    public void registerInitializer(Initializer<?, ?, ?> initializer) {
+        initializers.add(initializer);
+    }
 }

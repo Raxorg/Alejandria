@@ -81,6 +81,13 @@ public class Tentacle implements Movable {
         follow(target.set(x, y));
     }
 
+    public void inverseFollow(Vector2 target){
+        for (int i = lines.length - 1; i >= 0; i--) {
+            target = i == lines.length - 1 ? target : lines[i + 1].getA();
+            lines[i].follow(target);
+        }
+    }
+
     public Line[] getLines() {
         return lines;
     }
