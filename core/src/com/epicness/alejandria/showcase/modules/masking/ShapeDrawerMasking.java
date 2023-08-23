@@ -1,11 +1,11 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;
 
-public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
+public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingModuleDrawable> {
 
     private boolean goingLeft;
 
@@ -17,8 +17,8 @@ public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
     }
 
     @Override
-    public ShapeDrawerMaskingDrawable setup() {
-        return new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+    public ShapeDrawerMaskingModuleDrawable setup() {
+        return new ShapeDrawerMaskingModuleDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.modules.collisions;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -11,7 +11,7 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.Random;
 
-public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable> {
+public class PixelPerfectCollision extends Module<PixelPerfectCollisionModuleDrawable> {
 
     private Sprited[] shapes;
 
@@ -25,8 +25,8 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
     }
 
     @Override
-    public PixelPerfectCollisionDrawable setup() {
-        drawable = new PixelPerfectCollisionDrawable(sharedAssets.getWeirdShape());
+    public PixelPerfectCollisionModuleDrawable setup() {
+        drawable = new PixelPerfectCollisionModuleDrawable(sharedAssets.getWeirdShape());
         shapes = drawable.getShapes();
         for (int i = 0; i < shapes.length; i++) {
             randomizePosition(shapes[i]);

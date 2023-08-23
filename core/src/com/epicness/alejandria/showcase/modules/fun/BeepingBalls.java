@@ -3,24 +3,24 @@ package com.epicness.alejandria.showcase.modules.fun;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.VOLUME;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
 
-public class BeepingBalls extends Module<BeepingBallsDrawable> {
+public class BeepingBalls extends Module<BeepingBallsModuleDrawable> {
 
     public BeepingBalls() {
         super("Some cool beeping balls", "Some cool beeping balls");
     }
 
     @Override
-    public BeepingBallsDrawable setup() {
+    public BeepingBallsModuleDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        drawable = new BeepingBallsDrawable(assets.getCircle(), assets.getCircleGlow());
+        drawable = new BeepingBallsModuleDrawable(assets.getCircle(), assets.getCircleGlow());
         BeepingBall[] balls = drawable.getBalls();
         for (int i = 0; i < BALLS; i++) {
             BeepingBall ball = balls[i];

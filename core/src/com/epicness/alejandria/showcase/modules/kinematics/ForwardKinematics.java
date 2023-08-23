@@ -4,9 +4,9 @@ import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_
 
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.ConnectedLine;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
-public class ForwardKinematics extends Module<ForwardKinematicsDrawable> {
+public class ForwardKinematics extends Module<ForwardKinematicsModuleDrawable> {
 
     private float[] times;
 
@@ -15,12 +15,12 @@ public class ForwardKinematics extends Module<ForwardKinematicsDrawable> {
     }
 
     @Override
-    protected ForwardKinematicsDrawable setup() {
+    protected ForwardKinematicsModuleDrawable setup() {
         times = new float[FK_LINES];
         for (int i = 0; i < times.length; i++) {
             times[i] = i * 20f;
         }
-        return new ForwardKinematicsDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+        return new ForwardKinematicsModuleDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
     }
 
     @Override

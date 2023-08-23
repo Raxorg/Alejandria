@@ -1,13 +1,13 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
 import static com.badlogic.gdx.Input.Keys.SPACE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
+public class ManualScreenClear extends Module<ManualScreenClearModuleDrawable> {
 
     private Sprited weirdShape;
 
@@ -20,8 +20,8 @@ public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
     }
 
     @Override
-    protected ManualScreenClearDrawable setup() {
-        drawable = new ManualScreenClearDrawable(sharedAssets.getWeirdShape());
+    protected ManualScreenClearModuleDrawable setup() {
+        drawable = new ManualScreenClearModuleDrawable(sharedAssets.getWeirdShape());
         weirdShape = drawable.getWeirdShape();
         Gdx.app.postRunnable(() -> renderer.clearScreen = false);
         return drawable;

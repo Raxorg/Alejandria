@@ -1,15 +1,15 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.PHYLLOTAXIS_CIRCLES;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
+public class Phyllotaxis extends Module<PhyllotaxisModuleDrawable> {
 
     private float speed;
     private boolean accelerating;
@@ -20,11 +20,11 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
     }
 
     @Override
-    protected PhyllotaxisDrawable setup() {
+    protected PhyllotaxisModuleDrawable setup() {
         speed = 15f;
         accelerating = false;
 
-        drawable = new PhyllotaxisDrawable();
+        drawable = new PhyllotaxisModuleDrawable();
         Circle[] circles = drawable.getCircles();
         angles = new float[PHYLLOTAXIS_CIRCLES];
         float a = 137.5f;

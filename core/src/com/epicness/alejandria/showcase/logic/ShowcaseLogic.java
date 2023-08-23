@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.logic;
 
+import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.modules.Welcome;
 import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.modules.animations.SpriteRotationAnimation;
@@ -30,6 +31,7 @@ import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
 import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
+import com.epicness.alejandria.showcase.modules.viewports.WideViewport;
 import com.epicness.fundamentals.logic.Logic;
 
 public class ShowcaseLogic extends Logic {
@@ -84,15 +86,16 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new DragAndDrop());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
+        registerHandler(new WideViewport());
 
         registerHandler(showcaseHandler = new ShowcaseHandler());
     }
 
     @Override
-    public void update(float delta) {
-        if (delta >= 0.4f) {
+    public void update() {
+        if (Gdx.graphics.getDeltaTime() >= 0.4f) {
             return;
         }
-        showcaseHandler.update(delta);
+        showcaseHandler.update();
     }
 }

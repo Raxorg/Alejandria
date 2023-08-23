@@ -2,14 +2,14 @@ package com.epicness.alejandria.showcase.modules.kinematics;
 
 import static com.badlogic.gdx.Input.Keys.R;
 import static com.epicness.alejandria.showcase.constants.KinematicsConstants.IK_TENTACLES;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.Tentacle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Tentacle;
 
-public class InverseKinematics extends Module<InverseKinematicsDrawable> {
+public class InverseKinematics extends Module<InverseKinematicsModuleDrawable> {
 
     private Tentacle[] tentacles;
 
@@ -18,8 +18,8 @@ public class InverseKinematics extends Module<InverseKinematicsDrawable> {
     }
 
     @Override
-    protected InverseKinematicsDrawable setup() {
-        drawable = new InverseKinematicsDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+    protected InverseKinematicsModuleDrawable setup() {
+        drawable = new InverseKinematicsModuleDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
         tentacles = drawable.getTentacles();
         lockInCircle();
         return drawable;

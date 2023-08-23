@@ -7,7 +7,7 @@ import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionCons
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_X;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_Y;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -17,7 +17,7 @@ import com.epicness.alejandria.showcase.stuff.modules.grids.RectangleCell;
 
 import java.util.List;
 
-public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
+public class CrossChunkSelection extends Module<CrossChunkSelectionModuleDrawable> {
 
     public CrossChunkSelection() {
         super(
@@ -31,9 +31,9 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
     }
 
     @Override
-    public CrossChunkSelectionDrawable setup() {
+    public CrossChunkSelectionModuleDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        return new CrossChunkSelectionDrawable();
+        return new CrossChunkSelectionModuleDrawable();
     }
 
     @Override

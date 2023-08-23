@@ -1,21 +1,21 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class OrthographicExample extends Module<OrthographicExampleDrawable> {
+public class OrthographicExample extends Module<OrthographicExampleModuleDrawable> {
 
     public OrthographicExample() {
         super("Orthographic Camera Example", "The sprite is not moving, the camera is");
     }
 
     @Override
-    public OrthographicExampleDrawable setup() {
-        return new OrthographicExampleDrawable(renderer, sharedAssets.getWeirdShape());
+    public OrthographicExampleModuleDrawable setup() {
+        return new OrthographicExampleModuleDrawable(renderer, sharedAssets.getWeirdShape());
     }
 
     @Override

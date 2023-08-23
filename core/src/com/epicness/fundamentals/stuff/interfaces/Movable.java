@@ -34,8 +34,7 @@ public interface Movable {
     }
 
     default void translate(Vector2 amount) {
-        translateX(amount.x);
-        translateY(amount.y);
+        translate(amount.x, amount.y);
     }
 
     default Vector2 getPosition() {

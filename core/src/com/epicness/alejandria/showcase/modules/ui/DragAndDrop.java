@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
 import static com.badlogic.gdx.graphics.Color.ORANGE;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -11,7 +11,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 import java.util.List;
 
-public class DragAndDrop extends Module<DragAndDropDrawable> {
+public class DragAndDrop extends Module<DragAndDropModuleDrawable> {
 
     private Sprited dropArea;
     private List<Sprited> squares;
@@ -23,8 +23,8 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     }
 
     @Override
-    protected DragAndDropDrawable setup() {
-        drawable = new DragAndDropDrawable(sharedAssets.getPixel(), sharedAssets.getSquare32());
+    protected DragAndDropModuleDrawable setup() {
+        drawable = new DragAndDropModuleDrawable(sharedAssets.getPixel(), sharedAssets.getSquare32());
         dropArea = drawable.getDropArea();
         squares = drawable.getSquares();
         pivot = new Vector2();

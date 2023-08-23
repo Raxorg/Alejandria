@@ -28,7 +28,7 @@ public class FundamentalsTest extends Game {
         font = new BitmapFont(Gdx.files.internal("fundamentals/fonts/pixelFont.fnt"));
         font.getData().setScale(4f);
         Sprite a = new Sprite(new Texture(WEIRDSHAPE_SPRITE.fileName));
-        x = new DualSprited(a,a);
+        x = new DualSprited(a, a);
         x.setSize(100f);
     }
 

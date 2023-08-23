@@ -32,7 +32,7 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         logic.setStructure(
                 (Game) Gdx.app.getApplicationListener(),
                 sharedResources.getAssets(),
-                sharedResources.getInput(),
+                input,
                 sharedResources.getLogic(),
                 screen,
                 sharedResources.getStuff(),
@@ -73,10 +73,6 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
 
     public Assets getAssets() {
         return assets;
-    }
-
-    public void setInitialized() {
-        initialized = true;
     }
 
     public boolean wasInitialized() {

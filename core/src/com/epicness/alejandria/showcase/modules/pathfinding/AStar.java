@@ -4,11 +4,11 @@ import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_2;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
-import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,7 +20,7 @@ import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGri
 import java.util.ArrayList;
 import java.util.List;
 
-public class AStar extends Module<AStarDrawable> {
+public class AStar extends Module<AStarModuleDrawable> {
 
     private List<PathfindingCell> openCells, closedCells, obstacleCells;
     private PathfindingCell start, target;
@@ -32,8 +32,8 @@ public class AStar extends Module<AStarDrawable> {
     }
 
     @Override
-    public AStarDrawable setup() {
-        drawable = new AStarDrawable(sharedAssets.getSquare32());
+    public AStarModuleDrawable setup() {
+        drawable = new AStarModuleDrawable(sharedAssets.getSquare32());
         initialize();
         return drawable;
     }

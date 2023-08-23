@@ -10,7 +10,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 import com.epicness.fundamentals.utils.Random;
 
-public class BulletSpawning extends Module<BulletSpawningDrawable> {
+public class BulletSpawning extends Module<BulletSpawningModuleDrawable> {
 
     private Vector2 bulletSpeed;
 
@@ -19,9 +19,9 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
     }
 
     @Override
-    public BulletSpawningDrawable setup() {
+    public BulletSpawningModuleDrawable setup() {
         bulletSpeed = new Vector2();
-        return new BulletSpawningDrawable(assets.getGun(), sharedAssets.getGlow());
+        return new BulletSpawningModuleDrawable(assets.getGun(), sharedAssets.getGlow());
     }
 
     @Override

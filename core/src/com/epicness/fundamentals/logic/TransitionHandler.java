@@ -18,8 +18,9 @@ public class TransitionHandler {
 
     public void startTransition(CompletionListener completionListener, Initializer<?, ?, ?> nextInitializer,
                                 Initializer<?, ?, ?>... additionalInitializers) {
-        this.nextInitializer = nextInitializer;
+        this.nextInitializer = sharedResources.findInitializer(nextInitializer);
         List<Assets> assetsList = new ArrayList<>();
+        assetsList.add(this.nextInitializer.getAssets());
         for (int i = 0; i < additionalInitializers.length; i++) {
             Initializer<?, ?, ?> initializer = sharedResources.findInitializer(additionalInitializers[i]);
             assetsList.add(initializer.getAssets());
@@ -45,7 +46,6 @@ public class TransitionHandler {
             return;
         }
         nextInitializer.initialize(sharedResources);
-        nextInitializer.setInitialized();
     }
 
     public void setSharedResources(SharedResources sharedResources) {

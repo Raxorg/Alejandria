@@ -15,31 +15,19 @@ public class Random {
 
     public static Color rainbowColor() {
         int random = MathUtils.random(10);
-        switch (random) {
-            case 0:
-                return Color.RED;
-            case 1:
-                return Color.ORANGE;
-            case 2:
-                return Color.YELLOW;
-            case 3:
-                return Color.CHARTREUSE;
-            case 4:
-                return Color.LIME;
-            case 5:
-                return Color.FOREST;
-            case 6:
-                return Color.CYAN;
-            case 7:
-                return Color.SKY;
-            case 8:
-                return Color.BLUE;
-            case 9:
-                return Color.PURPLE;
-            case 10:
-            default:
-                return Color.PINK;
-        }
+        return switch (random) {
+            case 0 -> Color.RED;
+            case 1 -> Color.ORANGE;
+            case 2 -> Color.YELLOW;
+            case 3 -> Color.CHARTREUSE;
+            case 4 -> Color.LIME;
+            case 5 -> Color.FOREST;
+            case 6 -> Color.CYAN;
+            case 7 -> Color.SKY;
+            case 8 -> Color.BLUE;
+            case 9 -> Color.PURPLE;
+            default -> Color.PINK;
+        };
     }
 
     public static Color rainbowExcludedColor(Color excludedColor) {

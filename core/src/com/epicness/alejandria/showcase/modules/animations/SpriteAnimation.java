@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.modules.animations;
 
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
+public class SpriteAnimation extends Module<SpriteAnimationModuleDrawable> {
 
     public SpriteAnimation() {
         super(
@@ -13,8 +13,8 @@ public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
     }
 
     @Override
-    public SpriteAnimationDrawable setup() {
-        return new SpriteAnimationDrawable(assets.getStickmanRun(), assets.getStickmanRunFrames());
+    public SpriteAnimationModuleDrawable setup() {
+        return new SpriteAnimationModuleDrawable(assets.getStickmanRun(), assets.getStickmanRunFrames());
     }
 
     @Override

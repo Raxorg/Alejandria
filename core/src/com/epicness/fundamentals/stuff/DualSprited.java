@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Actor;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class DualSprited implements Actor, Buttonable {
+public class DualSprited implements Buttonable, Transformable {
 
     protected final Sprite background, foreground;
     private boolean backgroundButtonable;
@@ -29,16 +29,14 @@ public class DualSprited implements Actor, Buttonable {
         foreground.draw(spriteBatch);
     }
 
-    @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch) {
         drawBackground(spriteBatch);
         drawForeground(spriteBatch);
     }
 
-    @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.rect(background.getBoundingRectangle());
-        shapeBatch.rect(foreground.getBoundingRectangle());
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.rect(background.getBoundingRectangle());
+        shapeRenderer.rect(foreground.getBoundingRectangle());
     }
 
     @Override
@@ -145,6 +143,10 @@ public class DualSprited implements Actor, Buttonable {
     public void setOriginBasedPosition(float x, float y) {
         background.setOriginBasedPosition(x, y);
         foreground.setOriginBasedPosition(x, y);
+    }
+
+    public void setOriginBasedPosition(Vector2 position) {
+        setOriginBasedPosition(position.x, position.y);
     }
 
     public float getForegroundCenterX() {

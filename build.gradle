@@ -11,7 +11,7 @@ buildscript {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.1.19'
         classpath 'org.gretty:gretty:3.1.0'
         classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.16'
+        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.19'
     }
 }
 

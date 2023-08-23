@@ -6,7 +6,7 @@ import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class Welcome extends Module<WelcomeDrawable> {
+public class Welcome extends Module<WelcomeModuleDrawable> {
 
     private ShaderProgram shader;
     private float time;
@@ -23,8 +23,8 @@ public class Welcome extends Module<WelcomeDrawable> {
     }
 
     @Override
-    protected WelcomeDrawable setup() {
-        drawable = new WelcomeDrawable(assets.getPixelFont(), sharedAssets.getPixel());
+    protected WelcomeModuleDrawable setup() {
+        drawable = new WelcomeModuleDrawable(assets.getPixelFont(), sharedAssets.getPixel());
         shader = drawable.getShader();
         return drawable;
     }

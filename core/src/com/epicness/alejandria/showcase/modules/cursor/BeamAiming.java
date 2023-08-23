@@ -5,15 +5,15 @@ import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.TRIANGLE_SPEED;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 
-public class BeamAiming extends Module<BeamAimingDrawable> {
+public class BeamAiming extends Module<BeamAimingModuleDrawable> {
 
     private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
 
@@ -28,8 +28,8 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
     }
 
     @Override
-    public BeamAimingDrawable setup() {
-        return new BeamAimingDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
+    public BeamAimingModuleDrawable setup() {
+        return new BeamAimingModuleDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
     }
 
     @Override

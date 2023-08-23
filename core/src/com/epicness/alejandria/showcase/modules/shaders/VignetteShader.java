@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class VignetteShader extends Module<VignetteShaderDrawable> {
+public class VignetteShader extends Module<VignetteShaderModuleDrawable> {
 
     private ShaderProgram shader;
 
@@ -15,10 +15,10 @@ public class VignetteShader extends Module<VignetteShaderDrawable> {
     }
 
     @Override
-    public VignetteShaderDrawable setup() {
+    public VignetteShaderModuleDrawable setup() {
         ShaderProgram.pedantic = false;
         renderer.getSpriteBatch().setShader(shader = assets.getVignette());
-        return new VignetteShaderDrawable(sharedAssets.getSquare32());
+        return new VignetteShaderModuleDrawable(sharedAssets.getSquare32());
     }
 
     @Override

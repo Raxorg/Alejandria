@@ -34,18 +34,18 @@ public class ShaderProgramLoader extends SynchronousAssetLoader<ShaderProgram, S
 
     @Override
     public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, ShaderProgramParameter parameter) {
-        Array<AssetDescriptor> dependencies = new Array();
+        Array<AssetDescriptor> dependencies = new Array<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(file.read()), 128);
         try {
             String line = reader.readLine();
             FileHandle vertexHandle = file.parent().child(line.split(" ")[1]);
             vertexPath = vertexHandle.path();
-            dependencies.add(new AssetDescriptor(vertexHandle, Shader.class));
+            dependencies.add(new AssetDescriptor<>(vertexHandle, Shader.class));
 
             line = reader.readLine();
             FileHandle fragmentHandle = file.parent().child(line.split(" ")[1]);
             fragmentPath = fragmentHandle.path();
-            dependencies.add(new AssetDescriptor(fragmentHandle, Shader.class));
+            dependencies.add(new AssetDescriptor<>(fragmentHandle, Shader.class));
         } catch (Exception ex) {
             throw new GdxRuntimeException("Error loading sp file: " + fileName, ex);
         } finally {

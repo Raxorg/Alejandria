@@ -3,7 +3,7 @@ package com.epicness.alejandria.showcase.modules.rendering3d;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class TexturedCube extends Module<TexturedCubeDrawable> {
+public class TexturedCube extends Module<TexturedCubeModuleDrawable> {
 
     private FirstPersonCameraController controller;
 
@@ -15,8 +15,8 @@ public class TexturedCube extends Module<TexturedCubeDrawable> {
     }
 
     @Override
-    protected TexturedCubeDrawable setup() {
-        drawable = new TexturedCubeDrawable(sharedAssets.getWeirdShape());
+    protected TexturedCubeModuleDrawable setup() {
+        drawable = new TexturedCubeModuleDrawable(sharedAssets.getWeirdShape());
         controller = new FirstPersonCameraController(drawable.getCamera());
         controller.setVelocity(10f);
         return drawable;

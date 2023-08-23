@@ -7,7 +7,7 @@ import static com.badlogic.gdx.Input.Keys.LEFT;
 import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_75;
+import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_75;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

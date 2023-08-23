@@ -21,9 +21,9 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
+public class AdvancedSplitScreen extends Module<AdvancedSplitScreenModuleDrawable> {
 
     public AdvancedSplitScreen() {
         super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n\n" +
@@ -31,8 +31,8 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
     }
 
     @Override
-    public AdvancedSplitScreenDrawable setup() {
-        return new AdvancedSplitScreenDrawable(
+    public AdvancedSplitScreenModuleDrawable setup() {
+        return new AdvancedSplitScreenModuleDrawable(
                 sharedAssets.getSquare32(),
                 sharedAssets.getPixel(),
                 screen.getStaticCamera()
@@ -158,7 +158,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     @Override
     protected void exit() {
-        renderer.getShapeBatch().setColor(WHITE);
+        renderer.getShapeRenderer().setColor(WHITE);
         renderer.useStaticCamera();
     }
 }

@@ -50,7 +50,12 @@ public abstract class Assets {
         assetManager.finishLoading();
     }
 
-    public abstract void initializeAssets();
+    public final void initAssets() {
+        initializeAssets();
+        assetsInitialized = true;
+    }
+
+    protected abstract void initializeAssets();
 
     public final void assetsInitialized() {
         assetsInitialized = true;

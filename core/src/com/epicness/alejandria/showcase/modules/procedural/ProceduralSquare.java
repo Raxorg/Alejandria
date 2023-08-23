@@ -16,7 +16,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class ProceduralSquare extends Module<ProceduralSquareDrawable> {
+public class ProceduralSquare extends Module<ProceduralSquareModuleDrawable> {
 
     private float time;
 
@@ -28,8 +28,8 @@ public class ProceduralSquare extends Module<ProceduralSquareDrawable> {
     }
 
     @Override
-    public ProceduralSquareDrawable setup() {
-        return new ProceduralSquareDrawable();
+    public ProceduralSquareModuleDrawable setup() {
+        return new ProceduralSquareModuleDrawable();
     }
 
     private float tunnel(int column, int row, float size, float factor) {
