@@ -7,11 +7,8 @@ public class SpriteAnimation extends Module<SpriteAnimationDrawable> {
     public SpriteAnimation() {
         super(
             "Sprite Animation",
-            """
-            The Texture in the left contains all the frames of the animation
-
-            Frame rate is set to 20 frames per second
-            """
+            "The Texture in the left contains all the frames of the animation\n\n" +
+                "Frame rate is set to 20 frames per second"
         );
     }
 

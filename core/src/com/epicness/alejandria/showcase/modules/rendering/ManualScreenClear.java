@@ -14,11 +14,8 @@ public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
     public ManualScreenClear() {
         super(
             "Manual Screen Clear",
-            """
-            Press space to toggle screen clearing
-
-            Requires preserveDrawingBuffer config set to true for web projects
-            """
+            "Press space to toggle screen clearing\n\n" +
+                "Requires preserveDrawingBuffer config set to true for web projects"
         );
     }
 

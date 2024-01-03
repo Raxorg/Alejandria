@@ -21,6 +21,7 @@ vec3 palette(in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {
     return a + b * cos(6.28318 * (c * t + d));
 }
 
+// Made following Kishimisu's introduction to shader art coding tutorial
 void main() {
     vec2 pos = gl_FragCoord.xy - u_position;
     vec2 reso = u_resolution;

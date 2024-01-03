@@ -20,13 +20,10 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
     public BeamAiming() {
         super(
             "Beam Aiming",
-            """
-            The sprite in blue has dynamic width
-
-            Rotation is calculated so that one end of it is anchored to the triangle and the other end to the cursor
-
-            WASD to move the triangle
-            """
+            "The sprite in blue has dynamic width\n\n" +
+                "Rotation is calculated so that one end of it is anchored to the triangle " +
+                "and the other end to the cursor\n\n" +
+                "WASD to move the triangle"
         );
     }
 

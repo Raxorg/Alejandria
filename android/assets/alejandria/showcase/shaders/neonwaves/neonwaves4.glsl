@@ -20,19 +20,28 @@ vec3 palette(in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {
     return a + b * cos(6.28318 * (c * t + d));
 }
 
+// Made following Kishimisu's introduction to shader art coding tutorial
 void main() {
     vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
+
     vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
+    vec2 originalUV = uv;
+    vec3 finalColor = vec3(0.0);
 
-    float distance = length(uv);
-    vec3 color = palette(distance + time, a, b, c, d);
+    for (float i = 0.0; i < 3.0; i++) {
+        uv = fract(uv * 2.0) - 0.5;
 
-    distance = sin(distance * 8.0 + time) / 8.0;
-    distance = abs(distance);
-    distance = 0.02 / distance;
+        float distance = length(uv);
+        float t = length(originalUV) + time;
+        vec3 color = palette(t, a, b, c, d);
 
-    color *= distance;
+        distance = sin(distance * 8.0 + time) / 8.0;
+        distance = abs(distance);
+        distance = 0.02 / distance;
+
+        finalColor += color * distance;
+    }
     // Result
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = vec4(finalColor, 1.0);
 }

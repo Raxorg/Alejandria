@@ -11,6 +11,7 @@ uniform sampler2D u_texture;
 uniform vec2 u_resolution;
 uniform float time;
 
+// Made following Kishimisu's introduction to shader art coding tutorial
 void main() {
     vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
@@ -19,8 +20,11 @@ void main() {
     float d = length(uv);
     d = sin(d * 8.0 + time) / 8.0;
     d = abs(d);
-    d = smoothstep(0.0, 0.1, d);
+    d = 0.02 / d;
+
+    vec3 color = vec3(3.0, 2.0, 1.0);
+    color *= d;
 
     // Result
-    gl_FragColor = vec4(d, d, d, 1.0);
+    gl_FragColor = vec4(color, 1.0);
 }

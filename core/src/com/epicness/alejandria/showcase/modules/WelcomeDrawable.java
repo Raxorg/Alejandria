@@ -26,7 +26,6 @@ public class WelcomeDrawable implements ModuleDrawable {
     public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
         //init shaders
         shader = neonWavesShader;
-        shader.bind();
         ShaderProgram.pedantic = false;
         if (!shader.isCompiled()) {
             Gdx.app.error("SHADER", "Failed to compile shader");

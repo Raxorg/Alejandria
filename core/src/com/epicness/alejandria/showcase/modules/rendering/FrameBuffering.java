@@ -9,13 +9,9 @@ public class FrameBuffering extends Module<FrameBufferingDrawable> {
     public FrameBuffering() {
         super(
             "Frame Buffer Example",
-            """
-            Blue means normal rendering
-
-            Red means we are using a frame buffer
-
-            Space to toggle
-            """
+            "Blue means normal rendering\n\n" +
+                "Red means we are using a frame buffer\n\n" +
+                "Space to toggle"
         );
     }
 

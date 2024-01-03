@@ -26,12 +26,11 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     public AdvancedSplitScreen() {
-        super("Advanced Split Screen",
-              """
-              This split screen on steroids uses masking techniques
-
-              WASD and UHJK to move the dots
-              """);
+        super(
+            "Advanced Split Screen",
+            "This split screen on steroids uses masking techniques\n\n" +
+                "WASD and UHJK to move the dots"
+        );
     }
 
     @Override

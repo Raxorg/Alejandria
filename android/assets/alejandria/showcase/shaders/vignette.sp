@@ -1,2 +1,2 @@
-vertex: shared/vertex.glsl
-fragment: vignette.glsl
+vertex: alejandria/showcase/shaders/shared/vertex.glsl
+fragment: alejandria/showcase/shaders/vignette.glsl

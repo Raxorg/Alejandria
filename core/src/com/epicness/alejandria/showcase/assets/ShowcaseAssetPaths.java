@@ -39,6 +39,10 @@ public class ShowcaseAssetPaths {
 
     public static final AssetDescriptor<ShaderProgram> INVERT_SHADER_PROGRAM;
 
+    public static final AssetDescriptor<ShaderProgram> NEONWAVES_SHADER_PROGRAM;
+
+    public static final AssetDescriptor<ShaderProgram> RAYMARCHING_SHADER_PROGRAM;
+
     public static final AssetDescriptor<ShaderProgram> SHAKE_SHADER_PROGRAM;
 
     public static final AssetDescriptor<ShaderProgram> VIGNETTE_SHADER_PROGRAM;
@@ -59,6 +63,8 @@ public class ShowcaseAssetPaths {
         ASSETS.add(SMILEY_COLOR_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_color.png", Sprite.class));
         ASSETS.add(SMILEY_OUTLINE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_outline.png", Sprite.class));
         ASSETS.add(INVERT_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/invert.sp", ShaderProgram.class));
+        ASSETS.add(NEONWAVES_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/neonwaves/neonWaves.sp", ShaderProgram.class));
+        ASSETS.add(RAYMARCHING_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/raymarching/raymarching.sp", ShaderProgram.class));
         ASSETS.add(SHAKE_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/shake.sp", ShaderProgram.class));
         ASSETS.add(VIGNETTE_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/vignette.sp", ShaderProgram.class));
     }

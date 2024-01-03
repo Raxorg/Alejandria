@@ -18,11 +18,8 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
     public PixelPerfectCollision() {
         super(
             "Pixel Perfect Collision",
-            """
-            Clicking on a transparent pixel inside the regular bounding box will change the shape color
-
-            Clicking on an opaque pixel will reposition the shape
-            """
+            "Clicking on a transparent pixel inside the regular bounding box will change the shape color\n\n" +
+                "Clicking on an opaque pixel will reposition the shape"
         );
     }
 

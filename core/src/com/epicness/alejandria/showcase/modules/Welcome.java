@@ -14,17 +14,11 @@ public class Welcome extends Module<WelcomeDrawable> {
     public Welcome() {
         super(
             "Welcome to Alejandria!",
-            """
-            Shader can also be found in standalone package
-
-            Arrow keys or mouse to navigate
-
-            G opens module source on gitHub
-
-            I opens module information
-
-            D toggles debug mode
-            """
+            "Shader can also be found in standalone package\n\n" +
+                "Arrow keys or mouse to navigate\n\n" +
+                "G opens module source on gitHub\n\n" +
+                "I opens module information\n\n" +
+                "D toggles debug mode"
         );
     }
 
