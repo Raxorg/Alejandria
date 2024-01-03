@@ -42,6 +42,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 
 ### Patterns
 - Phyllotaxis
+- Spirograph
 
 ### Procedural
 - Procedural Square

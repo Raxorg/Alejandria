@@ -14,30 +14,47 @@ public class Line implements Movable {
 
     private final Vector2 a, b;
     private float angleDeg;
-    private final float length;
+    public final float length;
     private final Color color;
-    public float width = 5f;
+    public float width;
 
-    public Line(float ax, float ay, float bx, float by, float width) {
+    public Line(float ax, float ay, float bx, float by, float width, Color color) {
         a = new Vector2(ax, ay);
         b = new Vector2(bx, by);
         angleDeg = AngleUtils.degreesBetweenPoints(b, a);
         length = a.dst(b);
-        color = WHITE.cpy();
         this.width = width;
+        this.color = new Color(color);
+    }
+
+    public Line(float ax, float ay, float bx, float by, float width) {
+        this(ax, ay, bx, by, width, WHITE.cpy());
+    }
+
+    public Line(float ax, float ay, float bx, float by, Color color) {
+        this(ax, ay, bx, by, 5f, color);
     }
 
     public Line(float ax, float ay, float bx, float by) {
         this(ax, ay, bx, by, 5f);
     }
 
-    public Line(float x, float y, float length, float angle, boolean degrees) {
+    public Line(float x, float y, float length, float angle, boolean degrees, float width, Color color) {
         a = new Vector2(x, y);
         b = new Vector2();
         this.length = length;
         angleDeg = degrees ? angle : (angle * MathUtils.radDeg);
         calculateB();
-        color = WHITE.cpy();
+        this.width = width;
+        this.color = color;
+    }
+
+    public Line(float x, float y, float length, float angle, boolean degrees) {
+        this(x, y, length, angle, degrees, 5f, WHITE.cpy());
+    }
+
+    public Line(float length, float width, Color color) {
+        this(0f, 0f, length, 0f, true, width, color);
     }
 
     public Line(float x, float y, float length) {
@@ -89,6 +106,11 @@ public class Line implements Movable {
         return a.y;
     }
 
+    @Override
+    public void setPosition(float x, float y) {
+        setA(x, y);
+    }
+
     public void follow(Vector2 target) {
         Vector2 dir = target.cpy().sub(a);
         setRotation(dir.angleDeg());
@@ -105,9 +127,13 @@ public class Line implements Movable {
         return b;
     }
 
-    public void setA(Vector2 position) {
-        a.set(position);
+    public void setA(float x, float y) {
+        a.set(x, y);
         calculateB();
+    }
+
+    public void setA(Vector2 position) {
+        setA(position.x, position.y);
     }
 
     public float getAngleDeg() {
@@ -124,6 +150,10 @@ public class Line implements Movable {
 
     public void setRotation(float degrees) {
         rotate(degrees - angleDeg);
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void setColor(Color newColor) {
