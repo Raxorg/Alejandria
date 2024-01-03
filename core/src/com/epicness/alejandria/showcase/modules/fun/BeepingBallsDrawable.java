@@ -15,11 +15,11 @@ import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class BeepingBallsModuleDrawable implements ModuleDrawable {
+public class BeepingBallsDrawable implements ModuleDrawable {
 
     private final BeepingBall[] balls;
 
-    public BeepingBallsModuleDrawable(Sprite ballSprite, Sprite ballGlowSprite) {
+    public BeepingBallsDrawable(Sprite ballSprite, Sprite ballGlowSprite) {
         balls = new BeepingBall[BALLS];
         for (int i = 0; i < BALLS; i++) {
             balls[i] = new BeepingBall(ballGlowSprite, ballSprite);

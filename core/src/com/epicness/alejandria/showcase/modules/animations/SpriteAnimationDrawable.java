@@ -10,12 +10,12 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
-public class SpriteAnimationModuleDrawable implements ModuleDrawable {
+public class SpriteAnimationDrawable implements ModuleDrawable {
 
     private final Sprited frames;
     private final SpritedAnimation animation;
 
-    public SpriteAnimationModuleDrawable(Sprite framesSprite, Sprite[] animationFrames) {
+    public SpriteAnimationDrawable(Sprite framesSprite, Sprite[] animationFrames) {
         frames = new Sprited(framesSprite);
         frames.setSize(400f, 400f);
         frames.setOriginCenter();

@@ -8,12 +8,12 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 import java.util.Arrays;
 
-public class HexagonSelectionModuleDrawable implements ModuleDrawable {
+public class HexagonSelectionDrawable implements ModuleDrawable {
 
     private final Hexagon[][] hexagons;
     public static final int COLUMNS = 9, ROWS = 6;
 
-    public HexagonSelectionModuleDrawable() {
+    public HexagonSelectionDrawable() {
         float size = 96f;
         float[] vertices = new float[12];
         vertices[0] = 0f;

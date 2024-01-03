@@ -8,11 +8,11 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class PhyllotaxisModuleDrawable implements ModuleDrawable {
+public class PhyllotaxisDrawable implements ModuleDrawable {
 
     private final Circle[] circles;
 
-    public PhyllotaxisModuleDrawable() {
+    public PhyllotaxisDrawable() {
         circles = new Circle[PHYLLOTAXIS_CIRCLES];
     }
 

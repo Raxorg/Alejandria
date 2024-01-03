@@ -9,11 +9,11 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 
-public class PointAtCursorModuleDrawable implements ModuleDrawable {
+public class PointAtCursorDrawable implements ModuleDrawable {
 
     private final Sprited triangle1, triangle2;
 
-    public PointAtCursorModuleDrawable(Sprite triangleSprite) {
+    public PointAtCursorDrawable(Sprite triangleSprite) {
         triangle1 = new Sprited(triangleSprite);
         triangle1.setOriginCenter();
         triangle1.setOriginBasedPosition(CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT);

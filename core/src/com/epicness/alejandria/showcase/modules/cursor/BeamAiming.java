@@ -13,23 +13,26 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 
-public class BeamAiming extends Module<BeamAimingModuleDrawable> {
+public class BeamAiming extends Module<BeamAimingDrawable> {
 
     private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
 
     public BeamAiming() {
         super(
-                "Beam Aiming",
-                "The sprite in blue has dynamic width\n\n" +
-                        "Rotation is calculated so that one end of it is anchored to the triangle " +
-                        "and the other end to the cursor\n\n" +
-                        "WASD to move the triangle"
+            "Beam Aiming",
+            """
+            The sprite in blue has dynamic width
+
+            Rotation is calculated so that one end of it is anchored to the triangle and the other end to the cursor
+
+            WASD to move the triangle
+            """
         );
     }
 
     @Override
-    public BeamAimingModuleDrawable setup() {
-        return new BeamAimingModuleDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
+    public BeamAimingDrawable setup() {
+        return new BeamAimingDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
     }
 
     @Override

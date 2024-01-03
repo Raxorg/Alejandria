@@ -20,7 +20,7 @@ import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGri
 import java.util.ArrayList;
 import java.util.List;
 
-public class AStar extends Module<AStarModuleDrawable> {
+public class AStar extends Module<AStarDrawable> {
 
     private List<PathfindingCell> openCells, closedCells, obstacleCells;
     private PathfindingCell start, target;
@@ -32,8 +32,8 @@ public class AStar extends Module<AStarModuleDrawable> {
     }
 
     @Override
-    public AStarModuleDrawable setup() {
-        drawable = new AStarModuleDrawable(sharedAssets.getSquare32());
+    public AStarDrawable setup() {
+        drawable = new AStarDrawable(sharedAssets.getSquare32());
         initialize();
         return drawable;
     }

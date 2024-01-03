@@ -23,19 +23,23 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class AdvancedSplitScreen extends Module<AdvancedSplitScreenModuleDrawable> {
+public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     public AdvancedSplitScreen() {
-        super("Advanced Split Screen", "This split screen on steroids uses masking techniques\n\n" +
-                "WASD and UHJK to move the dots");
+        super("Advanced Split Screen",
+              """
+              This split screen on steroids uses masking techniques
+
+              WASD and UHJK to move the dots
+              """);
     }
 
     @Override
-    public AdvancedSplitScreenModuleDrawable setup() {
-        return new AdvancedSplitScreenModuleDrawable(
-                sharedAssets.getSquare32(),
-                sharedAssets.getPixel(),
-                screen.getStaticCamera()
+    public AdvancedSplitScreenDrawable setup() {
+        return new AdvancedSplitScreenDrawable(
+            sharedAssets.getSquare32(),
+            sharedAssets.getPixel(),
+            screen.getStaticCamera()
         );
     }
 

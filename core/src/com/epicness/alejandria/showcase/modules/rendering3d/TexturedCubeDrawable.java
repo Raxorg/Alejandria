@@ -26,14 +26,14 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class TexturedCubeModuleDrawable implements ModuleDrawable {
+public class TexturedCubeDrawable implements ModuleDrawable {
 
     private final ModelInstance modelInstance1;
     private final Environment environment;
     private final ModelBatch modelBatch;
     private final Camera camera;
 
-    public TexturedCubeModuleDrawable(Sprite sprite) {
+    public TexturedCubeDrawable(Sprite sprite) {
         sprite.getTexture().setFilter(Linear, Linear);
         ModelBuilder modelBuilder = new ModelBuilder();
 

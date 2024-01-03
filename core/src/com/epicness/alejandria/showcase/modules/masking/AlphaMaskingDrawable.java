@@ -19,13 +19,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class AlphaMaskingModuleDrawable implements ModuleDrawable {
+public class AlphaMaskingDrawable implements ModuleDrawable {
 
     private final Sprite maskedSprite, mask, visibleMask, originalMaskedSprite;
     private final FrameBuffer frameBuffer;
     private final Sprite bufferSprite;
 
-    public AlphaMaskingModuleDrawable(Sprite weirdShape, Sprite glow) {
+    public AlphaMaskingDrawable(Sprite weirdShape, Sprite glow) {
         maskedSprite = new Sprite(weirdShape);
         maskedSprite.setOriginCenter();
         maskedSprite.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);

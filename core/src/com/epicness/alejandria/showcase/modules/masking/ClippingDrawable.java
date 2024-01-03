@@ -12,11 +12,11 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
 
-public class ClippingModuleDrawable implements ModuleDrawable {
+public class ClippingDrawable implements ModuleDrawable {
 
     private final AnimatedBackground background1, background2, background3;
 
-    public ClippingModuleDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
+    public ClippingDrawable(Sprite pixel, Sprite weirdShape, OrthographicCamera camera) {
         background1 = new AnimatedBackground(
             100f, SHOWCASE_Y,
             SHOWCASE_SIZE, SHOWCASE_SIZE,

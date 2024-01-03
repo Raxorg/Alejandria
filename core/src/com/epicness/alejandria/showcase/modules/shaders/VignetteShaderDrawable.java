@@ -10,11 +10,11 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class VignetteShaderModuleDrawable implements ModuleDrawable {
+public class VignetteShaderDrawable implements ModuleDrawable {
 
     private final Sprited square1, square2, square3, square4;
 
-    public VignetteShaderModuleDrawable(Sprite squareSprite) {
+    public VignetteShaderDrawable(Sprite squareSprite) {
         square1 = new Sprited(squareSprite);
         square2 = new Sprited(squareSprite);
         square3 = new Sprited(squareSprite);

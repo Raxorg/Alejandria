@@ -29,14 +29,14 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LayeredMaskingModuleDrawable implements ModuleDrawable {
+public class LayeredMaskingDrawable implements ModuleDrawable {
 
     private final Sprited mask;
     private final DefaultCellGrid gridA, gridB;
     private final Circle circle1, circle2;
     private final List<DualSprited> shapes;
 
-    public LayeredMaskingModuleDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
+    public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
         mask = new Sprited(pixel);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);

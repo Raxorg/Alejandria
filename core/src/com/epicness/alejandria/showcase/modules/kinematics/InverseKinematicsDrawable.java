@@ -15,12 +15,12 @@ import com.epicness.fundamentals.utils.Random;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class InverseKinematicsModuleDrawable implements ModuleDrawable {
+public class InverseKinematicsDrawable implements ModuleDrawable {
 
     private final ShapeDrawer shapeDrawer;
     private final Tentacle[] tentacles;
 
-    public InverseKinematicsModuleDrawable(SpriteBatch spriteBatch, Sprite pixel) {
+    public InverseKinematicsDrawable(SpriteBatch spriteBatch, Sprite pixel) {
         shapeDrawer = new ShapeDrawer(spriteBatch, pixel);
 
         tentacles = new Tentacle[IK_TENTACLES];

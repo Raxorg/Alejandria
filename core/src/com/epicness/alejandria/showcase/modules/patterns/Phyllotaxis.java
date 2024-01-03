@@ -9,22 +9,22 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class Phyllotaxis extends Module<PhyllotaxisModuleDrawable> {
+public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
 
     private float speed;
     private boolean accelerating;
     private float[] angles;
 
     public Phyllotaxis() {
-        super("Phyllotaxis", "Hold to accelerate");
+        super("Phyllotaxis", "Hold to accelerate\n\nTry blinking when it goes fast :o");
     }
 
     @Override
-    protected PhyllotaxisModuleDrawable setup() {
+    protected PhyllotaxisDrawable setup() {
         speed = 15f;
         accelerating = false;
 
-        drawable = new PhyllotaxisModuleDrawable();
+        drawable = new PhyllotaxisDrawable();
         Circle[] circles = drawable.getCircles();
         angles = new float[PHYLLOTAXIS_CIRCLES];
         float a = 137.5f;

@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.modules.animations;
 
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class SpriteRotationAnimation extends Module<SpriteRotationAnimationModuleDrawable> {
+public class SpriteRotationAnimation extends Module<SpriteRotationAnimationDrawable> {
 
     public SpriteRotationAnimation() {
         super(
@@ -12,8 +12,8 @@ public class SpriteRotationAnimation extends Module<SpriteRotationAnimationModul
     }
 
     @Override
-    public SpriteRotationAnimationModuleDrawable setup() {
-        return new SpriteRotationAnimationModuleDrawable(
+    public SpriteRotationAnimationDrawable setup() {
+        return new SpriteRotationAnimationDrawable(
                 sharedAssets.getPixel(), sharedAssets.getWeirdShape()
         );
     }

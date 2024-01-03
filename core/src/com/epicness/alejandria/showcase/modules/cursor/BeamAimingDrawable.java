@@ -11,11 +11,11 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 
-public class BeamAimingModuleDrawable implements ModuleDrawable {
+public class BeamAimingDrawable implements ModuleDrawable {
 
     private final Sprited triangle, beam;
 
-    public BeamAimingModuleDrawable(Sprite triangleSprite, Sprite beamSprite) {
+    public BeamAimingDrawable(Sprite triangleSprite, Sprite beamSprite) {
         triangle = new Sprited(triangleSprite);
         triangle.setOriginCenter();
         triangle.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);

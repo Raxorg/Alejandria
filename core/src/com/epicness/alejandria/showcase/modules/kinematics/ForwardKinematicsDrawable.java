@@ -16,12 +16,12 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class ForwardKinematicsModuleDrawable implements ModuleDrawable {
+public class ForwardKinematicsDrawable implements ModuleDrawable {
 
     private final ShapeDrawer shapeDrawer;
     private final ConnectedLine[] lines;
 
-    public ForwardKinematicsModuleDrawable(SpriteBatch spriteBatch, Sprite pixel) {
+    public ForwardKinematicsDrawable(SpriteBatch spriteBatch, Sprite pixel) {
         shapeDrawer = new ShapeDrawer(spriteBatch, pixel);
 
         lines = new ConnectedLine[FK_LINES];

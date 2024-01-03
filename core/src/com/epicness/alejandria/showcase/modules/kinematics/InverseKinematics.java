@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Tentacle;
 
-public class InverseKinematics extends Module<InverseKinematicsModuleDrawable> {
+public class InverseKinematics extends Module<InverseKinematicsDrawable> {
 
     private Tentacle[] tentacles;
 
@@ -18,8 +18,8 @@ public class InverseKinematics extends Module<InverseKinematicsModuleDrawable> {
     }
 
     @Override
-    protected InverseKinematicsModuleDrawable setup() {
-        drawable = new InverseKinematicsModuleDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+    protected InverseKinematicsDrawable setup() {
+        drawable = new InverseKinematicsDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
         tentacles = drawable.getTentacles();
         lockInCircle();
         return drawable;

@@ -11,7 +11,7 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 import java.util.List;
 
-public class LayeredMasking extends Module<LayeredMaskingModuleDrawable> {
+public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     public LayeredMasking() {
         super("Layered Masking", "Too much happening here to explain xD" +
@@ -19,10 +19,10 @@ public class LayeredMasking extends Module<LayeredMaskingModuleDrawable> {
     }
 
     @Override
-    public LayeredMaskingModuleDrawable setup() {
+    public LayeredMaskingDrawable setup() {
         Gdx.gl.glLineWidth(5f);
 
-        return new LayeredMaskingModuleDrawable(
+        return new LayeredMaskingDrawable(
                 sharedAssets.getWeirdShape(),
                 sharedAssets.getSquare32(),
                 sharedAssets.getSquare32Inverted(),

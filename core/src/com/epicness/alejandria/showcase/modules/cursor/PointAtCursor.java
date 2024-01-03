@@ -4,15 +4,15 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
 
-public class PointAtCursor extends Module<PointAtCursorModuleDrawable> {
+public class PointAtCursor extends Module<PointAtCursorDrawable> {
 
     public PointAtCursor() {
         super("Point at Cursor", "Move your cursor");
     }
 
     @Override
-    public PointAtCursorModuleDrawable setup() {
-        return new PointAtCursorModuleDrawable(sharedAssets.getTriangle());
+    public PointAtCursorDrawable setup() {
+        return new PointAtCursorDrawable(sharedAssets.getTriangle());
     }
 
     @Override

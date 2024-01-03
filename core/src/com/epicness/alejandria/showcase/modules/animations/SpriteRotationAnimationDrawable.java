@@ -12,11 +12,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class SpriteRotationAnimationModuleDrawable implements ModuleDrawable {
+public class SpriteRotationAnimationDrawable implements ModuleDrawable {
 
     private final Sprite pixel, weirdShape;
 
-    public SpriteRotationAnimationModuleDrawable(Sprite pixelSprite, Sprite weirdShapeSprite) {
+    public SpriteRotationAnimationDrawable(Sprite pixelSprite, Sprite weirdShapeSprite) {
         pixel = new Sprite(pixelSprite);
         pixel.setSize(SQUARE_SIZE, SQUARE_SIZE);
         pixel.setOriginCenter();

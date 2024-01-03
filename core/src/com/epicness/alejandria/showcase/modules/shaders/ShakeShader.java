@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class ShakeShader extends Module<ShakeShaderModuleDrawable> {
+public class ShakeShader extends Module<ShakeShaderDrawable> {
 
     private ShaderProgram shader;
 
@@ -16,7 +16,7 @@ public class ShakeShader extends Module<ShakeShaderModuleDrawable> {
     }
 
     @Override
-    public ShakeShaderModuleDrawable setup() {
+    public ShakeShaderDrawable setup() {
         Gdx.app.setLogLevel(Application.LOG_ERROR);
         ShaderProgram.pedantic = false;
         shader = assets.getShake();
@@ -25,7 +25,7 @@ public class ShakeShader extends Module<ShakeShaderModuleDrawable> {
         }
         renderer.getSpriteBatch().setShader(shader);
 
-        return new ShakeShaderModuleDrawable(sharedAssets.getWeirdShape());
+        return new ShakeShaderDrawable(sharedAssets.getWeirdShape());
     }
 
     @Override

@@ -18,13 +18,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class WideViewportModuleDrawable implements ModuleDrawable {
+public class WideViewportDrawable implements ModuleDrawable {
 
     private final Matrix4 normalProjectionMatrix, wideProjectionMatrix;
     private final FrameBuffer frameBuffer;
     private final Sprite weirdShape, bufferSprite;
 
-    public WideViewportModuleDrawable(OrthographicCamera camera, Sprite weirdShapeSprite) {
+    public WideViewportDrawable(OrthographicCamera camera, Sprite weirdShapeSprite) {
         normalProjectionMatrix = camera.combined;
         camera.setToOrtho(false, CAMERA_WIDTH * 2f, CAMERA_HEIGHT);
         wideProjectionMatrix = camera.combined.cpy();

@@ -11,7 +11,7 @@ import com.epicness.fundamentals.stuff.Sprited;
 
 import java.util.List;
 
-public class DragAndDrop extends Module<DragAndDropModuleDrawable> {
+public class DragAndDrop extends Module<DragAndDropDrawable> {
 
     private Sprited dropArea;
     private List<Sprited> squares;
@@ -23,8 +23,8 @@ public class DragAndDrop extends Module<DragAndDropModuleDrawable> {
     }
 
     @Override
-    protected DragAndDropModuleDrawable setup() {
-        drawable = new DragAndDropModuleDrawable(sharedAssets.getPixel(), sharedAssets.getSquare32());
+    protected DragAndDropDrawable setup() {
+        drawable = new DragAndDropDrawable(sharedAssets.getPixel(), sharedAssets.getSquare32());
         dropArea = drawable.getDropArea();
         squares = drawable.getSquares();
         pivot = new Vector2();

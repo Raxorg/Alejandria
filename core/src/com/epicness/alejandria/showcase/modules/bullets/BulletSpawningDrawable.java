@@ -14,11 +14,11 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class BulletSpawningModuleDrawable implements ModuleDrawable {
+public class BulletSpawningDrawable implements ModuleDrawable {
 
     private final Sprited gun, bullet, center;
 
-    public BulletSpawningModuleDrawable(Sprite gunSprite, Sprite glowSprite) {
+    public BulletSpawningDrawable(Sprite gunSprite, Sprite glowSprite) {
         // Gun
         gun = new Sprited(gunSprite);
         gun.setSize(GUN_WIDTH, GUN_HEIGHT);

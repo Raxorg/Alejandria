@@ -15,12 +15,12 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 
-public class ShapeRendererMaskingModuleDrawable implements ModuleDrawable {
+public class ShapeRendererMaskingDrawable implements ModuleDrawable {
 
     private final Circle maskedCircle, circleMask;
     private final Triangle triangleMask;
 
-    public ShapeRendererMaskingModuleDrawable() {
+    public ShapeRendererMaskingDrawable() {
         maskedCircle = new Circle(200f);
         maskedCircle.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         maskedCircle.setColor(DARK_DIRT);

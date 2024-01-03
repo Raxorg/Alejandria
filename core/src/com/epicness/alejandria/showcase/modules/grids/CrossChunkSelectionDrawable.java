@@ -20,12 +20,12 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrossChunkSelectionModuleDrawable implements ModuleDrawable {
+public class CrossChunkSelectionDrawable implements ModuleDrawable {
 
     private final RectangleCell background;
     private final List<Chunk> chunks;
 
-    public CrossChunkSelectionModuleDrawable() {
+    public CrossChunkSelectionDrawable() {
         background = new RectangleCell(GRID_X, GRID_Y, SHOWCASE_SIZE, WHITE);
 
         chunks = new ArrayList<>();

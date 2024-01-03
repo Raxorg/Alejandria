@@ -7,15 +7,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class OrthographicExample extends Module<OrthographicExampleModuleDrawable> {
+public class OrthographicExample extends Module<OrthographicExampleDrawable> {
 
     public OrthographicExample() {
         super("Orthographic Camera Example", "The sprite is not moving, the camera is");
     }
 
     @Override
-    public OrthographicExampleModuleDrawable setup() {
-        return new OrthographicExampleModuleDrawable(renderer, sharedAssets.getWeirdShape());
+    public OrthographicExampleDrawable setup() {
+        return new OrthographicExampleDrawable(renderer, sharedAssets.getWeirdShape());
     }
 
     @Override

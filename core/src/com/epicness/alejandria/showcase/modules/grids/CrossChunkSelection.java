@@ -17,23 +17,27 @@ import com.epicness.alejandria.showcase.stuff.modules.grids.RectangleCell;
 
 import java.util.List;
 
-public class CrossChunkSelection extends Module<CrossChunkSelectionModuleDrawable> {
+public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
 
     public CrossChunkSelection() {
         super(
-                "Cross Chunk Selection",
-                "Demonstrates how to select neighboring cells even from different chunks\n\n" +
-                        "Uses math for efficiency, each chunk has 4 squares\n\n" +
-                        "clicking the corner of a square selects neighbors\n\n" +
-                        "clicking near the center of a square makes it black"
+            "Cross Chunk Selection",
+            """
+            Demonstrates how to select neighboring cells even from different chunks
 
+            Uses math for efficiency, each chunk has 4 squares
+
+            clicking the corner of a square selects neighbors
+
+            clicking near the center of a square makes it black
+            """
         );
     }
 
     @Override
-    public CrossChunkSelectionModuleDrawable setup() {
+    public CrossChunkSelectionDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        return new CrossChunkSelectionModuleDrawable();
+        return new CrossChunkSelectionDrawable();
     }
 
     @Override

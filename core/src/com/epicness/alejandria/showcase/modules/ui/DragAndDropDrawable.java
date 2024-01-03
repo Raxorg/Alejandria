@@ -14,12 +14,12 @@ import com.epicness.fundamentals.stuff.Sprited;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DragAndDropModuleDrawable implements ModuleDrawable {
+public class DragAndDropDrawable implements ModuleDrawable {
 
     private final Sprited dropArea;
     private final List<Sprited> squares;
 
-    public DragAndDropModuleDrawable(Sprite pixelSprite, Sprite squareSprite) {
+    public DragAndDropDrawable(Sprite pixelSprite, Sprite squareSprite) {
         dropArea = new Sprited(pixelSprite);
         dropArea.setSize(450f, 120f);
         dropArea.setPosition(CAMERA_HALF_WIDTH - 225f, CAMERA_HEIGHT * 0.55f);

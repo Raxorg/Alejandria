@@ -21,13 +21,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class FrameBufferingModuleDrawable implements ModuleDrawable {
+public class FrameBufferingDrawable implements ModuleDrawable {
 
     private final FrameBuffer frameBuffer;
     private final Sprite sprite1, sprite2, bufferSprite;
     private boolean drawDirect;
 
-    public FrameBufferingModuleDrawable(Sprite glowSprite) {
+    public FrameBufferingDrawable(Sprite glowSprite) {
         // Frame buffer size is not affected by cameras
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
 

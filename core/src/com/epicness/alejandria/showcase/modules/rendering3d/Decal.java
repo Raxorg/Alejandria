@@ -3,7 +3,7 @@ package com.epicness.alejandria.showcase.modules.rendering3d;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class Decal extends Module<DecalModuleDrawable> {
+public class Decal extends Module<DecalDrawable> {
 
     private FirstPersonCameraController controller;
 
@@ -12,8 +12,8 @@ public class Decal extends Module<DecalModuleDrawable> {
     }
 
     @Override
-    protected DecalModuleDrawable setup() {
-        drawable = new DecalModuleDrawable(sharedAssets.getGlow());
+    protected DecalDrawable setup() {
+        drawable = new DecalDrawable(sharedAssets.getGlow());
         controller = new FirstPersonCameraController(drawable.getCamera());
         controller.setVelocity(10f);
         return drawable;

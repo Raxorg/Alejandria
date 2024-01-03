@@ -11,22 +11,24 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.Random;
 
-public class PixelPerfectCollision extends Module<PixelPerfectCollisionModuleDrawable> {
+public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable> {
 
     private Sprited[] shapes;
 
     public PixelPerfectCollision() {
         super(
-                "Pixel Perfect Collision",
-                "Clicking on a transparent pixel inside the regular bounding box will change the shape color\n\n" +
-                        "Clicking on an opaque pixel will reposition the shape"
+            "Pixel Perfect Collision",
+            """
+            Clicking on a transparent pixel inside the regular bounding box will change the shape color
 
+            Clicking on an opaque pixel will reposition the shape
+            """
         );
     }
 
     @Override
-    public PixelPerfectCollisionModuleDrawable setup() {
-        drawable = new PixelPerfectCollisionModuleDrawable(sharedAssets.getWeirdShape());
+    public PixelPerfectCollisionDrawable setup() {
+        drawable = new PixelPerfectCollisionDrawable(sharedAssets.getWeirdShape());
         shapes = drawable.getShapes();
         for (int i = 0; i < shapes.length; i++) {
             randomizePosition(shapes[i]);

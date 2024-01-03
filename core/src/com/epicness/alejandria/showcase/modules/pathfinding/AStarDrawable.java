@@ -9,11 +9,11 @@ import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGri
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class AStarModuleDrawable implements ModuleDrawable {
+public class AStarDrawable implements ModuleDrawable {
 
     private final PathfindingGrid grid;
 
-    public AStarModuleDrawable(Sprite cellSprite) {
+    public AStarDrawable(Sprite cellSprite) {
         float cellSize = CAMERA_WIDTH / GRID_COLUMNS;
         grid = new PathfindingGrid(cellSprite, cellSize);
     }

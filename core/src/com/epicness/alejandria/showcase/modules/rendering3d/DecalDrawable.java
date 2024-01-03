@@ -11,13 +11,13 @@ import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class DecalModuleDrawable implements ModuleDrawable {
+public class DecalDrawable implements ModuleDrawable {
 
     private final PerspectiveCamera camera;
     private final DecalBatch decalBatch;
     private final Decal decal;
 
-    public DecalModuleDrawable(Sprite glowSprite) {
+    public DecalDrawable(Sprite glowSprite) {
         camera = new PerspectiveCamera(90f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.translate(0f, 0f, 5f);
 

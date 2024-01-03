@@ -7,21 +7,24 @@ import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class ManualScreenClear extends Module<ManualScreenClearModuleDrawable> {
+public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
 
     private Sprited weirdShape;
 
     public ManualScreenClear() {
         super(
-                "Manual Screen Clear",
-                "Press space to toggle screen clearing\n\n" +
-                        "Requires preserveDrawingBuffer config set to true for web projects"
+            "Manual Screen Clear",
+            """
+            Press space to toggle screen clearing
+
+            Requires preserveDrawingBuffer config set to true for web projects
+            """
         );
     }
 
     @Override
-    protected ManualScreenClearModuleDrawable setup() {
-        drawable = new ManualScreenClearModuleDrawable(sharedAssets.getWeirdShape());
+    protected ManualScreenClearDrawable setup() {
+        drawable = new ManualScreenClearDrawable(sharedAssets.getWeirdShape());
         weirdShape = drawable.getWeirdShape();
         Gdx.app.postRunnable(() -> renderer.clearScreen = false);
         return drawable;

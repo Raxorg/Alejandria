@@ -9,12 +9,12 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 
-public class PixelPerfectCollisionModuleDrawable implements ModuleDrawable {
+public class PixelPerfectCollisionDrawable implements ModuleDrawable {
 
     private final Pixmap pixmap;
     private final Sprited[] shapes;
 
-    public PixelPerfectCollisionModuleDrawable(Sprite weirdShape) {
+    public PixelPerfectCollisionDrawable(Sprite weirdShape) {
         TextureData textureData = weirdShape.getTexture().getTextureData();
         textureData.prepare();
         pixmap = textureData.consumePixmap();

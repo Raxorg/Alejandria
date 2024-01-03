@@ -6,25 +6,31 @@ import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class Welcome extends Module<WelcomeModuleDrawable> {
+public class Welcome extends Module<WelcomeDrawable> {
 
     private ShaderProgram shader;
     private float time;
 
     public Welcome() {
         super(
-                "Welcome to Alejandria!",
-                "Shader can be found in standalone package\n\n" +
-                        "Arrow keys or mouse to navigate\n\n" +
-                        "G opens module source on gitHub\n\n" +
-                        "I opens module information\n\n" +
-                        "D toggles debug mode"
+            "Welcome to Alejandria!",
+            """
+            Shader can also be found in standalone package
+
+            Arrow keys or mouse to navigate
+
+            G opens module source on gitHub
+
+            I opens module information
+
+            D toggles debug mode
+            """
         );
     }
 
     @Override
-    protected WelcomeModuleDrawable setup() {
-        drawable = new WelcomeModuleDrawable(assets.getPixelFont(), sharedAssets.getPixel());
+    protected WelcomeDrawable setup() {
+        drawable = new WelcomeDrawable(assets.getPixelFont(), sharedAssets.getPixel(), assets.getNeonWaves());
         shader = drawable.getShader();
         return drawable;
     }

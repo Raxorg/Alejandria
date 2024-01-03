@@ -33,7 +33,7 @@ import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class AdvancedSplitScreenModuleDrawable implements ModuleDrawable {
+public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     private DefaultCellGrid grid;
     private Circle player1, player2;
@@ -41,7 +41,7 @@ public class AdvancedSplitScreenModuleDrawable implements ModuleDrawable {
     private OrthographicCamera camera1, camera2, staticCamera;
     private boolean playersClose, camerasClose;
 
-    public AdvancedSplitScreenModuleDrawable(Sprite cellSprite, Sprite pixelSprite, OrthographicCamera staticCamera) {
+    public AdvancedSplitScreenDrawable(Sprite cellSprite, Sprite pixelSprite, OrthographicCamera staticCamera) {
         initCameras(staticCamera);
         initGrid(cellSprite);
         initPlayers();

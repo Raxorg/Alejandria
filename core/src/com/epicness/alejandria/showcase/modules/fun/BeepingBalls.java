@@ -11,16 +11,16 @@ import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
 
-public class BeepingBalls extends Module<BeepingBallsModuleDrawable> {
+public class BeepingBalls extends Module<BeepingBallsDrawable> {
 
     public BeepingBalls() {
         super("Some cool beeping balls", "Some cool beeping balls");
     }
 
     @Override
-    public BeepingBallsModuleDrawable setup() {
+    public BeepingBallsDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        drawable = new BeepingBallsModuleDrawable(assets.getCircle(), assets.getCircleGlow());
+        drawable = new BeepingBallsDrawable(assets.getCircle(), assets.getCircleGlow());
         BeepingBall[] balls = drawable.getBalls();
         for (int i = 0; i < BALLS; i++) {
             BeepingBall ball = balls[i];

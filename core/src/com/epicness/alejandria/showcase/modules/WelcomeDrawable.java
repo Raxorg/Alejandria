@@ -7,28 +7,25 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WI
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.Align;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.Text;
-import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 
-public class WelcomeModuleDrawable implements ModuleDrawable {
+public class WelcomeDrawable implements ModuleDrawable {
 
     private final ShaderProgram shader;
     private final Sprited canvas;
     private final Text text;
 
-    public WelcomeModuleDrawable(BitmapFont pixelFont, Sprite pixel) {
-        FileHandle vertexShader = Gdx.files.internal("alejandria/showcase/shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("youtube05.glsl");
+    public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
         //init shaders
-        shader = new ShaderProgram(vertexShader, fragmentShader);
+        shader = neonWavesShader;
         shader.bind();
         ShaderProgram.pedantic = false;
         if (!shader.isCompiled()) {

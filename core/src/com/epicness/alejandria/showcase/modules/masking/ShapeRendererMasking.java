@@ -8,7 +8,7 @@ import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 
-public class ShapeRendererMasking extends Module<ShapeRendererMaskingModuleDrawable> {
+public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
 
     private boolean direction;
 
@@ -20,9 +20,9 @@ public class ShapeRendererMasking extends Module<ShapeRendererMaskingModuleDrawa
     }
 
     @Override
-    public ShapeRendererMaskingModuleDrawable setup() {
+    public ShapeRendererMaskingDrawable setup() {
         Gdx.gl.glLineWidth(3f);
-        return new ShapeRendererMaskingModuleDrawable();
+        return new ShapeRendererMaskingDrawable();
     }
 
     @Override

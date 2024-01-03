@@ -15,13 +15,13 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class ShapeDrawerMaskingModuleDrawable implements ModuleDrawable {
+public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
 
     private final ShapeDrawer shapeDrawer;
     private final SDTriangle triangle1, triangle2, triangle3, triangle4;
     private final SDCircle mask;
 
-    public ShapeDrawerMaskingModuleDrawable(SpriteBatch spriteBatch, Sprite pixel) {
+    public ShapeDrawerMaskingDrawable(SpriteBatch spriteBatch, Sprite pixel) {
         shapeDrawer = new ShapeDrawer(spriteBatch);
         shapeDrawer.setTextureRegion(pixel);
 

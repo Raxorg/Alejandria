@@ -10,12 +10,12 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class OrthographicExampleModuleDrawable implements ModuleDrawable {
+public class OrthographicExampleDrawable implements ModuleDrawable {
 
     private final Renderer<?> renderer;
     private final Sprite weirdShape;
 
-    public OrthographicExampleModuleDrawable(Renderer<?> renderer, Sprite weirdShapeSprite) {
+    public OrthographicExampleDrawable(Renderer<?> renderer, Sprite weirdShapeSprite) {
         this.renderer = renderer;
 
         weirdShape = new Sprite(weirdShapeSprite);

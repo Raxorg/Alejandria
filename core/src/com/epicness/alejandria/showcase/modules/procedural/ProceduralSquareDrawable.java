@@ -12,13 +12,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class ProceduralSquareModuleDrawable implements ModuleDrawable {
+public class ProceduralSquareDrawable implements ModuleDrawable {
 
     private Color[][] pixels;
     private float pixelSize;
     private float spacingFactor;
 
-    public ProceduralSquareModuleDrawable() {
+    public ProceduralSquareDrawable() {
         setDimension(GRID_DIMENSION_A);
         setPixelSize(PIXEL_SIZE_A);
         setSpacingFactor(SPACING_A);

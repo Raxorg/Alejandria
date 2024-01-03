@@ -5,7 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class InvertShader extends Module<InvertShaderModuleDrawable> {
+public class InvertShader extends Module<InvertShaderDrawable> {
 
     public InvertShader() {
         super(
@@ -15,8 +15,8 @@ public class InvertShader extends Module<InvertShaderModuleDrawable> {
     }
 
     @Override
-    public InvertShaderModuleDrawable setup() {
-        return new InvertShaderModuleDrawable(sharedAssets.getWeirdShape(), assets.getInvert());
+    public InvertShaderDrawable setup() {
+        return new InvertShaderDrawable(sharedAssets.getWeirdShape(), assets.getInvert());
     }
 
     @Override

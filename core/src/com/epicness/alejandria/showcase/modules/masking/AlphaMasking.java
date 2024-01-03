@@ -5,7 +5,7 @@ import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 import com.epicness.alejandria.showcase.logic.Module;
 
 
-public class AlphaMasking extends Module<AlphaMaskingModuleDrawable> {
+public class AlphaMasking extends Module<AlphaMaskingDrawable> {
 
     public AlphaMasking() {
         super("Alpha Masking", "The sprite mask on the left defines the transparency of each pixel of the sprite on the right\n" +
@@ -14,8 +14,8 @@ public class AlphaMasking extends Module<AlphaMaskingModuleDrawable> {
     }
 
     @Override
-    public AlphaMaskingModuleDrawable setup() {
+    public AlphaMaskingDrawable setup() {
         sharedAssets.getWeirdShape().getTexture().setFilter(Linear, Linear);
-        return new AlphaMaskingModuleDrawable(sharedAssets.getWeirdShape(), assets.getGlow());
+        return new AlphaMaskingDrawable(sharedAssets.getWeirdShape(), assets.getGlow());
     }
 }
