@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 
+import space.earlygrey.shapedrawer.ShapeDrawer;
+
 public class Circle implements Movable {
 
     public float x, y, radius;
@@ -31,8 +33,20 @@ public class Circle implements Movable {
         this(x, y, 5f);
     }
 
+    public Circle(float radius, Color color) {
+        this(0f, 0f, radius, color);
+    }
+
     public Circle(float radius) {
-        this(0f, 0f, radius);
+        this(radius, GRAY.cpy());
+    }
+
+    public Circle() {
+        this(5f);
+    }
+
+    public void draw(ShapeDrawer shapeDrawer) {
+        shapeDrawer.filledCircle(x, y, radius, color);
     }
 
     public void draw(ShapeRenderer shapeRenderer) {
@@ -72,6 +86,10 @@ public class Circle implements Movable {
     @Override
     public void translateY(float amount) {
         y += amount;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void setColor(Color color) {
