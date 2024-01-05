@@ -1,9 +1,10 @@
 package com.epicness.alejandria.showcase.modules;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_WIDTH;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_X;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
@@ -34,9 +35,8 @@ public class WelcomeDrawable implements ModuleDrawable {
             Gdx.app.error("SHADER LOG:", shader.getLog());
         }
         canvas = new Sprited(pixel);
-        canvas.setSize(CANVAS_SIZE);
-        canvas.setOriginCenter();
-        canvas.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvas.setPosition(CANVAS_X, CANVAS_Y);
 
         text = new Text(pixelFont);
         text.setCenterVertical(true);

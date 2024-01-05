@@ -15,7 +15,7 @@ uniform float time;
 void main() {
     vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
-    vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
+    vec2 uv = (pos * 2.0 - reso) / reso.y;
 
     float d = length(uv);
     d = sin(d * 8.0 + time) / 8.0;

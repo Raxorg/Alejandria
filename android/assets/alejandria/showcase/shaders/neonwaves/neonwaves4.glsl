@@ -25,7 +25,7 @@ void main() {
     vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
 
-    vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
+    vec2 uv = (pos * 2.0 - reso) / reso.y;
     vec2 originalUV = uv;
     vec3 finalColor = vec3(0.0);
 

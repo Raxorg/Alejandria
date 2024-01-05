@@ -28,6 +28,7 @@ import com.epicness.alejandria.showcase.modules.rendering.OrthographicExample;
 import com.epicness.alejandria.showcase.modules.rendering3d.Decal;
 import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
 import com.epicness.alejandria.showcase.modules.shaders.InvertShader;
+import com.epicness.alejandria.showcase.modules.shaders.RaymarchingShader;
 import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
 import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
@@ -82,6 +83,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new TexturedCube());
         // Shaders
         registerHandler(new InvertShader());
+        registerHandler(new RaymarchingShader());
         registerHandler(new ShakeShader());
         registerHandler(new VignetteShader());
         // UI

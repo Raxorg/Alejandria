@@ -24,7 +24,7 @@ vec3 palette(in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {
 void main() {
     vec2 pos = gl_FragCoord.xy;
     vec2 reso = u_resolution;
-    vec2 uv = (pos * 2.0 - u_resolution) / u_resolution.y;
+    vec2 uv = (pos * 2.0 - reso) / reso.y;
 
     float distance = length(uv);
     vec3 color = palette(distance + time, a, b, c, d);
