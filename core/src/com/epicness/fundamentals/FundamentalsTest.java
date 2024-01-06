@@ -21,6 +21,7 @@ public class FundamentalsTest extends Game {
     SpriteBatch spriteBatch;
     BitmapFont font;
     DualSprited x;
+    String test = "ABCDEF!GHIJKL\"MNOPQR'S\nTUVWX,YZ0123:456789?ab\ncdefghijklmnopqrstuvw\nxyz";
 
     @Override
     public void create() {
@@ -28,7 +29,7 @@ public class FundamentalsTest extends Game {
         font = new BitmapFont(Gdx.files.internal("fundamentals/fonts/pixelFont.fnt"));
         font.getData().setScale(4f);
         Sprite a = new Sprite(new Texture(WEIRDSHAPE_SPRITE.fileName));
-        x = new DualSprited(a,a);
+        x = new DualSprited(a, a);
         x.setSize(100f);
     }
 
@@ -36,7 +37,7 @@ public class FundamentalsTest extends Game {
     public void render() {
         ScreenUtils.clear(Color.FOREST);
         spriteBatch.begin();
-        font.draw(spriteBatch, "A:B,C.D", 100f, 100f);
+        font.draw(spriteBatch, test, 0f, 400f);
         x.draw(spriteBatch);
         if (Gdx.input.isKeyPressed(K)) {
             x.stretchWidth(10f);

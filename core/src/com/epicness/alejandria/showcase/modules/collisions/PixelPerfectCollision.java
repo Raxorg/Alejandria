@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.modules.collisions;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -17,10 +17,9 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
 
     public PixelPerfectCollision() {
         super(
-                "Pixel Perfect Collision",
-                "Clicking on a transparent pixel inside the regular bounding box will change the shape color\n\n" +
-                        "Clicking on an opaque pixel will reposition the shape"
-
+            "Pixel Perfect Collision",
+            "Clicking on a transparent pixel inside the regular bounding box will change the shape color\n\n" +
+                "Clicking on an opaque pixel will reposition the shape"
         );
     }
 

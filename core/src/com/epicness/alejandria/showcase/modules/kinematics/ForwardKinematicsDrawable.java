@@ -5,18 +5,18 @@ import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_LINES;
 import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_LINE_LENGTH;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.ConnectedLine;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class ForwardKinematicsDrawable implements Drawable {
+public class ForwardKinematicsDrawable implements ModuleDrawable {
 
     private final ShapeDrawer shapeDrawer;
     private final ConnectedLine[] lines;
@@ -38,7 +38,7 @@ public class ForwardKinematicsDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < lines.length; i++) {
             lines[i].draw(shapeDrawer);
@@ -47,7 +47,7 @@ public class ForwardKinematicsDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public ConnectedLine[] getLines() {

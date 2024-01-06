@@ -38,6 +38,10 @@ public class ShowcaseAssets extends Assets {
 
     private ShaderProgram invert;
 
+    private ShaderProgram neonWaves;
+
+    private ShaderProgram raymarching;
+
     private ShaderProgram shake;
 
     private ShaderProgram vignette;
@@ -62,6 +66,8 @@ public class ShowcaseAssets extends Assets {
         smiley_color = get(SMILEY_COLOR_SPRITE);
         smiley_outline = get(SMILEY_OUTLINE_SPRITE);
         invert = get(INVERT_SHADER_PROGRAM);
+        neonWaves = get(NEONWAVES_SHADER_PROGRAM);
+        raymarching = get(RAYMARCHING_SHADER_PROGRAM);
         shake = get(SHAKE_SHADER_PROGRAM);
         vignette = get(VIGNETTE_SHADER_PROGRAM);
     }
@@ -120,6 +126,14 @@ public class ShowcaseAssets extends Assets {
 
     public ShaderProgram getInvert() {
         return invert;
+    }
+
+    public ShaderProgram getNeonWaves() {
+        return neonWaves;
+    }
+
+    public ShaderProgram getRaymarching() {
+        return raymarching;
     }
 
     public ShaderProgram getShake() {

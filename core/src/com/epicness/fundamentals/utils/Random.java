@@ -36,7 +36,6 @@ public class Random {
                 return Color.BLUE;
             case 9:
                 return Color.PURPLE;
-            case 10:
             default:
                 return Color.PINK;
         }

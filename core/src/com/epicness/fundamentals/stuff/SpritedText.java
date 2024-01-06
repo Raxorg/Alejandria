@@ -52,6 +52,17 @@ public class SpritedText implements Buttonable, Movable {
         label.translateY(amount);
     }
 
+    @Override
+    public void setY(float y) {
+        background.setY(y);
+        label.setY(y + background.getHeight() / 2f);
+    }
+
+    public void setPosition(float x, float y) {
+        background.setPosition(x, y);
+        label.setPosition(x, y + background.getHeight() / 2f);
+    }
+
     public float getWidth() {
         return background.getWidth();
     }

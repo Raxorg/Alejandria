@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;

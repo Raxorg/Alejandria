@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.assets.SharedAssets;
+import com.epicness.fundamentals.input.LogicInputHandler;
 import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.SharedStuff;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@SuppressWarnings({"rawtypes"})
+@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class Logic {
 
     protected SharedLogic sharedLogic;
@@ -26,10 +27,18 @@ public abstract class Logic {
     public void initialLogic() {
         for (LogicHandler logicHandler : logicHandlers) {
             logicHandler.init();
+            if (logicHandler instanceof LogicInputHandler)
+                ((LogicInputHandler) logicHandler).register();
         }
     }
 
-    public abstract void update(float delta);
+    public void restart() {
+        for (int i = 0; i < logicHandlers.size(); i++) {
+            logicHandlers.get(i).init();
+        }
+    }
+
+    public abstract void update();
 
     public void pause() {
     }

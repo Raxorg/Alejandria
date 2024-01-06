@@ -4,12 +4,12 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -17,20 +17,22 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.grid.Grid;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.grid.DefaultCellBuilder;
+import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
+import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LayeredMaskingDrawable implements Drawable {
+public class LayeredMaskingDrawable implements ModuleDrawable {
 
     private final Sprited mask;
-    private final Grid gridA, gridB;
+    private final DefaultCellGrid gridA, gridB;
     private final Circle circle1, circle2;
     private final List<DualSprited> shapes;
 
@@ -42,7 +44,11 @@ public class LayeredMaskingDrawable implements Drawable {
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);
-        gridA = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
+        DefaultCellGridBuilder builder = new DefaultCellGridBuilder(
+            new DefaultCellBuilder().sprite(cellSprite))
+            .columns(GRID_COLUMNS)
+            .rows(GRID_ROWS);
+        gridA = new DefaultCellGrid(builder);
         gridA.setCellSize(100f);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -51,8 +57,9 @@ public class LayeredMaskingDrawable implements Drawable {
             }
         }
 
-        cellSprite = new Sprite(square32Inverted);
-        gridB = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
+
+        builder.getCellBuilder().sprite(square32Inverted);
+        gridB = new DefaultCellGrid(builder);
         gridB.setCellSize(100f);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -98,12 +105,12 @@ public class LayeredMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         drawUnmasked(spriteBatch);
-        drawMask(spriteBatch, shapeBatch);
-        drawMasked(spriteBatch, shapeBatch);
-        drawMask2(spriteBatch, shapeBatch);
-        drawMasked2(spriteBatch, shapeBatch);
+        drawMask(spriteBatch, shapeRenderer);
+        drawMasked(spriteBatch, shapeRenderer);
+        drawMask2(spriteBatch, shapeRenderer);
+        drawMasked2(spriteBatch, shapeRenderer);
         // Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
@@ -198,7 +205,7 @@ public class LayeredMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Sprited getMask() {

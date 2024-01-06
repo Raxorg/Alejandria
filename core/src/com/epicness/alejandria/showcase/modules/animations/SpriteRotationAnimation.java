@@ -6,15 +6,15 @@ public class SpriteRotationAnimation extends Module<SpriteRotationAnimationDrawa
 
     public SpriteRotationAnimation() {
         super(
-                "Sprite Rotation Animation",
-                "Demonstration of rotation around center and rotation around a custom origin"
+            "Sprite Rotation Animation",
+            "Demonstration of rotation around center and rotation around a custom origin"
         );
     }
 
     @Override
     public SpriteRotationAnimationDrawable setup() {
         return new SpriteRotationAnimationDrawable(
-                sharedAssets.getPixel(), sharedAssets.getWeirdShape()
+            sharedAssets.getPixel(), sharedAssets.getWeirdShape()
         );
     }
 

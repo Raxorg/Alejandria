@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_
 
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.ConnectedLine;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
 public class ForwardKinematics extends Module<ForwardKinematicsDrawable> {
 

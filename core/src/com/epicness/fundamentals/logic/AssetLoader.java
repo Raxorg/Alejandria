@@ -12,8 +12,12 @@ public class AssetLoader {
     protected void beginLoading(List<Assets> assetsToLoad, CompletionListener completionListener) {
         pendingAssets = assetsToLoad;
         for (int i = 0; i < pendingAssets.size(); i++) {
-            if (pendingAssets.get(i).areAssetsInitialized()) continue;
-            pendingAssets.get(i).queueAssetLoading();
+            Assets assets = pendingAssets.get(i);
+            if (assets.areAssetsInitialized()) {
+                System.out.println(assets.getClass().getSimpleName() + " previously initialized");
+                continue;
+            }
+            assets.queueAssetLoading();
         }
         listener = completionListener;
     }
@@ -29,7 +33,7 @@ public class AssetLoader {
                 continue;
             }
             if (assets.loadAssets()) {
-                assets.initializeAssets();
+                assets.initAssets();
             }
             return;
         }

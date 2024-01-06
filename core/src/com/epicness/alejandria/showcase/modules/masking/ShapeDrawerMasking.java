@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;

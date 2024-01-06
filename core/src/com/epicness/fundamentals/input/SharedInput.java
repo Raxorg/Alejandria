@@ -1,19 +1,23 @@
 package com.epicness.fundamentals.input;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.epicness.fundamentals.SharedScreen;
 
-public class SharedInput extends InputAdapter {
+import java.util.ArrayList;
+import java.util.List;
 
-    private InputHandler<?, ?> inputHandler;
+public class SharedInput implements InputProcessor {
+
+    private final List<LogicInputHandler<?, ?, ?, ?>> inputHandlers;
     private OrthographicCamera staticCamera, dynamicCamera;
-    private boolean enabled;
+    private boolean enabled, inputConsumed;
     private Vector3 unprojected;
 
     public SharedInput() {
+        inputHandlers = new ArrayList<>();
         enabled = false;
         unprojected = new Vector3();
         Gdx.input.setInputProcessor(this);
@@ -21,85 +25,179 @@ public class SharedInput extends InputAdapter {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        if (!enabled || inputHandler == null) {
-            return false;
+        if (!enabled) return false;
+        inputConsumed = false;
+        // Static camera
+        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).mouseMoved(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
         }
-        unprojected = staticCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.mouseMoved(unprojected.x, unprojected.y);
+        // Dynamic camera
+        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0, n = inputHandlers.size(); i < n; i++) {
+            inputHandlers.get(i).mouseMovedDynamic(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
 
-        unprojected = dynamicCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.mouseMovedDynamic(unprojected.x, unprojected.y);
-        return true;
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(float amountX, float amountY) {
+        if (!enabled) return false;
+        inputConsumed = false;
+
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).scrolled(amountX, amountY);
+            if (inputConsumed) return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (pointer != 0 || !enabled || inputHandler == null) {
-            return false;
+        if (pointer != 0 || !enabled) return false;
+        inputConsumed = false;
+        // Static camera
+        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchDown(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
         }
-        unprojected = staticCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchDown(unprojected.x, unprojected.y);
+        // Dynamic camera
+        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchDownDynamic(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
 
-        unprojected = dynamicCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchDownDynamic(unprojected.x, unprojected.y);
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        if (pointer != 0 || !enabled || inputHandler == null) {
-            return false;
+        if (pointer != 0 || !enabled) return false;
+        inputConsumed = false;
+        // Static camera
+        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchDragged(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
         }
-        unprojected = staticCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchDragged(unprojected.x, unprojected.y);
+        // Dynamic camera
+        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchDraggedDynamic(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
 
-        unprojected = dynamicCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchDraggedDynamic(unprojected.x, unprojected.y);
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        if (pointer != 0 || !enabled || inputHandler == null) {
-            return false;
+        if (pointer != 0 || !enabled) return false;
+        inputConsumed = false;
+        // Static camera
+        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchUp(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
         }
-        unprojected = staticCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchUp(unprojected.x, unprojected.y);
+        // Dynamic camera
+        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchUpDynamic(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
 
-        unprojected = dynamicCamera.unproject(new Vector3(screenX, screenY, 0f));
-        inputHandler.touchUpDynamic(unprojected.x, unprojected.y);
-        return true;
+        return false;
+    }
+
+    @Override
+    public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+        if (pointer != 0 || !enabled) return false;
+        inputConsumed = false;
+        // Static camera
+        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchCancelled(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
+        // Dynamic camera
+        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).touchCancelledDynamic(unprojected.x, unprojected.y);
+            if (inputConsumed) return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        if (!enabled || inputHandler == null) {
-            return false;
+        if (!enabled) return false;
+        inputConsumed = false;
+
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).keyDown(keycode);
+            if (inputConsumed) return true;
         }
-        inputHandler.keyDown(keycode);
-        return true;
+
+        return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        if (!enabled || inputHandler == null) {
-            return false;
+        if (!enabled) return false;
+        inputConsumed = false;
+
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).keyUp(keycode);
+            if (inputConsumed) return true;
         }
-        inputHandler.keyUp(keycode);
-        return true;
+
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        if (!enabled) return false;
+        inputConsumed = false;
+
+        for (int i = 0; i < inputHandlers.size(); i++) {
+            inputHandlers.get(i).keyTyped(character);
+            if (inputConsumed) return true;
+        }
+
+        return false;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
+    public void clearInputHandlers() {
+        inputHandlers.clear();
+    }
+
+    public void addInputHandler(LogicInputHandler<?, ?, ?, ?> inputHandler) {
+        inputHandlers.add(inputHandler);
+    }
+
+    public void removeInputHandler(LogicInputHandler<?, ?, ?, ?> inputHandler) {
+        inputHandlers.remove(inputHandler);
+    }
+
+    public void consumeInput() {
+        inputConsumed = true;
+    }
+
     // Structure
     public void setScreen(SharedScreen screen) {
         staticCamera = screen.getStaticCamera();
         dynamicCamera = screen.getDynamicCamera();
-    }
-
-    public void setInputHandler(InputHandler<?, ?> inputHandler) {
-        this.inputHandler = inputHandler;
     }
 }

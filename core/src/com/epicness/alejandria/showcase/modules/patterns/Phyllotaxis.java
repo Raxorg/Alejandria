@@ -1,13 +1,13 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.PHYLLOTAXIS_CIRCLES;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
 
@@ -16,7 +16,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
     private float[] angles;
 
     public Phyllotaxis() {
-        super("Phyllotaxis", "Hold to accelerate");
+        super("Phyllotaxis", "Hold to accelerate\n\nTry blinking when it goes fast :o");
     }
 
     @Override

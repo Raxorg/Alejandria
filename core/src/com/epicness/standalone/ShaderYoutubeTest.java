@@ -19,7 +19,7 @@ public class ShaderYoutubeTest extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         FileHandle vertexShader = Gdx.files.internal("alejandria/showcase/shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("youtube05.glsl");
+        FileHandle fragmentShader = Gdx.files.internal("alejandria/showcase/shaders/neonwaves/neonwaves5.glsl");
         //init shaders
         shader = new ShaderProgram(vertexShader, fragmentShader);
         shader.bind();

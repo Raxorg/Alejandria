@@ -3,8 +3,8 @@ package com.epicness.alejandria.showcase.modules.fun;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.VOLUME;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;

@@ -1,8 +1,13 @@
 package com.epicness.alejandria.showcase.logic;
 
+import static com.badlogic.gdx.Input.Keys.D;
+import static com.badlogic.gdx.Input.Keys.G;
+import static com.badlogic.gdx.Input.Keys.I;
+import static com.badlogic.gdx.Input.Keys.LEFT;
+import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_75;
+import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_75;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -24,6 +29,8 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     @Override
     public void init() {
+        input.clearInputHandlers();
+
         previous = stuff.getPrevious();
         gitHub = stuff.getGitHubButton();
         info = stuff.getInfoButton();
@@ -45,6 +52,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         currentModule.update(delta);
     }
 
+    @Override
     public void mouseMoved(float x, float y) {
         previous.setColor(WHITE);
         gitHub.setColor(WHITE);
@@ -56,6 +64,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         else if (next.contains(x, y)) next.setColor(CHARTREUSE);
     }
 
+    @Override
     public void touchUp(float x, float y) {
         int currentIndex = modules.indexOf(currentModule);
         if (previous.contains(x, y))
@@ -70,12 +79,25 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
             hideInformation();
     }
 
-    public void keyDown(boolean left) {
+    @Override
+    public void keyDown(int keycode) {
         int currentIndex = modules.indexOf(currentModule);
-        if (left) {
-            changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
-        } else {
-            changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
+        switch (keycode) {
+            case LEFT:
+                changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);
+                return;
+            case RIGHT:
+                changeModule(currentIndex == modules.size() - 1 ? 0 : currentIndex + 1);
+                return;
+            case I:
+                toggleInformation();
+                return;
+            case G:
+                openGitHub();
+                return;
+            case D:
+                toggleDebug();
+                break;
         }
     }
 

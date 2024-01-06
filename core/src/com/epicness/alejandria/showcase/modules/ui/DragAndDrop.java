@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
 import static com.badlogic.gdx.graphics.Color.ORANGE;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;

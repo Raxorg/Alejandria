@@ -1,16 +1,16 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
-public class VignetteShaderDrawable implements Drawable {
+public class VignetteShaderDrawable implements ModuleDrawable {
 
     private final Sprited square1, square2, square3, square4;
 
@@ -37,7 +37,7 @@ public class VignetteShaderDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         square1.draw(spriteBatch);
         square2.draw(spriteBatch);
@@ -47,6 +47,6 @@ public class VignetteShaderDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 }

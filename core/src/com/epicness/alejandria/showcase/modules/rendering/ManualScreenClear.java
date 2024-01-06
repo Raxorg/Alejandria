@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
 import static com.badlogic.gdx.Input.Keys.SPACE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -13,9 +13,9 @@ public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
 
     public ManualScreenClear() {
         super(
-                "Manual Screen Clear",
-                "Press space to toggle screen clearing\n\n" +
-                        "Requires preserveDrawingBuffer config set to true for web projects"
+            "Manual Screen Clear",
+            "Press space to toggle screen clearing\n\n" +
+                "Requires preserveDrawingBuffer config set to true for web projects"
         );
     }
 

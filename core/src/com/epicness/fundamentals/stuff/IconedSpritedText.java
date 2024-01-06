@@ -39,6 +39,13 @@ public class IconedSpritedText implements Buttonable, Movable {
     }
 
     @Override
+    public void translateX(float amount) {
+        background.translateX(amount);
+        label.translateX(amount);
+        icon.translateX(amount);
+    }
+
+    @Override
     public void setX(float x) {
         background.setX(x);
         label.setX(x);
@@ -51,24 +58,17 @@ public class IconedSpritedText implements Buttonable, Movable {
     }
 
     @Override
-    public void setY(float y) {
-        background.setY(y);
-        label.setY(y + background.getHeight() / 2f);
-        icon.setY(y + background.getHeight() / 2f - icon.getHeight() / 2f);
-    }
-
-    @Override
-    public void translateX(float amount) {
-        background.translateX(amount);
-        label.translateX(amount);
-        icon.translateX(amount);
-    }
-
-    @Override
     public void translateY(float amount) {
         background.translateY(amount);
         label.translateY(amount);
         icon.translateY(amount);
+    }
+
+    @Override
+    public void setY(float y) {
+        background.setY(y);
+        label.setY(y + background.getHeight() / 2f);
+        icon.setY(y + background.getHeight() / 2f - icon.getHeight() / 2f);
     }
 
     public void setSize(float size) {

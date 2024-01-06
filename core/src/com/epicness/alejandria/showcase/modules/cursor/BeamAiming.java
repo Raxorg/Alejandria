@@ -5,8 +5,8 @@ import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.TRIANGLE_SPEED;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -19,11 +19,11 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
 
     public BeamAiming() {
         super(
-                "Beam Aiming",
-                "The sprite in blue has dynamic width\n\n" +
-                        "Rotation is calculated so that one end of it is anchored to the triangle " +
-                        "and the other end to the cursor\n\n" +
-                        "WASD to move the triangle"
+            "Beam Aiming",
+            "The sprite in blue has dynamic width\n\n" +
+                "Rotation is calculated so that one end of it is anchored to the triangle " +
+                "and the other end to the cursor\n\n" +
+                "WASD to move the triangle"
         );
     }
 

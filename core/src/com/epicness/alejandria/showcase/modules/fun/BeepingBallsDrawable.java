@@ -5,17 +5,17 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALL_COLORS;
 import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class BeepingBallsDrawable implements Drawable {
+public class BeepingBallsDrawable implements ModuleDrawable {
 
     private final BeepingBall[] balls;
 
@@ -31,21 +31,21 @@ public class BeepingBallsDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         ScreenUtils.clear(BLACK);
 
-        shapeBatch.begin();
-        shapeBatch.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
-        shapeBatch.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+        shapeRenderer.begin();
+        shapeRenderer.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+        shapeRenderer.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
         for (int i = 0; i < BALLS; i++) {
             if (i >= BALLS - 1) {
                 continue;
             }
             BeepingBall ball = balls[i];
             BeepingBall nextBall = balls[i + 1];
-            shapeBatch.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter());
+            shapeRenderer.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter());
         }
-        shapeBatch.end();
+        shapeRenderer.end();
 
         spriteBatch.begin();
         for (int i = 0; i < BALLS; i++) {
@@ -55,9 +55,9 @@ public class BeepingBallsDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
         for (int i = 0; i < BALLS; i++) {
-            balls[i].drawDebug(shapeBatch);
+            balls[i].drawDebug(shapeRenderer);
         }
     }
 

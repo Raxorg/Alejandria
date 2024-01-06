@@ -2,20 +2,20 @@ package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
-import com.epicness.fundamentals.stuff.shapes.Triangle;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 
-public class ShapeRendererMaskingDrawable implements Drawable {
+public class ShapeRendererMaskingDrawable implements ModuleDrawable {
 
     private final Circle maskedCircle, circleMask;
     private final Triangle triangleMask;
@@ -37,17 +37,17 @@ public class ShapeRendererMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
-        shapeBatch.begin();
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.begin();
 
-        drawMasks(shapeBatch);
-        drawMasked(shapeBatch);
-        drawContours(shapeBatch);
+        drawMasks(shapeRenderer);
+        drawMasked(shapeRenderer);
+        drawContours(shapeRenderer);
 
-        shapeBatch.end();
+        shapeRenderer.end();
     }
 
-    private void drawMasks(ShapeBatch shapeBatch) {
+    private void drawMasks(ShapeRendererPlus shapeRenderer) {
         // 1. Clear our depth buffer info from previous frame
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -60,32 +60,32 @@ public class ShapeRendererMaskingDrawable implements Drawable {
         // 4. Disable RGBA color writing
         Gdx.gl.glColorMask(false, false, false, false);
 
-        shapeBatch.set(Filled);
-        circleMask.draw(shapeBatch);
-        triangleMask.draw(shapeBatch);
-        shapeBatch.flush();
+        shapeRenderer.set(Filled);
+        circleMask.draw(shapeRenderer);
+        triangleMask.draw(shapeRenderer);
+        shapeRenderer.flush();
     }
 
-    private void drawMasked(ShapeBatch shapeBatch) {
+    private void drawMasked(ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
 
-        maskedCircle.draw(shapeBatch);
-        shapeBatch.flush();
+        maskedCircle.draw(shapeRenderer);
+        shapeRenderer.flush();
     }
 
-    private void drawContours(ShapeBatch shapeBatch) {
+    private void drawContours(ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
-        shapeBatch.set(Line);
+        shapeRenderer.set(Line);
         // The masks
-        circleMask.draw(shapeBatch);
-        triangleMask.draw(shapeBatch);
+        circleMask.draw(shapeRenderer);
+        triangleMask.draw(shapeRenderer);
         // The masked circle
-        maskedCircle.draw(shapeBatch);
+        maskedCircle.draw(shapeRenderer);
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Circle getCircleMask() {

@@ -9,31 +9,33 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
-import static com.epicness.fundamentals.SharedConstants.BLACK_CLEAR_50;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.grid.Grid;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.grid.DefaultCellBuilder;
+import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
+import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class AdvancedSplitScreenDrawable implements Drawable {
+public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
-    private Grid grid;
+    private DefaultCellGrid grid;
     private Circle player1, player2;
     private Sprited mask, divider;
     private OrthographicCamera camera1, camera2, staticCamera;
@@ -58,7 +60,11 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     }
 
     private void initGrid(Sprite cellSprite) {
-        grid = new Grid(GRID_COLUMNS, GRID_ROWS, cellSprite);
+        DefaultCellGridBuilder builder = new DefaultCellGridBuilder(
+            new DefaultCellBuilder().sprite(cellSprite))
+            .columns(GRID_COLUMNS)
+            .rows(GRID_ROWS);
+        grid = new DefaultCellGrid(builder);
         grid.setCellSize(CELL_SIZE);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -99,29 +105,29 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
-        drawUnmasked(spriteBatch, shapeBatch);
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+        drawUnmasked(spriteBatch, shapeRenderer);
         if (playersClose || camerasClose) {
             return;
         }
         applyMask(spriteBatch);
-        drawMasked(spriteBatch, shapeBatch);
+        drawMasked(spriteBatch, shapeRenderer);
         drawUnmasked2(spriteBatch);
     }
 
-    private void drawUnmasked(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    private void drawUnmasked(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.setProjectionMatrix(camera1.combined);
         spriteBatch.begin();
         grid.draw(spriteBatch);
         spriteBatch.end();
         spriteBatch.setProjectionMatrix(staticCamera.combined);
 
-        shapeBatch.setProjectionMatrix(camera1.combined);
-        shapeBatch.begin(Filled);
-        player1.draw(shapeBatch);
-        player2.draw(shapeBatch);
-        shapeBatch.end();
-        shapeBatch.setProjectionMatrix(staticCamera.combined);
+        shapeRenderer.setProjectionMatrix(camera1.combined);
+        shapeRenderer.begin(Filled);
+        player1.draw(shapeRenderer);
+        player2.draw(shapeRenderer);
+        shapeRenderer.end();
+        shapeRenderer.setProjectionMatrix(staticCamera.combined);
     }
 
     private void applyMask(SpriteBatch spriteBatch) {
@@ -147,7 +153,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         spriteBatch.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    private void drawMasked(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
 
@@ -156,11 +162,11 @@ public class AdvancedSplitScreenDrawable implements Drawable {
         grid.draw(spriteBatch);
         spriteBatch.end();
 
-        shapeBatch.setProjectionMatrix(camera2.combined);
-        shapeBatch.begin(Filled);
-        player1.draw(shapeBatch);
-        player2.draw(shapeBatch);
-        shapeBatch.end();
+        shapeRenderer.setProjectionMatrix(camera2.combined);
+        shapeRenderer.begin(Filled);
+        player1.draw(shapeRenderer);
+        player2.draw(shapeRenderer);
+        shapeRenderer.end();
     }
 
     private void drawUnmasked2(SpriteBatch spriteBatch) {
@@ -173,7 +179,7 @@ public class AdvancedSplitScreenDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Circle getPlayer1() {

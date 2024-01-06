@@ -23,10 +23,10 @@ import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class TexturedCubeDrawable implements Drawable {
+public class TexturedCubeDrawable implements ModuleDrawable {
 
     private final ModelInstance modelInstance1;
     private final Environment environment;
@@ -38,10 +38,10 @@ public class TexturedCubeDrawable implements Drawable {
         ModelBuilder modelBuilder = new ModelBuilder();
 
         Material material = new Material(
-                TextureAttribute.createDiffuse(sprite),
-                new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),
-                FloatAttribute.createAlphaTest(0.5f),
-                IntAttribute.createCullFace(GL20.GL_NONE));
+            TextureAttribute.createDiffuse(sprite),
+            new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),
+            FloatAttribute.createAlphaTest(0.5f),
+            IntAttribute.createCullFace(GL20.GL_NONE));
 
         Model model = modelBuilder.createBox(5f, 5f, 5f, material, Position | Normal | TextureCoordinates);
         modelInstance1 = new ModelInstance(model);
@@ -57,7 +57,7 @@ public class TexturedCubeDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         modelBatch.begin(camera);
@@ -66,7 +66,7 @@ public class TexturedCubeDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Camera getCamera() {

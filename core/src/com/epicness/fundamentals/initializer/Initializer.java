@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.epicness.fundamentals.SharedResources;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.Assets;
+import com.epicness.fundamentals.input.SharedInput;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
@@ -25,12 +26,13 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
     }
 
     public final void initialize(SharedResources sharedResources) {
+        SharedInput input = sharedResources.getInput();
         SharedScreen screen = sharedResources.getScreen();
 
         logic.setStructure(
                 (Game) Gdx.app.getApplicationListener(),
                 sharedResources.getAssets(),
-                sharedResources.getInput(),
+                input,
                 sharedResources.getLogic(),
                 screen,
                 sharedResources.getStuff(),
@@ -38,6 +40,8 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
                 renderer,
                 stuff
         );
+        input.clearInputHandlers();
+        input.setEnabled(true);
         renderer.setScreen(screen);
         renderer.setSharedStuff(sharedResources.getStuff());
         renderer.setStuff(stuff);
@@ -49,12 +53,18 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         renderer.useStaticCamera();
         stuff.initializeStuff();
 
+        initialized = true;
+        sharedResources.registerInitializer(this);
+
         logic.initialLogic();
     }
 
     public final void fastInitialize(SharedResources sharedResources) {
+        SharedInput input = sharedResources.getInput();
         SharedScreen screen = sharedResources.getScreen();
 
+        input.clearInputHandlers();
+        input.setEnabled(true);
         screen.setLogic(logic);
         screen.setRenderer(renderer);
 
@@ -63,10 +73,6 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
 
     public Assets getAssets() {
         return assets;
-    }
-
-    public void setInitialized() {
-        initialized = true;
     }
 
     public boolean wasInitialized() {

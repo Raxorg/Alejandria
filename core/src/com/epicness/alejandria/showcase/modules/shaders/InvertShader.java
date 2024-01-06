@@ -9,8 +9,8 @@ public class InvertShader extends Module<InvertShaderDrawable> {
 
     public InvertShader() {
         super(
-                "Invert Shader",
-                "This shader inverts all the colors except the screen clear color\n\nSpace to toggle"
+            "Invert Shader",
+            "This shader inverts all the colors except the screen clear color\n\nSpace to toggle"
         );
     }
 

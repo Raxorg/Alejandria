@@ -4,18 +4,17 @@ import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_WIDTH;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.MUZZLE_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
-public class BulletSpawningDrawable implements Drawable {
+public class BulletSpawningDrawable implements ModuleDrawable {
 
     private final Sprited gun, bullet, center;
 
@@ -40,7 +39,7 @@ public class BulletSpawningDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         gun.draw(spriteBatch);
         bullet.draw(spriteBatch);
@@ -49,8 +48,7 @@ public class BulletSpawningDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Sprited getGun() {

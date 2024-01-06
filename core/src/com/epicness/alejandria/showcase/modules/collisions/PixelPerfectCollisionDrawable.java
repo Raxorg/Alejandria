@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
-public class PixelPerfectCollisionDrawable implements Drawable {
+public class PixelPerfectCollisionDrawable implements ModuleDrawable {
 
     private final Pixmap pixmap;
     private final Sprited[] shapes;
@@ -27,7 +27,7 @@ public class PixelPerfectCollisionDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < shapes.length; i++) {
             shapes[i].draw(spriteBatch);
@@ -36,9 +36,9 @@ public class PixelPerfectCollisionDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
         for (int i = 0; i < shapes.length; i++) {
-            shapes[i].drawDebug(shapeBatch);
+            shapes[i].drawDebug(shapeRenderer);
         }
     }
 

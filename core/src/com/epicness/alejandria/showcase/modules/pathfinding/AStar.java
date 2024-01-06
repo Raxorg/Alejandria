@@ -4,11 +4,11 @@ import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_2;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
-import static com.epicness.fundamentals.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.SharedConstants.DIRT;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;

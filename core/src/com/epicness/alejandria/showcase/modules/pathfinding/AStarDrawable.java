@@ -1,15 +1,15 @@
 package com.epicness.alejandria.showcase.modules.pathfinding;
 
 import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGrid;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class AStarDrawable implements Drawable {
+public class AStarDrawable implements ModuleDrawable {
 
     private final PathfindingGrid grid;
 
@@ -19,12 +19,12 @@ public class AStarDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         grid.draw(spriteBatch);
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public PathfindingGrid getGrid() {

@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.constants;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 public class AdvancedSplitScreenConstants {
 

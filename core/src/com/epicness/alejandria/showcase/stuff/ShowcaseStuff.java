@@ -6,9 +6,9 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.NEXT_
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.TOP_STRIPE_Y;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
 import com.epicness.fundamentals.stuff.Sprited;

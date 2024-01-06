@@ -6,8 +6,8 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWC
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_X;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,10 +16,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class AlphaMaskingDrawable implements Drawable {
+public class AlphaMaskingDrawable implements ModuleDrawable {
 
     private final Sprite maskedSprite, mask, visibleMask, originalMaskedSprite;
     private final FrameBuffer frameBuffer;
@@ -52,7 +52,7 @@ public class AlphaMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         frameBuffer.bind();
         ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR); // Draw the elements the background instead of just clearing the screen
 
@@ -112,6 +112,6 @@ public class AlphaMaskingDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 }

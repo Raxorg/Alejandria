@@ -4,15 +4,15 @@ import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.SQUARE_SIZE;
 import static com.epicness.alejandria.showcase.constants.SpriteRotationAnimationConstants.WEIRD_SHAPE_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class SpriteRotationAnimationDrawable implements Drawable {
+public class SpriteRotationAnimationDrawable implements ModuleDrawable {
 
     private final Sprite pixel, weirdShape;
 
@@ -32,7 +32,7 @@ public class SpriteRotationAnimationDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         pixel.draw(spriteBatch);
         weirdShape.draw(spriteBatch);
@@ -40,9 +40,9 @@ public class SpriteRotationAnimationDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.rect(pixel.getBoundingRectangle());
-        shapeBatch.rect(weirdShape.getBoundingRectangle());
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.rect(pixel.getBoundingRectangle());
+        shapeRenderer.rect(weirdShape.getBoundingRectangle());
     }
 
     public Sprite getPixel() {

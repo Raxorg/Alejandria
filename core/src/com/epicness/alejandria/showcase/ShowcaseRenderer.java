@@ -15,7 +15,7 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
     public void render() {
         if (clearScreen) ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
 
-        stuff.getShowcase().draw(spriteBatch, shapeBatch);
+        stuff.getShowcase().draw(spriteBatch, shapeRenderer);
 
         spriteBatch.begin();
         stuff.getTitle().draw(spriteBatch);
@@ -31,8 +31,8 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
     }
 
     public void renderDebug() {
-        shapeBatch.begin();
-        stuff.getShowcase().drawDebug(shapeBatch);
-        shapeBatch.end();
+        shapeRenderer.begin();
+        stuff.getShowcase().drawDebug(shapeRenderer);
+        shapeRenderer.end();
     }
 }

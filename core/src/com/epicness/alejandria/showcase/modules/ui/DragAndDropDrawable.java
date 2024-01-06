@@ -1,20 +1,20 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DragAndDropDrawable implements Drawable {
+public class DragAndDropDrawable implements ModuleDrawable {
 
     private final Sprited dropArea;
     private final List<Sprited> squares;
@@ -36,7 +36,7 @@ public class DragAndDropDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         dropArea.draw(spriteBatch);
         for (int i = 0; i < squares.size(); i++) {
@@ -46,7 +46,7 @@ public class DragAndDropDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Sprited getDropArea() {

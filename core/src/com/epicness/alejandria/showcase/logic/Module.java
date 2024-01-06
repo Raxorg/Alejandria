@@ -2,12 +2,12 @@ package com.epicness.alejandria.showcase.logic;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHUB_ROOT;
 
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 
 /**
  * The modules package is an exception to the conventional package structure of epicness games/apps
  **/
-public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
+public abstract class Module<D extends ModuleDrawable> extends ShowcaseLogicHandler {
 
     protected final String title;
     protected final String information;
@@ -20,8 +20,11 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
         gitHubPath = GITHUB_ROOT + getClass().getName().replace(".", "/") + ".java";
     }
 
+    @Override
+    protected void init() {}
+
     public final D setupModule() {
-        logic.get(ShowcaseInputHandler.class).setModule(this);
+        input.addInputHandler(this);
         return drawable = setup();
     }
 
@@ -30,27 +33,9 @@ public abstract class Module<D extends Drawable> extends ShowcaseLogicHandler {
     public void update(float delta) {
     }
 
-    public void mouseMoved(float x, float y) {
-    }
-
-    public void touchDown(float x, float y) {
-    }
-
-    public void touchDragged(float x, float y) {
-    }
-
-    public void touchUp(float x, float y) {
-    }
-
-    public void keyDown(int keycode) {
-    }
-
-    public void keyUp(int keycode) {
-    }
-
     public final void exitModule() {
         drawable = null;
-        logic.get(ShowcaseInputHandler.class).setModule(null);
+        input.removeInputHandler(this);
         exit();
     }
 

@@ -7,7 +7,7 @@ import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionCons
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_X;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_Y;
-import static com.epicness.fundamentals.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -21,12 +21,11 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
 
     public CrossChunkSelection() {
         super(
-                "Cross Chunk Selection",
-                "Demonstrates how to select neighboring cells even from different chunks\n\n" +
-                        "Uses math for efficiency, each chunk has 4 squares\n\n" +
-                        "clicking the corner of a square selects neighbors\n\n" +
-                        "clicking near the center of a square makes it black"
-
+            "Cross Chunk Selection",
+            "Demonstrates how to select neighboring cells even from different chunks\n\n" +
+                "Uses math for efficiency, each chunk has 4 squares\n\n" +
+                "clicking the corner of a square selects neighbors\n\n" +
+                "clicking near the center of a square makes it black"
         );
     }
 

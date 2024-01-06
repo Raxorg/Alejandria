@@ -3,7 +3,6 @@ package com.epicness.alejandria.desktop;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.files.FileHandle;
 import com.epicness.alejandria.desktop.TypeSpecWithStaticImports.StaticImport;
-import com.epicness.fundamentals.utils.StringUtils;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.JavaFile.Builder;
 import com.squareup.javapoet.TypeSpec;

@@ -3,15 +3,14 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
-import com.epicness.fundamentals.renderer.ShapeBatch;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.utils.TextUtils;
 
-public class Text implements Buttonable, Drawable, Movable {
+public class Text implements Buttonable, Movable {
 
     protected Rectangle bounds;
     private BitmapFont font;
@@ -32,28 +31,26 @@ public class Text implements Buttonable, Drawable, Movable {
         centerVertical = false;
     }
 
-    @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch) {
         font.setColor(color);
         getFont().draw(
-                spriteBatch,
-                text,
-                bounds.x,
-                centerVertical ? bounds.y + bounds.height / 2f : bounds.y + bounds.height,
-                0,
-                text.length(),
-                bounds.width,
-                horizontalAlignment,
-                true,
-                truncate
+            spriteBatch,
+            text,
+            bounds.x,
+            centerVertical ? bounds.y + bounds.height / 2f : bounds.y + bounds.height,
+            0,
+            text.length(),
+            bounds.width,
+            horizontalAlignment,
+            true,
+            truncate
         );
     }
 
-    @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.rect(
-                bounds.x, centerVertical ? bounds.y - bounds.height / 2f : bounds.y,
-                bounds.width, bounds.height
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        shapeRenderer.rect(
+            bounds.x, centerVertical ? bounds.y - bounds.height / 2f : bounds.y,
+            bounds.width, bounds.height
         );
     }
 
@@ -86,7 +83,7 @@ public class Text implements Buttonable, Drawable, Movable {
         bounds.height = TextUtils.getTextHeight(this);
     }
 
-    public float getTextWidth() {
+    public float getWidth() {
         return TextUtils.getTextWidth(this);
     }
 

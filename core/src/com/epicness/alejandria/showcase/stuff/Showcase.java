@@ -1,24 +1,24 @@
 package com.epicness.alejandria.showcase.stuff;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class Showcase implements Drawable{
+public class Showcase implements ModuleDrawable {
 
-    private Drawable moduleDrawable;
+    private ModuleDrawable moduleDrawable;
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
-        moduleDrawable.draw(spriteBatch, shapeBatch);
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+        moduleDrawable.draw(spriteBatch, shapeRenderer);
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        moduleDrawable.drawDebug(shapeBatch);
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        moduleDrawable.drawDebug(shapeRenderer);
     }
 
-    public void setModuleDrawable(Drawable moduleDrawable) {
+    public void setModuleDrawable(ModuleDrawable moduleDrawable) {
         this.moduleDrawable = moduleDrawable;
     }
 }

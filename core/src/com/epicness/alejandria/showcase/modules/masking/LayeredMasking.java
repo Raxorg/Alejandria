@@ -1,13 +1,13 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.DualSprited;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 import java.util.List;
 

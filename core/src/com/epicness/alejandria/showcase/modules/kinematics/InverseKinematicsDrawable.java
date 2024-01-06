@@ -8,14 +8,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Tentacle;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Tentacle;
 import com.epicness.fundamentals.utils.Random;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class InverseKinematicsDrawable implements Drawable {
+public class InverseKinematicsDrawable implements ModuleDrawable {
 
     private final ShapeDrawer shapeDrawer;
     private final Tentacle[] tentacles;
@@ -35,7 +35,7 @@ public class InverseKinematicsDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < tentacles.length; i++) {
             tentacles[i].draw(shapeDrawer);
@@ -44,7 +44,7 @@ public class InverseKinematicsDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Tentacle[] getTentacles() {

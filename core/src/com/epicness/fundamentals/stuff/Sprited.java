@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Actor;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class Sprited implements Actor, Buttonable {
+public class Sprited implements Buttonable, Transformable {
 
     private final Sprite sprite;
 
@@ -23,20 +23,17 @@ public class Sprited implements Actor, Buttonable {
         this.sprite.setRegion(sprite);
     }
 
-    @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch) {
         sprite.draw(spriteBatch);
     }
 
-    @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        Rectangle bounds = sprite.getBoundingRectangle();
-        shapeBatch.rect(bounds);
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.rect(getBoundingRectangle());
     }
 
     @Override
     public boolean contains(float x, float y) {
-        return sprite.getBoundingRectangle().contains(x, y);
+        return getBoundingRectangle().contains(x, y);
     }
 
     public Rectangle getBoundingRectangle() {
@@ -83,8 +80,17 @@ public class Sprited implements Actor, Buttonable {
         return sprite.getHeight();
     }
 
+    @Override
+    public void rotate(float degrees) {
+        sprite.rotate(degrees);
+    }
+
     public void setOriginBasedPosition(float x, float y) {
         sprite.setOriginBasedPosition(x, y);
+    }
+
+    public void setOriginBasedPosition(Vector2 position) {
+        setOriginBasedPosition(position.x, position.y);
     }
 
     public float getCenterX() {
@@ -143,16 +149,24 @@ public class Sprited implements Actor, Buttonable {
         sprite.setRotation(degrees);
     }
 
-    public void rotate(float degrees) {
-        sprite.rotate(degrees);
-    }
-
     public boolean isFlipX() {
         return sprite.isFlipX();
     }
 
+    public boolean isFlipY() {
+        return sprite.isFlipY();
+    }
+
     public void setFlip(boolean flipX, boolean flipY) {
         sprite.setFlip(flipX, flipY);
+    }
+
+    public void setFlipX(boolean flipX) {
+        setFlip(flipX, sprite.isFlipY());
+    }
+
+    public void setFlipY(boolean flipY) {
+        setFlip(sprite.isFlipX(), flipY);
     }
 
     public Color getColor() {

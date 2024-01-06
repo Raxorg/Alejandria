@@ -1,35 +1,32 @@
 package com.epicness.alejandria.showcase.modules;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_SIZE;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_WIDTH;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_X;
+import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_Y;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.Align;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.Text;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
-public class WelcomeDrawable implements Drawable {
+public class WelcomeDrawable implements ModuleDrawable {
 
     private final ShaderProgram shader;
     private final Sprited canvas;
     private final Text text;
 
-    public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel) {
-        FileHandle vertexShader = Gdx.files.internal("alejandria/showcase/shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("youtube05.glsl");
+    public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
         //init shaders
-        shader = new ShaderProgram(vertexShader, fragmentShader);
-        shader.bind();
+        shader = neonWavesShader;
         ShaderProgram.pedantic = false;
         if (!shader.isCompiled()) {
             Gdx.app.error("SHADER", "Failed to compile shader");
@@ -38,9 +35,8 @@ public class WelcomeDrawable implements Drawable {
             Gdx.app.error("SHADER LOG:", shader.getLog());
         }
         canvas = new Sprited(pixel);
-        canvas.setSize(CANVAS_SIZE);
-        canvas.setOriginCenter();
-        canvas.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvas.setPosition(CANVAS_X, CANVAS_Y);
 
         text = new Text(pixelFont);
         text.setCenterVertical(true);
@@ -51,7 +47,7 @@ public class WelcomeDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.setShader(shader);
         spriteBatch.begin();
         canvas.draw(spriteBatch);
@@ -62,8 +58,8 @@ public class WelcomeDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        text.drawDebug(shapeBatch);
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        text.drawDebug(shapeRenderer);
     }
 
     public ShaderProgram getShader() {

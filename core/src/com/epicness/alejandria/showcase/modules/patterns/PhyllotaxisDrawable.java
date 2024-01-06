@@ -4,11 +4,11 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.PHYLLOTAXIS_CIRCLES;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
-import com.epicness.fundamentals.stuff.shapes.Circle;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class PhyllotaxisDrawable implements Drawable {
+public class PhyllotaxisDrawable implements ModuleDrawable {
 
     private final Circle[] circles;
 
@@ -17,16 +17,16 @@ public class PhyllotaxisDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
-        shapeBatch.begin(Filled);
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.begin(Filled);
         for (int i = 0; i < PHYLLOTAXIS_CIRCLES; i++) {
-            circles[i].draw(shapeBatch);
+            circles[i].draw(shapeRenderer);
         }
-        shapeBatch.end();
+        shapeRenderer.end();
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
     }
 
     public Circle[] getCircles() {

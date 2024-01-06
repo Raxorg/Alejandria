@@ -1,16 +1,16 @@
 package com.epicness.alejandria.showcase.modules.animations;
 
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeBatch;
+import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
-import com.epicness.fundamentals.stuff.interfaces.Drawable;
 
-public class SpriteAnimationDrawable implements Drawable {
+public class SpriteAnimationDrawable implements ModuleDrawable {
 
     private final Sprited frames;
     private final SpritedAnimation animation;
@@ -22,7 +22,7 @@ public class SpriteAnimationDrawable implements Drawable {
         frames.setOriginBasedPosition(CAMERA_HALF_WIDTH - 220f, CAMERA_HALF_HEIGHT);
         frames.useBilinearFilter();
 
-        animation = new SpritedAnimation(animationFrames, 0.05f);
+        animation = new SpritedAnimation(0.05f, animationFrames);
         animation.setScale(3f);
         animation.setOriginCenter();
         animation.setOriginBasedPosition(CAMERA_HALF_WIDTH + 250f, CAMERA_HALF_HEIGHT);
@@ -31,7 +31,7 @@ public class SpriteAnimationDrawable implements Drawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeBatch shapeBatch) {
+    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         frames.draw(spriteBatch);
         animation.draw(spriteBatch);
@@ -39,9 +39,9 @@ public class SpriteAnimationDrawable implements Drawable {
     }
 
     @Override
-    public void drawDebug(ShapeBatch shapeBatch) {
-        shapeBatch.rect(frames.getBoundingRectangle());
-        shapeBatch.rect(animation.getBoundingRectangle());
+    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        shapeRenderer.rect(frames.getBoundingRectangle());
+        shapeRenderer.rect(animation.getBoundingRectangle());
     }
 
     public SpritedAnimation getAnimation() {
