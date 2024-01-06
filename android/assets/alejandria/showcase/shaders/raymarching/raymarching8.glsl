@@ -75,18 +75,19 @@ void main() {
     vec2 m = vec2(cos(time * 0.2), sin(time * 0.2));
 
     // Raymarching
-    float i;
-    for (i = 0.0; i < 80.0; i++) {
+    float count;
+    for (float i = 0.0; i < 80.0; i++) {
         vec3 p = ro + rd * t;                       // position along the ray
         p.xy *= rot2D(t * 0.2 * m.x);               // rotate ray around z axis
         p.y += sin(t * (m.y + 1.0) * 0.5) * 0.35;   // wiggle ray
         float d = map(p);                           // current distance to the scene
         t += d;                                     // "march" the ray
+        count = i;                                  // update the iteration count
         if (d < 0.001 || t > 100.0) break;          // early stop if close enough or too far
     }
 
     // Coloring
-    col = palette(t * 0.04 + i * 0.005);    // color based on distance
+    col = palette(t * 0.04 + count * 0.005);    // color based on distance
 
     // Result
     gl_FragColor = vec4(col, 1.0);
