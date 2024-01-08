@@ -75,7 +75,7 @@ void main() {
     vec2 m = vec2(cos(time * 0.2), sin(time * 0.2));
 
     // Raymarching
-    float count;
+    float count = 0.0;
     for (float i = 0.0; i < 80.0; i++) {
         vec3 p = ro + rd * t;                       // position along the ray
         p.xy *= rot2D(t * 0.2 * m.x);               // rotate ray around z axis

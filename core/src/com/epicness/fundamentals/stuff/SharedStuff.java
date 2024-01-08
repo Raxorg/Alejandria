@@ -20,15 +20,15 @@ public class SharedStuff extends Stuff<SharedAssets> {
     @Override
     public void initializeStuff() {
         animatedBackground = new AnimatedBackgroundDeluxe(
-                0, 0,
-                CAMERA_WIDTH, CAMERA_HEIGHT,
-                Color.NAVY,
-                assets.getWeirdShape(),
-                assets.getPixel(),
-                screen.getStaticCamera(),
-                24,
-                12,
-                20f
+            0, 0,
+            CAMERA_WIDTH, CAMERA_HEIGHT,
+            Color.NAVY,
+            assets.getWeirdShape(),
+            assets.getPixel(),
+            screen.getStaticCamera(),
+            24,
+            12,
+            20f
         );
         animatedBackground.setFollowBackgroundColor(false);
         animatedBackground.setSpriteColor(BLACK_CLEAR_50);

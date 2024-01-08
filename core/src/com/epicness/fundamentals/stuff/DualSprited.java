@@ -42,8 +42,8 @@ public class DualSprited implements Buttonable, Transformable {
     @Override
     public boolean contains(float x, float y) {
         return backgroundButtonable
-                ? background.getBoundingRectangle().contains(x, y)
-                : foreground.getBoundingRectangle().contains(x, y);
+            ? background.getBoundingRectangle().contains(x, y)
+            : foreground.getBoundingRectangle().contains(x, y);
     }
 
     public void setBackgroundButtonable(boolean backgroundButtonable) {
@@ -128,6 +128,11 @@ public class DualSprited implements Buttonable, Transformable {
 
     public void rotateForeground(float degrees) {
         foreground.rotate(degrees);
+    }
+
+    @Override
+    public float getRotation() {
+        return background.getRotation();
     }
 
     @Override

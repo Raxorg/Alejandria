@@ -26,7 +26,7 @@ public class SpirographDrawable implements ModuleDrawable {
     public SpirographDrawable(SpriteBatch spriteBatch, Sprite pixel) {
         shapeDrawer = new ShapeDrawerPlus(spriteBatch, pixel);
         linedBalls = new LinedBall[2];
-        Color color = Random.rainbowColor();
+        Color color = Random.rainbowColor().cpy();
         linedBalls[0] = new LinedBall(BALL_RADIUS, 200f, 280f, color);
         linedBalls[1] = new LinedBall(BALL_RADIUS, 200f, 3.5f * 280f + 7f, color);
         trailLines = new DelayedRemovalArray<>();

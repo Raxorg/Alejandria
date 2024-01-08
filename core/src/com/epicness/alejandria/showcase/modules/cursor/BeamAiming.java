@@ -9,6 +9,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HE
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.utils.AngleUtils;
@@ -16,6 +17,7 @@ import com.epicness.fundamentals.utils.AngleUtils;
 public class BeamAiming extends Module<BeamAimingDrawable> {
 
     private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
+    private Vector2 beamCenter;
 
     public BeamAiming() {
         super(
@@ -29,6 +31,7 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
 
     @Override
     public BeamAimingDrawable setup() {
+        beamCenter = new Vector2();
         return new BeamAimingDrawable(sharedAssets.getTriangle(), sharedAssets.getPixel());
     }
 
@@ -69,7 +72,7 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
         float beamY = beam.getOriginBasedY();
         rotation = AngleUtils.degreesBetweenPoints(lastCursorX, lastCursorY, beamX, beamY);
         beam.setRotation(rotation);
-        float distance = beam.getOriginBasedCenter().dst(lastCursorX, lastCursorY);
+        float distance = beam.getOriginBasedCenter(beamCenter).dst(lastCursorX, lastCursorY);
         beam.setWidth(distance + beam.getHeight() / 2f);
     }
 

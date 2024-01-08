@@ -14,14 +14,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.fundamentals.stuff.DualSprited;
 
-// Use this as the entry point for your game by
-// renaming (refactor) this class to your game's class
+// A Game subclass like this one (not this one) should be the entry point for your game
 public class FundamentalsTest extends Game {
 
     SpriteBatch spriteBatch;
     BitmapFont font;
     DualSprited x;
-    String test = "ABCDEF!GHIJKL\"MNOPQR'S\nTUVWX,YZ0123:456789?ab\ncdefghijklmnopqrstuvw\nxyz";
+    String test;
 
     @Override
     public void create() {
@@ -31,6 +30,7 @@ public class FundamentalsTest extends Game {
         Sprite a = new Sprite(new Texture(WEIRDSHAPE_SPRITE.fileName));
         x = new DualSprited(a, a);
         x.setSize(100f);
+        test = "ABCDEF!GHIJKL\"MNOPQR'S\nTUVWX,YZ0123:456789?ab\ncdefghijklmnopqrstuvw\nxyz";
     }
 
     @Override

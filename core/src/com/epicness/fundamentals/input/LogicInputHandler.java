@@ -7,7 +7,7 @@ import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
 public abstract class LogicInputHandler<A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>>
-        extends LogicHandler<A, L, R, S> {
+    extends LogicHandler<A, L, R, S> {
 
     public void register() {
         input.addInputHandler(this);

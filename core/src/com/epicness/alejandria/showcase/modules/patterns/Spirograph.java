@@ -75,7 +75,7 @@ public class Spirograph extends Module<SpirographDrawable> {
             ball.getEnd().x,
             ball.getEnd().y,
             1f,
-            ball.color
+            ball.color.cpy()
         ));
         ball.lastTrackedPosition.set(ball.getEnd());
         ball.timer -= 1f / ball.speed;

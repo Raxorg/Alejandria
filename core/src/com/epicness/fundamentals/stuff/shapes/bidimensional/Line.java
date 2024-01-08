@@ -24,7 +24,7 @@ public class Line implements Movable {
         angleDeg = AngleUtils.degreesBetweenPoints(b, a);
         length = a.dst(b);
         this.width = width;
-        this.color = new Color(color);
+        this.color = color;
     }
 
     public Line(float ax, float ay, float bx, float by, float width) {
@@ -104,11 +104,6 @@ public class Line implements Movable {
     @Override
     public float getY() {
         return a.y;
-    }
-
-    @Override
-    public void setPosition(float x, float y) {
-        setA(x, y);
     }
 
     public void follow(Vector2 target) {

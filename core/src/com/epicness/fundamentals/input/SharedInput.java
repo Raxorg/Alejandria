@@ -14,7 +14,7 @@ public class SharedInput implements InputProcessor {
     private final List<LogicInputHandler<?, ?, ?, ?>> inputHandlers;
     private OrthographicCamera staticCamera, dynamicCamera;
     private boolean enabled, inputConsumed;
-    private Vector3 unprojected;
+    private final Vector3 unprojected;
 
     public SharedInput() {
         inputHandlers = new ArrayList<>();
@@ -61,13 +61,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDown(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDownDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -81,13 +81,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDragged(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDraggedDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -101,13 +101,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchUp(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchUpDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -121,13 +121,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        unprojected = staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchCancelled(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        unprojected = dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchCancelledDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
