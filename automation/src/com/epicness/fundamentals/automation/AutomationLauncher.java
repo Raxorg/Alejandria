@@ -1,4 +1,4 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 public class AutomationLauncher {
 

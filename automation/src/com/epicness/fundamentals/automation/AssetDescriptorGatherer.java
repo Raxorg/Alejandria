@@ -1,4 +1,4 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.files.FileHandle;
@@ -6,7 +6,6 @@ import com.badlogic.gdx.files.FileHandle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AssetDescriptorGatherer {
 
@@ -27,7 +26,7 @@ public class AssetDescriptorGatherer {
             if (file.isDirectory()) {
                 gatherFiles(file, excludedExtension);
             } else {
-                if (Arrays.stream(excludedExtension).collect(Collectors.toList()).contains(file.extension())) continue;
+                if (Arrays.stream(excludedExtension).toList().contains(file.extension())) continue;
                 descriptors.add(new AssetDescriptor<>(file, Extension.getType(file.extension())));
             }
         }

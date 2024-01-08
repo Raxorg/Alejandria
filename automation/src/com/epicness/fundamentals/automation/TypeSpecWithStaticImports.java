@@ -1,4 +1,4 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.TypeSpec;

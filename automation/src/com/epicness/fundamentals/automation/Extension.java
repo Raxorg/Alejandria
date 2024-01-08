@@ -1,4 +1,4 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;

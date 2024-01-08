@@ -1,4 +1,4 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
@@ -52,7 +52,7 @@ public class AssetPathsTypeSpecGenerator {
 
     private static CodeBlock initializers(List<AssetDescriptor<?>> descriptors) {
         CodeBlock.Builder builder = CodeBlock.builder()
-                .addStatement("ASSETS = new $T<>()", ArrayList.class);
+            .addStatement("ASSETS = new $T<>()", ArrayList.class);
         descriptors.forEach(descriptor -> {
             String identifier = descriptor.file.nameWithoutExtension().replace(".", "_").toUpperCase();
             String name = identifier + "_" + Extension.getTypeName(descriptor.file.extension());

@@ -1,11 +1,11 @@
-package com.epicness.alejandria.desktop;
+package com.epicness.fundamentals.automation;
 
 import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.PUBLIC;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
-import com.epicness.alejandria.desktop.TypeSpecWithStaticImports.StaticImport;
 import com.epicness.fundamentals.assets.Assets;
+import com.epicness.fundamentals.automation.TypeSpecWithStaticImports.StaticImport;
 import com.epicness.fundamentals.utils.StringUtils;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
@@ -26,8 +26,8 @@ public class AssetsTypeSpecGenerator {
 
     private static TypeSpec assetsSpec(String classPrefix, List<AssetDescriptor<?>> descriptors) {
         TypeSpec.Builder builder = TypeSpec.classBuilder(classPrefix + "Assets")
-                .addModifiers(PUBLIC)
-                .superclass(Assets.class);
+            .addModifiers(PUBLIC)
+            .superclass(Assets.class);
 
         builder.addMethod(constructor());
         builder.addFields(fieldSpecs(descriptors));
@@ -38,24 +38,24 @@ public class AssetsTypeSpecGenerator {
 
     private static MethodSpec constructor() {
         return MethodSpec.constructorBuilder()
-                .addModifiers(PUBLIC)
-                .addStatement("super(ASSETS)")
-                .build();
+            .addModifiers(PUBLIC)
+            .addStatement("super(ASSETS)")
+            .build();
     }
 
     private static List<FieldSpec> fieldSpecs(List<AssetDescriptor<?>> descriptors) {
         return descriptors.stream()
-                .map(descriptor -> {
-                    String name = descriptor.file.nameWithoutExtension().replace(".", "_");
-                    return FieldSpec.builder(descriptor.type, name, PRIVATE).build();
-                })
-                .collect(Collectors.toList());
+            .map(descriptor -> {
+                String name = descriptor.file.nameWithoutExtension().replace(".", "_");
+                return FieldSpec.builder(descriptor.type, name, PRIVATE).build();
+            })
+            .collect(Collectors.toList());
     }
 
     private static MethodSpec initializeAssetsSpec(List<AssetDescriptor<?>> descriptors) {
         MethodSpec.Builder builder = MethodSpec.methodBuilder("initializeAssets")
-                .addAnnotation(Override.class)
-                .addModifiers(PUBLIC);
+            .addAnnotation(Override.class)
+            .addModifiers(PUBLIC);
 
         descriptors.forEach(descriptor -> {
             String name = descriptor.file.nameWithoutExtension().replace(".", "_");
@@ -67,15 +67,15 @@ public class AssetsTypeSpecGenerator {
 
     private static List<MethodSpec> getterSpecs(List<AssetDescriptor<?>> descriptors) {
         return descriptors.stream()
-                .map(descriptor -> descriptor.file)
-                .map(file -> {
-                    String name = file.nameWithoutExtension().replace(".", "_");
-                    return MethodSpec.methodBuilder("get" + StringUtils.capitalizeFirst(name))
-                            .addModifiers(PUBLIC)
-                            .returns(Extension.getType(file.extension()))
-                            .addStatement("return $L", name)
-                            .build();
-                })
-                .collect(Collectors.toList());
+            .map(descriptor -> descriptor.file)
+            .map(file -> {
+                String name = file.nameWithoutExtension().replace(".", "_");
+                return MethodSpec.methodBuilder("get" + StringUtils.capitalizeFirst(name))
+                    .addModifiers(PUBLIC)
+                    .returns(Extension.getType(file.extension()))
+                    .addStatement("return $L", name)
+                    .build();
+            })
+            .collect(Collectors.toList());
     }
 }
