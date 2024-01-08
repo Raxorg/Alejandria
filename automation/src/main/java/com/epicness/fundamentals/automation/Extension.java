@@ -23,11 +23,11 @@ public enum Extension {
     SP("sp", ShaderProgram.class, "SHADER_PROGRAM"),
     SWAV("swav", Sound.class, "SOUND");
 
-    private static final Map<String, Extension> lookup = new HashMap<>();
+    private static final Map<String, Extension> LOOKUP = new HashMap<>();
 
     static {
         for (Extension ext : Extension.values()) {
-            lookup.put(ext.name, ext);
+            LOOKUP.put(ext.name, ext);
         }
     }
 
@@ -42,7 +42,7 @@ public enum Extension {
     }
 
     static Class<?> getType(String extensionName) {
-        Extension ext = lookup.get(extensionName);
+        Extension ext = LOOKUP.get(extensionName);
         if (ext == null) {
             throw new GdxRuntimeException("Unsupported extension: " + extensionName);
         }
@@ -50,7 +50,7 @@ public enum Extension {
     }
 
     static String getTypeName(String extensionName) {
-        Extension ext = lookup.get(extensionName);
+        Extension ext = LOOKUP.get(extensionName);
         if (ext == null) {
             throw new GdxRuntimeException("Unsupported extension: " + extensionName);
         }
