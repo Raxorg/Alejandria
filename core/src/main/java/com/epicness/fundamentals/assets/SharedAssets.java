@@ -1,17 +1,6 @@
 package com.epicness.fundamentals.assets;
 
-import static com.epicness.fundamentals.assets.SharedAssetPaths.ASSETS;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.CIRCLE_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.GLOW_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.LIBGDX_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.PIXELFONT_FONT;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.PIXEL_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SHORTLASER_SOUND;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SQUARE32INVERTED_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SQUARE32_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.TIMESSQUARE_FONT;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.TRIANGLE_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.WEIRDSHAPE_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.*;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.fundamentals.assets.Assets;
-import java.lang.Override;
 
 public class ShowcaseAssets extends Assets {
     private Sprite stickmanRun;

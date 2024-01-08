@@ -30,13 +30,15 @@ public class AssetAutomator {
 
     private static void generateClass(TypeSpecWithStaticImports typeSpec) {
         Builder builder = JavaFile.builder(assetsPackage, typeSpec.spec).indent("    ");
+        builder.skipJavaLangImports(true);
         for (StaticImport staticImport : typeSpec.staticImports) {
             builder.addStaticImport(staticImport.className, staticImport.names);
         }
         JavaFile javaFile = builder.build();
 
         FileHandle target = new FileHandle(Paths.get(assetsPath + typeSpec.spec.name + ".java").toFile());
-        target.writeString(javaFile.toString(), false);
+        String fileString = javaFile.toString().stripTrailing();
+        target.writeString(fileString, false);
     }
 
     private static void generateClass(TypeSpec typeSpec) {
