@@ -1,4 +1,3 @@
-
 buildscript {
   repositories {
     mavenCentral()
@@ -48,7 +47,7 @@ gretty.resourceBase = "${project.layout.buildDirectory.asFile.get().absolutePath
 gretty.contextPath = "/"
 gretty.portPropertiesFileName = "TEMP_PORTS.properties"
 
-task startHttpServer (dependsOn: [draftCompileGwt]) {
+task startHttpServer(dependsOn: [draftCompileGwt]) {
   doFirst {
     copy {
       from "webapp"
@@ -98,7 +97,7 @@ task dist(dependsOn: [clean, compileGwt]) {
 
     file(outputPath).mkdirs()
     copy {
-      from("build/gwt/out"){
+      from("build/gwt/out") {
         exclude '**/*.symbolMap' // Not used by a dist, and these can be large.
       }
       into outputPath
@@ -109,7 +108,7 @@ task dist(dependsOn: [clean, compileGwt]) {
         exclude 'refresh.png' // We don't need this button; this saves some bytes.
       }
       into outputPath
-      }
+    }
     copy {
       from("webapp") {
         // These next two lines take the index.html page and remove the superdev refresh button.
@@ -120,7 +119,7 @@ task dist(dependsOn: [clean, compileGwt]) {
         // either remove or comment out only the "filter" line above this.
       }
       into outputPath
-      }
+    }
     copy {
       from "war"
       into outputPath
@@ -131,11 +130,10 @@ task dist(dependsOn: [clean, compileGwt]) {
 task addSource {
   doLast {
     sourceSets.main.compileClasspath += files(project(':core').sourceSets.main.allJava.srcDirs)
-    
   }
 }
 
-task distZip(type: Zip, dependsOn: dist){
+task distZip(type: Zip, dependsOn: dist) {
   //// This uses the output of the dist task, which removes the superdev button from index.html .
   from(outputPath)
   archiveBaseName.set("${appName}-dist")
@@ -149,6 +147,4 @@ tasks.checkGwt.dependsOn(addSource)
 
 java.sourceCompatibility = JavaVersion.VERSION_11
 java.targetCompatibility = JavaVersion.VERSION_11
-sourceSets.main.java.srcDirs = [ "src/main/java/" ]
-
-eclipse.project.name = appName + "-html"
+sourceSets.main.java.srcDirs = ["src/main/java/"]
