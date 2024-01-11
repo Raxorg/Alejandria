@@ -21,6 +21,7 @@ import com.epicness.alejandria.showcase.modules.masking.ShapeDrawerMasking;
 import com.epicness.alejandria.showcase.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
+import com.epicness.alejandria.showcase.modules.procedural.PixmapManipulation;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
 import com.epicness.alejandria.showcase.modules.rendering.ManualScreenClear;
@@ -73,6 +74,7 @@ public class ShowcaseLogic extends Logic {
         // Pathfinding
         registerHandler(new AStar());
         // Procedural
+        registerHandler(new PixmapManipulation());
         registerHandler(new ProceduralSquare());
         // Rendering
         registerHandler(new FrameBuffering());
