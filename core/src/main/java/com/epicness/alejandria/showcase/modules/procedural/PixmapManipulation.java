@@ -71,7 +71,7 @@ public class PixmapManipulation extends Module<PixmapManipulationDrawable> {
             pixmap.setColor(pixmapColor);
             pixmap.fillCircle((int) (SHOWCASE_SIZE / 2), (int) (SHOWCASE_SIZE / 2), radius);
         }
-        texture.load(pixmapTextureData);
+        texture.load(pixmapTextureData); // Instead of "new Texture(pixmap);"
         // Alternative option:
         // texture.draw(pixmap, 0, 0);
     }
