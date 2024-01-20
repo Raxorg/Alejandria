@@ -6,5 +6,5 @@ import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
 import com.epicness.fundamentals.input.LogicInputHandler;
 
 public abstract class ShowcaseLogicHandler
-        extends LogicInputHandler<ShowcaseAssets, ShowcaseLogic, ShowcaseRenderer, ShowcaseStuff> {
+    extends LogicInputHandler<ShowcaseAssets, ShowcaseLogic, ShowcaseRenderer, ShowcaseStuff> {
 }

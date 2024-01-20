@@ -30,9 +30,9 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
         circleMask.setColor(DARK_GRASS);
 
         triangleMask = new Triangle(
-                CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT - 200f,
-                CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-                CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT - 200f
+            CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT - 200f,
+            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
+            CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT - 200f
         );
     }
 

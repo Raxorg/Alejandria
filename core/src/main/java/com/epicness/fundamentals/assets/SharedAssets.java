@@ -15,6 +15,8 @@ public class SharedAssets extends Assets {
 
     private Sprite circle;
 
+    private Sprite dot;
+
     private Sprite glow;
 
     private Sprite libGDX;
@@ -39,6 +41,7 @@ public class SharedAssets extends Assets {
         pixelFont = get(PIXELFONT_FONT);
         timesSquare = get(TIMESSQUARE_FONT);
         circle = get(CIRCLE_SPRITE);
+        dot = get(DOT_SPRITE);
         glow = get(GLOW_SPRITE);
         libGDX = get(LIBGDX_SPRITE);
         pixel = get(PIXEL_SPRITE);
@@ -62,6 +65,10 @@ public class SharedAssets extends Assets {
 
     public Sprite getCircle() {
         return circle;
+    }
+
+    public Sprite getDot() {
+        return dot;
     }
 
     public Sprite getGlow() {

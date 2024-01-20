@@ -78,11 +78,11 @@ public class AnimatedBackground {
         // Render the Background Image
         spriteBatch.setColor(color);
         spriteBatch.draw(
-                backgroundImage,
-                bounds.x,
-                bounds.y,
-                bounds.width,
-                bounds.height
+            backgroundImage,
+            bounds.x,
+            bounds.y,
+            bounds.width,
+            bounds.height
         );
         // Render the Moving Images
         renderImages(spriteBatch, camera);
@@ -100,13 +100,14 @@ public class AnimatedBackground {
         spriteBatch.setColor(color.r / 2f, color.g / 2f, color.b / 2f, color.a);
         for (Vector2 position : positions) {
             spriteBatch.draw(
-                    repeatedImage,
-                    position.x, position.y, imageSize / 2f, imageSize / 2f,
-                    imageSize, imageSize, 1f, 1f,
-                    45f);
+                repeatedImage,
+                position.x, position.y, imageSize / 2f, imageSize / 2f,
+                imageSize, imageSize, 1f, 1f,
+                45f);
         }
 
         spriteBatch.flush();
+        spriteBatch.setColor(1f, 1f, 1f, 1f);
         if (pop) {
             ScissorStack.popScissors();
         }

@@ -20,7 +20,7 @@ public class ClippingDrawable implements ModuleDrawable {
         background1 = new AnimatedBackground(
             100f, SHOWCASE_Y,
             SHOWCASE_SIZE, SHOWCASE_SIZE,
-            Color.BLUE,
+            Color.BLUE.cpy(),
             weirdShape,
             pixel,
             camera,
@@ -30,7 +30,7 @@ public class ClippingDrawable implements ModuleDrawable {
         background2 = new AnimatedBackground(
             200f, CAMERA_HALF_HEIGHT,
             SHOWCASE_SIZE - 200f, 300f,
-            Color.GREEN,
+            Color.GREEN.cpy(),
             pixel,
             pixel,
             camera,
@@ -40,7 +40,7 @@ public class ClippingDrawable implements ModuleDrawable {
         background3 = new AnimatedBackground(
             200f, 200f,
             SHOWCASE_SIZE / 2f, SHOWCASE_SIZE / 2f,
-            Color.RED,
+            Color.RED.cpy(),
             pixel,
             pixel,
             camera,

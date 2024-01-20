@@ -9,7 +9,7 @@ public class AlphaMasking extends Module<AlphaMaskingDrawable> {
 
     public AlphaMasking() {
         super("Alpha Masking", "The sprite mask on the left defines the transparency of each pixel of the sprite on the right\n" +
-                "Resulting in the image in the middle"
+            "Resulting in the image in the middle"
         );
     }
 

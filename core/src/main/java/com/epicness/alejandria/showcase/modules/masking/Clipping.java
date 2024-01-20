@@ -11,9 +11,9 @@ public class Clipping extends Module<ClippingDrawable> {
     @Override
     public ClippingDrawable setup() {
         return new ClippingDrawable(
-                sharedAssets.getPixel(),
-                sharedAssets.getWeirdShape(),
-                screen.getStaticCamera()
+            sharedAssets.getPixel(),
+            sharedAssets.getWeirdShape(),
+            screen.getStaticCamera()
         );
     }
 

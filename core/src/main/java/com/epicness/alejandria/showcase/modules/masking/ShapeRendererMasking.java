@@ -14,8 +14,8 @@ public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
 
     public ShapeRendererMasking() {
         super(
-                "Shape Renderer Masking",
-                "The moving shapes are the masks that determine which parts of the circle get rendered"
+            "Shape Renderer Masking",
+            "The moving shapes are the masks that determine which parts of the circle get rendered"
         );
     }
 

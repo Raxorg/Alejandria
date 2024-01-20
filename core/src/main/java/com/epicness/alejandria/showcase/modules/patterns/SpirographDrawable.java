@@ -4,7 +4,6 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.epicness.alejandria.showcase.constants.SpirographConstants.BALL_RADIUS;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -23,8 +22,8 @@ public class SpirographDrawable implements ModuleDrawable {
     private final LinedBall[] linedBalls;
     private final DelayedRemovalArray<Line> trailLines;
 
-    public SpirographDrawable(SpriteBatch spriteBatch, Sprite pixel) {
-        shapeDrawer = new ShapeDrawerPlus(spriteBatch, pixel);
+    public SpirographDrawable(ShapeDrawerPlus shapeDrawer) {
+        this.shapeDrawer = shapeDrawer;
         linedBalls = new LinedBall[2];
         Color color = Random.rainbowColor().cpy();
         linedBalls[0] = new LinedBall(BALL_RADIUS, 200f, 280f, color);

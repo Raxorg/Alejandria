@@ -15,7 +15,7 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     public LayeredMasking() {
         super("Layered Masking", "Too much happening here to explain xD" +
-                "\nCheck the source code");
+            "\nCheck the source code");
     }
 
     @Override
@@ -23,10 +23,10 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
         Gdx.gl.glLineWidth(5f);
 
         return new LayeredMaskingDrawable(
-                sharedAssets.getWeirdShape(),
-                sharedAssets.getSquare32(),
-                sharedAssets.getSquare32Inverted(),
-                sharedAssets.getPixel()
+            sharedAssets.getWeirdShape(),
+            sharedAssets.getSquare32(),
+            sharedAssets.getSquare32Inverted(),
+            sharedAssets.getPixel()
         );
     }
 

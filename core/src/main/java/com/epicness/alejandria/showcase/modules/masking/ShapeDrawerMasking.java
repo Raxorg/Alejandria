@@ -11,8 +11,8 @@ public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
 
     public ShapeDrawerMasking() {
         super(
-                "Shape Drawer Masking",
-                "Masks 4 triangles with a circle, all of them drawn by a ShapeDrawer and one has a gradient"
+            "Shape Drawer Masking",
+            "Masks 4 triangles with a circle, all of them drawn by a ShapeDrawer and one has a gradient"
         );
     }
 

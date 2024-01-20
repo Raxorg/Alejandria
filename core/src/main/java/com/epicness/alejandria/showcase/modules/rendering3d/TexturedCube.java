@@ -9,8 +9,8 @@ public class TexturedCube extends Module<TexturedCubeDrawable> {
 
     public TexturedCube() {
         super(
-                "Textured cube",
-                "Demonstrates rendering of a textured cube in 3D space\n\nWASD and drag to move"
+            "Textured cube",
+            "Demonstrates rendering of a textured cube in 3D space\n\nWASD and drag to move"
         );
     }
 

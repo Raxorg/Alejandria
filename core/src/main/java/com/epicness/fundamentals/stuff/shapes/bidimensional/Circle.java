@@ -1,6 +1,5 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
-import static com.badlogic.gdx.graphics.Color.GRAY;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 
 import com.badlogic.gdx.graphics.Color;
@@ -22,7 +21,7 @@ public class Circle implements Movable {
     }
 
     public Circle(float x, float y, float radius) {
-        this(x, y, radius, GRAY.cpy());
+        this(x, y, radius, new Color(1f, 1f, 1f, 1f));
     }
 
     public Circle(float x, float y, Color color) {
@@ -38,7 +37,7 @@ public class Circle implements Movable {
     }
 
     public Circle(float radius) {
-        this(radius, GRAY.cpy());
+        this(radius, new Color(1f, 1f, 1f, 1f));
     }
 
     public Circle() {

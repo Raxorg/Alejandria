@@ -21,7 +21,8 @@ public abstract class Module<D extends ModuleDrawable> extends ShowcaseLogicHand
     }
 
     @Override
-    protected void init() {}
+    protected void init() {
+    }
 
     public final D setupModule() {
         input.addInputHandler(this);

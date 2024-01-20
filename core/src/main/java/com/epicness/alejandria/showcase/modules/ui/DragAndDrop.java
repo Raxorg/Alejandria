@@ -77,9 +77,9 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     public void touchUp(float x, float y) {
         if (dropArea.getColor().equals(LIGHT_GRASS)) {
             float dropX = MathUtils.clamp(
-                    draggedSquare.getX(),
-                    dropArea.getX() + 10f,
-                    dropArea.getX() + dropArea.getWidth() - draggedSquare.getWidth() - 10f);
+                draggedSquare.getX(),
+                dropArea.getX() + 10f,
+                dropArea.getX() + dropArea.getWidth() - draggedSquare.getWidth() - 10f);
             draggedSquare.setPosition(dropX, dropArea.getY() + 10f);
             mouseMoved(x, y);
         }

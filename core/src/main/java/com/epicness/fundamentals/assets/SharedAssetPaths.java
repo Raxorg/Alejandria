@@ -18,6 +18,8 @@ public class SharedAssetPaths {
 
     public static final AssetDescriptor<Sprite> CIRCLE_SPRITE;
 
+    public static final AssetDescriptor<Sprite> DOT_SPRITE;
+
     public static final AssetDescriptor<Sprite> GLOW_SPRITE;
 
     public static final AssetDescriptor<Sprite> LIBGDX_SPRITE;
@@ -38,6 +40,7 @@ public class SharedAssetPaths {
         ASSETS.add(PIXELFONT_FONT = new AssetDescriptor<>("fundamentals/fonts/pixelFont.fnt", BitmapFont.class));
         ASSETS.add(TIMESSQUARE_FONT = new AssetDescriptor<>("fundamentals/fonts/timesSquare.fnt", BitmapFont.class));
         ASSETS.add(CIRCLE_SPRITE = new AssetDescriptor<>("fundamentals/images/circle.png", Sprite.class));
+        ASSETS.add(DOT_SPRITE = new AssetDescriptor<>("fundamentals/images/dot.png", Sprite.class));
         ASSETS.add(GLOW_SPRITE = new AssetDescriptor<>("fundamentals/images/glow.png", Sprite.class));
         ASSETS.add(LIBGDX_SPRITE = new AssetDescriptor<>("fundamentals/images/libGDX.png", Sprite.class));
         ASSETS.add(PIXEL_SPRITE = new AssetDescriptor<>("fundamentals/images/pixel.png", Sprite.class));

@@ -11,8 +11,8 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class BeepingBallsDrawable implements ModuleDrawable {

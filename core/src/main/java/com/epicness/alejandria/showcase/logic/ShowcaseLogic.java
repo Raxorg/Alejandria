@@ -2,7 +2,6 @@ package com.epicness.alejandria.showcase.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.modules.Welcome;
-import com.epicness.alejandria.showcase.modules.patterns.Spirograph;
 import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.modules.animations.SpriteRotationAnimation;
 import com.epicness.alejandria.showcase.modules.bullets.BulletSpawning;
@@ -19,8 +18,10 @@ import com.epicness.alejandria.showcase.modules.masking.Clipping;
 import com.epicness.alejandria.showcase.modules.masking.LayeredMasking;
 import com.epicness.alejandria.showcase.modules.masking.ShapeDrawerMasking;
 import com.epicness.alejandria.showcase.modules.masking.ShapeRendererMasking;
+import com.epicness.alejandria.showcase.modules.optimization.QuadTree;
 import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
+import com.epicness.alejandria.showcase.modules.patterns.Spirograph;
 import com.epicness.alejandria.showcase.modules.procedural.PixmapManipulation;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
@@ -71,6 +72,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new LayeredMasking());
         registerHandler(new ShapeDrawerMasking());
         registerHandler(new ShapeRendererMasking());
+        // Optimization
+        registerHandler(new QuadTree());
         // Pathfinding
         registerHandler(new AStar());
         // Procedural

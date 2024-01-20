@@ -5,8 +5,8 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGrid;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGrid;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class AStarDrawable implements ModuleDrawable {
