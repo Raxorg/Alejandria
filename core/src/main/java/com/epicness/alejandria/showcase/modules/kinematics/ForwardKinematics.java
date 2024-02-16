@@ -20,7 +20,7 @@ public class ForwardKinematics extends Module<ForwardKinematicsDrawable> {
         for (int i = 0; i < times.length; i++) {
             times[i] = i * 20f;
         }
-        return new ForwardKinematicsDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+        return new ForwardKinematicsDrawable(renderer.getShapeDrawer());
     }
 
     @Override

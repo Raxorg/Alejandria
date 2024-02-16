@@ -7,7 +7,6 @@ import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
@@ -21,8 +20,8 @@ public class ForwardKinematicsDrawable implements ModuleDrawable {
     private final ShapeDrawer shapeDrawer;
     private final ConnectedLine[] lines;
 
-    public ForwardKinematicsDrawable(SpriteBatch spriteBatch, Sprite pixel) {
-        shapeDrawer = new ShapeDrawer(spriteBatch, pixel);
+    public ForwardKinematicsDrawable(ShapeDrawer shapeDrawer) {
+        this.shapeDrawer = shapeDrawer;
 
         lines = new ConnectedLine[FK_LINES];
         ConnectedLine root = new ConnectedLine(CAMERA_HALF_WIDTH, STRIPE_HEIGHT, FK_LINE_LENGTH, 90f, true);
