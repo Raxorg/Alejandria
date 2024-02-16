@@ -63,7 +63,7 @@ public class PixmapManipulation extends Module<PixmapManipulationDrawable> {
     }
 
     private void drawCircle() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3 && radius > 0; i++) {
             radius--;
             progress = MathUtils.lerp(0f, rings, (radius / (SHOWCASE_SIZE / 2f)) % (1f / rings));
             pixmapColor.set(lerpColor.lerp(outerColor, progress));
