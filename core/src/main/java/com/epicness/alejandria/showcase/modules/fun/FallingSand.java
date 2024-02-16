@@ -72,7 +72,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
     }
 
     private void evaluateSand() {
-        float diagonalChance = 0.5f;
+        float diagonalChance;
         boolean canDiagonal;
         for (int row = 1; row < SAND_DIMENSION; row++) {
             for (int column = 0; column < SAND_DIMENSION; column++) {
@@ -85,17 +85,16 @@ public class FallingSand extends Module<FallingSandDrawable> {
                 }
 
                 canDiagonal = false;
-                if (column > 0)
-                    if (!grid[column - 1][row - 1]) {
-                        diagonalChance += 0.5f;
-                        canDiagonal = true;
-                    }
+                diagonalChance = 0.5f;
+                if (column > 0 && !grid[column - 1][row - 1]) {
+                    diagonalChance += 0.5f;
+                    canDiagonal = true;
+                }
 
-                if (column < SAND_DIMENSION - 1)
-                    if (!grid[column + 1][row - 1]) {
-                        diagonalChance -= 0.5f;
-                        canDiagonal = true;
-                    }
+                if (column < SAND_DIMENSION - 1 && !grid[column + 1][row - 1]) {
+                    diagonalChance -= 0.5f;
+                    canDiagonal = true;
+                }
 
                 if (!canDiagonal) continue;
 
