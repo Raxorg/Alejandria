@@ -56,5 +56,5 @@ public class FunConstants {
     // Falling Sand
     public static final int SAND_DIMENSION = 50;
     public static final float SAND_SIZE = SHOWCASE_SIZE / SAND_DIMENSION;
-    public static final float SAND_UPDATE_RATE = 0.05f;
+    public static final float SAND_UPDATE_RATE = 0.035f;
 }
