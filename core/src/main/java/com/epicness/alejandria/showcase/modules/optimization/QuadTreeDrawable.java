@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
-import com.epicness.alejandria.showcase.stuff.modules.optimization.Quad;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class QuadTreeDrawable implements ModuleDrawable {
 
     private final ShapeDrawerPlus shapeDrawer;
     private final ArrayList<Sprited> dots;
-    private final DelayedRemovalArray<Quad> quads;
+    private final DelayedRemovalArray<Rectangle> quads;
 
     public QuadTreeDrawable(ShapeDrawerPlus shapeDrawer, Sprite dotSprite) {
         this.shapeDrawer = shapeDrawer;
@@ -53,7 +53,7 @@ public class QuadTreeDrawable implements ModuleDrawable {
         return dots;
     }
 
-    public DelayedRemovalArray<Quad> getQuads() {
+    public DelayedRemovalArray<Rectangle> getQuads() {
         return quads;
     }
 }

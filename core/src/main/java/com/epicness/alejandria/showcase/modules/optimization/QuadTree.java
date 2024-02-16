@@ -17,16 +17,16 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.alejandria.showcase.stuff.modules.optimization.Quad;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 import java.util.ArrayList;
 
 public class QuadTree extends Module<QuadTreeDrawable> {
 
     private ArrayList<Sprited> dots;
-    private DelayedRemovalArray<Quad> quads;
-    private SnapshotArray<Quad> quadsToCheck;
+    private DelayedRemovalArray<Rectangle> quads;
+    private SnapshotArray<Rectangle> quadsToCheck;
     private DelayedRemovalArray<Sprited> dotsToCheck;
     // Memory optimization
     private Vector2 dotCenter;
@@ -79,7 +79,7 @@ public class QuadTree extends Module<QuadTreeDrawable> {
 
     private void spawnInitialQuad() {
         color.set(COLOR_MAP.get(INITIAL_SIZE));
-        Quad quad = new Quad(color.cpy().lerp(BLACK, 0.4f), color.cpy());
+        Rectangle quad = new Rectangle(color.cpy().lerp(BLACK, 0.4f), color.cpy());
         quad.set(
             SHOWCASE_X + MARGIN,
             SHOWCASE_Y + MARGIN,
@@ -96,7 +96,7 @@ public class QuadTree extends Module<QuadTreeDrawable> {
     }
 
     private void checkQuads() {
-        Quad quad;
+        Rectangle quad;
         Sprited dot;
         int count;
         quadsToCheck.begin();
@@ -121,15 +121,15 @@ public class QuadTree extends Module<QuadTreeDrawable> {
         }
     }
 
-    private void divideQuad(Quad quad) {
+    private void divideQuad(Rectangle quad) {
         color.set(COLOR_MAP.get(quad.width / 2f));
         hsv = color.toHsv(hsv);
         hsv[1] = Math.min(1f, hsv[1] + 0.5f);
         hsv[2] = Math.min(0.75f, hsv[2] - 0.25f);
         Color borderColor = color.cpy().fromHsv(hsv);
-        Quad[] newQuads = new Quad[4];
+        Rectangle[] newQuads = new Rectangle[4];
         for (int i = 0; i < 4; i++) {
-            newQuads[i] = new Quad(borderColor, color.cpy());
+            newQuads[i] = new Rectangle(borderColor, color.cpy());
             newQuads[i].setSize(quad.width / 2f);
             newQuads[i].setPosition(quad.x, quad.y);
             newQuads[i].x += (i % 2) * quad.width / 2f;
