@@ -18,6 +18,7 @@ public class GwtLauncher extends GwtApplication {
         cfg.padVertical = 0;
         cfg.padHorizontal = 0;
         cfg.preserveDrawingBuffer = true;
+        cfg.antialiasing = true;
         return cfg;
     }
 
