@@ -22,8 +22,7 @@ public class HexagonSelection extends Module<HexagonSelectionDrawable> {
     @Override
     protected HexagonSelectionDrawable setup() {
         radius = 1;
-        Gdx.gl.glLineWidth(3f);
-        return new HexagonSelectionDrawable();
+        return new HexagonSelectionDrawable(renderer.getShapeDrawer());
     }
 
     @Override
