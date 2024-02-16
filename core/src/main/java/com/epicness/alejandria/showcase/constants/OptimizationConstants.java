@@ -3,6 +3,11 @@ package com.epicness.alejandria.showcase.constants;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.PINK;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_BLUE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_GREEN;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_ORANGE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_PURPLE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_RED;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 
 import com.badlogic.gdx.graphics.Color;
@@ -20,11 +25,11 @@ public class OptimizationConstants {
 
     static {
         COLOR_MAP = new HashMap<>();
-        COLOR_MAP.put(INITIAL_SIZE, new Color(0xB1A3FFFF));
-        COLOR_MAP.put(INITIAL_SIZE / 2f, new Color(0xFFA599FF));
-        COLOR_MAP.put(INITIAL_SIZE / 4f, new Color(0x94DBFFFF));
-        COLOR_MAP.put(INITIAL_SIZE / 8f, new Color(0xFFD0A1FF));
-        COLOR_MAP.put(INITIAL_SIZE / 16f, new Color(0xBDFFBFFF));
+        COLOR_MAP.put(INITIAL_SIZE, PASTEL_PURPLE);
+        COLOR_MAP.put(INITIAL_SIZE / 2f, PASTEL_RED);
+        COLOR_MAP.put(INITIAL_SIZE / 4f, PASTEL_BLUE);
+        COLOR_MAP.put(INITIAL_SIZE / 8f, PASTEL_ORANGE);
+        COLOR_MAP.put(INITIAL_SIZE / 16f, PASTEL_GREEN);
         COLOR_MAP.put(INITIAL_SIZE / 32f, PINK);
         COLOR_MAP.put(INITIAL_SIZE / 64f, YELLOW);
         COLOR_MAP.put(INITIAL_SIZE / 128f, BLACK);
