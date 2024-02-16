@@ -21,6 +21,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 
 ### Fun
 - Beeping Balls
+- Falling Sand
 
 ### Grids
 - Cross Chunk Selection
@@ -37,14 +38,19 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Shape Drawer Masking
 - Shape Renderer Masking
 
+### Optimization
+- Quad Tree
+
 ### Pathfinding
 - A Star (A*)
 
 ### Patterns
 - Phyllotaxis
+- Spiral
 - Spirograph
 
 ### Procedural
+- Pixmap Manipulation
 - Procedural Square
 
 ### Rendering
@@ -67,7 +73,8 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 
 ### Viewports
 - Advanced Split Screen
+- Wide Viewport
 
 The project also features standalone demos you can run directly from the 
-[StandaloneLauncher](/desktop/src/com/epicness/alejandria/desktop/DesktopLauncher.java) in the desktop module, check the
-[standalone package](/core/src/com/epicness/standalone) in the core module
+[StandaloneLauncher](/lwjgl3/src/main/java/com/epicness/alejandria/lwjgl3/Lwjgl3Launcher.java) in the lwjgl3 module, check the
+[standalone package](/core/src/main/java/com/epicness/standalone) in the core module

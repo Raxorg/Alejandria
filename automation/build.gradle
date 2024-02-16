@@ -1,24 +1,76 @@
-sourceSets.main.java.srcDirs = [ "src/" ]
-sourceSets.main.resources.srcDirs = ["../android/assets"]
-
-project.ext.mainClassName = "com.epicness.alejandria.automation.AutomationLauncher"
-project.ext.assetsDir = new File("../android/assets")
-
-task run(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    workingDir = project.assetsDir
-    ignoreExitValue = true
+buildscript {
+  repositories {
+    gradlePluginPortal()
+  }
+  dependencies {
+// using jpackage only works if the JDK version is 14 or higher.
+// your JAVA_HOME environment variable may also need to be a JDK with version 14 or higher.
+    if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_14)) {
+      classpath "org.beryx:badass-runtime-plugin:1.13.0"
+    }
+    if(enableGraalNative == 'true') {
+      classpath "org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.9.28"
+    }
+  }
+}
+if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_14)) {
+  apply plugin: 'org.beryx.runtime'
+}
+else {
+  apply plugin: 'application'
 }
 
-task debug(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    workingDir = project.assetsDir
-    ignoreExitValue = true
-    debug = true
+sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
+mainClassName = 'com.epicness.alejandria.lwjgl3.Lwjgl3Launcher'
+java.sourceCompatibility = 11
+java.targetCompatibility = 11
+
+dependencies {
+  implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+  implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+  implementation project(':core')
+  api "com.squareup:javapoet:1.13.0"
 }
 
-eclipse.project.name = appName + "-automation"
+def jarName = "${appName}-${version}.jar"
+def os = System.properties['os.name'].toLowerCase()
+
+run {
+  workingDir = rootProject.file('assets').path
+  setIgnoreExitValue(true)
+
+  if (os.contains('mac')) jvmArgs += "-XstartOnFirstThread"
+}
+
+jar {
+// sets the name of the .jar file this produces to the name of the game or app.
+  archiveFileName.set(jarName)
+// using 'lib' instead of the default 'libs' appears to be needed by jpackageimage.
+  destinationDirectory = file("${project.layout.buildDirectory.asFile.get().absolutePath}/lib")
+// the duplicatesStrategy matters starting in Gradle 7.0; this setting works.
+  duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+  dependsOn configurations.runtimeClasspath
+  from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+// these "exclude" lines remove some unnecessary duplicate files in the output JAR.
+  exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA')
+  dependencies {
+    exclude('META-INF/INDEX.LIST', 'META-INF/maven/**')
+  }
+// setting the manifest makes the JAR runnable.
+  manifest {
+    attributes 'Main-Class': project.mainClassName
+  }
+// this last step may help on some OSes that need extra instruction to make runnable JARs.
+  doLast {
+    file(archiveFile).setExecutable(true, false)
+  }
+}
+
+// Equivalent to the jar task; here for compatibility with gdx-setup.
+tasks.register('dist') {
+  dependsOn['jar']
+}
+
+if(enableGraalNative == 'true') {
+  apply from: file("nativeimage.gradle")
+}
