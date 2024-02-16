@@ -14,11 +14,13 @@ import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.Color.ROYAL;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 
 import com.badlogic.gdx.graphics.Color;
 
-public class BeepingBallsConstants {
+public class FunConstants {
 
+    // Beeping Balls
     public static final Color[] BALL_COLORS = {
         BROWN,
         BROWN.cpy().lerp(RED, 0.5f),
@@ -50,4 +52,9 @@ public class BeepingBallsConstants {
     public static final float SPACING = 15f;
     public static final int BALLS = 24;
     public static final float VOLUME = 0.4f;
+
+    // Falling Sand
+    public static final int SAND_DIMENSION = 50;
+    public static final float SAND_SIZE = SHOWCASE_SIZE / SAND_DIMENSION;
+    public static final float SAND_UPDATE_RATE = 0.05f;
 }

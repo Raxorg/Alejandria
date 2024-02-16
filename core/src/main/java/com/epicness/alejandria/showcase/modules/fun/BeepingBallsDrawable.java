@@ -2,9 +2,9 @@ package com.epicness.alejandria.showcase.modules.fun;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALL_COLORS;
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
+import static com.epicness.alejandria.showcase.constants.FunConstants.BALLS;
+import static com.epicness.alejandria.showcase.constants.FunConstants.BALL_COLORS;
+import static com.epicness.alejandria.showcase.constants.FunConstants.SPACING;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 

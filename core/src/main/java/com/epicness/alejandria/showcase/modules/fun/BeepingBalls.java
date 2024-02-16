@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.fun;
 
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.BALLS;
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.SPACING;
-import static com.epicness.alejandria.showcase.constants.BeepingBallsConstants.VOLUME;
+import static com.epicness.alejandria.showcase.constants.FunConstants.BALLS;
+import static com.epicness.alejandria.showcase.constants.FunConstants.SPACING;
+import static com.epicness.alejandria.showcase.constants.FunConstants.VOLUME;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
