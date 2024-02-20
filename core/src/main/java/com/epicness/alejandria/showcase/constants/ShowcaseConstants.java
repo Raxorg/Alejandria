@@ -31,5 +31,5 @@ public class ShowcaseConstants {
     public static final Color PASTEL_ORANGE = new Color(0xFFD0A1FF);
     public static final Color PASTEL_PURPLE = new Color(0xB1A3FFFF);
 
-    public static final String GITHUB_ROOT = "https://github.com/Raxorg/Alejandria/blob/master/core/src/";
+    public static final String GITHUB_ROOT = "https://github.com/Raxorg/Alejandria/blob/master/core/src/main/java/";
 }
