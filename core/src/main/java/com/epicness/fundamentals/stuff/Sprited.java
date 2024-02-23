@@ -102,8 +102,16 @@ public class Sprited implements Buttonable, Transformable {
         return sprite.getX() + sprite.getWidth() / 2f;
     }
 
+    public float getEndX() {
+        return sprite.getX() + sprite.getWidth();
+    }
+
     public float getCenterY() {
         return sprite.getY() + sprite.getHeight() / 2f;
+    }
+
+    public float getEndY() {
+        return sprite.getY() + sprite.getHeight();
     }
 
     public Vector2 getCenter(Vector2 result) {

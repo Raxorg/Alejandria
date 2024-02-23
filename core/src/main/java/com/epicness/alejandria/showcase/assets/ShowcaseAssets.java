@@ -29,6 +29,8 @@ public class ShowcaseAssets extends Assets {
 
     private Sprite circleGlow;
 
+    private Sprite roundedSquare;
+
     private Sprite glow;
 
     private Sprite smiley_color;
@@ -61,6 +63,7 @@ public class ShowcaseAssets extends Assets {
         info = get(INFO_SPRITE);
         circle = get(CIRCLE_SPRITE);
         circleGlow = get(CIRCLEGLOW_SPRITE);
+        roundedSquare = get(ROUNDEDSQUARE_SPRITE);
         glow = get(GLOW_SPRITE);
         smiley_color = get(SMILEY_COLOR_SPRITE);
         smiley_outline = get(SMILEY_OUTLINE_SPRITE);
@@ -109,6 +112,10 @@ public class ShowcaseAssets extends Assets {
 
     public Sprite getCircleGlow() {
         return circleGlow;
+    }
+
+    public Sprite getRoundedSquare() {
+        return roundedSquare;
     }
 
     public Sprite getGlow() {
