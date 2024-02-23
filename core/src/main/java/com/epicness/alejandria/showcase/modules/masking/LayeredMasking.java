@@ -4,7 +4,6 @@ import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
-import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
@@ -20,9 +19,8 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     @Override
     public LayeredMaskingDrawable setup() {
-        Gdx.gl.glLineWidth(5f);
-
         return new LayeredMaskingDrawable(
+            renderer.getShapeDrawer(),
             sharedAssets.getWeirdShape(),
             sharedAssets.getSquare32(),
             sharedAssets.getSquare32Inverted(),
@@ -45,19 +43,14 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
         Circle circle1 = drawable.getCircle1();
         circle1.translateX(delta * 150f);
-        if (circle1.getCenterX() - circle1.radius >= CAMERA_WIDTH) {
+        if (circle1.getX() - circle1.radius >= CAMERA_WIDTH) {
             circle1.setX(-circle1.radius);
         }
 
         Circle circle2 = drawable.getCircle2();
         circle2.translateX(-delta * 150f);
-        if (circle2.getCenterX() + circle2.radius <= 0f) {
+        if (circle2.getX() + circle2.radius <= 0f) {
             circle2.setX(CAMERA_WIDTH + circle2.radius);
         }
-    }
-
-    @Override
-    public void exit() {
-        Gdx.gl.glLineWidth(1f);
     }
 }
