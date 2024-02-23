@@ -68,11 +68,11 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
         grid.setCellSize(CELL_SIZE);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
-                grid.getCells()[column][row].setColor(DARK_GRASS);
+                grid.cells[column][row].setColor(DARK_GRASS);
                 if ((column + row) % 3 == 0) {
-                    grid.getCells()[column][row].setColor(DIRT);
+                    grid.cells[column][row].setColor(DIRT);
                 } else if ((column + row) % 3 == 1) {
-                    grid.getCells()[column][row].setColor(LIGHT_DIRT);
+                    grid.cells[column][row].setColor(LIGHT_DIRT);
                 }
             }
         }
