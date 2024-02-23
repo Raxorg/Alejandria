@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules;
 
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_WIDTH;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_X;
@@ -42,7 +42,7 @@ public class WelcomeDrawable implements ModuleDrawable {
         text.setCenterVertical(true);
         text.setTextTargetWidth(CAMERA_WIDTH);
         text.setHorizontalAlignment(Align.center);
-        text.setY(STRIPE_HEIGHT * 1.5f);
+        text.setY(SHOWCASE_STRIPE_HEIGHT * 1.5f);
         text.setText("By Luis \"Groxar\" Frontanilla");
     }
 
