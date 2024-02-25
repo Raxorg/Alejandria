@@ -80,6 +80,7 @@ char id=33   x=0      y=62   width=3    height=9    xoffset=0    yoffset=0    xa
 char id=34   x=8      y=62   width=5    height=4    xoffset=0    yoffset=0    xadvance=5    page=0    chnl=0
 char id=39   x=16     y=62   width=3    height=4    xoffset=0    yoffset=0    xadvance=3    page=0    chnl=0
 char id=44   x=24     y=62   width=4    height=5    xoffset=0    yoffset=6    xadvance=4    page=0    chnl=0
+char id=46   x=32     y=62   width=3    height=3    xoffset=0    yoffset=6    xadvance=3    page=0    chnl=0
 char id=58   x=32     y=62   width=3    height=7    xoffset=0    yoffset=1    xadvance=3    page=0    chnl=0
 char id=63   x=40     y=62   width=7    height=9    xoffset=0    yoffset=0    xadvance=7    page=0    chnl=0
 

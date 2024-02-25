@@ -22,6 +22,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 ### Fun
 - Beeping Balls
 - Falling Sand
+- Reactive Grid
 
 ### Grids
 - Cross Chunk Selection
@@ -70,6 +71,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 
 ### UI
 - Drag And Drop
+- Text Manipulation
 
 ### Viewports
 - Advanced Split Screen

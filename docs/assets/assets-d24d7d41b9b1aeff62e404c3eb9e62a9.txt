@@ -2,14 +2,13 @@ alejandria/showcase/animations/stickmanRun.png
 alejandria/showcase/animations/stickmanRunFrames.anim
 alejandria/showcase/audios/ballBeep.ogg
 alejandria/showcase/audios/ballBeep.sogg
-alejandria/showcase/fonts/pixelFont.fnt
-alejandria/showcase/fonts/pixelFont.png
 alejandria/showcase/images/bullets/gun.png
 alejandria/showcase/images/buttons/arrow.png
 alejandria/showcase/images/buttons/gitHub.png
 alejandria/showcase/images/buttons/info.png
 alejandria/showcase/images/fun/circle.png
 alejandria/showcase/images/fun/circleGlow.png
+alejandria/showcase/images/fun/roundedSquare.png
 alejandria/showcase/images/masking/glow.png
 alejandria/showcase/images/masking/smiley_color.png
 alejandria/showcase/images/masking/smiley_outline.png

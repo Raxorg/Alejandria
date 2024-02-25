@@ -37,6 +37,7 @@ import com.epicness.alejandria.showcase.modules.shaders.RaymarchingShader;
 import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
 import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
+import com.epicness.alejandria.showcase.modules.ui.TextManipulation;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
 import com.epicness.alejandria.showcase.modules.viewports.WideViewport;
 import com.epicness.fundamentals.logic.Logic;
@@ -99,6 +100,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new VignetteShader());
         // UI
         registerHandler(new DragAndDrop());
+        registerHandler(new TextManipulation());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
         registerHandler(new WideViewport());
