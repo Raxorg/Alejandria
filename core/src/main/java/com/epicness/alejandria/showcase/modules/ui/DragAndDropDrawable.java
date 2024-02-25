@@ -1,7 +1,11 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_X;
+import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_Y;
+import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_SQUARE_SIZE;
+import static com.epicness.alejandria.showcase.constants.UIConstants.STARTING_DROP_SQUARE_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 
@@ -21,15 +25,15 @@ public class DragAndDropDrawable implements ModuleDrawable {
 
     public DragAndDropDrawable(Sprite pixelSprite, Sprite squareSprite) {
         dropArea = new Sprited(pixelSprite);
-        dropArea.setSize(450f, 120f);
-        dropArea.setPosition(CAMERA_HALF_WIDTH - 225f, CAMERA_HEIGHT * 0.55f);
+        dropArea.setSize(DROP_AREA_WIDTH, DROP_AREA_HEIGHT);
+        dropArea.setPosition(DROP_AREA_X, DROP_AREA_Y);
         dropArea.setColor(WHITE_CLEAR_25);
 
         squares = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             Sprited square = new Sprited(squareSprite);
-            square.setSize(100f);
-            square.setPosition(CAMERA_HALF_WIDTH - 215f + i * 110f, CAMERA_HEIGHT * 0.35f);
+            square.setSize(DROP_SQUARE_SIZE);
+            square.setPosition(DROP_AREA_X + i * 110f, STARTING_DROP_SQUARE_Y);
             square.setColor(LIGHT_GRASS);
             squares.add(square);
         }
