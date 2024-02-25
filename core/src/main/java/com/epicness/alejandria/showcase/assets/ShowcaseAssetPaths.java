@@ -2,7 +2,6 @@ package com.epicness.alejandria.showcase.assets;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import java.util.ArrayList;
@@ -16,8 +15,6 @@ public class ShowcaseAssetPaths {
     public static final AssetDescriptor<Sprite[]> STICKMANRUNFRAMES_ANIMATION;
 
     public static final AssetDescriptor<Sound> BALLBEEP_SOUND;
-
-    public static final AssetDescriptor<BitmapFont> PIXELFONT_FONT;
 
     public static final AssetDescriptor<Sprite> GUN_SPRITE;
 
@@ -54,7 +51,6 @@ public class ShowcaseAssetPaths {
         ASSETS.add(STICKMANRUN_SPRITE = new AssetDescriptor<>("alejandria/showcase/animations/stickmanRun.png", Sprite.class));
         ASSETS.add(STICKMANRUNFRAMES_ANIMATION = new AssetDescriptor<>("alejandria/showcase/animations/stickmanRunFrames.anim", Sprite[].class));
         ASSETS.add(BALLBEEP_SOUND = new AssetDescriptor<>("alejandria/showcase/audios/ballBeep.sogg", Sound.class));
-        ASSETS.add(PIXELFONT_FONT = new AssetDescriptor<>("alejandria/showcase/fonts/pixelFont.fnt", BitmapFont.class));
         ASSETS.add(GUN_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/bullets/gun.png", Sprite.class));
         ASSETS.add(ARROW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/arrow.png", Sprite.class));
         ASSETS.add(GITHUB_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/gitHub.png", Sprite.class));

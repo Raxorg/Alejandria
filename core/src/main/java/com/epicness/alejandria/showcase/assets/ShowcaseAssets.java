@@ -3,7 +3,6 @@ package com.epicness.alejandria.showcase.assets;
 import static com.epicness.alejandria.showcase.assets.ShowcaseAssetPaths.*;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.fundamentals.assets.Assets;
@@ -14,8 +13,6 @@ public class ShowcaseAssets extends Assets {
     private Sprite[] stickmanRunFrames;
 
     private Sound ballBeep;
-
-    private BitmapFont pixelFont;
 
     private Sprite gun;
 
@@ -56,7 +53,6 @@ public class ShowcaseAssets extends Assets {
         stickmanRun = get(STICKMANRUN_SPRITE);
         stickmanRunFrames = get(STICKMANRUNFRAMES_ANIMATION);
         ballBeep = get(BALLBEEP_SOUND);
-        pixelFont = get(PIXELFONT_FONT);
         gun = get(GUN_SPRITE);
         arrow = get(ARROW_SPRITE);
         gitHub = get(GITHUB_SPRITE);
@@ -84,10 +80,6 @@ public class ShowcaseAssets extends Assets {
 
     public Sound getBallBeep() {
         return ballBeep;
-    }
-
-    public BitmapFont getPixelFont() {
-        return pixelFont;
     }
 
     public Sprite getGun() {

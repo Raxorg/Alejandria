@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 
 public class NinePatchedText implements Buttonable {
@@ -19,8 +18,8 @@ public class NinePatchedText implements Buttonable {
         ninePatch = new NinePatch(buttonNinePatch, 1, 1, 1, 1);
         ninePatch.scale(8, 8);
         label = new Text(font);
-        label.setHorizontalAlignment(Align.center);
-        label.setCenterVertical(true);
+        label.hAlignCenter();
+        label.setVerticallyCentered(true);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -45,7 +44,7 @@ public class NinePatchedText implements Buttonable {
 
     public void setSize(float width, float height) {
         boundingBox.setSize(width, height);
-        label.setTextTargetWidth(width);
+        label.setWidth(width);
         label.setY(boundingBox.y + boundingBox.height / 2f);
     }
 }

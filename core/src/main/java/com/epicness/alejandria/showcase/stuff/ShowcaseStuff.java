@@ -24,13 +24,12 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
 
     @Override
     public void initializeStuff() {
-        assets.getPixelFont().getData().scale(4f);
-
-        title = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        title = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
         title.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         title.setTextTargetWidth(CAMERA_WIDTH);
         title.setY(TOP_STRIPE_Y);
         title.setBackgroundColor(WHITE_CLEAR_25);
+        title.setFontScale(5f);
 
         showcase = new Showcase();
 
@@ -56,9 +55,10 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         next.setSize(SHOWCASE_BUTTON_SIZE);
         next.setX(NEXT_BUTTON_X);
 
-        information = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        information = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
         information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         information.setTextTargetWidth(CAMERA_WIDTH * 0.9f);
+        information.setFontScale(5f);
     }
 
     public SpritedText getTitle() {

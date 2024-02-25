@@ -12,20 +12,23 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.utils.Align;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.Text;
 
+import space.earlygrey.shapedrawer.ShapeDrawer;
+
 public class WelcomeDrawable implements ModuleDrawable {
 
+    private final ShapeDrawer shapeDrawer;
     private final ShaderProgram shader;
     private final Sprited canvas;
     private final Text text;
 
-    public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
-        //init shaders
+    public WelcomeDrawable(ShapeDrawer shapeDrawer, BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
+        this.shapeDrawer = shapeDrawer;
+
         shader = neonWavesShader;
         ShaderProgram.pedantic = false;
         if (!shader.isCompiled()) {
@@ -39,11 +42,12 @@ public class WelcomeDrawable implements ModuleDrawable {
         canvas.setPosition(CANVAS_X, CANVAS_Y);
 
         text = new Text(pixelFont);
-        text.setCenterVertical(true);
-        text.setTextTargetWidth(CAMERA_WIDTH);
-        text.setHorizontalAlignment(Align.center);
+        text.setVerticallyCentered(true);
+        text.setWidth(CAMERA_WIDTH);
+        text.hAlignCenter();
         text.setY(SHOWCASE_STRIPE_HEIGHT * 1.5f);
         text.setText("By Luis \"Groxar\" Frontanilla");
+        text.setScale(5f);
     }
 
     @Override
@@ -59,7 +63,9 @@ public class WelcomeDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        text.drawDebug(shapeRenderer);
+        shapeDrawer.getBatch().begin();
+        text.drawDebug(shapeDrawer);
+        shapeDrawer.getBatch().end();
     }
 
     public ShaderProgram getShader() {
