@@ -3,12 +3,12 @@ package com.epicness.alejandria.showcase.constants;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.PINK;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_BLUE;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_GREEN;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_ORANGE;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_PURPLE;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.PASTEL_RED;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_BLUE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_GREEN;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_ORANGE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_PURPLE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_RED;
 
 import com.badlogic.gdx.graphics.Color;
 
