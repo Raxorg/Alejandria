@@ -1,86 +1,81 @@
 package com.epicness.fundamentals.utils;
 
+import static com.badlogic.gdx.graphics.Color.BLACK;
+import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.BROWN;
+import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
+import static com.badlogic.gdx.graphics.Color.CYAN;
+import static com.badlogic.gdx.graphics.Color.FOREST;
+import static com.badlogic.gdx.graphics.Color.GRAY;
+import static com.badlogic.gdx.graphics.Color.GREEN;
+import static com.badlogic.gdx.graphics.Color.MAGENTA;
+import static com.badlogic.gdx.graphics.Color.OLIVE;
+import static com.badlogic.gdx.graphics.Color.ORANGE;
+import static com.badlogic.gdx.graphics.Color.PURPLE;
+import static com.badlogic.gdx.graphics.Color.RED;
+import static com.badlogic.gdx.graphics.Color.SALMON;
+import static com.badlogic.gdx.graphics.Color.TEAL;
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.badlogic.gdx.graphics.Color.YELLOW;
+import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_BLUE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_GREEN;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_ORANGE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_PURPLE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_RED;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_YELLOW;
+
 import com.badlogic.gdx.graphics.Color;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ColorUtils {
 
-    public static String stringFromColor(Color color) {
-        if (color.equals(Color.WHITE)) {
-            return "white";
-        }
-        if (color.equals(Color.RED)) {
-            return "red";
-        }
-        if (color.equals(Color.PURPLE)) {
-            return "purple";
-        }
-        if (color.equals(Color.SALMON)) {
-            return "salmon";
-        }
-        if (color.equals(Color.ORANGE)) {
-            return "orange";
-        }
-        if (color.equals(Color.YELLOW)) {
-            return "yellow";
-        }
-        if (color.equals(Color.OLIVE)) {
-            return "olive";
-        }
-        if (color.equals(Color.CHARTREUSE)) {
-            return "chartreuse";
-        }
-        if (color.equals(Color.FOREST)) {
-            return "forest";
-        }
-        if (color.equals(Color.TEAL)) {
-            return "teal";
-        }
-        if (color.equals(Color.CYAN)) {
-            return "cyan";
-        }
-        if (color.equals(Color.BLUE)) {
-            return "blue";
-        }
-        if (color.equals(Color.BROWN)) {
-            return "brown";
-        }
-        if (color.equals(Color.MAGENTA)) {
-            return "magenta";
-        }
-        return "gray";
+    private static final Map<Color, String> colorStringMap;
+    private static final Map<String, Color> stringColorMap;
+
+    static {
+        colorStringMap = new HashMap<>();
+        stringColorMap = new HashMap<>();
+        registerPair(BLACK, "black");
+        registerPair(GRAY, "gray");
+        registerPair(WHITE, "white");
+        registerPair(SALMON, "salmon");
+        registerPair(BROWN, "brown");
+        registerPair(PURPLE, "purple");
+        registerPair(MAGENTA, "magenta");
+        registerPair(RED, "red");
+        registerPair(DIRT, "dirt");
+        registerPair(ORANGE, "orange");
+        registerPair(YELLOW, "yellow");
+        registerPair(CHARTREUSE, "chartreuse");
+        registerPair(GREEN, "green");
+        registerPair(FOREST, "forest");
+        registerPair(GRASS, "grass");
+        registerPair(OLIVE, "olive");
+        registerPair(TEAL, "teal");
+        registerPair(CYAN, "cyan");
+        registerPair(BLUE, "blue");
+        registerPair(PASTEL_PURPLE, "pastel purple");
+        registerPair(PASTEL_RED, "pastel red");
+        registerPair(PASTEL_ORANGE, "pastel orange");
+        registerPair(PASTEL_YELLOW, "pastel yellow");
+        registerPair(PASTEL_GREEN, "pastel green");
+        registerPair(PASTEL_BLUE, "pastel blue");
     }
 
-    public static Color colorFromString(String color) {
-        switch (color) {
-            case "white":
-                return Color.WHITE;
-            case "red":
-                return Color.RED;
-            case "purple":
-                return Color.PURPLE;
-            case "salmon":
-                return Color.SALMON;
-            case "orange":
-                return Color.ORANGE;
-            case "yellow":
-                return Color.YELLOW;
-            case "olive":
-                return Color.OLIVE;
-            case "chartreuse":
-                return Color.CHARTREUSE;
-            case "forest":
-                return Color.FOREST;
-            case "teal":
-                return Color.TEAL;
-            case "cyan":
-                return Color.CYAN;
-            case "blue":
-                return Color.BLUE;
-            case "brown":
-                return Color.BROWN;
-            case "magenta":
-                return Color.MAGENTA;
-        }
-        return Color.GRAY;
+    private static void registerPair(Color color, String colorString) {
+        colorStringMap.put(color, colorString);
+        stringColorMap.put(colorString, color);
+    }
+
+    public static String stringFromColor(Color color) {
+        return colorStringMap.get(color);
+    }
+
+    public static Color colorFromString(String colorString) {
+        return stringColorMap.get(colorString);
     }
 }
