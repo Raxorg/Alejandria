@@ -15,6 +15,8 @@ import static com.badlogic.gdx.graphics.Color.ROYAL;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 
@@ -57,4 +59,15 @@ public class FunConstants {
     public static final int SAND_DIMENSION = 50;
     public static final float SAND_SIZE = SHOWCASE_SIZE / SAND_DIMENSION;
     public static final float SAND_UPDATE_RATE = 0.035f;
+
+    // Reactive Grid
+    public static final int GRID_ROWS = 40;
+    public static final float CELL_SIZE = SHOWCASE_SIZE / GRID_ROWS;
+    public static final int GRID_COLUMNS = (int) (CAMERA_WIDTH / CELL_SIZE);
+    public static final float GRID_X = 0;
+    public static final float GRID_Y = SHOWCASE_STRIPE_HEIGHT;
+    public static final float GRID_COLOR_FADE_TIME = 3f;
+    public static final float CIRCLE_RADIUS = 10f;
+    public static final float MIN_CIRCLE_SPEED = 150f;
+    public static final float MAX_CIRCLE_SPEED = 300f;
 }

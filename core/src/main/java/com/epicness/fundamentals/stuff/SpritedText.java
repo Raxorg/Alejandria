@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 
@@ -16,8 +15,8 @@ public class SpritedText implements Buttonable, Movable {
     public SpritedText(Sprite backgroundSprite, BitmapFont font) {
         background = new Sprite(backgroundSprite);
         label = new Text(font);
-        label.setHorizontalAlignment(Align.center);
-        label.setCenterVertical(true);
+        label.hAlignCenter();
+        label.setVerticallyCentered(true);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -102,10 +101,14 @@ public class SpritedText implements Buttonable, Movable {
     }
 
     public void setTextTargetWidth(float width) {
-        label.setTextTargetWidth(width);
+        label.setWidth(width);
     }
 
     private void centerTextOnTargetWidth() {
-        label.setX(background.getX() + background.getWidth() / 2f - label.getTextTargetWidth() / 2f);
+        label.setX(background.getX() + background.getWidth() / 2f - label.getWidth() / 2f);
+    }
+
+    public void setFontScale(float scale) {
+        label.setScale(scale);
     }
 }

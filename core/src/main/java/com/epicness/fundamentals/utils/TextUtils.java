@@ -35,12 +35,12 @@ public class TextUtils {
 
     public static float getTextWidth(Text text) {
         return getTextWidth(
-                text.getFont(),
-                text.getText(),
-                text.getTextTargetWidth(),
-                text.getHorizontalAlignment(),
-                true,
-                text.getTruncate());
+            text.getFont(),
+            text.getText(),
+            text.getWidth(),
+            text.getHAlign(),
+            true,
+            text.getTruncate());
     }
 
     public static float getTextHeight(BitmapFont font, String text) {
@@ -54,11 +54,11 @@ public class TextUtils {
 
     public static float getTextHeight(Text text) {
         return getTextHeight(
-                text.getFont(),
-                text.getText(),
-                text.getTextTargetWidth(),
-                text.getHorizontalAlignment(),
-                true,
-                text.getTruncate());
+            text.getFont(),
+            text.getText(),
+            text.getWidth(),
+            text.getHAlign(),
+            true,
+            text.getTruncate());
     }
 }

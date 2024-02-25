@@ -53,8 +53,4 @@ public class CellGrid<T extends Cell> extends Grid {
     public float getHeight() {
         return rows * cells[0][0].getHeight();
     }
-
-    public T[][] getCells() {
-        return cells;
-    }
 }

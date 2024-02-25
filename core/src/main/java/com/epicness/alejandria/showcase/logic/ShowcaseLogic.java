@@ -10,6 +10,7 @@ import com.epicness.alejandria.showcase.modules.cursor.BeamAiming;
 import com.epicness.alejandria.showcase.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.modules.fun.BeepingBalls;
 import com.epicness.alejandria.showcase.modules.fun.FallingSand;
+import com.epicness.alejandria.showcase.modules.fun.ReactiveGrid;
 import com.epicness.alejandria.showcase.modules.grids.CrossChunkSelection;
 import com.epicness.alejandria.showcase.modules.grids.HexagonSelection;
 import com.epicness.alejandria.showcase.modules.kinematics.ForwardKinematics;
@@ -36,6 +37,7 @@ import com.epicness.alejandria.showcase.modules.shaders.RaymarchingShader;
 import com.epicness.alejandria.showcase.modules.shaders.ShakeShader;
 import com.epicness.alejandria.showcase.modules.shaders.VignetteShader;
 import com.epicness.alejandria.showcase.modules.ui.DragAndDrop;
+import com.epicness.alejandria.showcase.modules.ui.TextManipulation;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
 import com.epicness.alejandria.showcase.modules.viewports.WideViewport;
 import com.epicness.fundamentals.logic.Logic;
@@ -60,6 +62,7 @@ public class ShowcaseLogic extends Logic {
         // Fun
         registerHandler(new BeepingBalls());
         registerHandler(new FallingSand());
+        registerHandler(new ReactiveGrid());
         // Grids
         registerHandler(new CrossChunkSelection());
         registerHandler(new HexagonSelection());
@@ -97,6 +100,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new VignetteShader());
         // UI
         registerHandler(new DragAndDrop());
+        registerHandler(new TextManipulation());
         // Viewports
         registerHandler(new AdvancedSplitScreen());
         registerHandler(new WideViewport());

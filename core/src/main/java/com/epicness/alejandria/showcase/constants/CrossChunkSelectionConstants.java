@@ -1,12 +1,12 @@
 package com.epicness.alejandria.showcase.constants;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 
 public class CrossChunkSelectionConstants {
 
     public static final int GRID_DIMENSION = 4;
-    public static final float GRID_X = 100f, GRID_Y = STRIPE_HEIGHT;
+    public static final float GRID_X = 100f, GRID_Y = SHOWCASE_STRIPE_HEIGHT;
     public static final float GRID_SIZE = SHOWCASE_SIZE;
 
     public static final float CHUNK_SIZE = GRID_SIZE / GRID_DIMENSION;

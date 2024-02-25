@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
@@ -16,8 +16,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -31,12 +31,15 @@ import java.util.List;
 
 public class LayeredMaskingDrawable implements ModuleDrawable {
 
+    private final ShapeDrawerPlus shapeDrawer;
     private final Sprited mask;
     private final DefaultCellGrid gridA, gridB;
     private final Circle circle1, circle2;
     private final List<DualSprited> shapes;
 
-    public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
+    public LayeredMaskingDrawable(ShapeDrawerPlus shapeDrawer, Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
+        this.shapeDrawer = shapeDrawer;
+
         mask = new Sprited(pixel);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
@@ -53,10 +56,9 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
                 Color color = (column + row) % 2 == 0 ? GRASS : LIGHT_GRASS;
-                gridA.getCells()[column][row].setColor(color);
+                gridA.cells[column][row].setColor(color);
             }
         }
-
 
         builder.getCellBuilder().sprite(square32Inverted);
         gridB = new DefaultCellGrid(builder);
@@ -64,17 +66,17 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
                 Color color = (column + row) % 2 == 0 ? GRASS : LIGHT_GRASS;
-                gridB.getCells()[column][row].setColor(color);
+                gridB.cells[column][row].setColor(color);
             }
         }
 
-        circle1 = new Circle(CAMERA_HALF_HEIGHT / 2f);
+        circle1 = new Circle(CAMERA_HALF_HEIGHT / 2f, WHITE);
         circle1.setPosition(CAMERA_HALF_WIDTH, (CAMERA_HALF_HEIGHT / 2f) * 3f);
-        circle1.setColor(Color.BLACK);
+        circle1.setThickness(3f);
 
-        circle2 = new Circle(CAMERA_HALF_HEIGHT / 2f);
+        circle2 = new Circle(CAMERA_HALF_HEIGHT / 2f, WHITE);
         circle2.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT / 2f);
-        circle2.setColor(Color.BLACK);
+        circle2.setThickness(3f);
 
         Sprite backgroundSprite = new Sprite(pixel);
         Sprite foregroundSprite = new Sprite(weirdShape);
@@ -107,10 +109,10 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
         drawUnmasked(spriteBatch);
-        drawMask(spriteBatch, shapeRenderer);
-        drawMasked(spriteBatch, shapeRenderer);
-        drawMask2(spriteBatch, shapeRenderer);
-        drawMasked2(spriteBatch, shapeRenderer);
+        drawMask(spriteBatch);
+        drawMasked(spriteBatch);
+        drawMask2(spriteBatch);
+        drawMasked2(spriteBatch);
         // Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
@@ -124,7 +126,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMask(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawMask(SpriteBatch spriteBatch) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -143,14 +145,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
 
         mask.draw(spriteBatch);
 
+        circle1.draw(shapeDrawer);
         spriteBatch.end();
-
-        shapeRenderer.begin(Filled);
-        circle1.draw(shapeRenderer);
-        shapeRenderer.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawMasked(SpriteBatch spriteBatch) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();
@@ -158,13 +157,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         for (DualSprited shape : shapes) {
             shape.drawForeground(spriteBatch);
         }
+        circle1.drawBorder(shapeDrawer);
         spriteBatch.end();
-        shapeRenderer.begin(Filled);
-        circle1.drawContour(shapeRenderer);
-        shapeRenderer.end();
     }
 
-    private void drawMask2(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawMask2(SpriteBatch spriteBatch) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -183,14 +180,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
 
         //stuff.getMask().draw(spriteBatch);
 
+        circle2.draw(shapeDrawer);
         spriteBatch.end();
-
-        shapeRenderer.begin(Filled);
-        circle2.draw(shapeRenderer);
-        shapeRenderer.end();
     }
 
-    private void drawMasked2(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
+    private void drawMasked2(SpriteBatch spriteBatch) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();
@@ -198,10 +192,8 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         for (DualSprited shape : shapes) {
             shape.drawBackground(spriteBatch);
         }
+        circle2.drawBorder(shapeDrawer);
         spriteBatch.end();
-        shapeRenderer.begin(Filled);
-        circle2.drawContour(shapeRenderer);
-        shapeRenderer.end();
     }
 
     @Override

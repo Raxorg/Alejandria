@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 
@@ -17,8 +16,8 @@ public class IconedSpritedText implements Buttonable, Movable {
     public IconedSpritedText(Sprite backgroundSprite, BitmapFont font, Sprite iconSprite) {
         background = new Sprited(backgroundSprite);
         label = new Text(font);
-        label.setHorizontalAlignment(Align.center);
-        label.setCenterVertical(true);
+        label.hAlignCenter();
+        label.setVerticallyCentered(true);
         icon = new Sprited(iconSprite);
     }
 
@@ -77,7 +76,7 @@ public class IconedSpritedText implements Buttonable, Movable {
 
     public void setSize(float width, float height) {
         background.setSize(width, height);
-        label.setTextTargetWidth(width - height);
+        label.setWidth(width - height);
         label.setY(background.getY() + height / 2f);
         icon.setSize(height * 0.65f);
         icon.setX(background.getX() + width - height / 2f - icon.getWidth() / 2f);

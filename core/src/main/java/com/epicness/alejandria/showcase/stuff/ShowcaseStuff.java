@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHU
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.INFO_BUTTON_X;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.NEXT_BUTTON_X;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.STRIPE_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.TOP_STRIPE_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
@@ -24,18 +24,17 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
 
     @Override
     public void initializeStuff() {
-        assets.getPixelFont().getData().scale(4f);
-
-        title = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
-        title.setSize(CAMERA_WIDTH, STRIPE_HEIGHT);
+        title = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
+        title.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         title.setTextTargetWidth(CAMERA_WIDTH);
         title.setY(TOP_STRIPE_Y);
         title.setBackgroundColor(WHITE_CLEAR_25);
+        title.setFontScale(5f);
 
         showcase = new Showcase();
 
         bottomStripe = new Sprited(sharedAssets.getPixel());
-        bottomStripe.setSize(CAMERA_WIDTH, STRIPE_HEIGHT);
+        bottomStripe.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         bottomStripe.setColor(WHITE_CLEAR_25);
 
         previous = new Sprited(assets.getArrow());
@@ -56,9 +55,10 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         next.setSize(SHOWCASE_BUTTON_SIZE);
         next.setX(NEXT_BUTTON_X);
 
-        information = new SpritedText(sharedAssets.getPixel(), assets.getPixelFont());
+        information = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
         information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         information.setTextTargetWidth(CAMERA_WIDTH * 0.9f);
+        information.setFontScale(5f);
     }
 
     public SpritedText getTitle() {

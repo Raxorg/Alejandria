@@ -84,9 +84,9 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     private void limitPlayerPositions() {
         Circle player1 = drawable.getPlayer1(), player2 = drawable.getPlayer2();
-        player1.setX(MathUtils.clamp(player1.getCenterX(), PLAYER_RADIUS, GRID_SIZE - player1.radius));
+        player1.setX(MathUtils.clamp(player1.getX(), PLAYER_RADIUS, GRID_SIZE - player1.radius));
         player1.setY(MathUtils.clamp(player1.getY(), PLAYER_RADIUS, GRID_SIZE - player1.radius));
-        player2.setX(MathUtils.clamp(player2.getCenterX(), PLAYER_RADIUS, GRID_SIZE - player2.radius));
+        player2.setX(MathUtils.clamp(player2.getX(), PLAYER_RADIUS, GRID_SIZE - player2.radius));
         player2.setY(MathUtils.clamp(player2.getY(), PLAYER_RADIUS, GRID_SIZE - player2.radius));
     }
 
@@ -94,20 +94,20 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
         Circle player1 = drawable.getPlayer1(), player2 = drawable.getPlayer2();
         Camera camera1 = drawable.getCamera1(), camera2 = drawable.getCamera2();
         if (drawable.arePlayersClose()) {
-            float averageX = (player1.getCenterX() + player2.getCenterX()) / 2f;
+            float averageX = (player1.getX() + player2.getX()) / 2f;
             float averageY = (player1.getY() + player2.getY()) / 2f;
             camera1.position.x = averageX;
             camera1.position.y = averageY;
             camera2.position.x = averageX;
             camera2.position.y = averageY;
         } else {
-            float angle = MathUtils.atan2(player2.getY() - player1.getY(), player2.getCenterX() - player1.getCenterX());
+            float angle = MathUtils.atan2(player2.getY() - player1.getY(), player2.getX() - player1.getX());
             angle *= MathUtils.radiansToDegrees;
             float distanceX = MathUtils.cosDeg(angle) * MAX_DISTANCE;
             float distanceY = MathUtils.sinDeg(angle) * MAX_DISTANCE;
-            camera1.position.x = player1.getCenterX() + distanceX / 2f;
+            camera1.position.x = player1.getX() + distanceX / 2f;
             camera1.position.y = player1.getY() + distanceY / 2f;
-            camera2.position.x = player2.getCenterX() - distanceX / 2f;
+            camera2.position.x = player2.getX() - distanceX / 2f;
             camera2.position.y = player2.getY() - distanceY / 2f;
         }
     }
@@ -145,7 +145,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
         Sprited mask = drawable.getMask();
         Sprited divider = drawable.getDivider();
 
-        float angle = MathUtils.atan2(player2.getY() - player1.getY(), player2.getCenterX() - player1.getCenterX());
+        float angle = MathUtils.atan2(player2.getY() - player1.getY(), player2.getX() - player1.getX());
         angle *= MathUtils.radiansToDegrees;
         angle += 90f;
         mask.setRotation(angle);
