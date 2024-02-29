@@ -20,7 +20,6 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
     @Override
     public LayeredMaskingDrawable setup() {
         return new LayeredMaskingDrawable(
-            renderer.getShapeDrawer(),
             sharedAssets.getWeirdShape(),
             sharedAssets.getSquare32(),
             sharedAssets.getSquare32Inverted(),

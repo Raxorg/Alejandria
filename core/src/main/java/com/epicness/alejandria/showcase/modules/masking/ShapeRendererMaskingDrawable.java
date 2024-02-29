@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
@@ -37,7 +38,7 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         shapeRenderer.begin();
 
         drawMasks(shapeRenderer);

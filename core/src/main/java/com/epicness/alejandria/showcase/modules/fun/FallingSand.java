@@ -30,7 +30,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
 
     @Override
     protected FallingSandDrawable setup() {
-        drawable = new FallingSandDrawable(renderer.getShapeDrawer());
+        drawable = new FallingSandDrawable();
 
         grid = new boolean[SAND_DIMENSION][];
         for (int column = 0; column < SAND_DIMENSION; column++) {

@@ -24,7 +24,7 @@ public class Spirograph extends Module<SpirographDrawable> {
 
     @Override
     protected SpirographDrawable setup() {
-        drawable = new SpirographDrawable(renderer.getShapeDrawer());
+        drawable = new SpirographDrawable();
         linedBalls = drawable.getLinedBalls();
         trailLines = drawable.getTrailLines();
         auxColor = new Color();

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class DecalDrawable implements ModuleDrawable {
@@ -27,7 +28,7 @@ public class DecalDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
         decalBatch.add(decal);

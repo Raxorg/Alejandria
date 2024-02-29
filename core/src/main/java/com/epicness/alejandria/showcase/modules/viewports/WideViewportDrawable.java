@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class WideViewportDrawable implements ModuleDrawable {
@@ -43,7 +44,7 @@ public class WideViewportDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         // Use the wide projection matrix with the frame buffer
         spriteBatch.setProjectionMatrix(wideProjectionMatrix);
         // Render whatever to the frame buffer

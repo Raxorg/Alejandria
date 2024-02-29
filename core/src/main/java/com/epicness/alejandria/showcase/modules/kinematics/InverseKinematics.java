@@ -19,7 +19,7 @@ public class InverseKinematics extends Module<InverseKinematicsDrawable> {
 
     @Override
     protected InverseKinematicsDrawable setup() {
-        drawable = new InverseKinematicsDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+        drawable = new InverseKinematicsDrawable();
         tentacles = drawable.getTentacles();
         lockInCircle();
         return drawable;

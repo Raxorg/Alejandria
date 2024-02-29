@@ -26,15 +26,12 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class ReactiveGridDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
     private final CellGrid<ColoredCell> grid;
     private final SnapshotArray<Sprited> colorBombs;
     private final SnapshotArray<ColorBall> colorBalls;
     private final Circle circle;
 
-    public ReactiveGridDrawable(ShapeDrawerPlus shapeDrawer, Sprite cellSprite) {
-        this.shapeDrawer = shapeDrawer;
-
+    public ReactiveGridDrawable(Sprite cellSprite) {
         CellGridBuilder<ColoredCell> builder = new CellGridBuilder<>(
             new ColoredCellBuilder().sprite(cellSprite))
             .columns(GRID_COLUMNS)
@@ -52,7 +49,7 @@ public class ReactiveGridDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         ScreenUtils.clear(BLACK);
         spriteBatch.begin();
         grid.draw(spriteBatch);

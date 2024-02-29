@@ -31,15 +31,12 @@ import java.util.List;
 
 public class LayeredMaskingDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
     private final Sprited mask;
     private final DefaultCellGrid gridA, gridB;
     private final Circle circle1, circle2;
     private final List<DualSprited> shapes;
 
-    public LayeredMaskingDrawable(ShapeDrawerPlus shapeDrawer, Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
-        this.shapeDrawer = shapeDrawer;
-
+    public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
         mask = new Sprited(pixel);
         mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
@@ -107,12 +104,12 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         drawUnmasked(spriteBatch);
-        drawMask(spriteBatch);
-        drawMasked(spriteBatch);
-        drawMask2(spriteBatch);
-        drawMasked2(spriteBatch);
+        drawMask(spriteBatch, shapeDrawer);
+        drawMasked(spriteBatch, shapeDrawer);
+        drawMask2(spriteBatch, shapeDrawer);
+        drawMasked2(spriteBatch, shapeDrawer);
         // Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
@@ -126,7 +123,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMask(SpriteBatch spriteBatch) {
+    private void drawMask(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -149,7 +146,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch) {
+    private void drawMasked(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();
@@ -161,7 +158,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMask2(SpriteBatch spriteBatch) {
+    private void drawMask2(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -184,7 +181,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMasked2(SpriteBatch spriteBatch) {
+    private void drawMasked2(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();

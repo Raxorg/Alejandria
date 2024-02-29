@@ -47,7 +47,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     @Override
     protected ReactiveGridDrawable setup() {
-        drawable = new ReactiveGridDrawable(renderer.getShapeDrawer(), assets.getRoundedSquare());
+        drawable = new ReactiveGridDrawable(assets.getRoundedSquare());
 
         grid = drawable.getGrid();
         for (int column = 0; column < grid.getColumns(); column++) {

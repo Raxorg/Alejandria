@@ -11,13 +11,10 @@ import java.util.Arrays;
 
 public class HexagonSelectionDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
     private final Hexagon[][] hexagons;
     public static final int COLUMNS = 9, ROWS = 6;
 
-    public HexagonSelectionDrawable(ShapeDrawerPlus shapeDrawer) {
-        this.shapeDrawer = shapeDrawer;
-
+    public HexagonSelectionDrawable() {
         float size = 96f;
         float[] vertices = new float[12];
         vertices[0] = 0f;
@@ -72,7 +69,7 @@ public class HexagonSelectionDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int column = 0; column < COLUMNS; column++) {
             for (int row = 0; row < ROWS; row++) {

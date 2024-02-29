@@ -44,7 +44,7 @@ public class QuadTree extends Module<QuadTreeDrawable> {
 
     @Override
     protected QuadTreeDrawable setup() {
-        drawable = new QuadTreeDrawable(renderer.getShapeDrawer(), sharedAssets.getDot());
+        drawable = new QuadTreeDrawable(sharedAssets.getDot());
         dots = drawable.getDots();
         quads = drawable.getQuads();
         quadsToCheck = new SnapshotArray<>();

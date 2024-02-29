@@ -10,6 +10,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WI
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class SpriteRotationAnimationDrawable implements ModuleDrawable {
@@ -32,7 +33,7 @@ public class SpriteRotationAnimationDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         pixel.draw(spriteBatch);
         weirdShape.draw(spriteBatch);

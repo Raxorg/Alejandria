@@ -3,13 +3,12 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 import com.epicness.fundamentals.utils.TextUtils;
-
-import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class Text implements Buttonable, Movable {
 
@@ -44,8 +43,8 @@ public class Text implements Buttonable, Movable {
         );
     }
 
-    public void drawDebug(ShapeDrawer shapeDrawer) {
-        shapeDrawer.rectangle(
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        shapeRenderer.rect(
             bounds.x,
             bounds.y + yOffset,
             bounds.width,

@@ -5,6 +5,7 @@ import static com.epicness.alejandria.showcase.constants.PatternsConstants.PHYLL
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
@@ -17,7 +18,7 @@ public class PhyllotaxisDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         shapeRenderer.begin(Filled);
         for (int i = 0; i < PHYLLOTAXIS_CIRCLES; i++) {
             circles[i].draw(shapeRenderer);

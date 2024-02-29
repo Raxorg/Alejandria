@@ -30,7 +30,7 @@ public class TextManipulation extends Module<TextManipulationDrawable> {
 
     @Override
     protected TextManipulationDrawable setup() {
-        drawable = new TextManipulationDrawable(renderer.getShapeDrawer(), sharedAssets.getPixelFont());
+        drawable = new TextManipulationDrawable(sharedAssets.getPixelFont());
         text = drawable.getText();
         centerVertically = true;
         truncate = null;

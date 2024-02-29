@@ -10,19 +10,15 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WI
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
-import space.earlygrey.shapedrawer.ShapeDrawer;
-
 public class ForwardKinematicsDrawable implements ModuleDrawable {
 
-    private final ShapeDrawer shapeDrawer;
     private final ConnectedLine[] lines;
 
-    public ForwardKinematicsDrawable(ShapeDrawer shapeDrawer) {
-        this.shapeDrawer = shapeDrawer;
-
+    public ForwardKinematicsDrawable() {
         lines = new ConnectedLine[FK_LINES];
         ConnectedLine root = new ConnectedLine(CAMERA_HALF_WIDTH, SHOWCASE_STRIPE_HEIGHT, FK_LINE_LENGTH, 90f, true);
         root.width = 15f;
@@ -37,7 +33,7 @@ public class ForwardKinematicsDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < lines.length; i++) {
             lines[i].draw(shapeDrawer);

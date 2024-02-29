@@ -25,12 +25,7 @@ public class Welcome extends Module<WelcomeDrawable> {
 
     @Override
     protected WelcomeDrawable setup() {
-        drawable = new WelcomeDrawable(
-            renderer.getShapeDrawer(),
-            sharedAssets.getPixelFont(),
-            sharedAssets.getPixel(),
-            assets.getNeonWaves()
-        );
+        drawable = new WelcomeDrawable(sharedAssets.getPixelFont(), sharedAssets.getPixel(), assets.getNeonWaves());
         shader = drawable.getShader();
         return drawable;
     }

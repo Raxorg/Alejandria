@@ -18,7 +18,7 @@ public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
 
     @Override
     public ShapeDrawerMaskingDrawable setup() {
-        return new ShapeDrawerMaskingDrawable(renderer.getSpriteBatch(), sharedAssets.getPixel());
+        return new ShapeDrawerMaskingDrawable();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class HexagonSelection extends Module<HexagonSelectionDrawable> {
     @Override
     protected HexagonSelectionDrawable setup() {
         radius = 1;
-        return new HexagonSelectionDrawable(renderer.getShapeDrawer());
+        return new HexagonSelectionDrawable();
     }
 
     @Override
