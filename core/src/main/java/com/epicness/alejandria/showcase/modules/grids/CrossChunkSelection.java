@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.grids;
 
+import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CELL_SIZE;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_DIMENSION;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.CHUNK_SIZE;
@@ -10,10 +11,9 @@ import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionCons
 import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Chunk;
-import com.epicness.alejandria.showcase.stuff.modules.grids.RectangleCell;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 import java.util.List;
 
@@ -40,19 +40,19 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
         if (!drawable.getBackground().contains(x, y)) {
             return;
         }
-        RectangleCell cell = find(x, y);
-        cell.color = Color.BLACK;
+        Rectangle cell = find(x, y);
+        cell.setColor(BLACK);
         selectNeighbors(x, y);
     }
 
-    private RectangleCell find(float x, float y) {
+    private Rectangle find(float x, float y) {
         x -= GRID_X;
         y -= GRID_Y;
         List<Chunk> chunks = drawable.getChunks();
         int column = (int) (x / CHUNK_SIZE);
         int row = (int) (y / CHUNK_SIZE);
         Chunk chunk = chunks.get(row + column * GRID_DIMENSION);
-        List<RectangleCell> cells = chunk.cells;
+        List<Rectangle> cells = chunk.cells;
         column = (int) ((x % CHUNK_SIZE) / CELL_SIZE);
         row = (int) ((y % CHUNK_SIZE) / CELL_SIZE);
         return cells.get(row + column * CHUNK_DIMENSION);
@@ -73,8 +73,8 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
                     if (offsetX < GRID_X || offsetX >= GRID_X + GRID_SIZE || offsetY < GRID_Y || offsetY >= GRID_Y + GRID_SIZE) {
                         continue;
                     }
-                    RectangleCell cell = find(offsetX, offsetY);
-                    cell.color = GRASS;
+                    Rectangle cell = find(offsetX, offsetY);
+                    cell.setColor(GRASS);
                 }
             }
         }
