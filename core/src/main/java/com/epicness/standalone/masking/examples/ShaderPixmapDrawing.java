@@ -42,13 +42,13 @@ public class ShaderPixmapDrawing extends Game {
     @Override
     public void create() {
         /* Some regular textures to draw on the scene. */
-        outline = new Texture("images/masking/smiley_outline.png");
-        color = new Texture("images/masking/smiley_color.png");
+        outline = new Texture("alejandria/showcase/images/masking/smiley_outline.png");
+        color = new Texture("alejandria/showcase/images/masking/smiley_color.png");
 
         /* I like to keep my shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
-        FileHandle vertexShader = Gdx.files.internal("shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("shaders/masking/mask.glsl");
+        FileHandle vertexShader = Gdx.files.internal("alejandria/showcase/shaders/shared/vertex.glsl");
+        FileHandle fragmentShader = Gdx.files.internal("alejandria/showcase/shaders/masking/mask.glsl");
 
         /* Bonus: you can set `pedantic = false` while tinkering with your
          * shaders. This will stop it from crashing if you have unused variables
