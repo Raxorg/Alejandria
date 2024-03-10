@@ -36,6 +36,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
             x = radius * MathUtils.cosDeg(angles[i]) + CAMERA_HALF_WIDTH;
             y = radius * MathUtils.sinDeg(angles[i]) + CAMERA_HALF_HEIGHT;
             Color color = new Color().fromHsv(angles[i] % 360, 1, 1);
+            color.a = 1f;
             circles[i] = new Circle(x, y, 9f, color);
         }
         return drawable;
@@ -50,6 +51,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
         for (int i = 0; i < PHYLLOTAXIS_CIRCLES; i++) {
             angles[i] += delta * speed;
             Color color = new Color().fromHsv(angles[i] % 360, 1, 1);
+            color.a = 1f;
             circles[i].setColor(color);
         }
     }
