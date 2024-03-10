@@ -139,7 +139,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
     }
 
     private void colorCircleCell() {
-        colorCell(circle.x, circle.y, circle.getColor());
+        colorCell(circle.x, circle.y, circle.getBorderColor());
     }
 
     private void colorCell(float x, float y, Color color) {

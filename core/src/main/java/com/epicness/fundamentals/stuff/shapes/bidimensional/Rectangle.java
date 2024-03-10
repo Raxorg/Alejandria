@@ -40,17 +40,17 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
         this(new Color(1f, 1f, 1f, 1f));
     }
 
+    public void drawFilled(ShapeDrawer shapeDrawer) {
+        shapeDrawer.filledRectangle(this, fillColor);
+    }
+
     public void drawBorder(ShapeDrawer shapeDrawer) {
         shapeDrawer.rectangle(this, borderColor, thickness);
     }
 
-    public void drawFilled(ShapeDrawer shapeDrawer) {
-        shapeDrawer.filledRectangle(this, borderColor);
-    }
-
     public void draw(ShapeDrawer shapeDrawer) {
-        shapeDrawer.filledRectangle(this, fillColor);
-        shapeDrawer.rectangle(this, borderColor, thickness);
+        drawFilled(shapeDrawer);
+        drawBorder(shapeDrawer);
     }
 
     public void setColor(Color color) {

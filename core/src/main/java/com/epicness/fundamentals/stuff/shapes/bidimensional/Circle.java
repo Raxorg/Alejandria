@@ -11,15 +11,20 @@ import space.earlygrey.shapedrawer.ShapeDrawer;
 public class Circle implements Movable {
 
     public float x, y, radius;
-    private final Color color;
+    private final Color borderColor, fillColor;
     private float thickness;
 
-    public Circle(float x, float y, float radius, Color color) {
+    public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
         thickness = 1f;
+    }
+
+    public Circle(float x, float y, float radius, Color color) {
+        this(x, y, radius, color, color);
     }
 
     public Circle(float x, float y, float radius) {
@@ -46,17 +51,22 @@ public class Circle implements Movable {
         this(5f);
     }
 
-    public void draw(ShapeDrawer shapeDrawer) {
-        shapeDrawer.filledCircle(x, y, radius, color);
-    }
-
-    public void draw(ShapeRenderer shapeRenderer) {
-        shapeRenderer.setColor(color);
-        shapeRenderer.circle(x, y, radius);
+    public void drawFilled(ShapeDrawer shapeDrawer) {
+        shapeDrawer.filledCircle(x, y, radius, fillColor);
     }
 
     public void drawBorder(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.circle(x, y, radius, thickness, color);
+        shapeDrawer.circle(x, y, radius, thickness, borderColor);
+    }
+
+    public void draw(ShapeDrawerPlus shapeDrawer) {
+        drawFilled(shapeDrawer);
+        drawBorder(shapeDrawer);
+    }
+
+    public void draw(ShapeRenderer shapeRenderer) {
+        shapeRenderer.setColor(borderColor);
+        shapeRenderer.circle(x, y, radius);
     }
 
     public float getStartX() {
@@ -99,15 +109,21 @@ public class Circle implements Movable {
         y += amount;
     }
 
-    public Color getColor() {
-        return color;
+    public Color getBorderColor() {
+        return borderColor;
+    }
+
+    public Color getFillColor() {
+        return fillColor;
     }
 
     public void setColor(Color color) {
-        this.color.set(color);
+        borderColor.set(color);
+        fillColor.set(color);
     }
 
-    public void setThickness(float thickness) {
+    public Circle setThickness(float thickness) {
         this.thickness = thickness;
+        return this;
     }
 }
