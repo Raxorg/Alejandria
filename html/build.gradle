@@ -30,12 +30,13 @@ gwt {
 
 dependencies {
   implementation "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
-  implementation "com.github.tommyettinger:gdx-backend-gwt:1.1210.0"
-  implementation "com.github.tommyettinger:gdx-backend-gwt:1.1210.0:sources"
+  implementation "com.github.tommyettinger:gdx-backend-gwt:1.1210.1"
+  implementation "com.github.tommyettinger:gdx-backend-gwt:1.1210.1:sources"
   implementation "com.google.jsinterop:jsinterop-annotations:2.0.2:sources"
   implementation "space.earlygrey:shapedrawer:$shapeDrawerVersion:sources"
   implementation project(':core')
-
+  implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
+  implementation("com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources") { exclude group: "com.google.gwt", module: "gwt-user" }
 }
 
 import org.akhikhl.gretty.AppBeforeIntegrationTestTask
