@@ -50,6 +50,9 @@ public class BulletSpawningDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        gun.drawDebug(shapeRenderer);
+        bullet.drawDebug(shapeRenderer);
+        center.drawDebug(shapeRenderer);
     }
 
     public Sprited getGun() {
