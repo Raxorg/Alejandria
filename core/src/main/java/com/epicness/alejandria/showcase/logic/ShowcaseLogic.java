@@ -32,6 +32,7 @@ import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
 import com.epicness.alejandria.showcase.modules.rendering.ManualScreenClear;
 import com.epicness.alejandria.showcase.modules.rendering.OrthographicExample;
+import com.epicness.alejandria.showcase.modules.rendering.ShapeRendering;
 import com.epicness.alejandria.showcase.modules.rendering3d.Decal;
 import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
 import com.epicness.alejandria.showcase.modules.shaders.InvertShader;
@@ -95,6 +96,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new FrameBuffering());
         registerHandler(new ManualScreenClear());
         registerHandler(new OrthographicExample());
+        registerHandler(new ShapeRendering());
         // Rendering 3D
         registerHandler(new Decal());
         registerHandler(new TexturedCube());

@@ -62,6 +62,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Frame Buffering
 - Manual Screen Clear
 - Orthographic Example
+- Shape Rendering
 
 ### Rendering 3D
 - Decal Visualization
