@@ -1,5 +1,10 @@
 package com.epicness.alejandria.showcase.constants;
 
+import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.GREEN;
+import static com.badlogic.gdx.graphics.Color.ORANGE;
+import static com.badlogic.gdx.graphics.Color.RED;
+import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
@@ -23,6 +28,8 @@ public class ShowcaseConstants {
     public static final float SHOWCASE_X = SHOWCASE_BUTTON_SIZE;
     public static final float SHOWCASE_Y = SHOWCASE_STRIPE_HEIGHT;
     public static final Color SHOWCASE_BACKGROUND_COLOR = GRASS;
+
+    public static final Color[] BASIC_COLORS = new Color[]{RED, ORANGE, YELLOW, GREEN, BLUE};
 
     public static final String GITHUB_ROOT = "https://github.com/Raxorg/Alejandria/blob/master/core/src/main/java/";
 }

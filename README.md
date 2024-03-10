@@ -51,6 +51,9 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Spiral
 - Spirograph
 
+### Physics
+- Ball Physics
+
 ### Procedural
 - Pixmap Manipulation
 - Procedural Square
