@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
-import static com.epicness.alejandria.showcase.constants.SpirographConstants.BALL_RADIUS;
+import static com.epicness.alejandria.showcase.constants.PatternsConstants.BALL_RADIUS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

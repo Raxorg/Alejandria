@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
-import static com.epicness.alejandria.showcase.constants.SpirographConstants.FADE_DURATION;
+import static com.epicness.alejandria.showcase.constants.PatternsConstants.FADE_DURATION;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 

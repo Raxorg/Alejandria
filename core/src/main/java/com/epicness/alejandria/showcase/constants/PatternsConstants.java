@@ -19,4 +19,8 @@ public class PatternsConstants {
 
     public static final float UNCENTERED_CENTER_DISTANCE = (SHOWCASE_SIZE - DOT_SIZE) * 0.35f;
     public static final float UNCENTERED_OWN_CENTER_DISTANCE = (SHOWCASE_SIZE - DOT_SIZE) * 0.15f;
+
+    // Spirograph
+    public static final float BALL_RADIUS = 10f;
+    public static final float FADE_DURATION = 180f;
 }
