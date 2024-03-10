@@ -46,6 +46,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - A Star (A*)
 
 ### Patterns
+- Cantor Gasket
 - Phyllotaxis
 - Spiral
 - Spirograph
