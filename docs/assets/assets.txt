@@ -15,6 +15,12 @@ i:alejandria/showcase/images/buttons/arrow.png:alejandria/showcase/images/button
 i:alejandria/showcase/images/buttons/gitHub.png:alejandria/showcase/images/buttons/gitHub-a75abe909f906c5f95999a50bea3422a.png:24988:image/png:1
 i:alejandria/showcase/images/buttons/info.png:alejandria/showcase/images/buttons/info-e4b6938f312dd1661039433f139c4a87.png:9232:image/png:1
 d:alejandria/showcase/images/fun:alejandria/showcase/images/fun:0:application/unknown:1
+i:alejandria/showcase/images/fun/beamEnd.png:alejandria/showcase/images/fun/beamEnd-31093c169e000fadd5d1d075cb804198.png:6727:image/png:1
+i:alejandria/showcase/images/fun/beamEndTop.png:alejandria/showcase/images/fun/beamEndTop-7f87892675c97ea444d74c8aedb1b39d.png:2990:image/png:1
+i:alejandria/showcase/images/fun/beamMid.png:alejandria/showcase/images/fun/beamMid-b50556dfecc08f38c7aebb79a183bef5.png:6986:image/png:1
+i:alejandria/showcase/images/fun/beamMidTop.png:alejandria/showcase/images/fun/beamMidTop-1e95c10e94e13a517b1f99e931774d6a.png:2903:image/png:1
+i:alejandria/showcase/images/fun/beamStart.png:alejandria/showcase/images/fun/beamStart-5de95026cdd93b410d3332cfda13659a.png:7154:image/png:1
+i:alejandria/showcase/images/fun/beamStartTop.png:alejandria/showcase/images/fun/beamStartTop-ebd0195323f887434ab4d55c6b8022d6.png:3229:image/png:1
 i:alejandria/showcase/images/fun/circle.png:alejandria/showcase/images/fun/circle-96d56cdbbb5815bfa9374ad537c2700d.png:1629:image/png:1
 i:alejandria/showcase/images/fun/circleGlow.png:alejandria/showcase/images/fun/circleGlow-37fce29ad6eda7a3f4fb59427d659361.png:5909:image/png:1
 i:alejandria/showcase/images/fun/roundedSquare.png:alejandria/showcase/images/fun/roundedSquare-43a00072f3185fa969596c8b3c2f8e78.png:1307:image/png:1
@@ -51,7 +57,7 @@ t:alejandria/showcase/shaders/shared/fragment.glsl:alejandria/showcase/shaders/s
 t:alejandria/showcase/shaders/shared/vertex.glsl:alejandria/showcase/shaders/shared/vertex-815015a6e633c8db91bab7c90ddc4ac1.glsl:283:application/unknown:1
 t:alejandria/showcase/shaders/vignette.glsl:alejandria/showcase/shaders/vignette-30cd642ddd88f816201be97b684a287b.glsl:575:application/unknown:1
 b:alejandria/showcase/shaders/vignette.sp:alejandria/showcase/shaders/vignette-f2e72856af3e2d6bfd7ad5395abeaf41.sp:107:application/unknown:1
-t:assets.txt:assets-d24d7d41b9b1aeff62e404c3eb9e62a9.txt:2363:text/plain:1
+t:assets.txt:assets-bb1fdaa061bf648168c6a3472a4ff12c.txt:2634:text/plain:1
 d:fundamentals:fundamentals:0:application/unknown:1
 d:fundamentals/audios:fundamentals/audios:0:application/unknown:1
 b:fundamentals/audios/shortLaser.swav:fundamentals/audios/shortLaser-d41d8cd98f00b204e9800998ecf8427e.swav:0:application/unknown:1

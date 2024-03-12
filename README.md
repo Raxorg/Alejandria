@@ -22,6 +22,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 ### Fun
 - Beeping Balls
 - Falling Sand
+- Lasers
 - Reactive Grid
 
 ### Grids

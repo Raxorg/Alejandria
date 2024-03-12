@@ -6,6 +6,12 @@ alejandria/showcase/images/bullets/gun.png
 alejandria/showcase/images/buttons/arrow.png
 alejandria/showcase/images/buttons/gitHub.png
 alejandria/showcase/images/buttons/info.png
+alejandria/showcase/images/fun/beamEnd.png
+alejandria/showcase/images/fun/beamEndTop.png
+alejandria/showcase/images/fun/beamMid.png
+alejandria/showcase/images/fun/beamMidTop.png
+alejandria/showcase/images/fun/beamStart.png
+alejandria/showcase/images/fun/beamStartTop.png
 alejandria/showcase/images/fun/circle.png
 alejandria/showcase/images/fun/circleGlow.png
 alejandria/showcase/images/fun/roundedSquare.png

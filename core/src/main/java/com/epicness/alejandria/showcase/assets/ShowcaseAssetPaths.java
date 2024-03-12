@@ -24,6 +24,18 @@ public class ShowcaseAssetPaths {
 
     public static final AssetDescriptor<Sprite> INFO_SPRITE;
 
+    public static final AssetDescriptor<Sprite> BEAMEND_SPRITE;
+
+    public static final AssetDescriptor<Sprite> BEAMENDTOP_SPRITE;
+
+    public static final AssetDescriptor<Sprite> BEAMMID_SPRITE;
+
+    public static final AssetDescriptor<Sprite> BEAMMIDTOP_SPRITE;
+
+    public static final AssetDescriptor<Sprite> BEAMSTART_SPRITE;
+
+    public static final AssetDescriptor<Sprite> BEAMSTARTTOP_SPRITE;
+
     public static final AssetDescriptor<Sprite> CIRCLE_SPRITE;
 
     public static final AssetDescriptor<Sprite> CIRCLEGLOW_SPRITE;
@@ -55,6 +67,12 @@ public class ShowcaseAssetPaths {
         ASSETS.add(ARROW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/arrow.png", Sprite.class));
         ASSETS.add(GITHUB_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/gitHub.png", Sprite.class));
         ASSETS.add(INFO_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/info.png", Sprite.class));
+        ASSETS.add(BEAMEND_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamEnd.png", Sprite.class));
+        ASSETS.add(BEAMENDTOP_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamEndTop.png", Sprite.class));
+        ASSETS.add(BEAMMID_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamMid.png", Sprite.class));
+        ASSETS.add(BEAMMIDTOP_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamMidTop.png", Sprite.class));
+        ASSETS.add(BEAMSTART_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamStart.png", Sprite.class));
+        ASSETS.add(BEAMSTARTTOP_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/beamStartTop.png", Sprite.class));
         ASSETS.add(CIRCLE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/circle.png", Sprite.class));
         ASSETS.add(CIRCLEGLOW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/circleGlow.png", Sprite.class));
         ASSETS.add(ROUNDEDSQUARE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/roundedSquare.png", Sprite.class));

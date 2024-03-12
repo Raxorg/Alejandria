@@ -10,6 +10,7 @@ import com.epicness.alejandria.showcase.modules.cursor.BeamAiming;
 import com.epicness.alejandria.showcase.modules.cursor.PointAtCursor;
 import com.epicness.alejandria.showcase.modules.fun.BeepingBalls;
 import com.epicness.alejandria.showcase.modules.fun.FallingSand;
+import com.epicness.alejandria.showcase.modules.fun.Lasers;
 import com.epicness.alejandria.showcase.modules.fun.ReactiveGrid;
 import com.epicness.alejandria.showcase.modules.grids.CrossChunkSelection;
 import com.epicness.alejandria.showcase.modules.grids.HexagonSelection;
@@ -65,6 +66,7 @@ public class ShowcaseLogic extends Logic {
         // Fun
         registerHandler(new BeepingBalls());
         registerHandler(new FallingSand());
+        registerHandler(new Lasers());
         registerHandler(new ReactiveGrid());
         // Grids
         registerHandler(new CrossChunkSelection());

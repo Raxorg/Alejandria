@@ -22,6 +22,18 @@ public class ShowcaseAssets extends Assets {
 
     private Sprite info;
 
+    private Sprite beamEnd;
+
+    private Sprite beamEndTop;
+
+    private Sprite beamMid;
+
+    private Sprite beamMidTop;
+
+    private Sprite beamStart;
+
+    private Sprite beamStartTop;
+
     private Sprite circle;
 
     private Sprite circleGlow;
@@ -57,6 +69,12 @@ public class ShowcaseAssets extends Assets {
         arrow = get(ARROW_SPRITE);
         gitHub = get(GITHUB_SPRITE);
         info = get(INFO_SPRITE);
+        beamEnd = get(BEAMEND_SPRITE);
+        beamEndTop = get(BEAMENDTOP_SPRITE);
+        beamMid = get(BEAMMID_SPRITE);
+        beamMidTop = get(BEAMMIDTOP_SPRITE);
+        beamStart = get(BEAMSTART_SPRITE);
+        beamStartTop = get(BEAMSTARTTOP_SPRITE);
         circle = get(CIRCLE_SPRITE);
         circleGlow = get(CIRCLEGLOW_SPRITE);
         roundedSquare = get(ROUNDEDSQUARE_SPRITE);
@@ -96,6 +114,30 @@ public class ShowcaseAssets extends Assets {
 
     public Sprite getInfo() {
         return info;
+    }
+
+    public Sprite getBeamEnd() {
+        return beamEnd;
+    }
+
+    public Sprite getBeamEndTop() {
+        return beamEndTop;
+    }
+
+    public Sprite getBeamMid() {
+        return beamMid;
+    }
+
+    public Sprite getBeamMidTop() {
+        return beamMidTop;
+    }
+
+    public Sprite getBeamStart() {
+        return beamStart;
+    }
+
+    public Sprite getBeamStartTop() {
+        return beamStartTop;
     }
 
     public Sprite getCircle() {
