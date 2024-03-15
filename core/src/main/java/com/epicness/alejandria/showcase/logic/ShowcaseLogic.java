@@ -26,6 +26,7 @@ import com.epicness.alejandria.showcase.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.showcase.modules.optimization.QuadTree;
 import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
 import com.epicness.alejandria.showcase.modules.patterns.CantorGasket;
+import com.epicness.alejandria.showcase.modules.patterns.DragonCurve;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
 import com.epicness.alejandria.showcase.modules.patterns.Spiral;
 import com.epicness.alejandria.showcase.modules.patterns.Spirograph;
@@ -84,6 +85,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new InverseKinematics());
         // Patterns
         registerHandler(new CantorGasket());
+        registerHandler(new DragonCurve());
         registerHandler(new Phyllotaxis());
         registerHandler(new Spiral());
         registerHandler(new Spirograph());

@@ -4,8 +4,11 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWC
 
 public class PatternsConstants {
 
-    // Cantor
+    // Cantor Gasket
     public static final int CANTOR_STARTING_RECURSIONS = 3;
+
+    // Dragon Curve
+    public static final int DRAGON_RECURSIONS = 9;
 
     // Phyllotaxis
     public static final int PHYLLOTAXIS_CIRCLES = 1000;
