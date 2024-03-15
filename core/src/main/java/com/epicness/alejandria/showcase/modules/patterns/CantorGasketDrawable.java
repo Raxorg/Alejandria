@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
-import static com.epicness.alejandria.showcase.constants.PatternsConstants.CANTOR_RECURSIONS;
+import static com.epicness.alejandria.showcase.constants.PatternsConstants.CANTOR_STARTING_RECURSIONS;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
@@ -17,16 +17,18 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 public class CantorGasketDrawable implements ModuleDrawable {
 
     private final Rectangle bounds;
+    private int recursions;
 
     public CantorGasketDrawable() {
         bounds = new Rectangle(SHOWCASE_BUTTON_SIZE, SHOWCASE_STRIPE_HEIGHT, SHOWCASE_SIZE, SHOWCASE_SIZE);
+        recursions = CANTOR_STARTING_RECURSIONS;
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         shapeRenderer.begin(Filled);
         shapeRenderer.rect(bounds.x, bounds.y, bounds.width, bounds.height, DIRT);
-        punchCantorGasket(bounds.x, bounds.y, bounds.width, shapeRenderer, CANTOR_RECURSIONS);
+        punchCantorGasket(bounds.x, bounds.y, bounds.width, shapeRenderer, recursions);
         shapeRenderer.end();
     }
 
@@ -45,5 +47,9 @@ public class CantorGasketDrawable implements ModuleDrawable {
             int z = i / 3;
             punchCantorGasket(i % 3f * newSize + x, z * newSize + y, newSize, shapeRenderer, recursions - 1);
         }
+    }
+
+    public void setRecursions(int recursions) {
+        this.recursions = recursions;
     }
 }

@@ -5,7 +5,7 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWC
 public class PatternsConstants {
 
     // Cantor
-    public static final int CANTOR_RECURSIONS = 5;
+    public static final int CANTOR_STARTING_RECURSIONS = 3;
 
     // Phyllotaxis
     public static final int PHYLLOTAXIS_CIRCLES = 1000;
