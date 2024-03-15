@@ -1,2 +1,2 @@
-vertex: alejandria/showcase/shaders/shake.glsl
-fragment: alejandria/showcase/shaders/shared/fragment.glsl
+vertex: alejandria/showcase/shaders/shake.vert
+fragment: alejandria/showcase/shaders/shared/fragment.frag

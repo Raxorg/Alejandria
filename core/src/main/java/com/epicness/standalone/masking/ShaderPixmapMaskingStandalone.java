@@ -82,8 +82,8 @@ public class ShaderPixmapMaskingStandalone extends Game {
     private void setupShader() {
         /* It's nicer to keep shader programs as text files in the assets
          * directory rather than dealing with horrid Java string formatting. */
-        FileHandle vertexShader = Gdx.files.internal("modules/shaders/shared/vertex.glsl");
-        FileHandle fragmentShader = Gdx.files.internal("modules/shaders/masking/mask.glsl");
+        FileHandle vertexShader = Gdx.files.internal("modules/shaders/shared/vertex.vert");
+        FileHandle fragmentShader = Gdx.files.internal("modules/shaders/masking/mask.frag");
 
         /* Bonus: you can set `pedantic = false` while tinkering with your
          * shaders. This will stop it from crashing if you have unused variables

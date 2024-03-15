@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.epicness.fundamentals.assets.Shader;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,6 @@ public enum Extension {
 
     ANIM("anim", Sprite[].class, "ANIMATION"),
     FNT("fnt", BitmapFont.class, "FONT"),
-    GLSL("glsl", Shader.class, "SHADER"),
     JPG("jpg", Sprite.class, "SPRITE"),
     MOGG("mogg", Music.class, "MUSIC"),
     PNG("png", Sprite.class, "SPRITE"),
