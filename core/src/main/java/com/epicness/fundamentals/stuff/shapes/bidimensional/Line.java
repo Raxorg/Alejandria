@@ -1,7 +1,5 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -28,7 +26,7 @@ public class Line implements Movable {
     }
 
     public Line(float ax, float ay, float bx, float by, float width) {
-        this(ax, ay, bx, by, width, WHITE.cpy());
+        this(ax, ay, bx, by, width, new Color(1f, 1f, 1f, 1f));
     }
 
     public Line(float ax, float ay, float bx, float by, Color color) {
@@ -50,7 +48,7 @@ public class Line implements Movable {
     }
 
     public Line(float x, float y, float length, float angle, boolean degrees) {
-        this(x, y, length, angle, degrees, 5f, WHITE.cpy());
+        this(x, y, length, angle, degrees, 5f, new Color(1f, 1f, 1f, 1f));
     }
 
     public Line(float length, float width, Color color) {

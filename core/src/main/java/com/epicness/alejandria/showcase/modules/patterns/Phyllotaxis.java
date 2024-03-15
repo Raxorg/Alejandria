@@ -16,7 +16,12 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
     private float[] angles;
 
     public Phyllotaxis() {
-        super("Phyllotaxis", "Hold to accelerate\n\nTry blinking when it goes fast :o");
+        super(
+            "Phyllotaxis",
+            "Phyllotaxis pattern colored using the HSV model instead of RGB\n\n" +
+                "Hold to accelerate\n\n" +
+                "Try blinking when it goes fast :o"
+        );
     }
 
     @Override

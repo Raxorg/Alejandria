@@ -4,7 +4,7 @@ import static com.badlogic.gdx.Input.Keys.C;
 import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_9;
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
 import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
 
@@ -42,7 +42,7 @@ public class PixmapManipulation extends Module<PixmapManipulationDrawable> {
         texture = drawable.getTexture();
         pixmap = drawable.getPixmap();
         pixmapTextureData = drawable.getPixmapTextureData();
-        radius = (int) SHOWCASE_SIZE / 2;
+        radius = (int) SHOWCASE_HALF_SIZE;
         rings = 5;
         innerColor = new Color(DIRT);
         outerColor = new Color(DARK_DIRT);
@@ -65,11 +65,11 @@ public class PixmapManipulation extends Module<PixmapManipulationDrawable> {
     private void drawCircle() {
         for (int i = 0; i < 3 && radius > 0; i++) {
             radius--;
-            progress = MathUtils.lerp(0f, rings, (radius / (SHOWCASE_SIZE / 2f)) % (1f / rings));
+            progress = MathUtils.lerp(0f, rings, (radius / SHOWCASE_HALF_SIZE) % (1f / rings));
             pixmapColor.set(lerpColor.lerp(outerColor, progress));
             lerpColor.set(innerColor);
             pixmap.setColor(pixmapColor);
-            pixmap.fillCircle((int) (SHOWCASE_SIZE / 2), (int) (SHOWCASE_SIZE / 2), radius);
+            pixmap.fillCircle((int) (SHOWCASE_HALF_SIZE), (int) (SHOWCASE_HALF_SIZE), radius);
         }
         texture.load(pixmapTextureData); // Instead of "new Texture(pixmap);"
         // Alternative option:
@@ -92,6 +92,6 @@ public class PixmapManipulation extends Module<PixmapManipulationDrawable> {
     private void reset() {
         pixmap.setColor(CLEAR);
         pixmap.fill();
-        radius = (int) (SHOWCASE_SIZE / 2);
+        radius = (int) (SHOWCASE_HALF_SIZE);
     }
 }

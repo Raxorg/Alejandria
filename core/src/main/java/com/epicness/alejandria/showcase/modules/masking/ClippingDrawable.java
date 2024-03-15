@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
@@ -40,7 +41,7 @@ public class ClippingDrawable implements ModuleDrawable {
             25f);
         background3 = new AnimatedBackground(
             200f, 200f,
-            SHOWCASE_SIZE / 2f, SHOWCASE_SIZE / 2f,
+            SHOWCASE_HALF_SIZE, SHOWCASE_HALF_SIZE,
             Color.RED.cpy(),
             pixel,
             pixel,

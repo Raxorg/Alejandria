@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.procedural;
 
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_DIMENSION_A;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_A;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.SPACING_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.GRID_DIMENSION_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.PIXEL_SIZE_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.SPACING_A;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 

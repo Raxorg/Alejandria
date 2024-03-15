@@ -38,7 +38,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
         modules = new ArrayList<>();
         for (int i = 0; i < logic.getHandlers().size(); i++) {
-            LogicHandler<?, ?, ?, ?> handler = logic.getHandlers().get(i);
+            LogicHandler<?, ?, ?, ?, ?> handler = logic.getHandlers().get(i);
             if (handler instanceof Module) {
                 modules.add((Module<?>) handler);
             }

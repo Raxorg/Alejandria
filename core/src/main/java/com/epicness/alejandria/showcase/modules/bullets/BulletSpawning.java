@@ -47,6 +47,8 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
 
         bulletSpeed.x = cos * BULLET_SPEED;
         bulletSpeed.y = sin * BULLET_SPEED;
+
+        sharedAssets.getShortLaser().play();
     }
 
     @Override

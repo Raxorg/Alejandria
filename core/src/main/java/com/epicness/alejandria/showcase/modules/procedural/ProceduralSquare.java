@@ -3,12 +3,12 @@ package com.epicness.alejandria.showcase.modules.procedural;
 import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_2;
 import static com.badlogic.gdx.Input.Keys.SPACE;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_DIMENSION_A;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.GRID_DIMENSION_B;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_A;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.PIXEL_SIZE_B;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.SPACING_A;
-import static com.epicness.alejandria.showcase.constants.ProceduralSquareConstants.SPACING_B;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.GRID_DIMENSION_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.GRID_DIMENSION_B;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.PIXEL_SIZE_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.PIXEL_SIZE_B;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.SPACING_A;
+import static com.epicness.alejandria.showcase.constants.ProceduralConstants.SPACING_B;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
