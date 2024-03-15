@@ -67,6 +67,8 @@ dependencies {
   natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
   natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
 
+  // For libGDX in a fragment
+  implementation 'androidx.appcompat:appcompat:1.6.1'
 }
 
 // Called every time gradle gets executed, takes the native dependencies of
