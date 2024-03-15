@@ -1,6 +1,7 @@
 package com.epicness.fundamentals.stuff.grid;
 
-public class CellGridBuilder<T extends Cell> {
+@SuppressWarnings("unchecked")
+public abstract class CellGridBuilder<T extends Cell> {
 
     private final CellBuilder<T> cellBuilder;
     protected int columns, rows;
@@ -10,14 +11,14 @@ public class CellGridBuilder<T extends Cell> {
         columns = rows = 1;
     }
 
-    public CellGridBuilder<T> columns(int columns) {
+    public final <B extends CellGridBuilder<T>> B columns(int columns) {
         this.columns = columns;
-        return this;
+        return (B) this;
     }
 
-    public CellGridBuilder<T> rows(int rows) {
+    public final <B extends CellGridBuilder<T>> B rows(int rows) {
         this.rows = rows;
-        return this;
+        return (B) this;
     }
 
     public T[][] build() {

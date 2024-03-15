@@ -4,10 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class DefaultCellBuilder extends CellBuilder<Cell> {
 
-    @Override
-    public DefaultCellBuilder sprite(Sprite sprite) {
-        this.sprite = sprite;
-        return this;
+    public DefaultCellBuilder(Sprite sprite) {
+        super(sprite);
     }
 
     @Override

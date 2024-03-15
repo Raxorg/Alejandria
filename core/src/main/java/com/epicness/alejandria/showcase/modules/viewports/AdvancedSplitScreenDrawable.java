@@ -29,9 +29,7 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.grid.DefaultCellBuilder;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class AdvancedSplitScreenDrawable implements ModuleDrawable {
@@ -61,11 +59,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     private void initGrid(Sprite cellSprite) {
-        DefaultCellGridBuilder builder = new DefaultCellGridBuilder(
-            new DefaultCellBuilder().sprite(cellSprite))
-            .columns(GRID_COLUMNS)
-            .rows(GRID_ROWS);
-        grid = new DefaultCellGrid(builder);
+        grid = new DefaultCellGrid(cellSprite, GRID_COLUMNS, GRID_ROWS);
         grid.setCellSize(CELL_SIZE);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {

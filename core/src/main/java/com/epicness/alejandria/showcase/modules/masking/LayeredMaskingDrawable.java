@@ -21,9 +21,7 @@ import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.DualSprited;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.grid.DefaultCellBuilder;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 import java.util.ArrayList;
@@ -44,11 +42,8 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         mask.setColor(Color.BLUE);
 
         Sprite cellSprite = new Sprite(square32);
-        DefaultCellGridBuilder builder = new DefaultCellGridBuilder(
-            new DefaultCellBuilder().sprite(cellSprite))
-            .columns(GRID_COLUMNS)
-            .rows(GRID_ROWS);
-        gridA = new DefaultCellGrid(builder);
+
+        gridA = new DefaultCellGrid(cellSprite, GRID_COLUMNS, GRID_ROWS);
         gridA.setCellSize(100f);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -57,12 +52,12 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
             }
         }
 
-        builder.getCellBuilder().sprite(square32Inverted);
-        gridB = new DefaultCellGrid(builder);
+        gridB = new DefaultCellGrid(square32Inverted, GRID_COLUMNS, GRID_ROWS);
         gridB.setCellSize(100f);
+        Color color;
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
-                Color color = (column + row) % 2 == 0 ? GRASS : LIGHT_GRASS;
+                color = (column + row) % 2 == 0 ? GRASS : LIGHT_GRASS;
                 gridB.cells[column][row].setColor(color);
             }
         }
