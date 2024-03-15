@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.modules.Welcome;
 import com.epicness.alejandria.showcase.modules.animations.SpriteAnimation;
 import com.epicness.alejandria.showcase.modules.animations.SpriteRotationAnimation;
+import com.epicness.alejandria.showcase.modules.audio.SoundPitch;
 import com.epicness.alejandria.showcase.modules.bullets.BulletSpawning;
 import com.epicness.alejandria.showcase.modules.collisions.PixelPerfectCollision;
 import com.epicness.alejandria.showcase.modules.cursor.BeamAiming;
@@ -59,6 +60,8 @@ public class ShowcaseLogic extends Logic {
         // Animations
         registerHandler(new SpriteAnimation());
         registerHandler(new SpriteRotationAnimation());
+        // Audio
+        registerHandler(new SoundPitch());
         // Bullets
         registerHandler(new BulletSpawning());
         // Collisions

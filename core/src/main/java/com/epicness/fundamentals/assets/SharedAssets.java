@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SharedAssets extends Assets {
+    private Sound beep;
+
     private Sound shortLaser;
 
     private BitmapFont pixelFont;
@@ -37,6 +39,7 @@ public class SharedAssets extends Assets {
 
     @Override
     public void initializeAssets() {
+        beep = get(BEEP_SOUND);
         shortLaser = get(SHORTLASER_SOUND);
         pixelFont = get(PIXELFONT_FONT);
         timesSquare = get(TIMESSQUARE_FONT);
@@ -49,6 +52,10 @@ public class SharedAssets extends Assets {
         square32Inverted = get(SQUARE32INVERTED_SPRITE);
         triangle = get(TRIANGLE_SPRITE);
         weirdShape = get(WEIRDSHAPE_SPRITE);
+    }
+
+    public Sound getBeep() {
+        return beep;
     }
 
     public Sound getShortLaser() {
