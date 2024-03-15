@@ -18,6 +18,7 @@ import com.epicness.alejandria.showcase.modules.grids.HexagonSelection;
 import com.epicness.alejandria.showcase.modules.html.Alert;
 import com.epicness.alejandria.showcase.modules.kinematics.ForwardKinematics;
 import com.epicness.alejandria.showcase.modules.kinematics.InverseKinematics;
+import com.epicness.alejandria.showcase.modules.lights.SimpleLights;
 import com.epicness.alejandria.showcase.modules.masking.AlphaMasking;
 import com.epicness.alejandria.showcase.modules.masking.Clipping;
 import com.epicness.alejandria.showcase.modules.masking.LayeredMasking;
@@ -80,6 +81,8 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new HexagonSelection());
         // HTML
         if (OSUtils.isHTML()) registerHandler(new Alert());
+        // Lights
+        registerHandler(new SimpleLights());
         // Kinematics
         registerHandler(new ForwardKinematics());
         registerHandler(new InverseKinematics());

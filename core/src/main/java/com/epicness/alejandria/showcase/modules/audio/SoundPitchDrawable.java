@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.audio;
 
 import static com.badlogic.gdx.graphics.Color.RED;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_TOP;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
 
@@ -28,7 +28,7 @@ public class SoundPitchDrawable implements ModuleDrawable {
 
         line = new Line(
             grid.cells[0][0].getX(), SHOWCASE_STRIPE_HEIGHT,
-            grid.cells[0][0].getX(), SHOWCASE_STRIPE_HEIGHT + SHOWCASE_SIZE, 5f,
+            grid.cells[0][0].getX(), SHOWCASE_TOP, 5f,
             RED
         );
     }

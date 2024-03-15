@@ -28,6 +28,7 @@ public class ShowcaseConstants {
     public static final float SHOWCASE_HALF_SIZE = SHOWCASE_SIZE / 2f;
     public static final float SHOWCASE_X = SHOWCASE_BUTTON_SIZE;
     public static final float SHOWCASE_Y = SHOWCASE_STRIPE_HEIGHT;
+    public static final float SHOWCASE_TOP = SHOWCASE_STRIPE_HEIGHT + SHOWCASE_SIZE;
     public static final Color SHOWCASE_BACKGROUND_COLOR = GRASS;
 
     public static final Color[] BASIC_COLORS = new Color[]{RED, ORANGE, YELLOW, GREEN, BLUE};
