@@ -52,15 +52,15 @@ public abstract class Logic {
     }
 
     public void setStructure(
-            Game game,
-            SharedAssets sharedAssets,
-            SharedInput input,
-            SharedLogic sharedLogic,
-            SharedScreen screen,
-            SharedStuff sharedStuff,
-            Assets assets,
-            Renderer renderer,
-            Stuff stuff
+        Game game,
+        SharedAssets sharedAssets,
+        SharedInput input,
+        SharedLogic sharedLogic,
+        SharedScreen screen,
+        SharedStuff sharedStuff,
+        Assets assets,
+        Renderer renderer,
+        Stuff stuff
     ) {
         this.sharedLogic = sharedLogic;
         for (LogicHandler logicHandler : logicHandlers) {

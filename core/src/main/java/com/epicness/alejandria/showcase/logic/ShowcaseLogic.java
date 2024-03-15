@@ -14,6 +14,7 @@ import com.epicness.alejandria.showcase.modules.fun.Lasers;
 import com.epicness.alejandria.showcase.modules.fun.ReactiveGrid;
 import com.epicness.alejandria.showcase.modules.grids.CrossChunkSelection;
 import com.epicness.alejandria.showcase.modules.grids.HexagonSelection;
+import com.epicness.alejandria.showcase.modules.html.Alert;
 import com.epicness.alejandria.showcase.modules.kinematics.ForwardKinematics;
 import com.epicness.alejandria.showcase.modules.kinematics.InverseKinematics;
 import com.epicness.alejandria.showcase.modules.masking.AlphaMasking;
@@ -45,6 +46,7 @@ import com.epicness.alejandria.showcase.modules.ui.TextManipulation;
 import com.epicness.alejandria.showcase.modules.viewports.AdvancedSplitScreen;
 import com.epicness.alejandria.showcase.modules.viewports.WideViewport;
 import com.epicness.fundamentals.logic.Logic;
+import com.epicness.fundamentals.utils.OSUtils;
 
 public class ShowcaseLogic extends Logic {
 
@@ -71,6 +73,8 @@ public class ShowcaseLogic extends Logic {
         // Grids
         registerHandler(new CrossChunkSelection());
         registerHandler(new HexagonSelection());
+        // HTML
+        if (OSUtils.isHTML()) registerHandler(new Alert());
         // Kinematics
         registerHandler(new ForwardKinematics());
         registerHandler(new InverseKinematics());

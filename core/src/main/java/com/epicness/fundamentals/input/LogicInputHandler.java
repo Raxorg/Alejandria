@@ -1,13 +1,14 @@
 package com.epicness.fundamentals.input;
 
+import com.badlogic.gdx.Game;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class LogicInputHandler<A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>>
-    extends LogicHandler<A, L, R, S> {
+public abstract class LogicInputHandler<G extends Game, A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>>
+    extends LogicHandler<G, A, L, R, S> {
 
     public void register() {
         input.addInputHandler(this);
