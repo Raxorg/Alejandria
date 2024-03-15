@@ -2,8 +2,6 @@ package com.epicness.alejandria.showcase.constants;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 public class PhysicsConstants {
@@ -13,11 +11,7 @@ public class PhysicsConstants {
     public static final float PHYSICS_SCALE_FACTOR = 20f;
 
     public static final float CIRCLE_RADIUS = 20f;
-    public static final float CIRCLE_STARTING_X = CAMERA_HALF_WIDTH;
-    public static final float CIRCLE_STARTING_Y = CAMERA_HALF_HEIGHT;
     public static final float PHYSICS_CIRCLE_RADIUS = CIRCLE_RADIUS / PHYSICS_SCALE_FACTOR;
-    public static final float PHYSICS_CIRCLE_STARTING_X = CIRCLE_STARTING_X / PHYSICS_SCALE_FACTOR;
-    public static final float PHYSICS_CIRCLE_STARTING_Y = CIRCLE_STARTING_Y / PHYSICS_SCALE_FACTOR;
 
     public static final float FLOOR_X1 = SHOWCASE_BUTTON_SIZE;
     public static final float FLOOR_Y1 = SHOWCASE_STRIPE_HEIGHT * 2f;
