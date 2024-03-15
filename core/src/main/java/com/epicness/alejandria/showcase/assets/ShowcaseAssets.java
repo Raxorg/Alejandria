@@ -14,6 +14,8 @@ public class ShowcaseAssets extends Assets {
 
     private Sound ballBeep;
 
+    private Sound loudThunder;
+
     private Sprite gun;
 
     private Sprite arrow;
@@ -46,6 +48,8 @@ public class ShowcaseAssets extends Assets {
 
     private Sprite smiley_outline;
 
+    private Sprite boltSegment;
+
     private ShaderProgram invert;
 
     private ShaderProgram neonWaves;
@@ -65,6 +69,7 @@ public class ShowcaseAssets extends Assets {
         stickmanRun = get(STICKMANRUN_SPRITE);
         stickmanRunFrames = get(STICKMANRUNFRAMES_ANIMATION);
         ballBeep = get(BALLBEEP_SOUND);
+        loudThunder = get(LOUDTHUNDER_SOUND);
         gun = get(GUN_SPRITE);
         arrow = get(ARROW_SPRITE);
         gitHub = get(GITHUB_SPRITE);
@@ -81,6 +86,7 @@ public class ShowcaseAssets extends Assets {
         glow = get(GLOW_SPRITE);
         smiley_color = get(SMILEY_COLOR_SPRITE);
         smiley_outline = get(SMILEY_OUTLINE_SPRITE);
+        boltSegment = get(BOLTSEGMENT_SPRITE);
         invert = get(INVERT_SHADER_PROGRAM);
         neonWaves = get(NEONWAVES_SHADER_PROGRAM);
         raymarching = get(RAYMARCHING_SHADER_PROGRAM);
@@ -98,6 +104,10 @@ public class ShowcaseAssets extends Assets {
 
     public Sound getBallBeep() {
         return ballBeep;
+    }
+
+    public Sound getLoudThunder() {
+        return loudThunder;
     }
 
     public Sprite getGun() {
@@ -162,6 +172,10 @@ public class ShowcaseAssets extends Assets {
 
     public Sprite getSmiley_outline() {
         return smiley_outline;
+    }
+
+    public Sprite getBoltSegment() {
+        return boltSegment;
     }
 
     public ShaderProgram getInvert() {

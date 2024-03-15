@@ -29,6 +29,7 @@ import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
 import com.epicness.alejandria.showcase.modules.patterns.Spiral;
 import com.epicness.alejandria.showcase.modules.patterns.Spirograph;
 import com.epicness.alejandria.showcase.modules.physics.BallPhysics;
+import com.epicness.alejandria.showcase.modules.procedural.Lightning;
 import com.epicness.alejandria.showcase.modules.procedural.PixmapManipulation;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
 import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
@@ -96,6 +97,7 @@ public class ShowcaseLogic extends Logic {
         // Pathfinding
         registerHandler(new AStar());
         // Procedural
+        registerHandler(new Lightning());
         registerHandler(new PixmapManipulation());
         registerHandler(new ProceduralSquare());
         // Rendering

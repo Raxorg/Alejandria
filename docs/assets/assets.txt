@@ -7,6 +7,8 @@ b:alejandria/showcase/animations/stickmanRunFrames.anim:alejandria/showcase/anim
 d:alejandria/showcase/audios:alejandria/showcase/audios:0:application/unknown:1
 a:alejandria/showcase/audios/ballBeep.ogg:alejandria/showcase/audios/ballBeep-e92eb62022a3d4034ea60974d7299916.ogg:5299:audio/ogg:1
 b:alejandria/showcase/audios/ballBeep.sogg:alejandria/showcase/audios/ballBeep-d41d8cd98f00b204e9800998ecf8427e.sogg:0:application/unknown:1
+a:alejandria/showcase/audios/loudThunder.ogg:alejandria/showcase/audios/loudThunder-985d0d7dfcc379bd6d66170fbb9a799c.ogg:70086:audio/ogg:1
+b:alejandria/showcase/audios/loudThunder.sogg:alejandria/showcase/audios/loudThunder-d41d8cd98f00b204e9800998ecf8427e.sogg:0:application/unknown:1
 d:alejandria/showcase/images:alejandria/showcase/images:0:application/unknown:1
 d:alejandria/showcase/images/bullets:alejandria/showcase/images/bullets:0:application/unknown:1
 i:alejandria/showcase/images/bullets/gun.png:alejandria/showcase/images/bullets/gun-2ed207a9cd488380dee5cdb4aa07f5ab.png:642:image/png:1
@@ -28,7 +30,10 @@ d:alejandria/showcase/images/masking:alejandria/showcase/images/masking:0:applic
 i:alejandria/showcase/images/masking/glow.png:alejandria/showcase/images/masking/glow-7e3f902bfcbb4be5f89d77950fc67464.png:49828:image/png:1
 i:alejandria/showcase/images/masking/smiley_color.png:alejandria/showcase/images/masking/smiley_color-624eefe2a9d06338c16ba41970c70eba.png:15724:image/png:1
 i:alejandria/showcase/images/masking/smiley_outline.png:alejandria/showcase/images/masking/smiley_outline-151204be615d0cfffdc3b2031194cfbd.png:25001:image/png:1
+d:alejandria/showcase/images/patterns:alejandria/showcase/images/patterns:0:application/unknown:1
+i:alejandria/showcase/images/patterns/boltSegment.png:alejandria/showcase/images/patterns/boltSegment-df3720ec45a142f1c37796bd8cbb0f87.png:1255:image/png:1
 d:alejandria/showcase/shaders:alejandria/showcase/shaders:0:application/unknown:1
+b:alejandria/showcase/shaders/fire.frag:alejandria/showcase/shaders/fire-64e3b693feb3c7b9eafadef457319ea8.frag:496:application/unknown:1
 t:alejandria/showcase/shaders/invert.glsl:alejandria/showcase/shaders/invert-626eecdf33178345b96ee9df356318fb.glsl:294:application/unknown:1
 b:alejandria/showcase/shaders/invert.sp:alejandria/showcase/shaders/invert-67dff2d09602a0320733e6891af07400.sp:105:application/unknown:1
 d:alejandria/showcase/shaders/masking:alejandria/showcase/shaders/masking:0:application/unknown:1
@@ -57,9 +62,11 @@ t:alejandria/showcase/shaders/shared/fragment.glsl:alejandria/showcase/shaders/s
 t:alejandria/showcase/shaders/shared/vertex.glsl:alejandria/showcase/shaders/shared/vertex-815015a6e633c8db91bab7c90ddc4ac1.glsl:283:application/unknown:1
 t:alejandria/showcase/shaders/vignette.glsl:alejandria/showcase/shaders/vignette-30cd642ddd88f816201be97b684a287b.glsl:575:application/unknown:1
 b:alejandria/showcase/shaders/vignette.sp:alejandria/showcase/shaders/vignette-f2e72856af3e2d6bfd7ad5395abeaf41.sp:107:application/unknown:1
-t:assets.txt:assets-bb1fdaa061bf648168c6a3472a4ff12c.txt:2634:text/plain:1
+t:assets.txt:assets-17bee81b40590d56415b31e3feb6e2e9.txt:2870:text/plain:1
 d:fundamentals:fundamentals:0:application/unknown:1
 d:fundamentals/audios:fundamentals/audios:0:application/unknown:1
+b:fundamentals/audios/beep.swav:fundamentals/audios/beep-d41d8cd98f00b204e9800998ecf8427e.swav:0:application/unknown:1
+a:fundamentals/audios/beep.wav:fundamentals/audios/beep-9d2518aa0d7875b2c04932779b5302d6.wav:10188:audio/x-wav:1
 b:fundamentals/audios/shortLaser.swav:fundamentals/audios/shortLaser-d41d8cd98f00b204e9800998ecf8427e.swav:0:application/unknown:1
 a:fundamentals/audios/shortLaser.wav:fundamentals/audios/shortLaser-9a51fbddc6193d0ab3c2c5b41eae8bdf.wav:22420:audio/x-wav:1
 d:fundamentals/fonts:fundamentals/fonts:0:application/unknown:1

@@ -16,6 +16,8 @@ public class ShowcaseAssetPaths {
 
     public static final AssetDescriptor<Sound> BALLBEEP_SOUND;
 
+    public static final AssetDescriptor<Sound> LOUDTHUNDER_SOUND;
+
     public static final AssetDescriptor<Sprite> GUN_SPRITE;
 
     public static final AssetDescriptor<Sprite> ARROW_SPRITE;
@@ -48,6 +50,8 @@ public class ShowcaseAssetPaths {
 
     public static final AssetDescriptor<Sprite> SMILEY_OUTLINE_SPRITE;
 
+    public static final AssetDescriptor<Sprite> BOLTSEGMENT_SPRITE;
+
     public static final AssetDescriptor<ShaderProgram> INVERT_SHADER_PROGRAM;
 
     public static final AssetDescriptor<ShaderProgram> NEONWAVES_SHADER_PROGRAM;
@@ -63,6 +67,7 @@ public class ShowcaseAssetPaths {
         ASSETS.add(STICKMANRUN_SPRITE = new AssetDescriptor<>("alejandria/showcase/animations/stickmanRun.png", Sprite.class));
         ASSETS.add(STICKMANRUNFRAMES_ANIMATION = new AssetDescriptor<>("alejandria/showcase/animations/stickmanRunFrames.anim", Sprite[].class));
         ASSETS.add(BALLBEEP_SOUND = new AssetDescriptor<>("alejandria/showcase/audios/ballBeep.sogg", Sound.class));
+        ASSETS.add(LOUDTHUNDER_SOUND = new AssetDescriptor<>("alejandria/showcase/audios/loudThunder.sogg", Sound.class));
         ASSETS.add(GUN_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/bullets/gun.png", Sprite.class));
         ASSETS.add(ARROW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/arrow.png", Sprite.class));
         ASSETS.add(GITHUB_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/buttons/gitHub.png", Sprite.class));
@@ -79,6 +84,7 @@ public class ShowcaseAssetPaths {
         ASSETS.add(GLOW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/glow.png", Sprite.class));
         ASSETS.add(SMILEY_COLOR_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_color.png", Sprite.class));
         ASSETS.add(SMILEY_OUTLINE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_outline.png", Sprite.class));
+        ASSETS.add(BOLTSEGMENT_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/patterns/boltSegment.png", Sprite.class));
         ASSETS.add(INVERT_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/invert.sp", ShaderProgram.class));
         ASSETS.add(NEONWAVES_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/neonwaves/neonWaves.sp", ShaderProgram.class));
         ASSETS.add(RAYMARCHING_SHADER_PROGRAM = new AssetDescriptor<>("alejandria/showcase/shaders/raymarching/raymarching.sp", ShaderProgram.class));

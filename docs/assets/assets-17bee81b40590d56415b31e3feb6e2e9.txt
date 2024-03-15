@@ -2,6 +2,8 @@ alejandria/showcase/animations/stickmanRun.png
 alejandria/showcase/animations/stickmanRunFrames.anim
 alejandria/showcase/audios/ballBeep.ogg
 alejandria/showcase/audios/ballBeep.sogg
+alejandria/showcase/audios/loudThunder.ogg
+alejandria/showcase/audios/loudThunder.sogg
 alejandria/showcase/images/bullets/gun.png
 alejandria/showcase/images/buttons/arrow.png
 alejandria/showcase/images/buttons/gitHub.png
@@ -18,6 +20,8 @@ alejandria/showcase/images/fun/roundedSquare.png
 alejandria/showcase/images/masking/glow.png
 alejandria/showcase/images/masking/smiley_color.png
 alejandria/showcase/images/masking/smiley_outline.png
+alejandria/showcase/images/patterns/boltSegment.png
+alejandria/showcase/shaders/fire.frag
 alejandria/showcase/shaders/invert.glsl
 alejandria/showcase/shaders/invert.sp
 alejandria/showcase/shaders/masking/mask.glsl
@@ -42,6 +46,8 @@ alejandria/showcase/shaders/shared/fragment.glsl
 alejandria/showcase/shaders/shared/vertex.glsl
 alejandria/showcase/shaders/vignette.glsl
 alejandria/showcase/shaders/vignette.sp
+fundamentals/audios/beep.swav
+fundamentals/audios/beep.wav
 fundamentals/audios/shortLaser.swav
 fundamentals/audios/shortLaser.wav
 fundamentals/fonts/pixelFont.fnt
