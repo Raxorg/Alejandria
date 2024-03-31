@@ -20,12 +20,16 @@ public class Text implements Buttonable, Movable {
     private String truncate;
     private final Rectangle bounds;
 
-    public Text(BitmapFont font) {
+    public Text(BitmapFont font, String text) {
         this.font = new BitmapFont(font.getData().fontFile);
-        text = "";
+        this.text = text;
         hAlign = Align.left;
         bounds = new Rectangle();
         bounds.width = 500f;
+    }
+
+    public Text(BitmapFont font) {
+        this(font, "");
     }
 
     public void draw(SpriteBatch spriteBatch) {

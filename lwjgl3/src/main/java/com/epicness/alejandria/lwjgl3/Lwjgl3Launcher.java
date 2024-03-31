@@ -30,6 +30,7 @@ public class Lwjgl3Launcher {
         configuration.setResizable(false);
         configuration.setBackBufferConfig(8, 8, 8, 8, 16, 0, 4);
         configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
+        // configuration.setTransparentFramebuffer(true); For crazy effects
         return configuration;
     }
 }

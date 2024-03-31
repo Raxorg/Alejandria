@@ -14,6 +14,7 @@ public class AssetDescriptorGatherer {
     public static List<AssetDescriptor<?>> gatherDescriptors(FileHandle root) {
         descriptors = new ArrayList<>();
         gatherFiles(root.child("animations"));
+        gatherFiles(root.child("atlases"), "png");
         gatherFiles(root.child("audios"), "mp3", "ogg", "wav");
         gatherFiles(root.child("fonts"), "png");
         gatherFiles(root.child("images"));
