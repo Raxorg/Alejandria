@@ -8,8 +8,6 @@ import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class ShapeDrawerPlus extends ShapeDrawer {
 
-    private float auxColor; // Optimization
-
     public ShapeDrawerPlus(SpriteBatch spriteBatch, Sprite sprite) {
         super(spriteBatch, sprite);
     }
@@ -23,7 +21,7 @@ public class ShapeDrawerPlus extends ShapeDrawer {
     }
 
     public void circle(float x, float y, float radius, float thickness, Color color) {
-        auxColor = setColor(color);
+        float auxColor = setColor(color);
         circle(x, y, radius, thickness);
         setColor(auxColor);
     }

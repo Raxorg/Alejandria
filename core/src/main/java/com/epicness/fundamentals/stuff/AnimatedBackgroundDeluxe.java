@@ -84,10 +84,10 @@ public class AnimatedBackgroundDeluxe extends AnimatedBackground {
                 spriteBatch.setColor(spriteColor);
             }
             spriteBatch.draw(
-                    repeatedImage,
-                    positions[i].x, positions[i].y, imageSize / 2f, imageSize / 2f,
-                    imageSize, imageSize, 1f, 1f,
-                    rotations[i]);
+                repeatedImage,
+                positions[i].x, positions[i].y, imageSize / 2f, imageSize / 2f,
+                imageSize, imageSize, 1f, 1f,
+                rotations[i]);
         }
 
         spriteBatch.flush();

@@ -22,7 +22,7 @@ public class Line implements Movable {
         angleDeg = AngleUtils.degreesBetweenPoints(b, a);
         length = a.dst(b);
         this.width = width;
-        this.color = color;
+        this.color = new Color(color);
     }
 
     public Line(float ax, float ay, float bx, float by, float width) {

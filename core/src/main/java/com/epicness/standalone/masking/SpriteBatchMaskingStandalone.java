@@ -1,15 +1,14 @@
 package com.epicness.standalone.masking;
 
-import static com.epicness.fundamentals.assets.SharedAssetPaths.GLOW_SPRITE;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.WEIRDSHAPE_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITES_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class SpriteBatchMaskingStandalone extends Game {
@@ -21,9 +20,11 @@ public class SpriteBatchMaskingStandalone extends Game {
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        mask = new Sprite(new Texture(GLOW_SPRITE.fileName));
+        TextureAtlas atlas = new TextureAtlas(SPRITES_ATLAS.fileName);
 
-        maskedSprite = new Sprite(new Texture(WEIRDSHAPE_SPRITE.fileName));
+        mask = atlas.createSprite("glow");
+
+        maskedSprite = atlas.createSprite("weirdShape");
         maskedSprite.setColor(Color.RED);
     }
 

@@ -3,7 +3,7 @@ package com.epicness.standalone.masking;
 import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
 import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.WEIRDSHAPE_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITES_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -12,7 +12,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -20,7 +22,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class ShaderPixmapMaskingStandalone extends Game {
 
     private final int size = 300;
-    private Texture texture;
+    private Sprite sprite;
     private SpriteBatch spriteBatch1, spriteBatch2;
     private ShapeRenderer shapeRenderer;
 
@@ -30,8 +32,9 @@ public class ShaderPixmapMaskingStandalone extends Game {
         defineMask();
 
         /* Some regular textures to draw on the screen. */
-        texture = new Texture(WEIRDSHAPE_SPRITE.fileName);
-        texture.setFilter(Linear, Linear);
+        sprite = new TextureAtlas(SPRITES_ATLAS.fileName).createSprite("weirdShape");
+        sprite.getTexture().setFilter(Linear, Linear);
+        sprite.setSize(size, size);
 
         setupShader();
 
@@ -117,12 +120,14 @@ public class ShaderPixmapMaskingStandalone extends Game {
         /* Draw our masked image. */
         spriteBatch1.begin();
         spriteBatch1.setColor(Color.RED);
-        spriteBatch1.draw(texture, 0, 0, size, size);
+        sprite.setY(0f);
+        sprite.draw(spriteBatch1);
         spriteBatch1.end();
 
         /* Draw the original image unmasked for comparison. */
         spriteBatch2.begin();
-        spriteBatch2.draw(texture, 0, size, size, size);
+        sprite.setY(size);
+        sprite.draw(spriteBatch2);
         spriteBatch2.end();
 
         shapeRenderer.begin();

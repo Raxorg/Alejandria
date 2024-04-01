@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.badlogic.gdx.utils.StreamUtils;
 import com.epicness.fundamentals.assets.loaders.SpriteArrayLoader.SpriteArrayParameter;
 import com.epicness.fundamentals.utils.AnimationUtils;
 
@@ -37,8 +36,7 @@ public class SpriteArrayLoader extends AsynchronousAssetLoader<Sprite[], SpriteA
 
     @Override
     public void loadAsync(AssetManager manager, String fileName, FileHandle file, SpriteArrayParameter parameter) {
-        BufferedReader reader = file.reader(128);
-        try {
+        try (BufferedReader reader = file.reader(128)) {
             String line = reader.readLine();
             fileName = file.sibling(line).path();
             info.filename = fileName;
@@ -66,8 +64,6 @@ public class SpriteArrayLoader extends AsynchronousAssetLoader<Sprite[], SpriteA
             info.frameHeight = Integer.parseInt(line.split(":")[1]);
         } catch (Exception ex) {
             throw new GdxRuntimeException("Error loading anim file: " + fileName, ex);
-        } finally {
-            StreamUtils.closeQuietly(reader);
         }
         if (!info.data.isPrepared()) info.data.prepare();
     }

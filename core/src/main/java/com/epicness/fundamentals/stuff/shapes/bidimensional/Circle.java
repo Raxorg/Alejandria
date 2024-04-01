@@ -8,9 +8,8 @@ import com.epicness.fundamentals.stuff.interfaces.Movable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Movable {
+public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
 
-    public float x, y, radius;
     private final Color borderColor, fillColor;
     private float thickness;
 
@@ -18,8 +17,8 @@ public class Circle implements Movable {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.borderColor = borderColor;
-        this.fillColor = fillColor;
+        this.borderColor = new Color(borderColor);
+        this.fillColor = new Color(fillColor);
         thickness = 1f;
     }
 
@@ -69,26 +68,6 @@ public class Circle implements Movable {
         shapeRenderer.circle(x, y, radius);
     }
 
-    public float getStartX() {
-        return x - radius;
-    }
-
-    public float getEndX() {
-        return x + radius;
-    }
-
-    public float getStartY() {
-        return y - radius;
-    }
-
-    public float getEndY() {
-        return y + radius;
-    }
-
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(x, y);
-    }
-
     @Override
     public float getX() {
         return x;
@@ -109,12 +88,40 @@ public class Circle implements Movable {
         y += amount;
     }
 
+    public float getStartX() {
+        return x - radius;
+    }
+
+    public float getEndX() {
+        return x + radius;
+    }
+
+    public float getStartY() {
+        return y - radius;
+    }
+
+    public float getEndY() {
+        return y + radius;
+    }
+
+    public Vector2 getCenter(Vector2 result) {
+        return result.set(x, y);
+    }
+
     public Color getBorderColor() {
         return borderColor;
     }
 
+    public void setBorderColor(Color color) {
+        borderColor.set(color);
+    }
+
     public Color getFillColor() {
         return fillColor;
+    }
+
+    public void setFillColor(Color color) {
+        fillColor.set(color);
     }
 
     public void setColor(Color color) {
