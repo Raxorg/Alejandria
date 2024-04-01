@@ -1,6 +1,6 @@
 package com.epicness.standalone.masking;
 
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITES_ATLAS;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESLINEAR_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -20,7 +20,7 @@ public class SpriteBatchMaskingStandalone extends Game {
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        TextureAtlas atlas = new TextureAtlas(SPRITES_ATLAS.fileName);
+        TextureAtlas atlas = new TextureAtlas(SPRITESLINEAR_ATLAS.fileName);
 
         mask = atlas.createSprite("glow");
 

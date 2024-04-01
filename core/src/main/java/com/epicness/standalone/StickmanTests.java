@@ -1,7 +1,7 @@
 package com.epicness.standalone;
 
 import static com.badlogic.gdx.graphics.Color.RED;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.PIXEL_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESNEAREST_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,7 +20,7 @@ public class StickmanTests extends Game {
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        Sprite pixel = new Sprite(new Texture(PIXEL_SPRITE.fileName));
+        Sprite pixel = new Sprite(new Texture(SPRITESNEAREST_ATLAS.fileName));
         shapeDrawerPlus = new ShapeDrawerPlus(spriteBatch, pixel);
 
         sprite = new Sprited(pixel);

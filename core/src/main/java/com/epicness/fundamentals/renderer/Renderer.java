@@ -1,10 +1,9 @@
 package com.epicness.fundamentals.renderer;
 
-import static com.epicness.fundamentals.assets.SharedAssetPaths.PIXEL_SPRITE;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESNEAREST_ATLAS;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.stuff.SharedStuff;
 import com.epicness.fundamentals.stuff.Stuff;
@@ -24,7 +23,7 @@ public abstract class Renderer<S extends Stuff<?>> {
         spriteBatch = new SpriteBatch();
         shapeRenderer = new ShapeRendererPlus();
         shapeRenderer.setAutoShapeType(true);
-        shapeDrawer = new ShapeDrawerPlus(spriteBatch, new Sprite(new Texture(PIXEL_SPRITE.fileName)));
+        shapeDrawer = new ShapeDrawerPlus(spriteBatch, new TextureAtlas(SPRITESNEAREST_ATLAS.fileName).createSprite("pixel"));
     }
 
     public abstract void render();

@@ -3,7 +3,7 @@ package com.epicness.standalone.masking;
 import static com.badlogic.gdx.graphics.Pixmap.Blending.None;
 import static com.badlogic.gdx.graphics.Pixmap.Format.Alpha;
 import static com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITES_ATLAS;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESLINEAR_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -32,7 +32,7 @@ public class ShaderPixmapMaskingStandalone extends Game {
         defineMask();
 
         /* Some regular textures to draw on the screen. */
-        sprite = new TextureAtlas(SPRITES_ATLAS.fileName).createSprite("weirdShape");
+        sprite = new TextureAtlas(SPRITESLINEAR_ATLAS.fileName).createSprite("weirdShape");
         sprite.getTexture().setFilter(Linear, Linear);
         sprite.setSize(size, size);
 

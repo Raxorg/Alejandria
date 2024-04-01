@@ -13,7 +13,7 @@ public class SimpleLights extends Module<SimpleLightsDrawable> {
     private List<Sprite> lights;
 
     public SimpleLights() {
-        super("Simple Lights", "Click to spawn lights\n\nThese don't cast shadows");
+        super("Simple Lights", "Click to spawn lights\n\nThese don't cast shadows and their colors are random");
     }
 
     @Override

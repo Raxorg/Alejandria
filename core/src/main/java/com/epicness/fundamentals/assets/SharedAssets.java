@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class SharedAssets extends Assets {
-    private Sprite spritesAtlas;
+    private Sprite spritesLinearAtlas;
 
     private Sprite circle;
 
@@ -17,13 +17,17 @@ public class SharedAssets extends Assets {
 
     private Sprite libGDX;
 
-    private Sprite square32;
-
-    private Sprite square32Inverted;
-
     private Sprite triangle;
 
     private Sprite weirdShape;
+
+    private Sprite spritesNearestAtlas;
+
+    private Sprite pixel;
+
+    private Sprite square32;
+
+    private Sprite square32Inverted;
 
     private Sound beep;
 
@@ -33,32 +37,31 @@ public class SharedAssets extends Assets {
 
     private BitmapFont timesSquare;
 
-    private Sprite pixel;
-
     public SharedAssets() {
         super(ASSETS);
     }
 
     @Override
     public void initializeAssets() {
-        spritesAtlas = new Sprite(get(SPRITES_ATLAS).getTextures().first());
-        circle = get(SPRITES_ATLAS).createSprite("circle");
-        dot = get(SPRITES_ATLAS).createSprite("dot");
-        glow = get(SPRITES_ATLAS).createSprite("glow");
-        libGDX = get(SPRITES_ATLAS).createSprite("libGDX");
-        square32 = get(SPRITES_ATLAS).createSprite("square32");
-        square32Inverted = get(SPRITES_ATLAS).createSprite("square32Inverted");
-        triangle = get(SPRITES_ATLAS).createSprite("triangle");
-        weirdShape = get(SPRITES_ATLAS).createSprite("weirdShape");
+        spritesLinearAtlas = new Sprite(get(SPRITESLINEAR_ATLAS).getTextures().first());
+        circle = get(SPRITESLINEAR_ATLAS).createSprite("circle");
+        dot = get(SPRITESLINEAR_ATLAS).createSprite("dot");
+        glow = get(SPRITESLINEAR_ATLAS).createSprite("glow");
+        libGDX = get(SPRITESLINEAR_ATLAS).createSprite("libGDX");
+        triangle = get(SPRITESLINEAR_ATLAS).createSprite("triangle");
+        weirdShape = get(SPRITESLINEAR_ATLAS).createSprite("weirdShape");
+        spritesNearestAtlas = new Sprite(get(SPRITESNEAREST_ATLAS).getTextures().first());
+        pixel = get(SPRITESNEAREST_ATLAS).createSprite("pixel");
+        square32 = get(SPRITESNEAREST_ATLAS).createSprite("square32");
+        square32Inverted = get(SPRITESNEAREST_ATLAS).createSprite("square32Inverted");
         beep = get(BEEP_SOUND);
         shortLaser = get(SHORTLASER_SOUND);
         pixelFont = get(PIXELFONT_FONT);
         timesSquare = get(TIMESSQUARE_FONT);
-        pixel = get(PIXEL_SPRITE);
     }
 
-    public Sprite getSpritesAtlas() {
-        return spritesAtlas;
+    public Sprite getSpritesLinearAtlas() {
+        return spritesLinearAtlas;
     }
 
     public Sprite getCircle() {
@@ -77,20 +80,28 @@ public class SharedAssets extends Assets {
         return libGDX;
     }
 
-    public Sprite getSquare32() {
-        return square32;
-    }
-
-    public Sprite getSquare32Inverted() {
-        return square32Inverted;
-    }
-
     public Sprite getTriangle() {
         return triangle;
     }
 
     public Sprite getWeirdShape() {
         return weirdShape;
+    }
+
+    public Sprite getSpritesNearestAtlas() {
+        return spritesNearestAtlas;
+    }
+
+    public Sprite getPixel() {
+        return pixel;
+    }
+
+    public Sprite getSquare32() {
+        return square32;
+    }
+
+    public Sprite getSquare32Inverted() {
+        return square32Inverted;
     }
 
     public Sound getBeep() {
@@ -107,9 +118,5 @@ public class SharedAssets extends Assets {
 
     public BitmapFont getTimesSquare() {
         return timesSquare;
-    }
-
-    public Sprite getPixel() {
-        return pixel;
     }
 }

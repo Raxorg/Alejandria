@@ -4,7 +4,7 @@ import static com.badlogic.gdx.Input.Keys.K;
 import static com.badlogic.gdx.Input.Keys.L;
 import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.RED;
-import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITES_ATLAS;
+import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESLINEAR_ATLAS;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -36,7 +36,7 @@ public class FundamentalsTest extends Game {
         gradientFont = new GradientFont("Gradient Font", 20f, 500f, RED, BLUE);
         gradientFont.getData().setScale(2f);
 
-        Sprite a = new TextureAtlas(SPRITES_ATLAS.fileName).createSprite("weirdShape");
+        Sprite a = new TextureAtlas(SPRITESLINEAR_ATLAS.fileName).createSprite("weirdShape");
         dualSprited = new DualSprited(a, a);
         dualSprited.setSize(100f);
 
