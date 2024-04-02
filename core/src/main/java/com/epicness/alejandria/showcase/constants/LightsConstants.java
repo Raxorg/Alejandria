@@ -11,9 +11,9 @@ public class LightsConstants {
 
     public static final float CIRCLE_RADIUS = 50f;
     public static final float MIN_CIRCLE_X = CIRCLE_RADIUS;
-    public static final float MAX_CIRCLE_X = CAMERA_WIDTH - CIRCLE_RADIUS;
+    public static final float MAX_CIRCLE_X = CAMERA_WIDTH - CIRCLE_RADIUS * 2f;
     public static final float MIN_CIRCLE_Y = SHOWCASE_STRIPE_HEIGHT + CIRCLE_RADIUS;
-    public static final float MAX_CIRCLE_Y = SHOWCASE_TOP - CIRCLE_RADIUS;
+    public static final float MAX_CIRCLE_Y = SHOWCASE_TOP - CIRCLE_RADIUS * 2f;
 
     public static final float RECTANGLE_SIZE = 100f;
     public static final float MIN_RECTANGLE_X = 0f;
