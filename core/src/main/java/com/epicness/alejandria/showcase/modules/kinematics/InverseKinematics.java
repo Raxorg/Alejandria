@@ -33,7 +33,7 @@ public class InverseKinematics extends Module<InverseKinematicsDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         for (int i = 0; i < tentacles.length; i++) {
             tentacles[i].toggleLock();
         }

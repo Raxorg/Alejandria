@@ -33,6 +33,10 @@ public interface Movable {
         translateY(yAmount);
     }
 
+    default void translate(float amount) {
+        translate(amount, amount);
+    }
+
     default void translate(Vector2 amount) {
         translate(amount.x, amount.y);
     }

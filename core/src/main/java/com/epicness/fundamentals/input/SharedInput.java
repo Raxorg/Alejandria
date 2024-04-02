@@ -63,7 +63,7 @@ public class SharedInput implements InputProcessor {
         // Static camera
         staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
-            inputHandlers.get(i).touchDown(unprojected.x, unprojected.y);
+            inputHandlers.get(i).touchDown(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
         // Dynamic camera

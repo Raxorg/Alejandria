@@ -87,7 +87,7 @@ public class Spirograph extends Module<SpirographDrawable> {
         Line line;
         for (int i = 0; i < trailLines.size; i++) {
             line = trailLines.get(i);
-            color = line.getColor();
+            color = line.getColorA();
             color.a -= delta / FADE_DURATION;
             line.setColor(color);
             if (color.a <= 0f) {

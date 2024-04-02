@@ -25,6 +25,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
@@ -75,10 +76,10 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     private void initPlayers() {
         player1 = new Circle(PLAYER_RADIUS);
-        player1.setPosition(GRID_SIZE / 2f, GRID_SIZE / 2f);
+        player1.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
         player1.setColor(GRASS);
         player2 = new Circle(PLAYER_RADIUS);
-        player2.setPosition(GRID_SIZE / 2f, GRID_SIZE / 2f);
+        player2.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
         player2.setColor(LIGHT_GRASS);
     }
 
@@ -101,6 +102,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
+        ScreenUtils.clear(BLACK);
         drawUnmasked(spriteBatch, shapeRenderer);
         if (playersClose || camerasClose) {
             return;

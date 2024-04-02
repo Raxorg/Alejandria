@@ -26,7 +26,7 @@ public class HexagonSelection extends Module<HexagonSelectionDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         Hexagon[][] hexagons = drawable.getHexagons();
         Hexagon hexagon;
         for (int column = 0; column < COLUMNS; column++) {

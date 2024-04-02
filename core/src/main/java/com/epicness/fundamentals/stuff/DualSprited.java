@@ -251,8 +251,16 @@ public class DualSprited implements Buttonable, Transformable {
         background.setColor(color);
     }
 
+    public void setBackgroundColor(float r, float g, float b, float a) {
+        background.setColor(r, g, b, a);
+    }
+
     public void setForegroundColor(Color color) {
         foreground.setColor(color);
+    }
+
+    public void setForegroundColor(float r, float g, float b, float a) {
+        foreground.setColor(r, g, b, a);
     }
 
     public void setColor(Color color) {

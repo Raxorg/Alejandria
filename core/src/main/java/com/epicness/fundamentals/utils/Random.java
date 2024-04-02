@@ -13,6 +13,10 @@ public class Random {
         return new Color(r, g, b, 1f);
     }
 
+    public static <T> T fromArray(T[] array) {
+        return array[MathUtils.random(array.length - 1)];
+    }
+
     public static Color rainbowColor() {
         int random = MathUtils.random(10);
         switch (random) {

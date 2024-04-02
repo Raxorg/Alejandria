@@ -98,26 +98,6 @@ public class Sprited implements Buttonable, Transformable {
         setOriginBasedPosition(position.x, position.y);
     }
 
-    public float getCenterX() {
-        return sprite.getX() + sprite.getWidth() / 2f;
-    }
-
-    public float getEndX() {
-        return sprite.getX() + sprite.getWidth();
-    }
-
-    public float getCenterY() {
-        return sprite.getY() + sprite.getHeight() / 2f;
-    }
-
-    public float getEndY() {
-        return sprite.getY() + sprite.getHeight();
-    }
-
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(getCenterX(), getCenterY());
-    }
-
     public Vector2 getOrigin(Vector2 result) {
         return result.set(sprite.getOriginX(), sprite.getOriginY());
     }
@@ -164,10 +144,6 @@ public class Sprited implements Buttonable, Transformable {
 
     public void setOriginCenter() {
         sprite.setOriginCenter();
-    }
-
-    public void setRotation(float degrees) {
-        sprite.setRotation(degrees);
     }
 
     public boolean isFlipX() {

@@ -27,14 +27,11 @@ public class FallingSandDrawable implements ModuleDrawable {
             for (int row = 0; row < SAND_DIMENSION; row++) {
                 x = SHOWCASE_X + column * SAND_SIZE;
                 y = SHOWCASE_Y + row * SAND_SIZE;
-                sandMatrix[column][row] = new Rectangle();
-                sandMatrix[column][row].set(x, y, SAND_SIZE, SAND_SIZE);
-                sandMatrix[column][row].borderColor.set(CLEAR);
+                sandMatrix[column][row] = new Rectangle(x, y, SAND_SIZE, SAND_SIZE, CLEAR);
             }
         }
 
-        frame = new Rectangle(BLACK.cpy());
-        frame.set(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE);
+        frame = new Rectangle(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE, BLACK, CLEAR);
     }
 
     @Override

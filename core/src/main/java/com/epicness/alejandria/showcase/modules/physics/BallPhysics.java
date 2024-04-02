@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.physics;
 
+import static com.badlogic.gdx.Input.Buttons.LEFT;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.physics.box2d.BodyDef.BodyType.DynamicBody;
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.CIRCLE_RADIUS;
@@ -39,7 +40,7 @@ public class BallPhysics extends Module<BallPhysicsDrawable> {
         circleBodies = drawable.getCircleBodies();
         circles = drawable.getCircles();
         circleAuxPosition = new Vector2();
-        touchDown(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        touchDown(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, LEFT);
         return drawable;
     }
 
@@ -48,12 +49,13 @@ public class BallPhysics extends Module<BallPhysicsDrawable> {
         world.step(delta, 6, 2);
         for (int i = 0; i < circleBodies.size; i++) {
             circleAuxPosition.set(circleBodies.get(i).getPosition()).scl(PHYSICS_SCALE_FACTOR);
+            circleAuxPosition.sub(CIRCLE_RADIUS, CIRCLE_RADIUS);
             circles.get(i).setPosition(circleAuxPosition);
         }
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         circleBodies.add(Box2DFactory.createCircle(
             world,
             x / PHYSICS_SCALE_FACTOR,
@@ -61,6 +63,8 @@ public class BallPhysics extends Module<BallPhysicsDrawable> {
             PHYSICS_CIRCLE_RADIUS,
             DynamicBody
         ));
-        circles.add(new Circle(x, y, CIRCLE_RADIUS, BLACK, BASIC_COLORS[circles.size % 5]).setThickness(7.5f));
+        Circle circle = new Circle(x, y, CIRCLE_RADIUS, BLACK, BASIC_COLORS[circles.size % 5]);
+        circle.setThickness(7.5f);
+        circles.add(circle);
     }
 }

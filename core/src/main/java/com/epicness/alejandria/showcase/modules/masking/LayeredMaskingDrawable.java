@@ -1,9 +1,10 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_COLUMNS;
-import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.GRID_ROWS;
-import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_COLUMNS;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_ROWS;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.LAYERED_CIRCLE_RADIUS;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.SHAPE_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
@@ -62,12 +63,12 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
             }
         }
 
-        circle1 = new Circle(CAMERA_HALF_HEIGHT / 2f, WHITE);
-        circle1.setPosition(CAMERA_HALF_WIDTH, (CAMERA_HALF_HEIGHT / 2f) * 3f);
+        circle1 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
+        circle1.setPosition(CAMERA_HALF_WIDTH - LAYERED_CIRCLE_RADIUS, CAMERA_HALF_HEIGHT);
         circle1.setThickness(3f);
 
-        circle2 = new Circle(CAMERA_HALF_HEIGHT / 2f, WHITE);
-        circle2.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT / 2f);
+        circle2 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
+        circle2.setX(CAMERA_HALF_WIDTH - LAYERED_CIRCLE_RADIUS);
         circle2.setThickness(3f);
 
         Sprite backgroundSprite = new Sprite(pixel);

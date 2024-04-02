@@ -4,8 +4,8 @@ import com.epicness.fundamentals.stuff.shapes.tridimensional.Shape3D;
 
 public class Cylinder extends Shape3D<CylinderCreator, CylinderProperties> {
 
-    protected Cylinder(CylinderCreator creator) {
-        super(creator);
+    public Cylinder(float width, float height, float depth, float angleTo) {
+        super(new CylinderCreator(width, height, depth, angleTo));
     }
 
     @Override

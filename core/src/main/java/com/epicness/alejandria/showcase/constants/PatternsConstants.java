@@ -12,6 +12,7 @@ public class PatternsConstants {
 
     // Phyllotaxis
     public static final int PHYLLOTAXIS_CIRCLES = 1000;
+    public static final float PHYLLOTAXIS_BALL_RADIUS = 9f;
 
     // Spiral
     public static final int DOT_COUNT = 180;

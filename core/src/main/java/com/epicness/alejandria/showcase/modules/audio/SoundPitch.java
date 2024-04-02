@@ -48,7 +48,7 @@ public class SoundPitch extends Module<SoundPitchDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         for (int column = 0; column < cells.length; column++) {
             for (int row = 0; row < cells[column].length; row++) {
                 auxCell = cells[column][row];

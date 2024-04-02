@@ -33,8 +33,8 @@ public class Alert extends Module<AlertDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
-        button.setColor(LIGHT_DIRT);
+    public void touchDown(float x, float y, int button) {
+        this.button.setColor(LIGHT_DIRT);
         if (bounds.contains(x, y)) {
             game.getAlertSystem().alert("You invoked an HTML native alert! :D");
         }

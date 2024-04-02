@@ -50,7 +50,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         for (int i = 0; i < squares.size(); i++) {
             Sprited square = squares.get(i);
             if (square.contains(x, y)) {

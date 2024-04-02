@@ -11,8 +11,8 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
 
     public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor) {
         super(x, y, w, h);
-        this.borderColor = borderColor;
-        this.fillColor = fillColor;
+        this.borderColor = new Color(borderColor);
+        this.fillColor = new Color(fillColor);
         thickness = 5f;
     }
 
@@ -51,6 +51,14 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
     public void draw(ShapeDrawer shapeDrawer) {
         drawFilled(shapeDrawer);
         drawBorder(shapeDrawer);
+    }
+
+    public void setBorderColor(Color color) {
+        borderColor.set(color);
+    }
+
+    public void setFillColor(Color color) {
+        fillColor.set(color);
     }
 
     public void setColor(Color color) {

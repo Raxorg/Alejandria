@@ -2,14 +2,15 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
-import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
+public class Circle implements Transformable {
 
+    public final float radius;
+    private float x, y;
     private final Color borderColor, fillColor;
     private float thickness;
 
@@ -20,6 +21,10 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
         this.borderColor = new Color(borderColor);
         this.fillColor = new Color(fillColor);
         thickness = 1f;
+    }
+
+    public Circle(float radius, Color borderColor, Color fillColor) {
+        this(0f, 0f, radius, borderColor, fillColor);
     }
 
     public Circle(float x, float y, float radius, Color color) {
@@ -46,16 +51,20 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
         this(radius, new Color(1f, 1f, 1f, 1f));
     }
 
+    public Circle(Color color) {
+        this(5f, color);
+    }
+
     public Circle() {
         this(5f);
     }
 
     public void drawFilled(ShapeDrawer shapeDrawer) {
-        shapeDrawer.filledCircle(x, y, radius, fillColor);
+        shapeDrawer.filledCircle(x + radius, y + radius, radius, fillColor);
     }
 
     public void drawBorder(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.circle(x, y, radius, thickness, borderColor);
+        shapeDrawer.circle(x + radius, y + radius, radius, thickness, borderColor);
     }
 
     public void draw(ShapeDrawerPlus shapeDrawer) {
@@ -65,7 +74,7 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
 
     public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(borderColor);
-        shapeRenderer.circle(x, y, radius);
+        shapeRenderer.circle(x + radius, y + radius, radius);
     }
 
     @Override
@@ -88,24 +97,34 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
         y += amount;
     }
 
-    public float getStartX() {
-        return x - radius;
+    @Override
+    public float getRotation() {
+        throw new UnsupportedOperationException();
     }
 
-    public float getEndX() {
-        return x + radius;
+    @Override
+    public void rotate(float degrees) {
+        throw new UnsupportedOperationException();
     }
 
-    public float getStartY() {
-        return y - radius;
+    @Override
+    public void stretchWidth(float amount) {
+        throw new UnsupportedOperationException();
     }
 
-    public float getEndY() {
-        return y + radius;
+    @Override
+    public void stretchHeight(float amount) {
+        throw new UnsupportedOperationException();
     }
 
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(x, y);
+    @Override
+    public float getWidth() {
+        return radius * 2f;
+    }
+
+    @Override
+    public float getHeight() {
+        return radius * 2f;
     }
 
     public Color getBorderColor() {
@@ -129,8 +148,7 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Movable {
         fillColor.set(color);
     }
 
-    public Circle setThickness(float thickness) {
+    public void setThickness(float thickness) {
         this.thickness = thickness;
-        return this;
     }
 }

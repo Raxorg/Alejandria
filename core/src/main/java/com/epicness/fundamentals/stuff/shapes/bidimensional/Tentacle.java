@@ -29,7 +29,7 @@ public class Tentacle implements Movable {
                     Color startColor, Color endColor) {
         this(lineAmount, lineLength);
         for (int i = 0; i < lineAmount; i++) {
-            lines[i].width = MathUtils.map(0, lineAmount - 1, startingWidth, finalWidth, i);
+            lines[i].thickness = MathUtils.map(0, lineAmount - 1, startingWidth, finalWidth, i);
             lines[i].setColor(endColor.cpy().lerp(startColor, i / (lineAmount - 1f)));
         }
     }

@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.collision.BoundingBox;
 
 public class Constants3D {
 
+    // Material
+    public static final String MATERIAL_ID = "material";
     // Attributes
     public static final long LIGHTED_TEXTURED_ATTRIBUTES = Position | Normal | TextureCoordinates;
     public static final long LIGHTLESS_TEXTURED_ATTRIBUTES = Position | TextureCoordinates;

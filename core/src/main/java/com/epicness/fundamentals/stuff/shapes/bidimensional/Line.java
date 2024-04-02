@@ -13,20 +13,25 @@ public class Line implements Movable {
     private final Vector2 a, b;
     private float angleDeg;
     public final float length;
-    private final Color color;
-    public float width;
+    private final Color colorA, colorB;
+    public float thickness;
 
-    public Line(float ax, float ay, float bx, float by, float width, Color color) {
+    public Line(float ax, float ay, float bx, float by, float thickness, Color colorA, Color colorB) {
         a = new Vector2(ax, ay);
         b = new Vector2(bx, by);
         angleDeg = AngleUtils.degreesBetweenPoints(b, a);
         length = a.dst(b);
-        this.width = width;
-        this.color = new Color(color);
+        this.thickness = thickness;
+        this.colorA = new Color(colorA);
+        this.colorB = new Color(colorB);
     }
 
-    public Line(float ax, float ay, float bx, float by, float width) {
-        this(ax, ay, bx, by, width, new Color(1f, 1f, 1f, 1f));
+    public Line(float ax, float ay, float bx, float by, float thickness, Color color) {
+        this(ax, ay, bx, by, thickness, color, color);
+    }
+
+    public Line(float ax, float ay, float bx, float by, float thickness) {
+        this(ax, ay, bx, by, thickness, new Color(1f, 1f, 1f, 1f));
     }
 
     public Line(float ax, float ay, float bx, float by, Color color) {
@@ -37,22 +42,23 @@ public class Line implements Movable {
         this(ax, ay, bx, by, 5f);
     }
 
-    public Line(float x, float y, float length, float angle, boolean degrees, float width, Color color) {
+    public Line(float x, float y, float length, float angle, boolean degrees, float thickness, Color color) {
         a = new Vector2(x, y);
         b = new Vector2();
         this.length = length;
         angleDeg = degrees ? angle : (angle * MathUtils.radDeg);
         calculateB();
-        this.width = width;
-        this.color = color;
+        this.thickness = thickness;
+        colorA = new Color(color);
+        colorB = new Color(color);
     }
 
     public Line(float x, float y, float length, float angle, boolean degrees) {
         this(x, y, length, angle, degrees, 5f, new Color(1f, 1f, 1f, 1f));
     }
 
-    public Line(float length, float width, Color color) {
-        this(0f, 0f, length, 0f, true, width, color);
+    public Line(float length, float thickness, Color color) {
+        this(0f, 0f, length, 0f, true, thickness, color);
     }
 
     public Line(float x, float y, float length) {
@@ -79,7 +85,7 @@ public class Line implements Movable {
     }
 
     public void draw(ShapeDrawer shapeDrawer) {
-        shapeDrawer.line(a, b, color, width);
+        shapeDrawer.line(a.x, a.y, b.x, b.y, thickness, colorA, colorB);
     }
 
     @Override
@@ -145,11 +151,24 @@ public class Line implements Movable {
         rotate(degrees - angleDeg);
     }
 
-    public Color getColor() {
-        return color;
+    public Color getColorA() {
+        return colorA;
     }
 
-    public void setColor(Color newColor) {
-        color.set(newColor);
+    public void setColorA(Color color) {
+        colorA.set(color);
+    }
+
+    public Color getColorB() {
+        return colorB;
+    }
+
+    public void setColorB(Color color) {
+        colorB.set(color);
+    }
+
+    public void setColor(Color color) {
+        colorA.set(color);
+        colorB.set(color);
     }
 }

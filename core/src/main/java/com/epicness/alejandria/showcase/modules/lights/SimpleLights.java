@@ -24,7 +24,7 @@ public class SimpleLights extends Module<SimpleLightsDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         Sprite light = new Sprite(sharedAssets.getGlow());
         light.setOriginCenter();
         light.setOriginBasedPosition(x, y - SHOWCASE_STRIPE_HEIGHT);

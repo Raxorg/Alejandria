@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.stuff.shapes.tridimensional;
 
+import static com.epicness.fundamentals.constants.Constants3D.MATERIAL_ID;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,6 +25,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     protected final Vector3 position;
     private final short[] indices;
     protected final Line3D[] debugLines;
+    private final TextureAttribute textureAttribute;
+    private final ColorAttribute colorAttribute;
 
     public Shape3D(M modelCreator) {
         properties = modelCreator.properties;
@@ -52,6 +56,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
             debugLines[index] = new Line3D();
         }
         updateDebugLines();
+        textureAttribute = new TextureAttribute(TextureAttribute.Diffuse);
+        colorAttribute = new ColorAttribute(ColorAttribute.Diffuse);
     }
 
     protected abstract void updateDebugLines();
@@ -71,7 +77,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     }
 
     public void setSprite(Sprite sprite) {
-        modelInstance.getMaterial("material").set(TextureAttribute.createDiffuse(sprite));
+        textureAttribute.set(sprite);
+        modelInstance.getMaterial(MATERIAL_ID).set(textureAttribute);
     }
 
     public float[] getVertices() {
@@ -149,6 +156,7 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     }
 
     public final void setColor(Color color) {
-        modelInstance.getMaterial("material").set(ColorAttribute.createDiffuse(color));
+        colorAttribute.color.set(color);
+        modelInstance.getMaterial(MATERIAL_ID).set(colorAttribute);
     }
 }

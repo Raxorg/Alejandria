@@ -7,6 +7,9 @@ import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
+/**
+ * Logic Handler which can also handle input
+ */
 public abstract class LogicInputHandler<G extends Game, A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>>
     extends LogicHandler<G, A, L, R, S> {
 
@@ -25,7 +28,7 @@ public abstract class LogicInputHandler<G extends Game, A extends Assets, L exte
     public void scrolled(float amountX, float amountY) {
     }
 
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
     }
 
     public void touchDragged(float x, float y) {

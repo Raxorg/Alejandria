@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.GL20.GL_LINES;
 import static com.badlogic.gdx.graphics.VertexAttributes.Usage.ColorUnpacked;
 import static com.badlogic.gdx.graphics.VertexAttributes.Usage.Position;
+import static com.epicness.fundamentals.constants.Constants3D.MATERIAL_ID;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.Material;
@@ -30,8 +31,7 @@ public class Line3D {
 
         ModelBuilder modelBuilder = new ModelBuilder();
         modelBuilder.begin();
-        Material material = new Material("material");
-        material.set(colorAttribute);
+        Material material = new Material(MATERIAL_ID, colorAttribute);
         MeshPartBuilder meshPartBuilder = modelBuilder.part("line", GL_LINES, Position | ColorUnpacked, material);
         meshPartBuilder.line(start, end);
         Model lineModel = modelBuilder.end();
@@ -75,7 +75,7 @@ public class Line3D {
 
     public void setColor(Color color) {
         colorAttribute.color.set(color);
-        lineInstance.getMaterial("material").set(colorAttribute);
+        lineInstance.getMaterial(MATERIAL_ID).set(colorAttribute);
     }
 
     public void draw(ModelBatch modelBatch) {

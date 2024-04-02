@@ -36,7 +36,7 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         if (!drawable.getBackground().contains(x, y)) {
             return;
         }

@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.procedural;
 
+import static com.badlogic.gdx.Input.Buttons.LEFT;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.BOLT_COLOR;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.MAX_BRANCHES;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.MIN_BRANCHES;
@@ -8,10 +9,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HE
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -40,7 +38,7 @@ public class Lightning extends Module<LightningDrawable> {
         float randomAngle = MathUtils.random(360f);
         float x = CAMERA_HALF_WIDTH + MathUtils.cosDeg(randomAngle) * SHOWCASE_HALF_SIZE;
         float y = CAMERA_HALF_HEIGHT + MathUtils.sinDeg(randomAngle) * SHOWCASE_HALF_SIZE;
-        touchDown(x, y);
+        touchDown(x, y, LEFT);
         return drawable;
     }
 
@@ -62,7 +60,7 @@ public class Lightning extends Module<LightningDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         createBranchedLightning(x, y);
         flashProgress = MathUtils.randomBoolean() ? 0f : 1f;
         assets.getLoudThunder().play();

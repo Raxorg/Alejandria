@@ -25,7 +25,7 @@ public class DragonCurve extends Module<DragonCurveDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         drawable.setOffset(drawable.getDragonCurve().length);
     }
 }

@@ -5,8 +5,8 @@ import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelCreator;
 
 public class PlaneCreator extends ModelCreator<PlaneProperties> {
 
-    public PlaneCreator(PlaneProperties properties) {
-        super(properties);
+    public PlaneCreator(float width, float height) {
+        super(new PlaneProperties(width, height));
     }
 
     @Override

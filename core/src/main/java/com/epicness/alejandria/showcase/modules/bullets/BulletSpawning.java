@@ -32,7 +32,7 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         Sprited gun = drawable.getGun();
         Sprited bullet = drawable.getBullet();
 
