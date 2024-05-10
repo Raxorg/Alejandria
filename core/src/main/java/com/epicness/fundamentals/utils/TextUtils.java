@@ -61,4 +61,8 @@ public class TextUtils {
             true,
             text.getTruncate());
     }
+
+    public static BitmapFont copyOf(BitmapFont font) {
+        return new BitmapFont(font.getData().fontFile);
+    }
 }

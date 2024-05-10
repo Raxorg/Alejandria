@@ -21,7 +21,7 @@ public class Text implements Buttonable, Movable {
     private final Rectangle bounds;
 
     public Text(BitmapFont font, String text) {
-        this.font = new BitmapFont(font.getData().fontFile);
+        this.font = font;
         this.text = text;
         hAlign = Align.left;
         bounds = new Rectangle();
@@ -147,6 +147,14 @@ public class Text implements Buttonable, Movable {
 
     public void setWidth(float width) {
         bounds.width = width;
+    }
+
+    public float getHeight() {
+        return TextUtils.getTextHeight(this);
+    }
+
+    public float getPlainWidth() {
+        return TextUtils.getTextWidth(this);
     }
 
     private void updateBounds() {

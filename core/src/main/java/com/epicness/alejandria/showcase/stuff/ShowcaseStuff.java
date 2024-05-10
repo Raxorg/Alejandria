@@ -9,6 +9,7 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.TOP_S
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
 import com.epicness.fundamentals.stuff.Sprited;
@@ -24,7 +25,7 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
 
     @Override
     public void initializeStuff() {
-        title = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
+        title = new SpritedText(sharedAssets.getPixel(), copyOf(sharedAssets.getPixelFont()));
         title.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         title.setTextTargetWidth(CAMERA_WIDTH);
         title.setY(TOP_STRIPE_Y);
@@ -55,7 +56,7 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         next.setSize(SHOWCASE_BUTTON_SIZE);
         next.setX(NEXT_BUTTON_X);
 
-        information = new SpritedText(sharedAssets.getPixel(), sharedAssets.getPixelFont());
+        information = new SpritedText(sharedAssets.getPixel(), copyOf(sharedAssets.getPixelFont()));
         information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
         information.setTextTargetWidth(CAMERA_WIDTH * 0.9f);
         information.setFontScale(5f);
