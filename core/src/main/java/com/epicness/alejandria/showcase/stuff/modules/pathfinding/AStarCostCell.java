@@ -6,20 +6,24 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Text;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.SpriteDrawable;
 
-public class AlternativeAStarCell {
+public class AStarCostCell implements SpriteDrawable, Buttonable, Movable {
 
     public final int col, row;
     private final SpritedText spritedText;
     private final Text gCostText, hCostText;
     public int gCost, hCost, fCost;
-    public AlternativeAStarCell previousCell;
+    public AStarCostCell previousCell;
     public boolean enabled;
 
-    public AlternativeAStarCell(int col, int row, Sprite pixel, BitmapFont font, BitmapFont smallerFont) {
+    public AStarCostCell(int col, int row, Sprite pixel, BitmapFont font, BitmapFont smallerFont) {
         this.col = col;
         this.row = row;
         spritedText = new SpritedText(pixel, font);
+        spritedText.setText("F");
         gCostText = new Text(smallerFont);
         gCostText.setText("G");
         hCostText = new Text(smallerFont);
@@ -27,29 +31,36 @@ public class AlternativeAStarCell {
         enabled = true;
     }
 
+    @Override
     public void draw(SpriteBatch spriteBatch) {
         spritedText.draw(spriteBatch);
         gCostText.draw(spriteBatch);
         hCostText.draw(spriteBatch);
     }
 
+    @Override
     public boolean contains(float x, float y) {
         return spritedText.contains(x, y);
     }
 
+    @Override
     public float getX() {
         return spritedText.getX();
     }
 
+    @Override
+    public void translateX(float amount) {
+        spritedText.translateX(amount);
+        gCostText.translateX(amount);
+        hCostText.translateX(amount);
+    }
+
+    @Override
     public float getY() {
         return spritedText.getY();
     }
 
-    public void setPosition(float x, float y) {
-        spritedText.setPosition(x, y);
-        updateCostPositions();
-    }
-
+    @Override
     public void translateY(float amount) {
         spritedText.translateY(amount);
         gCostText.translateY(amount);

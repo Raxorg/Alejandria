@@ -11,8 +11,8 @@ import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.Input;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AlternativeAStarCell;
-import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AlternativeAStarGrid;
+import com.epicness.alejandria.showcase.stuff.modules.pathfinding.AStarCostCell;
+import com.epicness.alejandria.showcase.stuff.modules.pathfinding.GenericGrid;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,9 +20,7 @@ import java.util.List;
 
 public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
 
-    private AlternativeAStarGrid grid;
-    private List<AlternativeAStarCell> openList;
-    private List<AlternativeAStarCell> closedList;
+    private GenericGrid<AStarCostCell> grid;
 
     public AlternativeAStar() {
         super("Alternative A Star", "Based on Code Monkey's tutorial\n\nLeft click to pathfind\n\nRight click to toggle obstacles");
@@ -37,7 +35,7 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
 
     @Override
     public void touchDown(float x, float y, int button) {
-        AlternativeAStarCell cell;
+        AStarCostCell cell;
         if (button == Input.Buttons.RIGHT) {
             cell = grid.getCellAtPosition(x, y);
             cell.enabled = !cell.enabled;
@@ -56,7 +54,7 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         cell = grid.getCellAtPosition(x, y);
         if (cell == null) return;
 
-        List<AlternativeAStarCell> path = findPath(0, 0, cell.col, cell.row);
+        List<AStarCostCell> path = findPath(0, 0, cell.col, cell.row);
         if (path == null) return;
 
         for (int i = 0; i < path.size(); i++) {
@@ -64,21 +62,17 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         }
     }
 
-    @Override
-    public void keyDown(int keycode) {
-
-    }
-
-    private List<AlternativeAStarCell> findPath(int startCol, int startRow, int endCol, int endRow) {
-        AlternativeAStarCell startCell = grid.getCell(startCol, startRow);
-        AlternativeAStarCell endCell = grid.getCell(endCol, endRow);
-        openList = new ArrayList<>();
+    @SuppressWarnings("SameParameterValue")
+    private List<AStarCostCell> findPath(int startCol, int startRow, int endCol, int endRow) {
+        AStarCostCell startCell = grid.getCell(startCol, startRow);
+        AStarCostCell endCell = grid.getCell(endCol, endRow);
+        List<AStarCostCell> openList = new ArrayList<>();
         openList.add(startCell);
-        closedList = new ArrayList<>();
+        List<AStarCostCell> closedList = new ArrayList<>();
 
         for (int c = 0; c < grid.cols; c++) {
             for (int r = 0; r < grid.rows; r++) {
-                AlternativeAStarCell cell = grid.getCell(c, r);
+                AStarCostCell cell = grid.getCell(c, r);
                 cell.gCost = Integer.MAX_VALUE;
                 cell.fCost = cell.gCost + cell.hCost;
                 cell.previousCell = null;
@@ -91,7 +85,7 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         startCell.setCosts(startCell.gCost, startCell.hCost, startCell.fCost);
 
         while (openList.size() > 0) {
-            AlternativeAStarCell currentCell = getLowestFCostCell(openList);
+            AStarCostCell currentCell = getLowestFCostCell(openList);
             if (currentCell == endCell) {
                 return calculatePath(endCell);
             }
@@ -100,9 +94,9 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
             closedList.add(currentCell);
             currentCell.setColor(FOREST);
 
-            List<AlternativeAStarCell> neighbors = getNeighbors(currentCell);
+            List<AStarCostCell> neighbors = getNeighbors(currentCell);
             for (int i = 0; i < neighbors.size(); i++) {
-                AlternativeAStarCell neighbor = neighbors.get(i);
+                AStarCostCell neighbor = neighbors.get(i);
                 if (closedList.contains(neighbor)) continue;
                 if (!neighbor.enabled) {
                     closedList.add(neighbor);
@@ -127,15 +121,15 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         return null;
     }
 
-    private int calculateHCost(AlternativeAStarCell a, AlternativeAStarCell b) {
+    private int calculateHCost(AStarCostCell a, AStarCostCell b) {
         int xDistance = Math.abs(a.col - b.col);
         int yDistance = Math.abs(a.row - b.row);
         int remaining = Math.abs(xDistance - yDistance);
         return MOVE_DIAGONALLY_COST * Math.min(xDistance, yDistance) + MOVE_STRAIGHT_COST * remaining;
     }
 
-    private AlternativeAStarCell getLowestFCostCell(List<AlternativeAStarCell> cellList) {
-        AlternativeAStarCell lowestFCostCell = cellList.get(0);
+    private AStarCostCell getLowestFCostCell(List<AStarCostCell> cellList) {
+        AStarCostCell lowestFCostCell = cellList.get(0);
         for (int i = 0; i < cellList.size(); i++) {
             if (cellList.get(i).fCost < lowestFCostCell.fCost) {
                 lowestFCostCell = cellList.get(i);
@@ -144,10 +138,10 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         return lowestFCostCell;
     }
 
-    private List<AlternativeAStarCell> calculatePath(AlternativeAStarCell endCell) {
-        List<AlternativeAStarCell> path = new ArrayList<>();
+    private List<AStarCostCell> calculatePath(AStarCostCell endCell) {
+        List<AStarCostCell> path = new ArrayList<>();
         path.add(endCell);
-        AlternativeAStarCell currentCell = endCell;
+        AStarCostCell currentCell = endCell;
         while (currentCell.previousCell != null) {
             path.add(currentCell.previousCell);
             currentCell = currentCell.previousCell;
@@ -156,8 +150,8 @@ public class AlternativeAStar extends Module<AlternativeAStarDrawable> {
         return path;
     }
 
-    private List<AlternativeAStarCell> getNeighbors(AlternativeAStarCell cell) {
-        List<AlternativeAStarCell> neighbors = new ArrayList<>();
+    private List<AStarCostCell> getNeighbors(AStarCostCell cell) {
+        List<AStarCostCell> neighbors = new ArrayList<>();
 
         if (cell.col - 1 >= 0) {
             // Left
