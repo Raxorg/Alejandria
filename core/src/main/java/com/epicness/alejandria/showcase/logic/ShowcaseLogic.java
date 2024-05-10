@@ -26,6 +26,7 @@ import com.epicness.alejandria.showcase.modules.masking.ShapeDrawerMasking;
 import com.epicness.alejandria.showcase.modules.masking.ShapeRendererMasking;
 import com.epicness.alejandria.showcase.modules.optimization.QuadTree;
 import com.epicness.alejandria.showcase.modules.pathfinding.AStar;
+import com.epicness.alejandria.showcase.modules.pathfinding.AlternativeAStar;
 import com.epicness.alejandria.showcase.modules.patterns.CantorGasket;
 import com.epicness.alejandria.showcase.modules.patterns.DragonCurve;
 import com.epicness.alejandria.showcase.modules.patterns.Phyllotaxis;
@@ -104,6 +105,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new QuadTree());
         // Pathfinding
         registerHandler(new AStar());
+        registerHandler(new AlternativeAStar());
         // Procedural
         registerHandler(new Lightning());
         registerHandler(new PixmapManipulation());

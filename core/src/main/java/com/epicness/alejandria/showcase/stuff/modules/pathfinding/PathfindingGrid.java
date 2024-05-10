@@ -1,12 +1,7 @@
 package com.epicness.alejandria.showcase.stuff.modules.pathfinding;
 
-import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
-import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
-
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.List;
 
@@ -14,8 +9,7 @@ public class PathfindingGrid {
 
     private final PathfindingCell[][] cells;
 
-    public PathfindingGrid(Sprite cellSprite, float cellSize) {
-        int columns = GRID_COLUMNS, rows = GRID_ROWS;
+    public PathfindingGrid(Sprite cellSprite, float cellSize, int columns, int rows) {
         cells = new PathfindingCell[columns][];
 
         for (int column = 0; column < columns; column++) {
@@ -58,14 +52,20 @@ public class PathfindingGrid {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        ScreenUtils.clear(Color.BLACK);
-        spriteBatch.begin();
-        for (int column = 0; column < GRID_COLUMNS; column++) {
-            for (int row = 0; row < GRID_ROWS; row++) {
+        for (int column = 0; column < cells.length; column++) {
+            for (int row = 0; row < cells[column].length; row++) {
                 cells[column][row].draw(spriteBatch);
             }
         }
-        spriteBatch.end();
+    }
+
+    public void setY(float y) {
+        float gridY = cells[0][0].getY();
+        for (int c = 0; c < cells.length; c++) {
+            for (int r = 0; r < cells[c].length; r++) {
+                cells[c][r].translateY(y - gridY);
+            }
+        }
     }
 
     public PathfindingCell[][] getCells() {

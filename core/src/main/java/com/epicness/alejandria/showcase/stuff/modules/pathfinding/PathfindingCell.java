@@ -31,6 +31,14 @@ public class PathfindingCell {
         sprite.setPosition(x, y);
     }
 
+    public float getY() {
+        return sprite.getY();
+    }
+
+    public void translateY(float amount) {
+        sprite.translateY(amount);
+    }
+
     public void setColor(Color color) {
         sprite.setColor(color);
     }
