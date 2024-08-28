@@ -1,4 +1,4 @@
-package com.epicness.fundamentals.logic;
+package com.epicness.fundamentals.logic.handlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;

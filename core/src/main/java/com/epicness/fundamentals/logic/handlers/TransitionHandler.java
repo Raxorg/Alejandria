@@ -1,8 +1,10 @@
-package com.epicness.fundamentals.logic;
+package com.epicness.fundamentals.logic.handlers;
 
 import com.epicness.fundamentals.SharedResources;
 import com.epicness.fundamentals.assets.Assets;
 import com.epicness.fundamentals.initializer.Initializer;
+import com.epicness.fundamentals.logic.CompletionListener;
+import com.epicness.fundamentals.logic.SharedLogic;
 
 import java.util.ArrayList;
 import java.util.List;

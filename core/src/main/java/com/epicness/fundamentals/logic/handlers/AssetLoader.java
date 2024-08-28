@@ -1,6 +1,7 @@
-package com.epicness.fundamentals.logic;
+package com.epicness.fundamentals.logic.handlers;
 
 import com.epicness.fundamentals.assets.Assets;
+import com.epicness.fundamentals.logic.CompletionListener;
 
 import java.util.List;
 
