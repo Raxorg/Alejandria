@@ -81,7 +81,7 @@ public class Screen3D<S extends Shape3D<?, ?>> {
         return shape;
     }
 
-    public void setScreen2D(Drawable2D drawable2D) {
+    public void setDrawable2D(Drawable2D drawable2D) {
         this.drawable2D = drawable2D;
     }
 }
