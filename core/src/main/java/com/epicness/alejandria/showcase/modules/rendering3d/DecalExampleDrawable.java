@@ -12,13 +12,13 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
-public class DecalDrawable implements ModuleDrawable {
+public class DecalExampleDrawable implements ModuleDrawable {
 
     private final PerspectiveCamera camera;
     private final DecalBatch decalBatch;
     private final Decal decal;
 
-    public DecalDrawable(Sprite glowSprite) {
+    public DecalExampleDrawable(Sprite glowSprite) {
         camera = new PerspectiveCamera(90f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.translate(0f, 0f, 5f);
 
@@ -41,5 +41,9 @@ public class DecalDrawable implements ModuleDrawable {
 
     public PerspectiveCamera getCamera() {
         return camera;
+    }
+
+    public Decal getDecal() {
+        return decal;
     }
 }

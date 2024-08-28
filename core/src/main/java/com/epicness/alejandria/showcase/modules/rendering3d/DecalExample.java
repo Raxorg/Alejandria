@@ -1,26 +1,31 @@
 package com.epicness.alejandria.showcase.modules.rendering3d;
 
+import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class Decal extends Module<DecalDrawable> {
+public class DecalExample extends Module<DecalExampleDrawable> {
 
     private FirstPersonCameraController controller;
+    private Decal decal;
 
-    public Decal() {
-        super("Decal", "Demonstrates rendering of a textured decal\n\nWASD and drag to move");
+    public DecalExample() {
+        super("Decal example", "Demonstrates rendering of a textured decal\n\nWASD and drag to move");
     }
 
     @Override
-    protected DecalDrawable setup() {
-        drawable = new DecalDrawable(sharedAssets.getGlow());
+    protected DecalExampleDrawable setup() {
+        drawable = new DecalExampleDrawable(sharedAssets.getGlow());
         controller = new FirstPersonCameraController(drawable.getCamera());
         controller.setVelocity(10f);
+        decal = drawable.getDecal();
+
         return drawable;
     }
 
     @Override
     public void update(float delta) {
+        decal.rotateY(delta * 45f);
         controller.update(delta);
     }
 
