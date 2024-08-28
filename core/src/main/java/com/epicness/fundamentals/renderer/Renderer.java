@@ -4,9 +4,11 @@ import static com.epicness.fundamentals.assets.SharedAssetPaths.SPRITESNEAREST_A
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.stuff.SharedStuff;
 import com.epicness.fundamentals.stuff.Stuff;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Drawable2D;
 
 public abstract class Renderer<S extends Stuff<?>> {
 
@@ -48,6 +50,12 @@ public abstract class Renderer<S extends Stuff<?>> {
 
     public ShapeDrawerPlus getShapeDrawer() {
         return shapeDrawer;
+    }
+
+    protected void drawArray(Array<? extends Drawable2D> array) {
+        for (int i = 0; i < array.size; i++) {
+            array.get(i).draw(spriteBatch, shapeDrawer);
+        }
     }
 
     // Structure
