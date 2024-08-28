@@ -1,19 +1,25 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
+import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Rectangle extends com.badlogic.gdx.math.Rectangle {
+public class Rectangle extends com.badlogic.gdx.math.Rectangle implements ShapeDrawable {
 
     public final Color borderColor, fillColor;
     private float thickness;
 
-    public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor) {
+    public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor, float thickness) {
         super(x, y, w, h);
-        this.borderColor = new Color(borderColor);
-        this.fillColor = new Color(fillColor);
-        thickness = 5f;
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
+        this.thickness = thickness;
+    }
+
+    public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor) {
+        this(x, y, w, h, borderColor, fillColor, 5f);
     }
 
     public Rectangle(float x, float y, float w, float h, Color color) {
@@ -29,7 +35,7 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
     }
 
     public Rectangle(Color borderColor, Color fillColor) {
-        this(0f, 0f, 0f, 0f, borderColor, fillColor);
+        this(0f, 0f, 5f, 5f, borderColor, fillColor);
     }
 
     public Rectangle(Color color) {
@@ -48,7 +54,8 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
         shapeDrawer.rectangle(this, borderColor, thickness);
     }
 
-    public void draw(ShapeDrawer shapeDrawer) {
+    @Override
+    public void draw(ShapeDrawerPlus shapeDrawer) {
         drawFilled(shapeDrawer);
         drawBorder(shapeDrawer);
     }
