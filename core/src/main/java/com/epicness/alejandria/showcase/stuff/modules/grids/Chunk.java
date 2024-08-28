@@ -5,6 +5,7 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 import com.epicness.fundamentals.utils.Random;
 
@@ -32,7 +33,7 @@ public class Chunk {
         }
     }
 
-    public void drawCells(ShapeDrawer shapeDrawer) {
+    public void drawCells(ShapeDrawerPlus shapeDrawer) {
         for (int i = 0; i < cells.size(); i++) {
             cells.get(i).draw(shapeDrawer);
         }
