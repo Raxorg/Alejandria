@@ -6,7 +6,7 @@ import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelCreator;
 public class CylinderCreator extends ModelCreator<CylinderProperties> {
 
     public CylinderCreator(float width, float height, float depth, float angleTo) {
-        super(new CylinderProperties(width, height, depth, angleTo));
+        super(new CylinderProperties(width, height, depth, angleTo), 5);
     }
 
     @Override
