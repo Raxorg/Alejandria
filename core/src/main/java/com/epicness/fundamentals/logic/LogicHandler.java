@@ -54,4 +54,8 @@ public abstract class LogicHandler<G extends Game, A extends Assets, L extends L
         this.renderer = renderer;
         this.stuff = stuff;
     }
+
+    protected final <H extends LogicHandler<?, ?, ?, ?, ?>> H get(Class<H> handlerClass) {
+        return logic.get(handlerClass);
+    }
 }
