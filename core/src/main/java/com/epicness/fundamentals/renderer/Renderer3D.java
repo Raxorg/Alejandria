@@ -3,8 +3,10 @@ package com.epicness.fundamentals.renderer;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.fundamentals.stuff.Stuff;
 
 public abstract class Renderer3D<S extends Stuff<?>> extends Renderer<S> {
@@ -22,5 +24,9 @@ public abstract class Renderer3D<S extends Stuff<?>> extends Renderer<S> {
 
     public PerspectiveCamera getPerspectiveCamera() {
         return perspectiveCamera;
+    }
+
+    protected void clearDepth(Color color) {
+        ScreenUtils.clear(color, true);
     }
 }
