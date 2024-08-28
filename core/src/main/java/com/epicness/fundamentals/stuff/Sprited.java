@@ -9,9 +9,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.SpriteDrawable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class Sprited implements Buttonable, Transformable {
+public class Sprited implements Buttonable, Transformable, SpriteDrawable {
 
     private final Sprite sprite;
 
@@ -23,6 +24,7 @@ public class Sprited implements Buttonable, Transformable {
         this.sprite.setRegion(sprite);
     }
 
+    @Override
     public void draw(SpriteBatch spriteBatch) {
         sprite.draw(spriteBatch);
     }
@@ -162,8 +164,16 @@ public class Sprited implements Buttonable, Transformable {
         setFlip(flipX, sprite.isFlipY());
     }
 
+    public void flipX() {
+        setFlipX(!isFlipX());
+    }
+
     public void setFlipY(boolean flipY) {
         setFlip(sprite.isFlipX(), flipY);
+    }
+
+    public void flipY() {
+        setFlipY(!isFlipY());
     }
 
     public Color getColor() {
