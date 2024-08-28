@@ -5,12 +5,12 @@ import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_C
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.LAYERED_CIRCLE_RADIUS;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.SHAPE_SIZE;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

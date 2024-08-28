@@ -3,9 +3,9 @@ package com.epicness.alejandria.showcase.modules.fun;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.CYAN;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

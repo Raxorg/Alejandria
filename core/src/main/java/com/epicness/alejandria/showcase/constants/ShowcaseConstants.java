@@ -5,10 +5,10 @@ import static com.badlogic.gdx.graphics.Color.GREEN;
 import static com.badlogic.gdx.graphics.Color.ORANGE;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.graphics.Color;
 

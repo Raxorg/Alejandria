@@ -5,8 +5,8 @@ import static com.epicness.alejandria.showcase.constants.PatternsConstants.CANTO
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;

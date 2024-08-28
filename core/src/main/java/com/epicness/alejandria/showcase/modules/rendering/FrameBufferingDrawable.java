@@ -6,11 +6,11 @@ import static com.badlogic.gdx.graphics.GL20.GL_ONE;
 import static com.badlogic.gdx.graphics.GL20.GL_ONE_MINUS_SRC_ALPHA;
 import static com.badlogic.gdx.graphics.GL20.GL_SRC_ALPHA;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
 
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;

@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
 import static com.badlogic.gdx.graphics.Color.ORANGE;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.WHITE_25;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -67,7 +67,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
         draggedSquare.translate(x - pivot.x, y - pivot.y);
         pivot.set(x, y);
 
-        dropArea.setColor(WHITE_CLEAR_25);
+        dropArea.setColor(WHITE_25);
         if (dropArea.getBoundingRectangle().overlaps(draggedSquare.getBoundingRectangle())) {
             dropArea.setColor(LIGHT_GRASS);
         }
@@ -83,7 +83,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
             draggedSquare.setPosition(dropX, dropArea.getY() + 10f);
             mouseMoved(x, y);
         }
-        dropArea.setColor(WHITE_CLEAR_25);
+        dropArea.setColor(WHITE_25);
         draggedSquare = null;
     }
 }

@@ -4,10 +4,10 @@ import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.CIRCLE_MASK_RADIUS;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.MASKED_CIRCLE_RADIUS;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -29,7 +29,7 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
         maskedCircle.setColor(DARK_DIRT);
 
         circleMask = new Circle(CIRCLE_MASK_RADIUS);
-        circleMask.setPosition(CAMERA_HALF_WIDTH- CIRCLE_MASK_RADIUS, CAMERA_HALF_HEIGHT);
+        circleMask.setPosition(CAMERA_HALF_WIDTH - CIRCLE_MASK_RADIUS, CAMERA_HALF_HEIGHT);
         circleMask.setColor(DARK_GRASS);
 
         triangleMask = new Triangle(

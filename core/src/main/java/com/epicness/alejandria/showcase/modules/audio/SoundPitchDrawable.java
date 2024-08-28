@@ -3,8 +3,8 @@ package com.epicness.alejandria.showcase.modules.audio;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_TOP;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

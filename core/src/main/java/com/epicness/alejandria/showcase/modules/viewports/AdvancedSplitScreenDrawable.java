@@ -9,16 +9,16 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
-import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.constants.ColorConstants.BLACK_50;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -89,7 +89,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
         mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         mask.rotate(90f);
-        mask.setColor(BLACK_CLEAR_50);
+        mask.setColor(BLACK_50);
     }
 
     private void initDivider(Sprite dividerSprite) {

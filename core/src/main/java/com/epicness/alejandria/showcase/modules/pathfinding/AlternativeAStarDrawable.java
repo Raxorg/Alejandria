@@ -4,7 +4,7 @@ import static com.epicness.alejandria.showcase.constants.AStarConstants.CM_A_STA
 import static com.epicness.alejandria.showcase.constants.AStarConstants.CM_A_STAR_GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.CM_A_STAR_GRID_ROWS;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

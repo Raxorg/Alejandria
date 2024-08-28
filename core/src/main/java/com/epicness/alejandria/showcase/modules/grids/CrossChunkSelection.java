@@ -8,7 +8,7 @@ import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionCons
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_X;
 import static com.epicness.alejandria.showcase.constants.CrossChunkSelectionConstants.GRID_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;

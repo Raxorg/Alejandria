@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.html;
 
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
 
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.epicness.alejandria.showcase.logic.Module;

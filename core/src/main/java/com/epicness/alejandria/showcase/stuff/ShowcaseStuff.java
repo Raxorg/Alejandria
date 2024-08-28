@@ -6,9 +6,9 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.NEXT_
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.TOP_STRIPE_Y;
+import static com.epicness.fundamentals.constants.ColorConstants.WHITE_25;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
@@ -29,14 +29,14 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         title.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         title.setTextTargetWidth(CAMERA_WIDTH);
         title.setY(TOP_STRIPE_Y);
-        title.setBackgroundColor(WHITE_CLEAR_25);
+        title.setBackgroundColor(WHITE_25);
         title.setFontScale(5f);
 
         showcase = new Showcase();
 
         bottomStripe = new Sprited(sharedAssets.getPixel());
         bottomStripe.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
-        bottomStripe.setColor(WHITE_CLEAR_25);
+        bottomStripe.setColor(WHITE_25);
 
         previous = new Sprited(assets.getArrow());
         previous.setSize(SHOWCASE_BUTTON_SIZE);

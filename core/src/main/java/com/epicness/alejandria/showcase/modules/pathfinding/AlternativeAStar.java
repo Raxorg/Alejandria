@@ -5,8 +5,8 @@ import static com.badlogic.gdx.graphics.Color.FOREST;
 import static com.badlogic.gdx.graphics.Color.ROYAL;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.MOVE_DIAGONALLY_COST;
 import static com.epicness.alejandria.showcase.constants.AStarConstants.MOVE_STRAIGHT_COST;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.Input;

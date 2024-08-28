@@ -5,7 +5,7 @@ import static com.epicness.alejandria.showcase.constants.HTMLConstants.ALERT_BUT
 import static com.epicness.alejandria.showcase.constants.HTMLConstants.ALERT_BUTTON_WIDTH;
 import static com.epicness.alejandria.showcase.constants.HTMLConstants.ALERT_BUTTON_X;
 import static com.epicness.alejandria.showcase.constants.HTMLConstants.ALERT_BUTTON_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
 
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;

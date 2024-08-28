@@ -5,8 +5,8 @@ import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_9;
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
