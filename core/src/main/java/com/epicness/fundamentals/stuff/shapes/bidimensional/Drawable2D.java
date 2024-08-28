@@ -5,5 +5,5 @@ import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 
 public interface Drawable2D {
 
-    void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawerPlus);
+    void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer);
 }
