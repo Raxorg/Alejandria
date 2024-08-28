@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.FunConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.BALL_COLORS;
+import static com.epicness.alejandria.showcase.constants.FunConstants.LINE_THICKNESS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.SPACING;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
@@ -36,12 +37,22 @@ public class BeepingBallsDrawable implements ModuleDrawable {
         ScreenUtils.clear(BLACK);
 
         spriteBatch.begin();
-        shapeDrawer.line(100f, CAMERA_HALF_HEIGHT, 100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
-        shapeDrawer.line(CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT, CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS);
+
+        shapeDrawer.line(
+            100f, CAMERA_HALF_HEIGHT,
+            100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS,
+            LINE_THICKNESS
+        );
+        shapeDrawer.line(
+            CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT,
+            CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS,
+            LINE_THICKNESS
+        );
+
         for (int i = 0; i < BALLS - 1; i++) {
             BeepingBall ball = balls[i];
             BeepingBall nextBall = balls[i + 1];
-            shapeDrawer.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter());
+            shapeDrawer.line(ball.getBackgroundCenter(), nextBall.getBackgroundCenter(), LINE_THICKNESS);
         }
 
         for (int i = 0; i < BALLS; i++) {

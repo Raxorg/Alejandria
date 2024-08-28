@@ -54,6 +54,7 @@ public class FunConstants {
     public static final float SPACING = 15f;
     public static final int BALLS = 24;
     public static final float VOLUME = 0.4f;
+    public static final float LINE_THICKNESS = 3f;
 
     // Falling Sand
     public static final int SAND_DIMENSION = 50;

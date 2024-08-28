@@ -6,7 +6,6 @@ import static com.epicness.alejandria.showcase.constants.FunConstants.VOLUME;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.fun.BeepingBall;
@@ -19,7 +18,6 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
 
     @Override
     public BeepingBallsDrawable setup() {
-        Gdx.gl.glLineWidth(3f);
         drawable = new BeepingBallsDrawable(assets.getCircle(), assets.getCircleGlow());
         BeepingBall[] balls = drawable.getBalls();
         for (int i = 0; i < BALLS; i++) {
@@ -60,10 +58,5 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
             y += ball.startingY;
             balls[i].setOriginBasedPosition(x, y);
         }
-    }
-
-    @Override
-    public void exit() {
-        Gdx.gl.glLineWidth(1f);
     }
 }
