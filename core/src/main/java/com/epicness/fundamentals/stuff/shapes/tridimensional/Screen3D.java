@@ -24,6 +24,7 @@ public class Screen3D<S extends Shape3D<?, ?>> {
     private final FrameBuffer frameBuffer;
     private final Sprite bufferSprite;
     private Drawable2D drawable2D;
+    private boolean flipX;
 
     public Screen3D(S shape, float offsetX2D, float offsetY2D, float cameraWidth, float cameraHeight, Drawable2D drawable2D) {
         this.shape = shape;
@@ -65,7 +66,7 @@ public class Screen3D<S extends Shape3D<?, ?>> {
         frameBuffer.end();
         // Set the frame buffer's texture as the decal's texture
         bufferSprite.setRegion(frameBuffer.getColorBufferTexture());
-        bufferSprite.flip(false, true);
+        bufferSprite.flip(flipX, true);
         shape.setSprite(bufferSprite);
     }
 
@@ -83,5 +84,9 @@ public class Screen3D<S extends Shape3D<?, ?>> {
 
     public void setDrawable2D(Drawable2D drawable2D) {
         this.drawable2D = drawable2D;
+    }
+
+    public void setFlipX(boolean flipX) {
+        this.flipX = flipX;
     }
 }

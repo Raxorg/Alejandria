@@ -125,8 +125,42 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         translate(0f, 0f, amount);
     }
 
+    public final void setX(float x) {
+        translateX(x - getX());
+    }
+
+    public final void setY(float y) {
+        translateY(y - getY());
+    }
+
+    public final void setZ(float z) {
+        translateZ(z - getZ());
+    }
+
+    public final Vector3 getPosition(Vector3 result) {
+        return result.set(getX(), getY(), getZ());
+    }
+
+    public final void setPosition(float x, float y, float z) {
+        setX(x);
+        setY(y);
+        setZ(z);
+    }
+
+    public final void setPosition(Vector3 position) {
+        setPosition(position.x, position.y, position.z);
+    }
+
+    public float getXRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.X);
+    }
+
     public float getYRotation() {
         return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Y);
+    }
+
+    public float getZRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Z);
     }
 
     public final void rotate(float xDegrees, float yDegrees, float zDegrees) {
@@ -144,6 +178,10 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         updateDebugLines();
     }
 
+    public final void rotate(Vector3 rotation) {
+        rotate(rotation.x, rotation.y, rotation.z);
+    }
+
     public final void rotateX(float degrees) {
         rotate(degrees, 0f, 0f);
     }
@@ -154,6 +192,32 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
 
     public final void rotateZ(float degrees) {
         rotate(0f, 0f, degrees);
+    }
+
+    public final void setXRotation(float degrees) {
+        rotateX(degrees - getXRotation());
+    }
+
+    public final void setYRotation(float degrees) {
+        rotateY(degrees - getYRotation());
+    }
+
+    public final void setZRotation(float degrees) {
+        rotateZ(degrees - getZRotation());
+    }
+
+    public final Vector3 getRotation(Vector3 result) {
+        return result.set(getXRotation(), getYRotation(), getZRotation());
+    }
+
+    public final void setRotation(float xDegrees, float yDegrees, float zDegrees) {
+        setXRotation(xDegrees);
+        setYRotation(yDegrees);
+        setZRotation(zDegrees);
+    }
+
+    public final void setRotation(Vector3 rotation) {
+        setRotation(rotation.x, rotation.y, rotation.z);
     }
 
     public final void setColor(Color color) {

@@ -22,7 +22,7 @@ public abstract class ModelProperties {
         return new Material(
             MATERIAL_ID,
             new BlendingAttribute(),
-            FloatAttribute.createAlphaTest(0.5f),
+            FloatAttribute.createAlphaTest(0f),
             IntAttribute.createCullFace(GL_NONE)
         );
     }
