@@ -1,7 +1,6 @@
 package com.epicness.alejandria.showcase.stuff.modules.grids;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
-import static com.badlogic.gdx.graphics.Color.WHITE;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -11,8 +10,6 @@ import com.epicness.fundamentals.utils.Random;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class Chunk {
 
@@ -39,7 +36,7 @@ public class Chunk {
         }
     }
 
-    public void drawBounds(ShapeDrawer shapeDrawer) {
-        shapeDrawer.rectangle(bounds, WHITE);
+    public void drawBounds(ShapeDrawerPlus shapeDrawer) {
+        bounds.drawBorder(shapeDrawer);
     }
 }
