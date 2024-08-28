@@ -1,11 +1,14 @@
 package com.epicness.alejandria.showcase.modules.rendering3d;
 
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
+import com.badlogic.gdx.math.Vector3;
 import com.epicness.alejandria.showcase.logic.Module;
 
 public class TexturedCube extends Module<TexturedCubeDrawable> {
 
     private FirstPersonCameraController controller;
+    private ModelInstance cube;
 
     public TexturedCube() {
         super(
@@ -19,11 +22,14 @@ public class TexturedCube extends Module<TexturedCubeDrawable> {
         drawable = new TexturedCubeDrawable(sharedAssets.getWeirdShape());
         controller = new FirstPersonCameraController(drawable.getCamera());
         controller.setVelocity(10f);
+        cube = drawable.getModelInstance();
+
         return drawable;
     }
 
     @Override
     public void update(float delta) {
+        cube.transform.rotate(Vector3.Y, delta * 45f);
         controller.update(delta);
     }
 
