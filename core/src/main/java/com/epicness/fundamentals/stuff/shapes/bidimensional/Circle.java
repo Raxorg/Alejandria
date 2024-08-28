@@ -3,24 +3,34 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Transformable {
+public class Circle implements Transformable, Buttonable, ShapeDrawable {
 
     public final float radius;
     private float x, y;
     private final Color borderColor, fillColor;
     private float thickness;
 
-    public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
+    public Circle(float x, float y, float radius, Color borderColor, Color fillColor, float thickness) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.borderColor = new Color(borderColor);
-        this.fillColor = new Color(fillColor);
-        thickness = 1f;
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
+        this.thickness = thickness;
+    }
+
+    public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
+        this(x, y, radius, borderColor, fillColor, 3f);
+    }
+
+    public Circle(float x, float y, float radius, Color color, float thickness) {
+        this(x, y, radius, color, color, thickness);
     }
 
     public Circle(float radius, Color borderColor, Color fillColor) {
@@ -67,6 +77,7 @@ public class Circle implements Transformable {
         shapeDrawer.circle(x + radius, y + radius, radius, thickness, borderColor);
     }
 
+    @Override
     public void draw(ShapeDrawerPlus shapeDrawer) {
         drawFilled(shapeDrawer);
         drawBorder(shapeDrawer);
@@ -75,6 +86,13 @@ public class Circle implements Transformable {
     public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(borderColor);
         shapeRenderer.circle(x + radius, y + radius, radius);
+    }
+
+    @Override
+    public boolean contains(float x, float y) {
+        x = this.x - x + radius;
+        y = this.y - y + radius;
+        return x * x + y * y <= radius * radius;
     }
 
     @Override
