@@ -23,4 +23,8 @@ public interface Transformable extends Movable, Scalable, Rotatable {
     default Vector2 getCenter(Vector2 result) {
         return result.set(getCenterX(), getCenterY());
     }
+
+    default Vector2 getCenter() {
+        return getCenter(new Vector2());
+    }
 }
