@@ -30,7 +30,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
 
     @Override
     protected FallingSandDrawable setup() {
-        drawable = new FallingSandDrawable(renderer.getShapeDrawer());
+        drawable = new FallingSandDrawable();
 
         grid = new boolean[SAND_DIMENSION][];
         for (int column = 0; column < SAND_DIMENSION; column++) {
@@ -79,7 +79,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
                 if (!grid[column][row]) continue;
 
                 if (!grid[column][row - 1]) {
-                    spawnSand(column, row - 1, sandMatrix[column][row].borderColor);
+                    spawnSand(column, row - 1, sandMatrix[column][row].fillColor);
                     clearSand(column, row);
                     continue;
                 }
@@ -99,10 +99,10 @@ public class FallingSand extends Module<FallingSandDrawable> {
                 if (!canDiagonal) continue;
 
                 if (MathUtils.randomBoolean(diagonalChance)) {
-                    spawnSand(column - 1, row - 1, sandMatrix[column][row].borderColor);
+                    spawnSand(column - 1, row - 1, sandMatrix[column][row].fillColor);
                     clearSand(column, row);
                 } else {
-                    spawnSand(column + 1, row - 1, sandMatrix[column][row].borderColor);
+                    spawnSand(column + 1, row - 1, sandMatrix[column][row].fillColor);
                     clearSand(column, row);
                 }
             }
@@ -111,12 +111,12 @@ public class FallingSand extends Module<FallingSandDrawable> {
 
     private void clearSand(int column, int row) {
         grid[column][row] = false;
-        sandMatrix[column][row].borderColor.set(CLEAR);
+        sandMatrix[column][row].fillColor.set(CLEAR);
     }
 
     private void spawnSand(int column, int row, Color color) {
         grid[column][row] = true;
-        sandMatrix[column][row].borderColor.set(color);
+        sandMatrix[column][row].fillColor.set(color);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         mouseX = x;
         mouseY = y;
         spawningSand = true;

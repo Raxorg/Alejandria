@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.epicness.alejandria.showcase.constants.LayeredMaskingConstants.SHAPE_SIZE;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.SHAPE_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
@@ -12,6 +12,8 @@ import java.util.List;
 
 public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
+    private Circle circle1, circle2;
+
     public LayeredMasking() {
         super("Layered Masking", "Too much happening here to explain xD" +
             "\nCheck the source code");
@@ -19,13 +21,15 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
     @Override
     public LayeredMaskingDrawable setup() {
-        return new LayeredMaskingDrawable(
-            renderer.getShapeDrawer(),
+        drawable = new LayeredMaskingDrawable(
             sharedAssets.getWeirdShape(),
             sharedAssets.getSquare32(),
             sharedAssets.getSquare32Inverted(),
             sharedAssets.getPixel()
         );
+        circle1 = drawable.getCircle1();
+        circle2 = drawable.getCircle2();
+        return drawable;
     }
 
     @Override
@@ -41,16 +45,14 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
             }
         }
 
-        Circle circle1 = drawable.getCircle1();
         circle1.translateX(delta * 150f);
-        if (circle1.getX() - circle1.radius >= CAMERA_WIDTH) {
-            circle1.setX(-circle1.radius);
+        if (circle1.getX() >= CAMERA_WIDTH) {
+            circle1.setX(-circle1.getWidth());
         }
 
-        Circle circle2 = drawable.getCircle2();
         circle2.translateX(-delta * 150f);
-        if (circle2.getX() + circle2.radius <= 0f) {
-            circle2.setX(CAMERA_WIDTH + circle2.radius);
+        if (circle2.getEndX() <= 0f) {
+            circle2.setX(CAMERA_WIDTH);
         }
     }
 }

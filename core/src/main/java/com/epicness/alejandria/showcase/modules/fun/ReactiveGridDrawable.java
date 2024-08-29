@@ -16,30 +16,22 @@ import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.fun.ColorBall;
 import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCell;
-import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCellBuilder;
+import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCellGrid;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.grid.CellGrid;
-import com.epicness.fundamentals.stuff.grid.CellGridBuilder;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class ReactiveGridDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
-    private final CellGrid<ColoredCell> grid;
+    private final ColoredCellGrid grid;
     private final SnapshotArray<Sprited> colorBombs;
     private final SnapshotArray<ColorBall> colorBalls;
     private final Circle circle;
 
-    public ReactiveGridDrawable(ShapeDrawerPlus shapeDrawer, Sprite cellSprite) {
-        this.shapeDrawer = shapeDrawer;
-
-        CellGridBuilder<ColoredCell> builder = new CellGridBuilder<>(
-            new ColoredCellBuilder().sprite(cellSprite))
-            .columns(GRID_COLUMNS)
-            .rows(GRID_ROWS);
-        grid = new CellGrid<>(builder);
+    public ReactiveGridDrawable(Sprite cellSprite) {
+        grid = new ColoredCellGrid(cellSprite, GRID_COLUMNS, GRID_ROWS);
         grid.setCellSize(CELL_SIZE);
         grid.translate(GRID_X, GRID_Y);
 
@@ -52,7 +44,7 @@ public class ReactiveGridDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         ScreenUtils.clear(BLACK);
         spriteBatch.begin();
         grid.draw(spriteBatch);

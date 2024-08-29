@@ -3,13 +3,12 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 import com.epicness.fundamentals.utils.TextUtils;
-
-import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class Text implements Buttonable, Movable {
 
@@ -21,12 +20,16 @@ public class Text implements Buttonable, Movable {
     private String truncate;
     private final Rectangle bounds;
 
-    public Text(BitmapFont font) {
-        this.font = new BitmapFont(font.getData().fontFile);
-        text = "";
+    public Text(BitmapFont font, String text) {
+        this.font = font;
+        this.text = text;
         hAlign = Align.left;
         bounds = new Rectangle();
         bounds.width = 500f;
+    }
+
+    public Text(BitmapFont font) {
+        this(font, "");
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -44,8 +47,8 @@ public class Text implements Buttonable, Movable {
         );
     }
 
-    public void drawDebug(ShapeDrawer shapeDrawer) {
-        shapeDrawer.rectangle(
+    public void drawDebug(ShapeRenderer shapeRenderer) {
+        shapeRenderer.rect(
             bounds.x,
             bounds.y + yOffset,
             bounds.width,
@@ -144,6 +147,14 @@ public class Text implements Buttonable, Movable {
 
     public void setWidth(float width) {
         bounds.width = width;
+    }
+
+    public float getHeight() {
+        return TextUtils.getTextHeight(this);
+    }
+
+    public float getPlainWidth() {
+        return TextUtils.getTextWidth(this);
     }
 
     private void updateBounds() {

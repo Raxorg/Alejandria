@@ -2,20 +2,19 @@ package com.epicness.alejandria.showcase.modules.pathfinding;
 
 import static com.badlogic.gdx.Input.Keys.NUM_1;
 import static com.badlogic.gdx.Input.Keys.NUM_2;
-import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_COLUMNS;
-import static com.epicness.alejandria.showcase.constants.AStarConstants.GRID_ROWS;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
+import static com.epicness.alejandria.showcase.constants.AStarConstants.A_STAR_GRID_COLUMNS;
+import static com.epicness.alejandria.showcase.constants.AStarConstants.A_STAR_GRID_ROWS;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingCell;
-import com.epicness.alejandria.showcase.stuff.modules.pathfinding.PathfindingGrid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,14 +38,13 @@ public class AStar extends Module<AStarDrawable> {
     }
 
     public void initialize() {
+        PathfindingCell[][] cells = drawable.getGrid().getCells();
         openCells = new ArrayList<>();
         closedCells = new ArrayList<>();
         obstacleCells = new ArrayList<>();
 
-        PathfindingGrid grid = drawable.getGrid();
-        PathfindingCell[][] cells = drawable.getGrid().getCells();
-        for (int column = 0; column < GRID_COLUMNS; column++) {
-            for (int row = 0; row < GRID_ROWS; row++) {
+        for (int column = 0; column < A_STAR_GRID_COLUMNS; column++) {
+            for (int row = 0; row < A_STAR_GRID_ROWS; row++) {
                 PathfindingCell cell = cells[column][row];
                 cell.setColor(LIGHT_GRASS.cpy().lerp(DARK_GRASS, MathUtils.random(0f, 0.25f)));
                 if (MathUtils.randomBoolean(0.15f)) {
@@ -56,9 +54,9 @@ public class AStar extends Module<AStarDrawable> {
             }
         }
 
-        start = grid.getCells()[1][4];
+        start = cells[1][1];
         start.setColor(Color.BLUE);
-        target = grid.getCells()[28][25];
+        target = cells[A_STAR_GRID_COLUMNS - 2][A_STAR_GRID_ROWS - 2];
         target.setColor(Color.RED);
         openCells.add(start);
         obstacleCells.remove(start);
@@ -100,7 +98,7 @@ public class AStar extends Module<AStarDrawable> {
             return;
         }
         PathfindingCell bestCell = findBestCell();
-        checkSuccess(bestCell);
+        finished = bestCell == target;
         openCells.remove(bestCell);
         closedCells.add(bestCell);
         handleNeighbors(bestCell);
@@ -127,12 +125,6 @@ public class AStar extends Module<AStarDrawable> {
         }
         start.setColor(Color.BLUE);
         target.setColor(Color.RED);
-    }
-
-    private void checkSuccess(PathfindingCell bestCell) {
-        if (bestCell == target) {
-            finished = true;
-        }
     }
 
     private void handleNeighbors(PathfindingCell bestCell) {

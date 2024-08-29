@@ -1,0 +1,26 @@
+spritesNearest.png
+size: 69, 32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pixel
+  rotate: false
+  xy: 0, 0
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+square32
+  rotate: false
+  xy: 3, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+square32Inverted
+  rotate: false
+  xy: 37, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

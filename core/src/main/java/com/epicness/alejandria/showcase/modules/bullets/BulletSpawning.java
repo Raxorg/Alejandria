@@ -32,7 +32,7 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         Sprited gun = drawable.getGun();
         Sprited bullet = drawable.getBullet();
 
@@ -47,6 +47,8 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
 
         bulletSpeed.x = cos * BULLET_SPEED;
         bulletSpeed.y = sin * BULLET_SPEED;
+
+        sharedAssets.getShortLaser().play();
     }
 
     @Override

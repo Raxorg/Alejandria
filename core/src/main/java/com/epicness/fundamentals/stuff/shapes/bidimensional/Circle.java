@@ -2,24 +2,43 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
-import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Movable {
+public class Circle implements Transformable, Buttonable, ShapeDrawable {
 
-    public float x, y, radius;
-    private final Color color;
+    public final float radius;
+    private float x, y;
+    private final Color borderColor, fillColor;
     private float thickness;
 
-    public Circle(float x, float y, float radius, Color color) {
+    public Circle(float x, float y, float radius, Color borderColor, Color fillColor, float thickness) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
-        thickness = 1f;
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
+        this.thickness = thickness;
+    }
+
+    public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
+        this(x, y, radius, borderColor, fillColor, 3f);
+    }
+
+    public Circle(float x, float y, float radius, Color color, float thickness) {
+        this(x, y, radius, color, color, thickness);
+    }
+
+    public Circle(float radius, Color borderColor, Color fillColor) {
+        this(0f, 0f, radius, borderColor, fillColor);
+    }
+
+    public Circle(float x, float y, float radius, Color color) {
+        this(x, y, radius, color, color);
     }
 
     public Circle(float x, float y, float radius) {
@@ -42,41 +61,38 @@ public class Circle implements Movable {
         this(radius, new Color(1f, 1f, 1f, 1f));
     }
 
+    public Circle(Color color) {
+        this(5f, color);
+    }
+
     public Circle() {
         this(5f);
     }
 
-    public void draw(ShapeDrawer shapeDrawer) {
-        shapeDrawer.filledCircle(x, y, radius, color);
-    }
-
-    public void draw(ShapeRenderer shapeRenderer) {
-        shapeRenderer.setColor(color);
-        shapeRenderer.circle(x, y, radius);
+    public void drawFilled(ShapeDrawer shapeDrawer) {
+        shapeDrawer.filledCircle(x + radius, y + radius, radius, fillColor);
     }
 
     public void drawBorder(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.circle(x, y, radius, thickness, color);
+        shapeDrawer.circle(x + radius, y + radius, radius, thickness, borderColor);
     }
 
-    public float getStartX() {
-        return x - radius;
+    @Override
+    public void draw(ShapeDrawerPlus shapeDrawer) {
+        drawFilled(shapeDrawer);
+        drawBorder(shapeDrawer);
     }
 
-    public float getEndX() {
-        return x + radius;
+    public void draw(ShapeRenderer shapeRenderer) {
+        shapeRenderer.setColor(borderColor);
+        shapeRenderer.circle(x + radius, y + radius, radius);
     }
 
-    public float getStartY() {
-        return y - radius;
-    }
-
-    public float getEndY() {
-        return y + radius;
-    }
-
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(x, y);
+    @Override
+    public boolean contains(float x, float y) {
+        x = this.x - x + radius;
+        y = this.y - y + radius;
+        return x * x + y * y <= radius * radius;
     }
 
     @Override
@@ -99,12 +115,55 @@ public class Circle implements Movable {
         y += amount;
     }
 
-    public Color getColor() {
-        return color;
+    @Override
+    public float getRotation() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void rotate(float degrees) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchWidth(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchHeight(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public float getWidth() {
+        return radius * 2f;
+    }
+
+    @Override
+    public float getHeight() {
+        return radius * 2f;
+    }
+
+    public Color getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(Color color) {
+        borderColor.set(color);
+    }
+
+    public Color getFillColor() {
+        return fillColor;
+    }
+
+    public void setFillColor(Color color) {
+        fillColor.set(color);
     }
 
     public void setColor(Color color) {
-        this.color.set(color);
+        borderColor.set(color);
+        fillColor.set(color);
     }
 
     public void setThickness(float thickness) {

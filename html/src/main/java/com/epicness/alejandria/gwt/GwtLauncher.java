@@ -7,10 +7,8 @@ import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
 import com.epicness.alejandria.AlejandriaApp;
 
-/**
- * Launches the GWT application.
- */
 public class GwtLauncher extends GwtApplication {
+
     @Override
     public GwtApplicationConfiguration getConfig() {
         // Resizable application, uses available space in browser with no padding:
@@ -24,6 +22,8 @@ public class GwtLauncher extends GwtApplication {
 
     @Override
     public ApplicationListener createApplicationListener() {
-        return new AlejandriaApp();
+        AlejandriaApp app = new AlejandriaApp();
+        app.setAlertSystem(new HTMLAlertSystem());
+        return app;
     }
 }

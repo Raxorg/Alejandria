@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.AnimatedBackground;
 
@@ -39,7 +41,7 @@ public class ClippingDrawable implements ModuleDrawable {
             25f);
         background3 = new AnimatedBackground(
             200f, 200f,
-            SHOWCASE_SIZE / 2f, SHOWCASE_SIZE / 2f,
+            SHOWCASE_HALF_SIZE, SHOWCASE_HALF_SIZE,
             Color.RED.cpy(),
             pixel,
             pixel,
@@ -50,7 +52,7 @@ public class ClippingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         background1.draw(spriteBatch);
         background2.draw(spriteBatch);

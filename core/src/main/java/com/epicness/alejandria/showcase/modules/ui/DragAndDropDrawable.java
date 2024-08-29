@@ -6,12 +6,13 @@ import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_X
 import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_AREA_Y;
 import static com.epicness.alejandria.showcase.constants.UIConstants.DROP_SQUARE_SIZE;
 import static com.epicness.alejandria.showcase.constants.UIConstants.STARTING_DROP_SQUARE_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.WHITE_CLEAR_25;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.WHITE_25;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -27,7 +28,7 @@ public class DragAndDropDrawable implements ModuleDrawable {
         dropArea = new Sprited(pixelSprite);
         dropArea.setSize(DROP_AREA_WIDTH, DROP_AREA_HEIGHT);
         dropArea.setPosition(DROP_AREA_X, DROP_AREA_Y);
-        dropArea.setColor(WHITE_CLEAR_25);
+        dropArea.setColor(WHITE_25);
 
         squares = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
@@ -40,7 +41,7 @@ public class DragAndDropDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         dropArea.draw(spriteBatch);
         for (int i = 0; i < squares.size(); i++) {

@@ -8,10 +8,10 @@ import static com.epicness.alejandria.showcase.constants.PatternsConstants.CENTE
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.CENTERED_OWN_CENTER_DISTANCE;
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.UNCENTERED_CENTER_DISTANCE;
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.UNCENTERED_OWN_CENTER_DISTANCE;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.BASIC_COLORS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -23,7 +23,6 @@ public class Spiral extends Module<SpiralDrawable> {
     @SuppressWarnings("FieldCanBeLocal")
     private float centerX, centerY, x, y;
     private float time;
-    private Color[] basicColors;
     private int colorMode;
     private float centerDistance, ownCenterDistance;
     private boolean centered;
@@ -42,12 +41,6 @@ public class Spiral extends Module<SpiralDrawable> {
         dots = drawable.getDots();
         dot = null;
         time = 0f;
-        basicColors = new Color[5];
-        basicColors[0] = Color.RED;
-        basicColors[1] = Color.ORANGE;
-        basicColors[2] = Color.YELLOW;
-        basicColors[3] = Color.GREEN;
-        basicColors[4] = Color.BLUE;
         colorMode = 1;
         centered = true;
         centerDistance = CENTERED_CENTER_DISTANCE;
@@ -89,7 +82,7 @@ public class Spiral extends Module<SpiralDrawable> {
         switch (colorMode) {
             case 1:
                 for (int i = 0; i < dots.length; i++) {
-                    dots[i].setColor(basicColors[i % 5]);
+                    dots[i].setColor(BASIC_COLORS[i % 5]);
                 }
                 colorMode = 2;
                 break;

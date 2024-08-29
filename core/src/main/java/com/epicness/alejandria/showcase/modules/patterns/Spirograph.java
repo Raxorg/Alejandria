@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
-import static com.epicness.alejandria.showcase.constants.SpirographConstants.FADE_DURATION;
+import static com.epicness.alejandria.showcase.constants.PatternsConstants.FADE_DURATION;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 
@@ -24,7 +24,7 @@ public class Spirograph extends Module<SpirographDrawable> {
 
     @Override
     protected SpirographDrawable setup() {
-        drawable = new SpirographDrawable(renderer.getShapeDrawer());
+        drawable = new SpirographDrawable();
         linedBalls = drawable.getLinedBalls();
         trailLines = drawable.getTrailLines();
         auxColor = new Color();
@@ -87,7 +87,7 @@ public class Spirograph extends Module<SpirographDrawable> {
         Line line;
         for (int i = 0; i < trailLines.size; i++) {
             line = trailLines.get(i);
-            color = line.getColor();
+            color = line.getColorA();
             color.a -= delta / FADE_DURATION;
             line.setColor(color);
             if (color.a <= 0f) {

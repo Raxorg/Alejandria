@@ -24,11 +24,12 @@ import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class TexturedCubeDrawable implements ModuleDrawable {
 
-    private final ModelInstance modelInstance1;
+    private final ModelInstance modelInstance;
     private final Environment environment;
     private final ModelBatch modelBatch;
     private final Camera camera;
@@ -44,7 +45,7 @@ public class TexturedCubeDrawable implements ModuleDrawable {
             IntAttribute.createCullFace(GL20.GL_NONE));
 
         Model model = modelBuilder.createBox(5f, 5f, 5f, material, Position | Normal | TextureCoordinates);
-        modelInstance1 = new ModelInstance(model);
+        modelInstance = new ModelInstance(model);
 
         environment = new Environment();
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -57,11 +58,11 @@ public class TexturedCubeDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         modelBatch.begin(camera);
-        modelBatch.render(modelInstance1, environment);
+        modelBatch.render(modelInstance, environment);
         modelBatch.end();
     }
 
@@ -71,5 +72,9 @@ public class TexturedCubeDrawable implements ModuleDrawable {
 
     public Camera getCamera() {
         return camera;
+    }
+
+    public ModelInstance getModelInstance() {
+        return modelInstance;
     }
 }

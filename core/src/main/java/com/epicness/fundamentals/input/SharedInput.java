@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SharedInput implements InputProcessor {
 
-    private final List<LogicInputHandler<?, ?, ?, ?>> inputHandlers;
+    private final List<LogicInputHandler<?, ?, ?, ?, ?>> inputHandlers;
     private OrthographicCamera staticCamera, dynamicCamera;
     private boolean enabled, inputConsumed;
     private final Vector3 unprojected;
@@ -63,7 +63,7 @@ public class SharedInput implements InputProcessor {
         // Static camera
         staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
         for (int i = 0; i < inputHandlers.size(); i++) {
-            inputHandlers.get(i).touchDown(unprojected.x, unprojected.y);
+            inputHandlers.get(i).touchDown(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
         // Dynamic camera
@@ -183,11 +183,11 @@ public class SharedInput implements InputProcessor {
         inputHandlers.clear();
     }
 
-    public void addInputHandler(LogicInputHandler<?, ?, ?, ?> inputHandler) {
+    public void addInputHandler(LogicInputHandler<?, ?, ?, ?, ?> inputHandler) {
         inputHandlers.add(inputHandler);
     }
 
-    public void removeInputHandler(LogicInputHandler<?, ?, ?, ?> inputHandler) {
+    public void removeInputHandler(LogicInputHandler<?, ?, ?, ?, ?> inputHandler) {
         inputHandlers.remove(inputHandler);
     }
 

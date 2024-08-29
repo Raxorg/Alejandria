@@ -6,6 +6,7 @@ import static com.epicness.alejandria.showcase.constants.PatternsConstants.DOT_S
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 
 public class SpiralDrawable implements ModuleDrawable {
@@ -22,7 +23,7 @@ public class SpiralDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < dots.length; i++) {
             dots[i].draw(spriteBatch);

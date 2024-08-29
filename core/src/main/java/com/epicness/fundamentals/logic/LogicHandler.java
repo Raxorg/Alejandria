@@ -10,9 +10,9 @@ import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.SharedStuff;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class LogicHandler<A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>> {
+public abstract class LogicHandler<G extends Game, A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>> {
 
-    protected Game game;
+    protected G game;
     protected SharedAssets sharedAssets;
     protected SharedInput input;
     protected SharedLogic sharedLogic;
@@ -33,12 +33,12 @@ public abstract class LogicHandler<A extends Assets, L extends Logic, R extends 
     }
 
     protected final void setSharedStructure(
-            Game game,
-            SharedAssets assets,
-            SharedInput input,
-            SharedLogic sharedLogic,
-            SharedScreen screen,
-            SharedStuff sharedStuff
+        G game,
+        SharedAssets assets,
+        SharedInput input,
+        SharedLogic sharedLogic,
+        SharedScreen screen,
+        SharedStuff sharedStuff
     ) {
         this.game = game;
         this.sharedAssets = assets;
@@ -53,5 +53,9 @@ public abstract class LogicHandler<A extends Assets, L extends Logic, R extends 
         this.logic = logic;
         this.renderer = renderer;
         this.stuff = stuff;
+    }
+
+    protected final <H extends LogicHandler<?, ?, ?, ?, ?>> H get(Class<H> handlerClass) {
+        return logic.get(handlerClass);
     }
 }

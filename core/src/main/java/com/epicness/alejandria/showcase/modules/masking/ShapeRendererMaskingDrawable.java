@@ -2,15 +2,18 @@ package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.CIRCLE_MASK_RADIUS;
+import static com.epicness.alejandria.showcase.constants.MaskingConstants.MASKED_CIRCLE_RADIUS;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
@@ -21,12 +24,12 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
     private final Triangle triangleMask;
 
     public ShapeRendererMaskingDrawable() {
-        maskedCircle = new Circle(200f);
-        maskedCircle.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        maskedCircle = new Circle(MASKED_CIRCLE_RADIUS);
+        maskedCircle.setPosition(CAMERA_HALF_WIDTH - MASKED_CIRCLE_RADIUS, CAMERA_HALF_HEIGHT - MASKED_CIRCLE_RADIUS);
         maskedCircle.setColor(DARK_DIRT);
 
-        circleMask = new Circle(100f);
-        circleMask.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT + 100f);
+        circleMask = new Circle(CIRCLE_MASK_RADIUS);
+        circleMask.setPosition(CAMERA_HALF_WIDTH - CIRCLE_MASK_RADIUS, CAMERA_HALF_HEIGHT);
         circleMask.setColor(DARK_GRASS);
 
         triangleMask = new Triangle(
@@ -37,7 +40,7 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         shapeRenderer.begin();
 
         drawMasks(shapeRenderer);

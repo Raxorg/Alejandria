@@ -9,9 +9,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
+import com.epicness.fundamentals.stuff.interfaces.SpriteDrawable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class Sprited implements Buttonable, Transformable {
+public class Sprited implements Buttonable, Transformable, SpriteDrawable {
 
     private final Sprite sprite;
 
@@ -23,6 +24,7 @@ public class Sprited implements Buttonable, Transformable {
         this.sprite.setRegion(sprite);
     }
 
+    @Override
     public void draw(SpriteBatch spriteBatch) {
         sprite.draw(spriteBatch);
     }
@@ -98,26 +100,6 @@ public class Sprited implements Buttonable, Transformable {
         setOriginBasedPosition(position.x, position.y);
     }
 
-    public float getCenterX() {
-        return sprite.getX() + sprite.getWidth() / 2f;
-    }
-
-    public float getEndX() {
-        return sprite.getX() + sprite.getWidth();
-    }
-
-    public float getCenterY() {
-        return sprite.getY() + sprite.getHeight() / 2f;
-    }
-
-    public float getEndY() {
-        return sprite.getY() + sprite.getHeight();
-    }
-
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(getCenterX(), getCenterY());
-    }
-
     public Vector2 getOrigin(Vector2 result) {
         return result.set(sprite.getOriginX(), sprite.getOriginY());
     }
@@ -166,10 +148,6 @@ public class Sprited implements Buttonable, Transformable {
         sprite.setOriginCenter();
     }
 
-    public void setRotation(float degrees) {
-        sprite.setRotation(degrees);
-    }
-
     public boolean isFlipX() {
         return sprite.isFlipX();
     }
@@ -186,8 +164,16 @@ public class Sprited implements Buttonable, Transformable {
         setFlip(flipX, sprite.isFlipY());
     }
 
+    public void flipX() {
+        setFlipX(!isFlipX());
+    }
+
     public void setFlipY(boolean flipY) {
         setFlip(sprite.isFlipX(), flipY);
+    }
+
+    public void flipY() {
+        setFlipY(!isFlipY());
     }
 
     public Color getColor() {

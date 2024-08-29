@@ -7,7 +7,8 @@ import static com.badlogic.gdx.Input.Keys.NUM_4;
 import static com.badlogic.gdx.Input.Keys.NUM_5;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.UIConstants.TEXT_MANIPULATION_BASE_TEXT;
-import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_RED;
+import static com.epicness.fundamentals.constants.ColorConstants.PASTEL_RED;
+import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.utils.Align;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -30,7 +31,7 @@ public class TextManipulation extends Module<TextManipulationDrawable> {
 
     @Override
     protected TextManipulationDrawable setup() {
-        drawable = new TextManipulationDrawable(renderer.getShapeDrawer(), sharedAssets.getPixelFont());
+        drawable = new TextManipulationDrawable(copyOf(sharedAssets.getPixelFont()));
         text = drawable.getText();
         centerVertically = true;
         truncate = null;

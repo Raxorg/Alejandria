@@ -9,28 +9,28 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.GRID_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_RADIUS;
-import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_50;
+import static com.epicness.fundamentals.constants.ColorConstants.BLACK_50;
+import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
+import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.DARK_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_DIRT;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.grid.DefaultCellBuilder;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.grid.DefaultCellGridBuilder;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class AdvancedSplitScreenDrawable implements ModuleDrawable {
@@ -60,11 +60,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     private void initGrid(Sprite cellSprite) {
-        DefaultCellGridBuilder builder = new DefaultCellGridBuilder(
-            new DefaultCellBuilder().sprite(cellSprite))
-            .columns(GRID_COLUMNS)
-            .rows(GRID_ROWS);
-        grid = new DefaultCellGrid(builder);
+        grid = new DefaultCellGrid(cellSprite, GRID_COLUMNS, GRID_ROWS);
         grid.setCellSize(CELL_SIZE);
         for (int column = 0; column < GRID_COLUMNS; column++) {
             for (int row = 0; row < GRID_ROWS; row++) {
@@ -80,10 +76,10 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     private void initPlayers() {
         player1 = new Circle(PLAYER_RADIUS);
-        player1.setPosition(GRID_SIZE / 2f, GRID_SIZE / 2f);
+        player1.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
         player1.setColor(GRASS);
         player2 = new Circle(PLAYER_RADIUS);
-        player2.setPosition(GRID_SIZE / 2f, GRID_SIZE / 2f);
+        player2.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
         player2.setColor(LIGHT_GRASS);
     }
 
@@ -93,7 +89,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
         mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
         mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
         mask.rotate(90f);
-        mask.setColor(BLACK_CLEAR_50);
+        mask.setColor(BLACK_50);
     }
 
     private void initDivider(Sprite dividerSprite) {
@@ -105,7 +101,8 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
+        ScreenUtils.clear(BLACK);
         drawUnmasked(spriteBatch, shapeRenderer);
         if (playersClose || camerasClose) {
             return;

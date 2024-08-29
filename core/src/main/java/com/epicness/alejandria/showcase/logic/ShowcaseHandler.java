@@ -7,7 +7,7 @@ import static com.badlogic.gdx.Input.Keys.LEFT;
 import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.constants.SharedConstants.BLACK_CLEAR_75;
+import static com.epicness.fundamentals.constants.ColorConstants.BLACK_75;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -38,7 +38,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
         modules = new ArrayList<>();
         for (int i = 0; i < logic.getHandlers().size(); i++) {
-            LogicHandler<?, ?, ?, ?> handler = logic.getHandlers().get(i);
+            LogicHandler<?, ?, ?, ?, ?> handler = logic.getHandlers().get(i);
             if (handler instanceof Module) {
                 modules.add((Module<?>) handler);
             }
@@ -126,11 +126,11 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     private void showInformation() {
         SpritedText information = stuff.getInformation();
-        if (information.getBackgroundColor().equals(BLACK_CLEAR_75)) {
+        if (information.getBackgroundColor().equals(BLACK_75)) {
             hideInformation();
             return;
         }
-        information.setBackgroundColor(BLACK_CLEAR_75);
+        information.setBackgroundColor(BLACK_75);
         information.setTextColor(WHITE);
         showingInformation = true;
     }

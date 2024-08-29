@@ -16,13 +16,10 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 public class FallingSandDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
     private final Rectangle[][] sandMatrix;
     private final Rectangle frame;
 
-    public FallingSandDrawable(ShapeDrawerPlus shapeDrawer) {
-        this.shapeDrawer = shapeDrawer;
-
+    public FallingSandDrawable() {
         sandMatrix = new Rectangle[SAND_DIMENSION][];
         float x, y;
         for (int column = 0; column < SAND_DIMENSION; column++) {
@@ -30,18 +27,15 @@ public class FallingSandDrawable implements ModuleDrawable {
             for (int row = 0; row < SAND_DIMENSION; row++) {
                 x = SHOWCASE_X + column * SAND_SIZE;
                 y = SHOWCASE_Y + row * SAND_SIZE;
-                sandMatrix[column][row] = new Rectangle();
-                sandMatrix[column][row].set(x, y, SAND_SIZE, SAND_SIZE);
-                sandMatrix[column][row].borderColor.set(CLEAR);
+                sandMatrix[column][row] = new Rectangle(x, y, SAND_SIZE, SAND_SIZE, CLEAR.cpy());
             }
         }
 
-        frame = new Rectangle(BLACK.cpy());
-        frame.set(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE);
+        frame = new Rectangle(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE, BLACK, CLEAR);
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int column = 0; column < SAND_DIMENSION; column++) {
             for (int row = 0; row < SAND_DIMENSION; row++) {

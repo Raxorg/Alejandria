@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Alejandria</string>
+    <string name="textViewText">I\'m just an ordinary android TextView here :(</string>
 </resources>

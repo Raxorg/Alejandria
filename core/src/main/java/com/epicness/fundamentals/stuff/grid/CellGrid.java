@@ -3,7 +3,7 @@ package com.epicness.fundamentals.stuff.grid;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class CellGrid<T extends Cell> extends Grid {
+public abstract class CellGrid<T extends Cell> extends Grid {
 
     public final T[][] cells;
 

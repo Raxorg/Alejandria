@@ -14,6 +14,8 @@ public class ShowcaseAssets extends Assets {
 
     private Sound ballBeep;
 
+    private Sound loudThunder;
+
     private Sprite gun;
 
     private Sprite arrow;
@@ -21,6 +23,18 @@ public class ShowcaseAssets extends Assets {
     private Sprite gitHub;
 
     private Sprite info;
+
+    private Sprite beamEnd;
+
+    private Sprite beamEndTop;
+
+    private Sprite beamMid;
+
+    private Sprite beamMidTop;
+
+    private Sprite beamStart;
+
+    private Sprite beamStartTop;
 
     private Sprite circle;
 
@@ -33,6 +47,8 @@ public class ShowcaseAssets extends Assets {
     private Sprite smiley_color;
 
     private Sprite smiley_outline;
+
+    private Sprite boltSegment;
 
     private ShaderProgram invert;
 
@@ -53,16 +69,24 @@ public class ShowcaseAssets extends Assets {
         stickmanRun = get(STICKMANRUN_SPRITE);
         stickmanRunFrames = get(STICKMANRUNFRAMES_ANIMATION);
         ballBeep = get(BALLBEEP_SOUND);
+        loudThunder = get(LOUDTHUNDER_SOUND);
         gun = get(GUN_SPRITE);
         arrow = get(ARROW_SPRITE);
         gitHub = get(GITHUB_SPRITE);
         info = get(INFO_SPRITE);
+        beamEnd = get(BEAMEND_SPRITE);
+        beamEndTop = get(BEAMENDTOP_SPRITE);
+        beamMid = get(BEAMMID_SPRITE);
+        beamMidTop = get(BEAMMIDTOP_SPRITE);
+        beamStart = get(BEAMSTART_SPRITE);
+        beamStartTop = get(BEAMSTARTTOP_SPRITE);
         circle = get(CIRCLE_SPRITE);
         circleGlow = get(CIRCLEGLOW_SPRITE);
         roundedSquare = get(ROUNDEDSQUARE_SPRITE);
         glow = get(GLOW_SPRITE);
         smiley_color = get(SMILEY_COLOR_SPRITE);
         smiley_outline = get(SMILEY_OUTLINE_SPRITE);
+        boltSegment = get(BOLTSEGMENT_SPRITE);
         invert = get(INVERT_SHADER_PROGRAM);
         neonWaves = get(NEONWAVES_SHADER_PROGRAM);
         raymarching = get(RAYMARCHING_SHADER_PROGRAM);
@@ -82,6 +106,10 @@ public class ShowcaseAssets extends Assets {
         return ballBeep;
     }
 
+    public Sound getLoudThunder() {
+        return loudThunder;
+    }
+
     public Sprite getGun() {
         return gun;
     }
@@ -96,6 +124,30 @@ public class ShowcaseAssets extends Assets {
 
     public Sprite getInfo() {
         return info;
+    }
+
+    public Sprite getBeamEnd() {
+        return beamEnd;
+    }
+
+    public Sprite getBeamEndTop() {
+        return beamEndTop;
+    }
+
+    public Sprite getBeamMid() {
+        return beamMid;
+    }
+
+    public Sprite getBeamMidTop() {
+        return beamMidTop;
+    }
+
+    public Sprite getBeamStart() {
+        return beamStart;
+    }
+
+    public Sprite getBeamStartTop() {
+        return beamStartTop;
     }
 
     public Sprite getCircle() {
@@ -120,6 +172,10 @@ public class ShowcaseAssets extends Assets {
 
     public Sprite getSmiley_outline() {
         return smiley_outline;
+    }
+
+    public Sprite getBoltSegment() {
+        return boltSegment;
     }
 
     public ShaderProgram getInvert() {

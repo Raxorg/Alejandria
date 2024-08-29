@@ -3,6 +3,7 @@ package com.epicness.alejandria.showcase.modules;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_RESOLUTION;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_X;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_Y;
+import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -25,12 +26,7 @@ public class Welcome extends Module<WelcomeDrawable> {
 
     @Override
     protected WelcomeDrawable setup() {
-        drawable = new WelcomeDrawable(
-            renderer.getShapeDrawer(),
-            sharedAssets.getPixelFont(),
-            sharedAssets.getPixel(),
-            assets.getNeonWaves()
-        );
+        drawable = new WelcomeDrawable(copyOf(sharedAssets.getPixelFont()), sharedAssets.getPixel(), assets.getNeonWaves());
         shader = drawable.getShader();
         return drawable;
     }

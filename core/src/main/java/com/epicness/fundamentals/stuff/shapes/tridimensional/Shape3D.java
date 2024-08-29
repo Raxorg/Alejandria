@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.stuff.shapes.tridimensional;
 
+import static com.epicness.fundamentals.constants.Constants3D.MATERIAL_ID;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,18 +25,21 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     protected final Vector3 position;
     private final short[] indices;
     protected final Line3D[] debugLines;
+    private final TextureAttribute textureAttribute;
+    private final ColorAttribute colorAttribute;
 
     public Shape3D(M modelCreator) {
         properties = modelCreator.properties;
         Model model = modelCreator.build(properties);
         modelInstance = new ModelInstance(model);
         Mesh mesh = model.meshes.first();
+        int vertexSections = modelCreator.vertexSections;
 
         float[] verticesWithUV = new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
         mesh.getVertices(verticesWithUV);
-        rotationVertices = new Vector3[verticesWithUV.length / 5];
+        rotationVertices = new Vector3[verticesWithUV.length / vertexSections];
         plainVertices = new float[rotationVertices.length * 3];
-        for (index = 0, extraIndex = 0; index < verticesWithUV.length; index += 5, extraIndex++) {
+        for (index = 0, extraIndex = 0; index < verticesWithUV.length; index += vertexSections, extraIndex++) {
             rotationVertices[extraIndex] = new Vector3(
                 verticesWithUV[index],
                 verticesWithUV[index + 1],
@@ -52,6 +57,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
             debugLines[index] = new Line3D();
         }
         updateDebugLines();
+        textureAttribute = new TextureAttribute(TextureAttribute.Diffuse);
+        colorAttribute = new ColorAttribute(ColorAttribute.Diffuse);
     }
 
     protected abstract void updateDebugLines();
@@ -71,7 +78,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     }
 
     public void setSprite(Sprite sprite) {
-        modelInstance.getMaterial("material").set(TextureAttribute.createDiffuse(sprite));
+        textureAttribute.set(sprite);
+        modelInstance.getMaterial(MATERIAL_ID).set(textureAttribute);
     }
 
     public float[] getVertices() {
@@ -117,8 +125,42 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         translate(0f, 0f, amount);
     }
 
+    public final void setX(float x) {
+        translateX(x - getX());
+    }
+
+    public final void setY(float y) {
+        translateY(y - getY());
+    }
+
+    public final void setZ(float z) {
+        translateZ(z - getZ());
+    }
+
+    public final Vector3 getPosition(Vector3 result) {
+        return result.set(getX(), getY(), getZ());
+    }
+
+    public final void setPosition(float x, float y, float z) {
+        setX(x);
+        setY(y);
+        setZ(z);
+    }
+
+    public final void setPosition(Vector3 position) {
+        setPosition(position.x, position.y, position.z);
+    }
+
+    public float getXRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.X);
+    }
+
     public float getYRotation() {
         return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Y);
+    }
+
+    public float getZRotation() {
+        return modelInstance.transform.getRotation(QUATERNION_HELPER).getAngleAround(Vector3.Z);
     }
 
     public final void rotate(float xDegrees, float yDegrees, float zDegrees) {
@@ -136,6 +178,10 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         updateDebugLines();
     }
 
+    public final void rotate(Vector3 rotation) {
+        rotate(rotation.x, rotation.y, rotation.z);
+    }
+
     public final void rotateX(float degrees) {
         rotate(degrees, 0f, 0f);
     }
@@ -148,7 +194,34 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         rotate(0f, 0f, degrees);
     }
 
+    public final void setXRotation(float degrees) {
+        rotateX(degrees - getXRotation());
+    }
+
+    public final void setYRotation(float degrees) {
+        rotateY(degrees - getYRotation());
+    }
+
+    public final void setZRotation(float degrees) {
+        rotateZ(degrees - getZRotation());
+    }
+
+    public final Vector3 getRotation(Vector3 result) {
+        return result.set(getXRotation(), getYRotation(), getZRotation());
+    }
+
+    public final void setRotation(float xDegrees, float yDegrees, float zDegrees) {
+        setXRotation(xDegrees);
+        setYRotation(yDegrees);
+        setZRotation(zDegrees);
+    }
+
+    public final void setRotation(Vector3 rotation) {
+        setRotation(rotation.x, rotation.y, rotation.z);
+    }
+
     public final void setColor(Color color) {
-        modelInstance.getMaterial("material").set(ColorAttribute.createDiffuse(color));
+        colorAttribute.color.set(color);
+        modelInstance.getMaterial(MATERIAL_ID).set(colorAttribute);
     }
 }

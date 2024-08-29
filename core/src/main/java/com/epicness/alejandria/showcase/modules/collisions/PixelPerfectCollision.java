@@ -34,7 +34,7 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
     }
 
     @Override
-    public void touchDown(float x, float y) {
+    public void touchDown(float x, float y, int button) {
         Pixmap pixmap = drawable.getPixmap();
         for (int i = 0; i < shapes.length; i++) {
             Sprited shape = shapes[i];

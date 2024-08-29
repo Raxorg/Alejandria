@@ -47,7 +47,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     @Override
     protected ReactiveGridDrawable setup() {
-        drawable = new ReactiveGridDrawable(renderer.getShapeDrawer(), assets.getRoundedSquare());
+        drawable = new ReactiveGridDrawable(assets.getRoundedSquare());
 
         grid = drawable.getGrid();
         for (int column = 0; column < grid.getColumns(); column++) {
@@ -98,13 +98,13 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private void moveCircle(float delta) {
         circle.translate(delta * translationX, delta * translationY);
-        if (circle.getStartX() <= GRID_X || circle.getEndX() >= GRID_X + grid.getWidth()) {
+        if (circle.getX() <= GRID_X || circle.getEndX() >= GRID_X + grid.getWidth()) {
             circle.setX(MathUtils.clamp(circle.getX(), GRID_X + CIRCLE_RADIUS, GRID_X + grid.getWidth() - CIRCLE_RADIUS));
             translationX = MathUtils.random(MIN_CIRCLE_SPEED, MAX_CIRCLE_SPEED) * -(translationX / Math.abs(translationX));
             circle.setColor(Random.opaqueColor());
         }
-        if (circle.getStartY() <= GRID_Y || circle.getEndY() >= GRID_Y + grid.getHeight()) {
-            circle.setY(MathUtils.clamp(circle.getY(), GRID_Y + CIRCLE_RADIUS, GRID_Y + grid.getHeight() - CIRCLE_RADIUS));
+        if (circle.getY() <= GRID_Y || circle.getEndY() >= GRID_Y + grid.getHeight()) {
+            circle.setY(MathUtils.clamp(circle.getY(), GRID_Y, GRID_Y + grid.getHeight() - circle.getHeight()));
             translationY = MathUtils.random(MIN_CIRCLE_SPEED, MAX_CIRCLE_SPEED) * -(translationY / Math.abs(translationY));
             circle.setColor(Random.opaqueColor());
         }
@@ -139,11 +139,11 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
     }
 
     private void colorCircleCell() {
-        colorCell(circle.x, circle.y, circle.getColor());
+        colorCell(circle.getCenterX(), circle.getCenterY(), circle.getBorderColor());
     }
 
     private void colorCell(float x, float y, Color color) {
-        if (x < GRID_X || x > GRID_X + grid.getWidth() || y < GRID_Y || y > GRID_Y + grid.getHeight()) {
+        if (x <= GRID_X || x >= GRID_X + grid.getWidth() || y <= GRID_Y || y >= GRID_Y + grid.getHeight()) {
             return;
         }
         int column = (int) MathUtils.map(GRID_X, GRID_X + grid.getWidth(), 0, GRID_COLUMNS, x);

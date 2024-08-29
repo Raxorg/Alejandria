@@ -30,15 +30,15 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         SharedScreen screen = sharedResources.getScreen();
 
         logic.setStructure(
-                (Game) Gdx.app.getApplicationListener(),
-                sharedResources.getAssets(),
-                input,
-                sharedResources.getLogic(),
-                screen,
-                sharedResources.getStuff(),
-                assets,
-                renderer,
-                stuff
+            (Game) Gdx.app.getApplicationListener(),
+            sharedResources.getAssets(),
+            input,
+            sharedResources.getLogic(),
+            screen,
+            sharedResources.getStuff(),
+            assets,
+            renderer,
+            stuff
         );
         input.clearInputHandlers();
         input.setEnabled(true);

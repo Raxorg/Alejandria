@@ -6,25 +6,19 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WI
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDTriangle;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-
-import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
 
-    private final ShapeDrawer shapeDrawer;
     private final SDTriangle triangle1, triangle2, triangle3, triangle4;
     private final SDCircle mask;
 
-    public ShapeDrawerMaskingDrawable(SpriteBatch spriteBatch, Sprite pixel) {
-        shapeDrawer = new ShapeDrawer(spriteBatch);
-        shapeDrawer.setTextureRegion(pixel);
-
+    public ShapeDrawerMaskingDrawable() {
         float size = 200f;
 
         triangle1 = new SDTriangle(
@@ -57,14 +51,14 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
-        drawMask(spriteBatch);
-        drawMasked(spriteBatch);
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
+        drawMask(spriteBatch, shapeDrawer);
+        drawMasked(spriteBatch, shapeDrawer);
         // Back to default depth test
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
 
-    private void drawMask(SpriteBatch spriteBatch) {
+    private void drawMask(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         // 1. Clear our depth buffer with 1.0
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -86,7 +80,7 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
         spriteBatch.end();
     }
 
-    private void drawMasked(SpriteBatch spriteBatch) {
+    private void drawMasked(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         Gdx.gl.glColorMask(true, true, true, true);
         Gdx.gl.glDepthFunc(GL20.GL_EQUAL);
         spriteBatch.begin();

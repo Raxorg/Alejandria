@@ -9,6 +9,9 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Sprite Animation
 - Sprite Rotation Animation
 
+### Audio
+- Sound Pitch
+
 ### Bullets
 - Bullet Spawning
 
@@ -22,6 +25,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 ### Fun
 - Beeping Balls
 - Falling Sand
+- Lasers
 - Reactive Grid
 
 ### Grids
@@ -31,6 +35,9 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 ### Kinematics
 - Forward Kinematics
 - Inverse Kinematics
+
+### Lights
+- Simple Lights
 
 ### Masking
 - Alpha Masking
@@ -44,13 +51,20 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 
 ### Pathfinding
 - A Star (A*)
+- Alternative A*
 
 ### Patterns
+- Cantor Gasket
+- Dragon Curve
 - Phyllotaxis
 - Spiral
 - Spirograph
 
+### Physics
+- Ball Physics
+
 ### Procedural
+- Lightning
 - Pixmap Manipulation
 - Procedural Square
 
@@ -58,6 +72,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Frame Buffering
 - Manual Screen Clear
 - Orthographic Example
+- Shape Rendering
 
 ### Rendering 3D
 - Decal Visualization
@@ -80,3 +95,11 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 The project also features standalone demos you can run directly from the 
 [StandaloneLauncher](/lwjgl3/src/main/java/com/epicness/alejandria/lwjgl3/Lwjgl3Launcher.java) in the lwjgl3 module, check the
 [standalone package](/core/src/main/java/com/epicness/standalone) in the core module
+
+## Platform specific modules
+
+### HTML (Web only)
+- Alert
+
+### libGDX in a fragment (Android only)
+- Check the android module, create a run configuration that uses the [FragmentLauncher](/android/src/main/java/com/epicness/alejandria/android/FragmentLauncher.java)

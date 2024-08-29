@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.Gdx;
@@ -42,6 +43,7 @@ public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
 
     @Override
     public void exit() {
+        renderer.getShapeRenderer().setColor(WHITE);
         Gdx.gl.glLineWidth(1f);
         Gdx.gl.glDepthFunc(GL20.GL_LESS); // Important
     }

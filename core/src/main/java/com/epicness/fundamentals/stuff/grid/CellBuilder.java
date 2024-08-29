@@ -2,14 +2,19 @@ package com.epicness.fundamentals.stuff.grid;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+@SuppressWarnings("unchecked")
 public abstract class CellBuilder<T extends Cell> {
 
     protected Sprite sprite;
     protected int column, row;
 
-    public CellBuilder<T> sprite(Sprite sprite) {
+    public CellBuilder(Sprite sprite) {
+        sprite(sprite);
+    }
+
+    public <B extends CellBuilder<T>> B sprite(Sprite sprite) {
         this.sprite = sprite;
-        return this;
+        return (B) this;
     }
 
     public CellBuilder<T> column(int column) {

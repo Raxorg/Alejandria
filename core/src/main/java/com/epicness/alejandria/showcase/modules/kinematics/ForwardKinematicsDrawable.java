@@ -10,34 +10,30 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WI
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.ConnectedLine;
 
-import space.earlygrey.shapedrawer.ShapeDrawer;
-
 public class ForwardKinematicsDrawable implements ModuleDrawable {
 
-    private final ShapeDrawer shapeDrawer;
     private final ConnectedLine[] lines;
 
-    public ForwardKinematicsDrawable(ShapeDrawer shapeDrawer) {
-        this.shapeDrawer = shapeDrawer;
-
+    public ForwardKinematicsDrawable() {
         lines = new ConnectedLine[FK_LINES];
         ConnectedLine root = new ConnectedLine(CAMERA_HALF_WIDTH, SHOWCASE_STRIPE_HEIGHT, FK_LINE_LENGTH, 90f, true);
-        root.width = 15f;
+        root.thickness = 15f;
         root.setColor(BLACK);
         lines[0] = root;
         for (int i = 1; i < FK_LINES; i++) {
             ConnectedLine connectedLine = new ConnectedLine(lines[i - 1], FK_LINE_LENGTH, 90f);
             connectedLine.setColor(BLACK.cpy().lerp(RED, i / (FK_LINES - 1f)));
-            connectedLine.width = MathUtils.map(1, FK_LINES - 1, 15f, 3f, i);
+            connectedLine.thickness = MathUtils.map(1, FK_LINES - 1, 15f, 3f, i);
             lines[i] = connectedLine;
         }
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < lines.length; i++) {
             lines[i].draw(shapeDrawer);

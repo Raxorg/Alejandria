@@ -3,6 +3,10 @@ package com.epicness.fundamentals.logic;
 import com.epicness.fundamentals.SharedResources;
 import com.epicness.fundamentals.logic.behaviors.Fader;
 import com.epicness.fundamentals.logic.behaviors.Tracker;
+import com.epicness.fundamentals.logic.handlers.AssetLoader;
+import com.epicness.fundamentals.logic.handlers.BackgroundHandler;
+import com.epicness.fundamentals.logic.handlers.PreferencesHandler;
+import com.epicness.fundamentals.logic.handlers.TransitionHandler;
 
 public class SharedLogic {
 

@@ -3,4 +3,5 @@
 dependencies {
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
   api "space.earlygrey:shapedrawer:$shapeDrawerVersion"
+  api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 }

@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
-import static com.epicness.alejandria.showcase.constants.SpirographConstants.BALL_RADIUS;
+import static com.epicness.alejandria.showcase.constants.PatternsConstants.BALL_RADIUS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,16 +14,12 @@ import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Line;
 import com.epicness.fundamentals.utils.Random;
 
-import space.earlygrey.shapedrawer.ShapeDrawer;
-
 public class SpirographDrawable implements ModuleDrawable {
 
-    private final ShapeDrawer shapeDrawer;
     private final LinedBall[] linedBalls;
     private final DelayedRemovalArray<Line> trailLines;
 
-    public SpirographDrawable(ShapeDrawerPlus shapeDrawer) {
-        this.shapeDrawer = shapeDrawer;
+    public SpirographDrawable() {
         linedBalls = new LinedBall[2];
         Color color = Random.rainbowColor().cpy();
         linedBalls[0] = new LinedBall(BALL_RADIUS, 200f, 280f, color);
@@ -32,7 +28,7 @@ public class SpirographDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         ScreenUtils.clear(BLACK);
 
         spriteBatch.begin();

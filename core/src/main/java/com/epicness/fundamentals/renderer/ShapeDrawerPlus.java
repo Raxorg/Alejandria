@@ -21,7 +21,8 @@ public class ShapeDrawerPlus extends ShapeDrawer {
     }
 
     public void circle(float x, float y, float radius, float thickness, Color color) {
-        setColor(color);
+        float auxColor = setColor(color);
         circle(x, y, radius, thickness);
+        setColor(auxColor);
     }
 }

@@ -29,7 +29,7 @@ public class Tentacle implements Movable {
                     Color startColor, Color endColor) {
         this(lineAmount, lineLength);
         for (int i = 0; i < lineAmount; i++) {
-            lines[i].width = MathUtils.map(0, lineAmount - 1, startingWidth, finalWidth, i);
+            lines[i].thickness = MathUtils.map(0, lineAmount - 1, startingWidth, finalWidth, i);
             lines[i].setColor(endColor.cpy().lerp(startColor, i / (lineAmount - 1f)));
         }
     }
@@ -88,7 +88,7 @@ public class Tentacle implements Movable {
         follow(target.set(x, y));
     }
 
-    public void inverseFollow(Vector2 target){
+    public void inverseFollow(Vector2 target) {
         for (int i = lines.length - 1; i >= 0; i--) {
             target = i == lines.length - 1 ? target : lines[i + 1].getA();
             lines[i].follow(target);

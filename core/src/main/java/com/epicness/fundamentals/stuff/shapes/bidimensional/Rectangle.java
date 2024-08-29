@@ -2,16 +2,40 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
+import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 
-public class Rectangle extends com.badlogic.gdx.math.Rectangle {
+import space.earlygrey.shapedrawer.ShapeDrawer;
+
+public class Rectangle extends com.badlogic.gdx.math.Rectangle implements ShapeDrawable {
 
     public final Color borderColor, fillColor;
     private float thickness;
 
-    public Rectangle(Color borderColor, Color fillColor) {
+    public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor, float thickness) {
+        super(x, y, w, h);
         this.borderColor = borderColor;
         this.fillColor = fillColor;
-        thickness = 5f;
+        this.thickness = thickness;
+    }
+
+    public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor) {
+        this(x, y, w, h, borderColor, fillColor, 5f);
+    }
+
+    public Rectangle(float x, float y, float w, float h, Color color) {
+        this(x, y, w, h, color, color);
+    }
+
+    public Rectangle(float x, float y, float size, Color color) {
+        this(x, y, size, size, color);
+    }
+
+    public Rectangle(float x, float y, float w, float h) {
+        this(x, y, w, h, new Color(1f, 1f, 1f, 1f));
+    }
+
+    public Rectangle(Color borderColor, Color fillColor) {
+        this(0f, 0f, 5f, 5f, borderColor, fillColor);
     }
 
     public Rectangle(Color color) {
@@ -22,17 +46,26 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
         this(new Color(1f, 1f, 1f, 1f));
     }
 
-    public void drawBorder(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.rectangle(this, borderColor, thickness);
-    }
-
-    public void drawFilled(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.filledRectangle(this, borderColor);
-    }
-
-    public void draw(ShapeDrawerPlus shapeDrawer) {
+    public void drawFilled(ShapeDrawer shapeDrawer) {
         shapeDrawer.filledRectangle(this, fillColor);
+    }
+
+    public void drawBorder(ShapeDrawer shapeDrawer) {
         shapeDrawer.rectangle(this, borderColor, thickness);
+    }
+
+    @Override
+    public void draw(ShapeDrawerPlus shapeDrawer) {
+        drawFilled(shapeDrawer);
+        drawBorder(shapeDrawer);
+    }
+
+    public void setBorderColor(Color color) {
+        borderColor.set(color);
+    }
+
+    public void setFillColor(Color color) {
+        fillColor.set(color);
     }
 
     public void setColor(Color color) {

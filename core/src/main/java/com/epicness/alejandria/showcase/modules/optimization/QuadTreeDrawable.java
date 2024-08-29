@@ -13,13 +13,10 @@ import java.util.ArrayList;
 
 public class QuadTreeDrawable implements ModuleDrawable {
 
-    private final ShapeDrawerPlus shapeDrawer;
     private final ArrayList<Sprited> dots;
     private final DelayedRemovalArray<Rectangle> quads;
 
-    public QuadTreeDrawable(ShapeDrawerPlus shapeDrawer, Sprite dotSprite) {
-        this.shapeDrawer = shapeDrawer;
-
+    public QuadTreeDrawable(Sprite dotSprite) {
         dots = new ArrayList<>();
         Sprited dot = null;
         for (int i = 0; i < 10; i++) {
@@ -33,7 +30,7 @@ public class QuadTreeDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch, ShapeRendererPlus shapeRenderer) {
+    public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         spriteBatch.begin();
         for (int i = 0; i < quads.size; i++) {
             quads.get(i).draw(shapeDrawer);

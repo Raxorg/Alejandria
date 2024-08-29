@@ -10,12 +10,10 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.badlogic.gdx.utils.StreamUtils;
 import com.epicness.fundamentals.assets.Shader;
 import com.epicness.fundamentals.assets.loaders.ShaderProgramLoader.ShaderProgramParameter;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 @SuppressWarnings("rawtypes")
 public class ShaderProgramLoader extends SynchronousAssetLoader<ShaderProgram, ShaderProgramParameter> {
@@ -36,8 +34,7 @@ public class ShaderProgramLoader extends SynchronousAssetLoader<ShaderProgram, S
     @Override
     public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, ShaderProgramParameter parameter) {
         Array<AssetDescriptor> dependencies = new Array<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(file.read()), 128);
-        try {
+        try (BufferedReader reader = file.reader(128)) {
             String line = reader.readLine();
             FileHandle vertexHandle = Gdx.files.internal(line.split(" ")[1]);
             vertexPath = vertexHandle.path();
@@ -49,8 +46,6 @@ public class ShaderProgramLoader extends SynchronousAssetLoader<ShaderProgram, S
             dependencies.add(new AssetDescriptor<>(fragmentHandle, Shader.class));
         } catch (Exception ex) {
             throw new GdxRuntimeException("Error loading sp file: " + fileName, ex);
-        } finally {
-            StreamUtils.closeQuietly(reader);
         }
         return dependencies;
     }
