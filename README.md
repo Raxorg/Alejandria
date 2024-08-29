@@ -1,4 +1,4 @@
-# Alejandria
+# [Alejandria](https://raxorg.github.io/Alejandria/)
 
 This desktop+web app showcases a variety of libGDX features/capabilities/techniques/aspects with code organized into bite-sized
 "modules", each consisting of its logic and graphic parts
