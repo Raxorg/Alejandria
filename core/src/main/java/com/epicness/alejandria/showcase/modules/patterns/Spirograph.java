@@ -74,7 +74,7 @@ public class Spirograph extends Module<SpirographDrawable> {
             ball.lastTrackedPosition.y,
             ball.getEnd().x,
             ball.getEnd().y,
-            1.75f,
+            1.8f,
             ball.color.cpy()
         ));
         ball.lastTrackedPosition.set(ball.getEnd());

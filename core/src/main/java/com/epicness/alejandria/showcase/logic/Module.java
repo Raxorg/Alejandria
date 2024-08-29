@@ -31,6 +31,7 @@ public abstract class Module<D extends ModuleDrawable> extends ShowcaseLogicHand
 
     protected abstract D setup();
 
+    @Override
     public void update(float delta) {
     }
 

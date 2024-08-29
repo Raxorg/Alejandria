@@ -55,7 +55,8 @@ public class AlphaMaskingDrawable implements ModuleDrawable {
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
         frameBuffer.bind();
-        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR); // Draw the elements the background instead of just clearing the screen
+        // We should bring the background's pixels instead of just clearing the screen for transparency to work properly
+        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
 
         spriteBatch.begin();
         // Draw the alpha mask

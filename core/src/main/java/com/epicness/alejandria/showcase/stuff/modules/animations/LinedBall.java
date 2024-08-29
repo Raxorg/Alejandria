@@ -17,7 +17,7 @@ public class LinedBall {
     public final Vector2 lastTrackedPosition;
 
     public LinedBall(float radius, float length, float speed, Color color) {
-        line = new Line(length, 1.5f, color);
+        line = new Line(length, 2.5f, color);
         this.radius = radius;
         this.speed = speed;
         this.color = color;
