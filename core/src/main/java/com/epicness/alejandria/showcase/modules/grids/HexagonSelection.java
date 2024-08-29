@@ -3,7 +3,6 @@ package com.epicness.alejandria.showcase.modules.grids;
 import static com.epicness.alejandria.showcase.modules.grids.HexagonSelectionDrawable.COLUMNS;
 import static com.epicness.alejandria.showcase.modules.grids.HexagonSelectionDrawable.ROWS;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Hexagon;
@@ -59,11 +58,6 @@ public class HexagonSelection extends Module<HexagonSelectionDrawable> {
                 radius = 4;
                 break;
         }
-    }
-
-    @Override
-    protected void exit() {
-        Gdx.gl.glLineWidth(1f);
     }
 
     private Set<Hexagon> collectHexagons(Hexagon startingHexagon) {
