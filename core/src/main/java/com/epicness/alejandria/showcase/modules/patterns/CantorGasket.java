@@ -9,6 +9,7 @@ import static com.badlogic.gdx.Input.Keys.NUM_6;
 
 import com.epicness.alejandria.showcase.logic.Module;
 
+// TODO: 8/30/2024 OPTIMIZE, IT IS TOO SLOW!
 public class CantorGasket extends Module<CantorGasketDrawable> {
 
     public CantorGasket() {

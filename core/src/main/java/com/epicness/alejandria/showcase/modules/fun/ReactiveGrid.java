@@ -26,6 +26,7 @@ import com.epicness.fundamentals.stuff.grid.CellGrid;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.utils.Random;
 
+// TODO: 8/30/2024 FIX, THE BALL GETS STUCK ON THE RIGHT SIDE OF THE GRID xd
 public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private CellGrid<ColoredCell> grid;

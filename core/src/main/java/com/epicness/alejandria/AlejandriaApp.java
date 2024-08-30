@@ -6,6 +6,7 @@ import com.epicness.alejandria.showcase.ShowcaseInitializer;
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
 import com.epicness.fundamentals.SharedResources;
 
+// TODO: 8/30/2024 IMPROVE README WITH IMAGES AND SUCH 
 public class AlejandriaApp extends Game {
 
     private AlertSystem alertSystem;
