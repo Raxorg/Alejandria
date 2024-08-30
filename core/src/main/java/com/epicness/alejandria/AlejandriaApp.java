@@ -6,7 +6,10 @@ import com.epicness.alejandria.showcase.ShowcaseInitializer;
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
 import com.epicness.fundamentals.SharedResources;
 
-// TODO: 8/30/2024 IMPROVE README WITH IMAGES AND SUCH 
+// TODO: 8/30/2024 Improve readme with images and such
+// TODO: 8/30/2024 Create a setup tool like liftoff that creates the base structure for screens like splash, menu, game, etc
+// TODO: 2/29/2024 Show FPS (1/Delta or Gdx.graphics.getFramesPerSecond() and Delta Time when debug enabled
+// TODO: 3/9/2024 Add visible module category labels/tags
 public class AlejandriaApp extends Game {
 
     private AlertSystem alertSystem;
@@ -18,8 +21,6 @@ public class AlejandriaApp extends Game {
         assets.finishLoading();
         assets.initializeAssets();
         new ShowcaseInitializer(assets).initialize(new SharedResources());
-        // TODO: 2/29/2024 Show FPS (1/Delta or Gdx.graphics.getFramesPerSecond() and Delta Time when debug enabled
-        // TODO: 3/9/2024 Add module category labels
     }
 
     public AlertSystem getAlertSystem() {
