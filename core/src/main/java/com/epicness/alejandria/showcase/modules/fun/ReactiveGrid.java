@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
 import static com.epicness.alejandria.showcase.constants.FunConstants.CELL_SIZE;
 import static com.epicness.alejandria.showcase.constants.FunConstants.CIRCLE_RADIUS;
+import static com.epicness.alejandria.showcase.constants.FunConstants.COLOR_BOMB_SPAWN_RATE;
 import static com.epicness.alejandria.showcase.constants.FunConstants.GRID_COLOR_FADE_TIME;
 import static com.epicness.alejandria.showcase.constants.FunConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.GRID_ROWS;
@@ -11,8 +12,8 @@ import static com.epicness.alejandria.showcase.constants.FunConstants.GRID_X;
 import static com.epicness.alejandria.showcase.constants.FunConstants.GRID_Y;
 import static com.epicness.alejandria.showcase.constants.FunConstants.MAX_CIRCLE_SPEED;
 import static com.epicness.alejandria.showcase.constants.FunConstants.MIN_CIRCLE_SPEED;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -26,7 +27,6 @@ import com.epicness.fundamentals.stuff.grid.CellGrid;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 import com.epicness.fundamentals.utils.Random;
 
-// TODO: 8/30/2024 FIX, THE BALL GETS STUCK ON THE RIGHT SIDE OF THE GRID xd
 public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private CellGrid<ColoredCell> grid;
@@ -61,8 +61,8 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
         colorBalls = drawable.getColorBalls();
 
         circle = drawable.getCircle();
-        circle.setX(MathUtils.random(GRID_X + CIRCLE_RADIUS, GRID_X + grid.getWidth()));
-        circle.setY(MathUtils.random(GRID_Y + CIRCLE_RADIUS, GRID_Y + grid.getHeight()));
+        circle.setX(MathUtils.random(GRID_X, GRID_X + grid.getWidth() - circle.getWidth()));
+        circle.setY(MathUtils.random(GRID_Y, GRID_Y + grid.getHeight() - circle.getHeight()));
 
         translationX = MathUtils.random(MIN_CIRCLE_SPEED, MAX_CIRCLE_SPEED) * MathUtils.randomSign();
         translationY = MathUtils.random(MIN_CIRCLE_SPEED, MAX_CIRCLE_SPEED) * MathUtils.randomSign();
@@ -86,7 +86,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private void spawnColorBombs(float delta) {
         bombTimer += delta;
-        if (bombTimer >= 2f) {
+        if (bombTimer >= COLOR_BOMB_SPAWN_RATE) {
             Sprited circle = new Sprited(assets.getCircle());
             circle.setSize(CELL_SIZE);
             circle.setX(GRID_X + MathUtils.random(GRID_COLUMNS - 1) * CELL_SIZE);
@@ -99,8 +99,8 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private void moveCircle(float delta) {
         circle.translate(delta * translationX, delta * translationY);
-        if (circle.getX() <= GRID_X || circle.getEndX() >= GRID_X + grid.getWidth()) {
-            circle.setX(MathUtils.clamp(circle.getX(), GRID_X + CIRCLE_RADIUS, GRID_X + grid.getWidth() - CIRCLE_RADIUS));
+        if (circle.getX() < GRID_X || circle.getEndX() > GRID_X + grid.getWidth()) {
+            circle.setX(MathUtils.clamp(circle.getX(), GRID_X, GRID_X + grid.getWidth() - circle.getWidth()));
             translationX = MathUtils.random(MIN_CIRCLE_SPEED, MAX_CIRCLE_SPEED) * -(translationX / Math.abs(translationX));
             circle.setColor(Random.opaqueColor());
         }
@@ -170,8 +170,8 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
         for (int i = 0; i < colorBalls.size; i++) {
             auxColorBall = colorBalls.get(i);
             auxColorBall.translate(auxColorBall.speed.x * delta, auxColorBall.speed.y * delta);
-            if (auxColorBall.getEndX() <= 0f || auxColorBall.getX() >= CAMERA_WIDTH
-                || auxColorBall.getEndY() <= 0f || auxColorBall.getY() >= CAMERA_HEIGHT) {
+            if (auxColorBall.getEndX() <= 0f || auxColorBall.getX() >= VIEWPORT_WIDTH
+                || auxColorBall.getEndY() <= 0f || auxColorBall.getY() >= VIEWPORT_HEIGHT) {
                 colorBalls.removeValue(auxColorBall, true);
             }
             for (int j = 0; j < colorBombs.size; j++) {
