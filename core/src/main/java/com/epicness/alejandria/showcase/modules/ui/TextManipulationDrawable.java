@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.ui;
 
 import static com.epicness.alejandria.showcase.constants.UIConstants.TEXT_MANIPULATION_BASE_TEXT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,8 +18,8 @@ public class TextManipulationDrawable implements ModuleDrawable {
     public TextManipulationDrawable(BitmapFont font) {
         text = new Text(font);
         text.setText(TEXT_MANIPULATION_BASE_TEXT);
-        text.setY(CAMERA_HALF_HEIGHT);
-        text.setWidth(CAMERA_WIDTH);
+        text.setY(VIEWPORT_HALF_HEIGHT);
+        text.setWidth(VIEWPORT_WIDTH);
         text.hAlignCenter();
         text.setVerticallyCentered(true);
         text.setScale(5f);

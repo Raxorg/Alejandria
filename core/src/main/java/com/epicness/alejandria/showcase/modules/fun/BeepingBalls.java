@@ -3,8 +3,8 @@ package com.epicness.alejandria.showcase.modules.fun;
 import static com.epicness.alejandria.showcase.constants.FunConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.SPACING;
 import static com.epicness.alejandria.showcase.constants.FunConstants.VOLUME;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -23,8 +23,8 @@ public class BeepingBalls extends Module<BeepingBallsDrawable> {
         for (int i = 0; i < BALLS; i++) {
             BeepingBall ball = balls[i];
             ball.startingX = 100f + i * SPACING;
-            ball.startingY = CAMERA_HALF_HEIGHT - i * SPACING;
-            ball.finalX = CAMERA_WIDTH - 100f - i * SPACING;
+            ball.startingY = VIEWPORT_HALF_HEIGHT - i * SPACING;
+            ball.finalX = VIEWPORT_WIDTH - 100f - i * SPACING;
             ball.pitch = MathUtils.map(0, BALLS - 1, 1f, 0.5f, i);
             ball.setOriginBasedPosition(ball.startingX, ball.startingY);
         }

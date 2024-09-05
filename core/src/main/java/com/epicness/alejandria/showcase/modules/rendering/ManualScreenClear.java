@@ -1,9 +1,10 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
 import static com.badlogic.gdx.Input.Keys.SPACE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.Sprited;
 
@@ -23,16 +24,21 @@ public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
     protected ManualScreenClearDrawable setup() {
         drawable = new ManualScreenClearDrawable(sharedAssets.getWeirdShape());
         weirdShape = drawable.getWeirdShape();
-        Gdx.app.postRunnable(() -> renderer.clearScreen = false);
+        renderer.clearScreen = false;
         return drawable;
     }
 
     @Override
     public void update(float delta) {
         weirdShape.translateX(delta * 150f);
-        if (weirdShape.getX() >= CAMERA_WIDTH) {
+        if (weirdShape.getX() >= VIEWPORT_WIDTH) {
             weirdShape.setX(-weirdShape.getWidth());
         }
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
     }
 
     @Override

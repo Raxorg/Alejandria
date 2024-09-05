@@ -1,7 +1,7 @@
 package com.epicness.fundamentals;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,21 +10,30 @@ import com.epicness.fundamentals.renderer.Renderer;
 
 public class SharedScreen extends ScreenAdapter {
 
+    // Structure
     private Logic logic;
     private Renderer<?> renderer;
+    // Screen related
     private final OrthographicCamera dynamicCamera, staticCamera;
 
     public SharedScreen() {
         dynamicCamera = new OrthographicCamera();
-        dynamicCamera.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
+        dynamicCamera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         staticCamera = new OrthographicCamera();
-        staticCamera.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
+        staticCamera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
     }
 
     @Override
     public void render(float delta) {
         logic.update();
         renderer.render();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        if (logic == null) return;
+
+        logic.resize(width, height);
     }
 
     @Override
@@ -40,6 +49,7 @@ public class SharedScreen extends ScreenAdapter {
         return staticCamera;
     }
 
+    // Structure
     public void setLogic(Logic logic) {
         this.logic = logic;
     }

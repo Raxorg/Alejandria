@@ -15,6 +15,10 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
     public void render() {
         if (clearScreen) ScreenUtils.clear(SHOWCASE_BACKGROUND_COLOR);
 
+        viewport.apply();
+        spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
+        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+
         stuff.getShowcase().draw(spriteBatch, shapeDrawer, shapeRenderer);
 
         spriteBatch.begin();
@@ -31,6 +35,8 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
     }
 
     public void renderDebug() {
+        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+
         shapeRenderer.begin();
         stuff.getShowcase().drawDebug(shapeRenderer);
         shapeRenderer.end();

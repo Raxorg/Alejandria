@@ -8,9 +8,9 @@ import static com.epicness.alejandria.showcase.constants.RenderingConstants.X_ST
 import static com.epicness.alejandria.showcase.constants.RenderingConstants.Y_STEP;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 import static com.epicness.fundamentals.utils.ColorUtils.HSVtoRGB;
 
 import com.badlogic.gdx.graphics.Color;
@@ -43,12 +43,13 @@ public class ShapeRenderingDrawable implements ModuleDrawable {
         for (float i = 0; i < COLOR_STEPS; i++) {
             Color.argb8888ToColor(color, HSVtoRGB(i / COLOR_STEPS, 1, 1));
             shapeRenderer.rect(
-                CAMERA_HALF_WIDTH - 275, CAMERA_HALF_HEIGHT - 275,  // Position
-                275, 275,                                           // Origin
-                550, 550,                                           // Size
-                1, 1,                                               // Scale
-                i * 90 / COLOR_STEPS,                               // Angle
-                color, color, color, color);                        // Colors
+                VIEWPORT_HALF_WIDTH - 275,      // X
+                VIEWPORT_HALF_HEIGHT - 275,     // Y
+                275, 275,                       // Origin
+                550, 550,                       // Size
+                1, 1,                           // Scale
+                i * 90 / COLOR_STEPS,           // Angle
+                color, color, color, color);    // Colors
         }
 
         float xOffset, yOffset;
@@ -58,8 +59,8 @@ public class ShapeRenderingDrawable implements ModuleDrawable {
 
             // Make this coil reach back to the outer coil
             point1.set(xOffset - X_STEP, yOffset + SHOWCASE_Y);
-            point2.set(CAMERA_WIDTH - xOffset, yOffset + SHOWCASE_Y);
-            point3.set(CAMERA_WIDTH - xOffset, SHOWCASE_SIZE - yOffset + SHOWCASE_Y);
+            point2.set(VIEWPORT_WIDTH - xOffset, yOffset + SHOWCASE_Y);
+            point3.set(VIEWPORT_WIDTH - xOffset, SHOWCASE_SIZE - yOffset + SHOWCASE_Y);
             point4.set(xOffset, SHOWCASE_SIZE - yOffset + SHOWCASE_Y);
             // Make this coil stop before connecting back to itself
             point5.set(xOffset, yOffset + Y_STEP + SHOWCASE_Y);

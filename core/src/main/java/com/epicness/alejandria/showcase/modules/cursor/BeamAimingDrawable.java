@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.cursor;
 
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.BEAM_THICKNESS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,13 +19,13 @@ public class BeamAimingDrawable implements ModuleDrawable {
     public BeamAimingDrawable(Sprite triangleSprite, Sprite beamSprite) {
         triangle = new Sprited(triangleSprite);
         triangle.setOriginCenter();
-        triangle.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        triangle.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         triangle.useBilinearFilter();
 
         beam = new Sprited(beamSprite);
         beam.setSize(BEAM_THICKNESS);
         beam.setOriginCenter();
-        beam.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        beam.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         beam.setColor(Color.BLUE);
     }
 

@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
+import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_COLUMNS;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.GRID_ROWS;
@@ -7,10 +8,10 @@ import static com.epicness.alejandria.showcase.constants.MaskingConstants.LAYERE
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.SHAPE_SIZE;
 import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -37,10 +38,10 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
 
     public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
         mask = new Sprited(pixel);
-        mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
-        mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
-        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
-        mask.setColor(Color.BLUE);
+        mask.setOrigin(VIEWPORT_WIDTH, VIEWPORT_HEIGHT * 2f);
+        mask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
+        mask.setSize(VIEWPORT_WIDTH * 2f, VIEWPORT_HEIGHT * 2f);
+        mask.setColor(BLUE);
 
         Sprite cellSprite = new Sprite(square32);
 
@@ -64,11 +65,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         }
 
         circle1 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
-        circle1.setPosition(CAMERA_HALF_WIDTH - LAYERED_CIRCLE_RADIUS, CAMERA_HALF_HEIGHT);
+        circle1.setPosition(VIEWPORT_HALF_WIDTH - LAYERED_CIRCLE_RADIUS, VIEWPORT_HALF_HEIGHT);
         circle1.setThickness(3f);
 
         circle2 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
-        circle2.setX(CAMERA_HALF_WIDTH - LAYERED_CIRCLE_RADIUS);
+        circle2.setX(VIEWPORT_HALF_WIDTH - LAYERED_CIRCLE_RADIUS);
         circle2.setThickness(3f);
 
         Sprite backgroundSprite = new Sprite(pixel);
@@ -84,7 +85,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.375f);
+            shape.setPosition(SHAPE_SIZE * i, VIEWPORT_HEIGHT * 0.375f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.PURPLE);
             shapes.add(shape);
@@ -92,7 +93,7 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
 
         for (int i = 0; i < GRID_COLUMNS; i++) {
             DualSprited shape = new DualSprited(backgroundSprite, foregroundSprite);
-            shape.setPosition(SHAPE_SIZE * i, CAMERA_HEIGHT * 0.75f);
+            shape.setPosition(SHAPE_SIZE * i, VIEWPORT_HEIGHT * 0.75f);
             shape.setSize(SHAPE_SIZE);
             shape.setColor(Color.GREEN);
             shapes.add(shape);

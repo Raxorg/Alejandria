@@ -140,4 +140,9 @@ public class ShowcaseLogic extends Logic {
         }
         showcaseHandler.update();
     }
+
+    @Override
+    public void resize(int width, int height) {
+        showcaseHandler.resize(width, height);
+    }
 }

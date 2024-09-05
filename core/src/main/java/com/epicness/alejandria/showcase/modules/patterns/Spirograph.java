@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.patterns;
 
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.FADE_DURATION;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
@@ -30,10 +30,10 @@ public class Spirograph extends Module<SpirographDrawable> {
         auxColor = new Color();
         hsv = new float[3];
 
-        linedBalls[0].setCenter(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        linedBalls[0].setCenter(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         linedBalls[0].lastTrackedPosition.set(linedBalls[0].getEnd());
         for (int i = 1; i < linedBalls.length; i++) {
-            linedBalls[i].setCenter(linedBalls[i - 1].getCenter().x + linedBalls[i - 1].getLength(), CAMERA_HALF_HEIGHT);
+            linedBalls[i].setCenter(linedBalls[i - 1].getCenter().x + linedBalls[i - 1].getLength(), VIEWPORT_HALF_HEIGHT);
             linedBalls[i].lastTrackedPosition.set(linedBalls[i].getEnd());
         }
         trailLines.clear();

@@ -1,8 +1,8 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.SHAPE_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.DualSprited;
@@ -40,19 +40,19 @@ public class LayeredMasking extends Module<LayeredMaskingDrawable> {
         for (int i = 0; i < shapes.size(); i++) {
             DualSprited shape = shapes.get(i);
             shape.translateY(delta * 50f);
-            if (shape.getY() >= CAMERA_HEIGHT) {
+            if (shape.getY() >= VIEWPORT_HEIGHT) {
                 shape.setY(-SHAPE_SIZE);
             }
         }
 
         circle1.translateX(delta * 150f);
-        if (circle1.getX() >= CAMERA_WIDTH) {
+        if (circle1.getX() >= VIEWPORT_WIDTH) {
             circle1.setX(-circle1.getWidth());
         }
 
         circle2.translateX(-delta * 150f);
         if (circle2.getEndX() <= 0f) {
-            circle2.setX(CAMERA_WIDTH);
+            circle2.setX(VIEWPORT_WIDTH);
         }
     }
 }

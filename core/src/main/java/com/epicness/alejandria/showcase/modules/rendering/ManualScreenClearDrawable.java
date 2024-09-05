@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
 import static com.badlogic.gdx.graphics.Color.ORANGE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,7 +16,7 @@ public class ManualScreenClearDrawable implements ModuleDrawable {
 
     public ManualScreenClearDrawable(Sprite weirdShapeSprite) {
         weirdShape = new Sprited(weirdShapeSprite);
-        weirdShape.setY(CAMERA_HALF_HEIGHT - weirdShape.getHeight() / 2f);
+        weirdShape.setY(VIEWPORT_HALF_HEIGHT - weirdShape.getHeight() / 2f);
         weirdShape.setColor(ORANGE);
         weirdShape.useBilinearFilter();
     }

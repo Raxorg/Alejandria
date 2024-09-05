@@ -5,8 +5,8 @@ import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.alejandria.showcase.constants.BeamAimingConstants.TRIANGLE_SPEED;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -16,7 +16,7 @@ import com.epicness.fundamentals.utils.AngleUtils;
 
 public class BeamAiming extends Module<BeamAimingDrawable> {
 
-    private float lastCursorX = CAMERA_HALF_WIDTH, lastCursorY = CAMERA_HALF_HEIGHT;
+    private float lastCursorX = VIEWPORT_HALF_WIDTH, lastCursorY = VIEWPORT_HALF_HEIGHT;
     private Vector2 beamCenter;
 
     public BeamAiming() {

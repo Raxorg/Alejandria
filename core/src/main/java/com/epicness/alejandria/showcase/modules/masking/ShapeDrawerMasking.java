@@ -1,9 +1,9 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
 
@@ -23,10 +23,10 @@ public class ShapeDrawerMasking extends Module<ShapeDrawerMaskingDrawable> {
 
     @Override
     public void update(float delta) {
-        SDCircle mask = drawable.getMask();
-        if (mask.getCenterX() >= CAMERA_WIDTH - mask.getRadius()) {
+        Circle mask = drawable.getMask();
+        if (mask.getCenterX() >= VIEWPORT_WIDTH - mask.radius) {
             goingLeft = true;
-        } else if (mask.getCenterX() - mask.getRadius() <= 0f) {
+        } else if (mask.getCenterX() - mask.radius <= 0f) {
             goingLeft = false;
         }
         float translation = goingLeft ? -delta * 300f : delta * 300f;

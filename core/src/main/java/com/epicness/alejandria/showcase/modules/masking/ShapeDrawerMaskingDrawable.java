@@ -1,53 +1,53 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
-import com.epicness.alejandria.showcase.stuff.modules.masking.SDCircle;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDTriangle;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
 public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
 
     private final SDTriangle triangle1, triangle2, triangle3, triangle4;
-    private final SDCircle mask;
+    private final Circle mask;
 
     public ShapeDrawerMaskingDrawable() {
         float size = 200f;
 
         triangle1 = new SDTriangle(
-            CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT - size,
-            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-            CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT - size);
+            VIEWPORT_HALF_WIDTH - size, VIEWPORT_HALF_HEIGHT - size,
+            VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_HALF_WIDTH + size, VIEWPORT_HALF_HEIGHT - size);
         triangle1.setColor(Color.BLUE);
 
         triangle2 = new SDTriangle(
-            CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT + size,
-            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-            CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT - size);
+            VIEWPORT_HALF_WIDTH + size, VIEWPORT_HALF_HEIGHT + size,
+            VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_HALF_WIDTH + size, VIEWPORT_HALF_HEIGHT - size);
         triangle2.setColor(Color.GREEN);
 
         triangle3 = new SDTriangle(
-            CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT + size,
-            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-            CAMERA_HALF_WIDTH + size, CAMERA_HALF_HEIGHT + size);
+            VIEWPORT_HALF_WIDTH - size, VIEWPORT_HALF_HEIGHT + size,
+            VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_HALF_WIDTH + size, VIEWPORT_HALF_HEIGHT + size);
         triangle3.setColor1(Color.RED);
         triangle3.setColor2(Color.CLEAR);
         triangle3.setColor3(Color.CLEAR);
 
         triangle4 = new SDTriangle(
-            CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT - size,
-            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-            CAMERA_HALF_WIDTH - size, CAMERA_HALF_HEIGHT + size);
+            VIEWPORT_HALF_WIDTH - size, VIEWPORT_HALF_HEIGHT - size,
+            VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_HALF_WIDTH - size, VIEWPORT_HALF_HEIGHT + size);
         triangle4.setColor(Color.YELLOW);
 
-        mask = new SDCircle(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, size);
+        mask = new Circle(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT - size, size);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
         spriteBatch.begin();
         Gdx.gl.glDepthMask(true);
 
-        mask.draw(shapeDrawer, true);
+        mask.draw(shapeDrawer);
 
         spriteBatch.end();
     }
@@ -93,9 +93,10 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        mask.draw(shapeRenderer);
     }
 
-    public SDCircle getMask() {
+    public Circle getMask() {
         return mask;
     }
 }

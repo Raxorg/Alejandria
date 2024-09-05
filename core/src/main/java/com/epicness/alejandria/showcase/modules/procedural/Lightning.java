@@ -5,8 +5,8 @@ import static com.epicness.alejandria.showcase.constants.ProceduralConstants.BOL
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.MAX_BRANCHES;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.MIN_BRANCHES;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -36,8 +36,8 @@ public class Lightning extends Module<LightningDrawable> {
         auxColor = new Color();
         flashProgress = 1f;
         float randomAngle = MathUtils.random(360f);
-        float x = CAMERA_HALF_WIDTH + MathUtils.cosDeg(randomAngle) * SHOWCASE_HALF_SIZE;
-        float y = CAMERA_HALF_HEIGHT + MathUtils.sinDeg(randomAngle) * SHOWCASE_HALF_SIZE;
+        float x = VIEWPORT_HALF_WIDTH + MathUtils.cosDeg(randomAngle) * SHOWCASE_HALF_SIZE;
+        float y = VIEWPORT_HALF_HEIGHT + MathUtils.sinDeg(randomAngle) * SHOWCASE_HALF_SIZE;
         touchDown(x, y, LEFT);
         return drawable;
     }
@@ -67,10 +67,10 @@ public class Lightning extends Module<LightningDrawable> {
     }
 
     private void createBranchedLightning(float x, float y) {
-        LightningBolt main = new LightningBolt(assets.getBoltSegment(), CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, x, y);
+        LightningBolt main = new LightningBolt(assets.getBoltSegment(), VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT, x, y);
         main.setColor(BOLT_COLOR);
         bolts.add(main);
-        Vector2 mainVec = new Vector2(x - CAMERA_HALF_WIDTH, y - CAMERA_HALF_HEIGHT);
+        Vector2 mainVec = new Vector2(x - VIEWPORT_HALF_WIDTH, y - VIEWPORT_HALF_HEIGHT);
 
         int numBranches = MathUtils.random(MIN_BRANCHES, MAX_BRANCHES);
         float[] fractions = new float[numBranches];

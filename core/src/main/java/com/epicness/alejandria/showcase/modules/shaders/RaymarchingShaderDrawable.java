@@ -1,9 +1,9 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
-import static com.epicness.alejandria.showcase.constants.RaymarchingConstants.CANVAS_HEIGHT;
-import static com.epicness.alejandria.showcase.constants.RaymarchingConstants.CANVAS_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -30,9 +30,9 @@ public class RaymarchingShaderDrawable implements ModuleDrawable {
         }
 
         canvas = new Sprited(pixel);
-        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvas.setSize(VIEWPORT_WIDTH, SHOWCASE_SIZE);
         canvas.setOriginCenter();
-        canvas.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        canvas.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
     }
 
     @Override
@@ -46,7 +46,6 @@ public class RaymarchingShaderDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
-
     }
 
     public ShaderProgram getShader() {

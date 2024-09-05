@@ -1,8 +1,5 @@
 package com.epicness.alejandria.showcase.modules;
 
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_RESOLUTION;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_X;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.SHADER_Y;
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -11,6 +8,8 @@ import com.epicness.alejandria.showcase.logic.Module;
 public class Welcome extends Module<WelcomeDrawable> {
 
     private ShaderProgram shader;
+    private float shaderResolution;
+    private float shaderX, shaderY;
     private float time;
 
     public Welcome() {
@@ -36,8 +35,16 @@ public class Welcome extends Module<WelcomeDrawable> {
         time += delta;
 
         shader.bind();
-        shader.setUniformf("u_resolution", SHADER_RESOLUTION, SHADER_RESOLUTION);
-        shader.setUniformf("u_position", SHADER_X, SHADER_Y);
+        shader.setUniformf("u_resolution", shaderResolution, shaderResolution);
+        shader.setUniformf("u_position", shaderX, shaderY);
         shader.setUniformf("time", time);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        float resolution = Math.min(width, height);
+        shaderResolution = resolution * 0.7f;
+        shaderX = width / 2f - shaderResolution / 2f;
+        shaderY = height / 2f - shaderResolution / 2f + resolution * 0.05f;
     }
 }

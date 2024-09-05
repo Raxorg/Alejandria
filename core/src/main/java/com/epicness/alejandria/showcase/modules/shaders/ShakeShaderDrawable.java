@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -18,7 +18,7 @@ public class ShakeShaderDrawable implements ModuleDrawable {
     public ShakeShaderDrawable(Sprite weirdShapeSprite) {
         weirdShape = new Sprited(weirdShapeSprite);
         weirdShape.setOriginCenter();
-        weirdShape.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        weirdShape.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         weirdShape.setColor(Color.RED);
     }
 

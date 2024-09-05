@@ -2,7 +2,7 @@ package com.epicness.alejandria.showcase.constants;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BUTTON_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 public class PhysicsConstants {
 
@@ -15,7 +15,7 @@ public class PhysicsConstants {
 
     public static final float FLOOR_X1 = SHOWCASE_BUTTON_SIZE;
     public static final float FLOOR_Y1 = SHOWCASE_STRIPE_HEIGHT * 2f;
-    public static final float FLOOR_X2 = CAMERA_WIDTH - SHOWCASE_BUTTON_SIZE;
+    public static final float FLOOR_X2 = VIEWPORT_WIDTH - SHOWCASE_BUTTON_SIZE;
     public static final float FLOOR_Y2 = SHOWCASE_STRIPE_HEIGHT * 2f;
     public static final float PHYSICS_FLOOR_X1 = FLOOR_X1 / PHYSICS_SCALE_FACTOR;
     public static final float PHYSICS_FLOOR_Y1 = FLOOR_Y1 / PHYSICS_SCALE_FACTOR;
