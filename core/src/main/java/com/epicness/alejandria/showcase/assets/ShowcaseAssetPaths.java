@@ -44,6 +44,10 @@ public class ShowcaseAssetPaths {
 
     public static final AssetDescriptor<Sprite> ROUNDEDSQUARE_SPRITE;
 
+    public static final AssetDescriptor<Sprite> ADD_SPRITE;
+
+    public static final AssetDescriptor<Sprite> EQUAL_SPRITE;
+
     public static final AssetDescriptor<Sprite> GLOW_SPRITE;
 
     public static final AssetDescriptor<Sprite> SMILEY_COLOR_SPRITE;
@@ -81,6 +85,8 @@ public class ShowcaseAssetPaths {
         ASSETS.add(CIRCLE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/circle.png", Sprite.class));
         ASSETS.add(CIRCLEGLOW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/circleGlow.png", Sprite.class));
         ASSETS.add(ROUNDEDSQUARE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/fun/roundedSquare.png", Sprite.class));
+        ASSETS.add(ADD_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/add.png", Sprite.class));
+        ASSETS.add(EQUAL_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/equal.png", Sprite.class));
         ASSETS.add(GLOW_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/glow.png", Sprite.class));
         ASSETS.add(SMILEY_COLOR_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_color.png", Sprite.class));
         ASSETS.add(SMILEY_OUTLINE_SPRITE = new AssetDescriptor<>("alejandria/showcase/images/masking/smiley_outline.png", Sprite.class));
