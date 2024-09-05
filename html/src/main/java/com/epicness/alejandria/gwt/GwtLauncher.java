@@ -1,7 +1,5 @@
 package com.epicness.alejandria.gwt;
 
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
@@ -12,7 +10,7 @@ public class GwtLauncher extends GwtApplication {
     @Override
     public GwtApplicationConfiguration getConfig() {
         // Resizable application, uses available space in browser with no padding:
-        GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(WINDOW_SIZE, WINDOW_SIZE, true);
+        GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(true);
         cfg.padVertical = 0;
         cfg.padHorizontal = 0;
         cfg.preserveDrawingBuffer = true;

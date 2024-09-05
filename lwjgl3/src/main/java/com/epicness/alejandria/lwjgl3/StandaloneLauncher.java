@@ -14,7 +14,6 @@ public class StandaloneLauncher {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setWindowedMode(WINDOW_SIZE, WINDOW_SIZE);
-        config.setResizable(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 4);
         new Lwjgl3Application(new FundamentalsTest(), config);
     }
