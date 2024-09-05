@@ -36,9 +36,9 @@ import com.epicness.alejandria.showcase.modules.physics.BallPhysics;
 import com.epicness.alejandria.showcase.modules.procedural.Lightning;
 import com.epicness.alejandria.showcase.modules.procedural.PixmapManipulation;
 import com.epicness.alejandria.showcase.modules.procedural.ProceduralSquare;
-import com.epicness.alejandria.showcase.modules.rendering.FrameBuffering;
+import com.epicness.alejandria.showcase.modules.rendering.FrameBufferExample;
 import com.epicness.alejandria.showcase.modules.rendering.ManualScreenClear;
-import com.epicness.alejandria.showcase.modules.rendering.OrthographicExample;
+import com.epicness.alejandria.showcase.modules.rendering.OrthographicCameraExample;
 import com.epicness.alejandria.showcase.modules.rendering.ShapeRendering;
 import com.epicness.alejandria.showcase.modules.rendering3d.DecalExample;
 import com.epicness.alejandria.showcase.modules.rendering3d.TexturedCube;
@@ -111,9 +111,9 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new PixmapManipulation());
         registerHandler(new ProceduralSquare());
         // Rendering
-        registerHandler(new FrameBuffering());
+        registerHandler(new FrameBufferExample());
         registerHandler(new ManualScreenClear());
-        registerHandler(new OrthographicExample());
+        registerHandler(new OrthographicCameraExample());
         registerHandler(new ShapeRendering());
         // Rendering 3D
         registerHandler(new DecalExample());
@@ -135,7 +135,7 @@ public class ShowcaseLogic extends Logic {
 
     @Override
     public void update() {
-        if (Gdx.graphics.getDeltaTime() >= 0.4f) {
+        if (Gdx.graphics.getDeltaTime() >= 0.3f) {
             return;
         }
         showcaseHandler.update();
