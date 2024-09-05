@@ -69,7 +69,7 @@ This desktop+web app showcases a variety of libGDX features/capabilities/techniq
 - Procedural Square
 
 ### Rendering
-- Frame Buffering
+- Frame Buffer Example
 - Manual Screen Clear
 - Orthographic Example
 - Shape Rendering

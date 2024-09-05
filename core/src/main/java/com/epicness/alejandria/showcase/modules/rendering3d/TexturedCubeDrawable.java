@@ -53,7 +53,7 @@ public class TexturedCubeDrawable implements ModuleDrawable {
 
         modelBatch = new ModelBatch();
 
-        camera = new PerspectiveCamera(67f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera = new PerspectiveCamera(90f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.translate(0f, 0f, 20f);
     }
 
