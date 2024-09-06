@@ -9,12 +9,9 @@ import com.epicness.fundamentals.SharedResources;
 // TODO: 2/29/2024 Show FPS (1/Delta or Gdx.graphics.getFramesPerSecond() and Delta Time when debug enabled
 // TODO: 3/9/2024 Add visible module category labels/tags
 // TODO: 8/30/2024 Improve readme with images and such
-// TODO: 8/30/2024 Viewports!
 // TODO: 8/30/2024 Create a setup tool like liftoff that creates the base structure for screens like splash, menu, game, etc
-// TODO: 8/30/2024 FIX, THE BALL GETS STUCK ON THE RIGHT SIDE OF THE GRID xd
 // TODO: 8/30/2024 Add "-", "+", "*" and "/" characters to pixel font
-// TODO: 8/30/2024 OPTIMIZE CANTOR GASKET, IT IS TOO SLOW!
-// TODO: 8/30/2024 FIX, SOMETIMES SOUNDS DON'T PLAY! (SoundPitch module)
+// TODO: 8/30/2024 OPTIMIZE CANTOR GASKET, IT IS TOO SLOW! (Probably multi frame solution)
 // TODO: 8/31/2024 Allow drawDebug to use ShapeDrawer too
 // TODO: 8/31/2024 The information panel expands to fill the entire screen
 // TODO: 9/1/2024 Make it so I can share a module directly using the url
