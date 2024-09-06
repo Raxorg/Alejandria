@@ -1,7 +1,7 @@
 package com.epicness.standalone.masking.examples;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -65,7 +65,7 @@ public class ShaderPixmapDrawing extends Game {
 
         /* Let's use a camera for proper input handling. */
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
+        camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 
         /* Construct a simple SpriteBatch using our shader program. */
         spriteBatch = new SpriteBatch();

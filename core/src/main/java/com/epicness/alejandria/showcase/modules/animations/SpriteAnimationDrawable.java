@@ -1,6 +1,6 @@
 package com.epicness.alejandria.showcase.modules.animations;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,13 +20,13 @@ public class SpriteAnimationDrawable implements ModuleDrawable {
         frames = new Sprited(framesSprite);
         frames.setSize(400f, 400f);
         frames.setOriginCenter();
-        frames.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - 220f, CAMERA_HALF_HEIGHT);
+        frames.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - 220f, VIEWPORT_HALF_HEIGHT);
         frames.useBilinearFilter();
 
         animation = new SpritedAnimation(0.05f, animationFrames);
         animation.setScale(3f);
         animation.setOriginCenter();
-        animation.setOriginBasedPosition(VIEWPORT_HALF_WIDTH + 250f, CAMERA_HALF_HEIGHT);
+        animation.setOriginBasedPosition(VIEWPORT_HALF_WIDTH + 250f, VIEWPORT_HALF_HEIGHT);
         animation.enableLooping();
         animation.useBilinearFilter();
     }

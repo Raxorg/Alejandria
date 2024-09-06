@@ -2,8 +2,8 @@ package com.epicness.standalone.masking;
 
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled;
 import static com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -24,7 +24,7 @@ public class ScissorStackMaskingStandalone extends Game {
     public void create() {
         /* The ScissorStack needs a camera to transform the clipping rectangles. */
         OrthographicCamera camera = new OrthographicCamera();
-        camera.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT);
+        camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 
         /* We can use a SpriteBatch or a ShapeRenderer to draw our masked elements. */
         shapeRenderer = new ShapeRenderer();

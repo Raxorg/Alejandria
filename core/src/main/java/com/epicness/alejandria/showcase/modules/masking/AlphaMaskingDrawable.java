@@ -12,7 +12,6 @@ import static com.epicness.alejandria.showcase.constants.MaskingConstants.PLUS_X
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.PLUS_Y;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
@@ -59,11 +58,11 @@ public class AlphaMaskingDrawable implements ModuleDrawable {
 
         visibleMask = new Sprite(glow);
         visibleMask.setOriginCenter();
-        visibleMask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH + mask.getWidth(), CAMERA_HEIGHT * 0.75f);
+        visibleMask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH + mask.getWidth(), VIEWPORT_HEIGHT * 0.75f);
 
         originalSprite = new Sprite(weirdShape);
         originalSprite.setOriginCenter();
-        originalSprite.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - mask.getWidth(), CAMERA_HEIGHT * 0.75f);
+        originalSprite.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - mask.getWidth(), VIEWPORT_HEIGHT * 0.75f);
         originalSprite.setColor(RED);
 
         // Frame buffer is needed because normal rendering ignores or ruins blending commands
