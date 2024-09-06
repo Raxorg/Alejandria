@@ -3,8 +3,8 @@ package com.epicness.alejandria.showcase.modules.procedural;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.GRID_DIMENSION_A;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.PIXEL_SIZE_A;
 import static com.epicness.alejandria.showcase.constants.ProceduralConstants.SPACING_A;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,8 +31,8 @@ public class ProceduralSquareDrawable implements ModuleDrawable {
         float gridSize = pixelSize * gridDimension + gridDimension * spacingFactor;
         for (int column = 0; column < gridDimension; column++) {
             for (int row = 0; row < gridDimension; row++) {
-                float x = column * pixelSize + CAMERA_HALF_WIDTH - gridSize / 2f + column * spacingFactor;
-                float y = row * pixelSize + CAMERA_HALF_HEIGHT - gridSize / 2f + row * spacingFactor;
+                float x = column * pixelSize + VIEWPORT_HALF_WIDTH - gridSize / 2f + column * spacingFactor;
+                float y = row * pixelSize + VIEWPORT_HALF_HEIGHT - gridSize / 2f + row * spacingFactor;
                 shapeDrawer.filledRectangle(x, y, pixelSize, pixelSize, pixels[column][row]);
             }
         }

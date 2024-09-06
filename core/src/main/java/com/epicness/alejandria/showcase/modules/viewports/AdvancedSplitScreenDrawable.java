@@ -15,10 +15,10 @@ import static com.epicness.fundamentals.constants.ColorConstants.DIRT;
 import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
 import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -85,18 +85,18 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     private void initMask(Sprite maskSprite) {
         mask = new Sprited(maskSprite);
-        mask.setOrigin(CAMERA_WIDTH, CAMERA_HEIGHT * 2f);
-        mask.setSize(CAMERA_WIDTH * 2f, CAMERA_HEIGHT * 2f);
-        mask.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        mask.setOrigin(VIEWPORT_WIDTH, VIEWPORT_HEIGHT * 2f);
+        mask.setSize(VIEWPORT_WIDTH * 2f, VIEWPORT_HEIGHT * 2f);
+        mask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         mask.rotate(90f);
         mask.setColor(BLACK_50);
     }
 
     private void initDivider(Sprite dividerSprite) {
         divider = new Sprited(dividerSprite);
-        divider.setSize(CAMERA_WIDTH * 2f, DIVIDER_THICKNESS);
+        divider.setSize(VIEWPORT_WIDTH * 2f, DIVIDER_THICKNESS);
         divider.setOriginCenter();
-        divider.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        divider.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         divider.setColor(BLACK);
     }
 

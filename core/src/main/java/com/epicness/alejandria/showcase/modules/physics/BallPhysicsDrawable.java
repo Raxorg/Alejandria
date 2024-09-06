@@ -9,6 +9,7 @@ import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSIC
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_FLOOR_X2;
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_FLOOR_Y1;
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_FLOOR_Y2;
+import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_SCALE_FACTOR;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
@@ -33,10 +34,9 @@ public class BallPhysicsDrawable implements ModuleDrawable {
     private final Array<Circle> circles;
     private final Line floor;
 
-    public BallPhysicsDrawable(Matrix4 physicsProjectionMatrix) {
+    public BallPhysicsDrawable() {
         debugRenderer = new Box2DDebugRenderer();
-
-        this.physicsProjectionMatrix = physicsProjectionMatrix;
+        physicsProjectionMatrix = new Matrix4();
         world = new World(new Vector2(0, GRAVITY), true);
         circleBodies = new Array<>();
         circles = new Array<>();
@@ -63,6 +63,7 @@ public class BallPhysicsDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
+        physicsProjectionMatrix.set(shapeRenderer.getProjectionMatrix()).scl(PHYSICS_SCALE_FACTOR);
         debugRenderer.render(world, physicsProjectionMatrix);
     }
 

@@ -30,6 +30,12 @@ public class DecalExample extends Module<DecalExampleDrawable> {
     }
 
     @Override
+    public void resize(int width, int height) {
+        drawable.getCamera().viewportWidth = width;
+        drawable.getCamera().viewportHeight = height;
+    }
+
+    @Override
     public void keyDown(int keycode) {
         controller.keyDown(keycode);
     }

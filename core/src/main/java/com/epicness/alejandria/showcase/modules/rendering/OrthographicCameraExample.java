@@ -1,21 +1,23 @@
 package com.epicness.alejandria.showcase.modules.rendering;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 
-public class OrthographicExample extends Module<OrthographicExampleDrawable> {
+public class OrthographicCameraExample extends Module<OrthographicCameraExampleDrawable> {
 
-    public OrthographicExample() {
+    private float camX, camY;
+
+    public OrthographicCameraExample() {
         super("Orthographic Camera Example", "The sprite is not moving, the camera is");
     }
 
     @Override
-    public OrthographicExampleDrawable setup() {
-        return new OrthographicExampleDrawable(renderer, sharedAssets.getWeirdShape());
+    public OrthographicCameraExampleDrawable setup() {
+        OrthographicCamera camera = screen.getDynamicCamera();
+        camX = camera.position.x;
+        camY = camera.position.y;
+        return new OrthographicCameraExampleDrawable(renderer, sharedAssets.getWeirdShape());
     }
 
     @Override
@@ -23,7 +25,6 @@ public class OrthographicExample extends Module<OrthographicExampleDrawable> {
         float randomX = MathUtils.random(400f, 600f);
         float randomY = MathUtils.random(400f, 600f);
         OrthographicCamera camera = screen.getDynamicCamera();
-        camera.translate(randomX, randomY);
         camera.position.x = randomX;
         camera.position.y = randomY;
         camera.update();
@@ -31,7 +32,7 @@ public class OrthographicExample extends Module<OrthographicExampleDrawable> {
 
     @Override
     public void exit() {
-        screen.getDynamicCamera().position.set(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, 0f);
+        screen.getDynamicCamera().position.set(camX, camY, 0f);
         screen.getDynamicCamera().update();
         renderer.useStaticCamera();
     }

@@ -34,6 +34,12 @@ public class TexturedCube extends Module<TexturedCubeDrawable> {
     }
 
     @Override
+    public void resize(int width, int height) {
+        drawable.getCamera().viewportWidth = width;
+        drawable.getCamera().viewportHeight = height;
+    }
+
+    @Override
     public void keyDown(int keycode) {
         controller.keyDown(keycode);
     }

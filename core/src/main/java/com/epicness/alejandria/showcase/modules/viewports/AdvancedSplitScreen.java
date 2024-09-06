@@ -14,6 +14,8 @@ import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenCons
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MAX_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.MIN_VIEWPORT_SIZE;
 import static com.epicness.alejandria.showcase.constants.AdvancedSplitScreenConstants.PLAYER_SPEED;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -42,6 +44,8 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
         player2 = drawable.getPlayer2();
         camera1 = drawable.getCamera1();
         camera2 = drawable.getCamera2();
+        renderer.getViewport().setMaxWorldWidth(VIEWPORT_WIDTH);
+        renderer.getViewport().setMaxWorldHeight(VIEWPORT_HEIGHT);
         return drawable;
     }
 
@@ -154,6 +158,9 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     @Override
     protected void exit() {
+        renderer.getViewport().setMaxWorldWidth(0);
+        renderer.getViewport().setMaxWorldHeight(0);
+
         renderer.getShapeRenderer().setColor(WHITE);
         renderer.useStaticCamera();
     }

@@ -20,7 +20,7 @@ public class Triangle implements ShapeDrawable, Movable {
         this.y2 = y2;
         this.x3 = x3;
         this.y3 = y3;
-        this.color = color;
+        this.color = new Color(color);
         this.thickness = thickness;
     }
 

@@ -3,7 +3,7 @@ package com.epicness.alejandria.showcase.modules.masking;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_HALF_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -30,7 +30,7 @@ public class ClippingDrawable implements ModuleDrawable {
             15,
             15f);
         background2 = new AnimatedBackground(
-            200f, CAMERA_HALF_HEIGHT,
+            200f, VIEWPORT_HALF_HEIGHT,
             SHOWCASE_SIZE - 200f, 300f,
             Color.GREEN.cpy(),
             pixel,

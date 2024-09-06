@@ -48,8 +48,15 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         debug = false;
     }
 
+    @Override
     public void update(float delta) {
         currentModule.update(delta);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+        currentModule.resize(width, height);
     }
 
     @Override

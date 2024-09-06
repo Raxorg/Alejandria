@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.cursor;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,11 +17,11 @@ public class PointAtCursorDrawable implements ModuleDrawable {
     public PointAtCursorDrawable(Sprite triangleSprite) {
         triangle1 = new Sprited(triangleSprite);
         triangle1.setOriginCenter();
-        triangle1.setOriginBasedPosition(CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT);
+        triangle1.setOriginBasedPosition(VIEWPORT_HALF_WIDTH + 200f, VIEWPORT_HALF_HEIGHT);
 
         triangle2 = new Sprited(triangleSprite);
         triangle2.setOriginCenter();
-        triangle2.setOriginBasedPosition(CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT);
+        triangle2.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - 200f, VIEWPORT_HALF_HEIGHT);
         triangle2.useBilinearFilter();
     }
 

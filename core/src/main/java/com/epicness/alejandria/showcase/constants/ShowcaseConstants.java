@@ -6,25 +6,25 @@ import static com.badlogic.gdx.graphics.Color.ORANGE;
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 
 public class ShowcaseConstants {
 
-    public static final int WINDOW_SIZE = 600;
+    public static final int WINDOW_SIZE = 700;
 
     public static final float SHOWCASE_STRIPE_HEIGHT = 100f;
-    public static final float TOP_STRIPE_Y = CAMERA_HEIGHT - SHOWCASE_STRIPE_HEIGHT;
+    public static final float TOP_STRIPE_Y = VIEWPORT_HEIGHT - SHOWCASE_STRIPE_HEIGHT;
 
     public static final float SHOWCASE_BUTTON_SIZE = 100f;
-    public static final float GITHUB_BUTTON_X = CAMERA_HALF_WIDTH - SHOWCASE_BUTTON_SIZE * 1.25f;
-    public static final float INFO_BUTTON_X = CAMERA_HALF_WIDTH + SHOWCASE_BUTTON_SIZE * 0.25f;
-    public static final float NEXT_BUTTON_X = CAMERA_WIDTH - SHOWCASE_BUTTON_SIZE;
+    public static final float GITHUB_BUTTON_X = VIEWPORT_HALF_WIDTH - SHOWCASE_BUTTON_SIZE * 1.25f;
+    public static final float INFO_BUTTON_X = VIEWPORT_HALF_WIDTH + SHOWCASE_BUTTON_SIZE * 0.25f;
+    public static final float NEXT_BUTTON_X = VIEWPORT_WIDTH - SHOWCASE_BUTTON_SIZE;
 
-    public static final float SHOWCASE_SIZE = CAMERA_HEIGHT - SHOWCASE_STRIPE_HEIGHT * 2f;
+    public static final float SHOWCASE_SIZE = VIEWPORT_HEIGHT - SHOWCASE_STRIPE_HEIGHT * 2f;
     public static final float SHOWCASE_HALF_SIZE = SHOWCASE_SIZE / 2f;
     public static final float SHOWCASE_X = SHOWCASE_BUTTON_SIZE;
     public static final float SHOWCASE_Y = SHOWCASE_STRIPE_HEIGHT;

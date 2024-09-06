@@ -1,0 +1,31 @@
+On resize:
+
+@Override
+public void resize(int width, int height) {
+    viewport.update(width, height, true);
+    vfx.resize((int) viewport.getWorldWidth(), (int) viewport.getWorldHeight());
+}
+
+On render:
+
+@Override
+public void render(float delta) {
+    viewport.apply();
+    shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+
+    vfx.clear(getClearColor());
+    vfx.beginCapture();
+
+    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    shapeRenderer.setColor(Color.GREEN);
+    shapeRenderer.rect(50, 50, 100, 100);
+    shapeRenderer.end();
+
+    vfx.endCapture();
+    vfx.update(delta);
+    vfx.applyEffects();
+    vfx.renderToScreen(viewport.getScreenX(), viewport.getScreenY(), viewport.getScreenWidth(), viewport.getScreenHeight());
+}
+
+Check Lyze's repo:
+https://gitlab.com/lyze237-java/game-jams/six-hours-at-lyzes/-/tree/main

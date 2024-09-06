@@ -7,8 +7,8 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWC
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.TOP_STRIPE_Y;
 import static com.epicness.fundamentals.constants.ColorConstants.WHITE_25;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
@@ -26,8 +26,8 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
     @Override
     public void initializeStuff() {
         title = new SpritedText(sharedAssets.getPixel(), copyOf(sharedAssets.getPixelFont()));
-        title.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
-        title.setTextTargetWidth(CAMERA_WIDTH);
+        title.setSize(VIEWPORT_WIDTH, SHOWCASE_STRIPE_HEIGHT);
+        title.setTextTargetWidth(VIEWPORT_WIDTH);
         title.setY(TOP_STRIPE_Y);
         title.setBackgroundColor(WHITE_25);
         title.setFontScale(5f);
@@ -35,7 +35,7 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         showcase = new Showcase();
 
         bottomStripe = new Sprited(sharedAssets.getPixel());
-        bottomStripe.setSize(CAMERA_WIDTH, SHOWCASE_STRIPE_HEIGHT);
+        bottomStripe.setSize(VIEWPORT_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         bottomStripe.setColor(WHITE_25);
 
         previous = new Sprited(assets.getArrow());
@@ -57,8 +57,8 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         next.setX(NEXT_BUTTON_X);
 
         information = new SpritedText(sharedAssets.getPixel(), copyOf(sharedAssets.getPixelFont()));
-        information.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
-        information.setTextTargetWidth(CAMERA_WIDTH * 0.9f);
+        information.setSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        information.setTextTargetWidth(VIEWPORT_WIDTH * 0.9f);
         information.setFontScale(5f);
     }
 

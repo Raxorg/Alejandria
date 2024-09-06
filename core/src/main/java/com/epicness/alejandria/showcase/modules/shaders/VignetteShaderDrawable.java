@@ -1,9 +1,13 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
+import static com.badlogic.gdx.graphics.Color.CYAN;
+import static com.badlogic.gdx.graphics.Color.ORANGE;
+import static com.badlogic.gdx.graphics.Color.PURPLE;
+import static com.epicness.alejandria.showcase.constants.ShaderConstants.VIGNETTE_SQUARE_SIZE;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
@@ -21,20 +25,20 @@ public class VignetteShaderDrawable implements ModuleDrawable {
         square3 = new Sprited(squareSprite);
         square4 = new Sprited(squareSprite);
 
-        square1.setSize(CAMERA_HALF_WIDTH);
-        square1.setColor(Color.ORANGE);
+        square1.setSize(VIGNETTE_SQUARE_SIZE);
+        square1.setColor(ORANGE);
 
-        square2.setPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
-        square2.setSize(CAMERA_HALF_WIDTH);
-        square2.setColor(Color.PURPLE);
+        square2.setPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
+        square2.setSize(VIGNETTE_SQUARE_SIZE);
+        square2.setColor(PURPLE);
 
-        square3.setPosition(0f, CAMERA_HALF_HEIGHT);
-        square3.setSize(CAMERA_HALF_WIDTH);
-        square3.setColor(Color.CHARTREUSE);
+        square3.setPosition(0f, VIEWPORT_HALF_HEIGHT);
+        square3.setSize(VIGNETTE_SQUARE_SIZE);
+        square3.setColor(CHARTREUSE);
 
-        square4.setPosition(CAMERA_HALF_WIDTH, 0f);
-        square4.setSize(CAMERA_HALF_WIDTH);
-        square4.setColor(Color.CYAN);
+        square4.setPosition(VIEWPORT_HALF_WIDTH, 0f);
+        square4.setSize(VIGNETTE_SQUARE_SIZE);
+        square4.setColor(CYAN);
     }
 
     @Override

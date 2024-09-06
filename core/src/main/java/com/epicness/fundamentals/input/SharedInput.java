@@ -2,17 +2,23 @@ package com.epicness.fundamentals.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.epicness.fundamentals.SharedScreen;
+import com.epicness.fundamentals.renderer.Renderer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SharedInput implements InputProcessor {
 
-    private final List<LogicInputHandler<?, ?, ?, ?, ?>> inputHandlers;
+    // Structure
     private OrthographicCamera staticCamera, dynamicCamera;
+    private ExtendViewport viewport;
+    // Input related
+    private final List<LogicInputHandler<?, ?, ?, ?, ?>> inputHandlers;
     private boolean enabled, inputConsumed;
     private final Vector3 unprojected;
 
@@ -28,13 +34,13 @@ public class SharedInput implements InputProcessor {
         if (!enabled) return false;
         inputConsumed = false;
         // Static camera
-        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).mouseMoved(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(dynamicCamera, screenX, screenY);
         for (int i = 0, n = inputHandlers.size(); i < n; i++) {
             inputHandlers.get(i).mouseMovedDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -61,13 +67,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDown(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDownDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -81,13 +87,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDragged(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchDraggedDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -101,13 +107,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchUp(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchUpDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -121,13 +127,13 @@ public class SharedInput implements InputProcessor {
         if (pointer != 0 || !enabled) return false;
         inputConsumed = false;
         // Static camera
-        staticCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchCancelled(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
         }
         // Dynamic camera
-        dynamicCamera.unproject(unprojected.set(screenX, screenY, 0f));
+        unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
             inputHandlers.get(i).touchCancelledDynamic(unprojected.x, unprojected.y);
             if (inputConsumed) return true;
@@ -175,6 +181,11 @@ public class SharedInput implements InputProcessor {
         return false;
     }
 
+    private void unproject(Camera camera, int screenX, int screenY) {
+        unprojected.set(screenX, screenY, 0f);
+        camera.unproject(unprojected, viewport.getScreenX(), viewport.getScreenY(), viewport.getScreenWidth(), viewport.getScreenHeight());
+    }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -196,6 +207,10 @@ public class SharedInput implements InputProcessor {
     }
 
     // Structure
+    public void setRenderer(Renderer<?> renderer) {
+        viewport = renderer.getViewport();
+    }
+
     public void setScreen(SharedScreen screen) {
         staticCamera = screen.getStaticCamera();
         dynamicCamera = screen.getDynamicCamera();

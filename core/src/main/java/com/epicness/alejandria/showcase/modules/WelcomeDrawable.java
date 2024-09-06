@@ -2,10 +2,8 @@ package com.epicness.alejandria.showcase.modules;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_HEIGHT;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_WIDTH;
-import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_X;
 import static com.epicness.alejandria.showcase.constants.WelcomeConstants.CANVAS_Y;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -22,7 +20,7 @@ public class WelcomeDrawable implements ModuleDrawable {
 
     private final ShaderProgram shader;
     private final Sprited canvas;
-    private final Text text;
+    private final Text authorText;
 
     public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
         shader = neonWavesShader;
@@ -34,16 +32,16 @@ public class WelcomeDrawable implements ModuleDrawable {
             Gdx.app.error("SHADER LOG:", shader.getLog());
         }
         canvas = new Sprited(pixel);
-        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-        canvas.setPosition(CANVAS_X, CANVAS_Y);
+        canvas.setSize(VIEWPORT_WIDTH, CANVAS_HEIGHT);
+        canvas.setY(CANVAS_Y);
 
-        text = new Text(pixelFont);
-        text.setVerticallyCentered(true);
-        text.setWidth(CAMERA_WIDTH);
-        text.hAlignCenter();
-        text.setY(SHOWCASE_STRIPE_HEIGHT * 1.5f);
-        text.setText("By Luis \"Groxar\" Frontanilla");
-        text.setScale(5f);
+        authorText = new Text(pixelFont);
+        authorText.setVerticallyCentered(true);
+        authorText.setWidth(VIEWPORT_WIDTH);
+        authorText.hAlignCenter();
+        authorText.setY(SHOWCASE_STRIPE_HEIGHT * 1.5f);
+        authorText.setText("By Luis \"Groxar\" Frontanilla");
+        authorText.setScale(5f);
     }
 
     @Override
@@ -53,13 +51,13 @@ public class WelcomeDrawable implements ModuleDrawable {
         canvas.draw(spriteBatch);
         spriteBatch.flush();
         spriteBatch.setShader(null);
-        text.draw(spriteBatch);
+        authorText.draw(spriteBatch);
         spriteBatch.end();
     }
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        text.drawDebug(shapeRenderer);
+        authorText.drawDebug(shapeRenderer);
     }
 
     public ShaderProgram getShader() {

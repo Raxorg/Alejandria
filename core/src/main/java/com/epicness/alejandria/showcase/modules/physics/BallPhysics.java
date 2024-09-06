@@ -7,10 +7,9 @@ import static com.epicness.alejandria.showcase.constants.PhysicsConstants.CIRCLE
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_CIRCLE_RADIUS;
 import static com.epicness.alejandria.showcase.constants.PhysicsConstants.PHYSICS_SCALE_FACTOR;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.BASIC_COLORS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2D;
@@ -33,14 +32,13 @@ public class BallPhysics extends Module<BallPhysicsDrawable> {
 
     @Override
     protected BallPhysicsDrawable setup() {
-        Matrix4 physicsProjectionMatrix = new Matrix4(screen.getDynamicCamera().combined).scl(PHYSICS_SCALE_FACTOR);
-        drawable = new BallPhysicsDrawable(physicsProjectionMatrix);
+        drawable = new BallPhysicsDrawable();
         Box2D.init();
         world = drawable.getWorld();
         circleBodies = drawable.getCircleBodies();
         circles = drawable.getCircles();
         circleAuxPosition = new Vector2();
-        touchDown(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT, LEFT);
+        touchDown(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT, LEFT);
         return drawable;
     }
 

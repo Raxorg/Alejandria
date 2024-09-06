@@ -40,8 +40,7 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
             renderer,
             stuff
         );
-        input.clearInputHandlers();
-        input.setEnabled(true);
+        input.setRenderer(renderer);
         renderer.setScreen(screen);
         renderer.setSharedStuff(sharedResources.getStuff());
         renderer.setStuff(stuff);
@@ -50,6 +49,8 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         stuff.setSharedAssets(sharedResources.getAssets());
         stuff.setAssets(assets);
 
+        input.clearInputHandlers();
+        input.setEnabled(true);
         renderer.useStaticCamera();
         stuff.initializeStuff();
 
@@ -63,10 +64,12 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         SharedInput input = sharedResources.getInput();
         SharedScreen screen = sharedResources.getScreen();
 
-        input.clearInputHandlers();
-        input.setEnabled(true);
+        input.setRenderer(renderer);
         screen.setLogic(logic);
         screen.setRenderer(renderer);
+
+        input.clearInputHandlers();
+        input.setEnabled(true);
 
         logic.initialLogic();
     }

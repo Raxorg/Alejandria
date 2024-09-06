@@ -6,8 +6,8 @@ import static com.epicness.alejandria.showcase.constants.MaskingConstants.CIRCLE
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.MASKED_CIRCLE_RADIUS;
 import static com.epicness.fundamentals.constants.ColorConstants.DARK_DIRT;
 import static com.epicness.fundamentals.constants.ColorConstants.DARK_GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -25,17 +25,17 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
 
     public ShapeRendererMaskingDrawable() {
         maskedCircle = new Circle(MASKED_CIRCLE_RADIUS);
-        maskedCircle.setPosition(CAMERA_HALF_WIDTH - MASKED_CIRCLE_RADIUS, CAMERA_HALF_HEIGHT - MASKED_CIRCLE_RADIUS);
+        maskedCircle.setPosition(VIEWPORT_HALF_WIDTH - MASKED_CIRCLE_RADIUS, VIEWPORT_HALF_HEIGHT - MASKED_CIRCLE_RADIUS);
         maskedCircle.setColor(DARK_DIRT);
 
         circleMask = new Circle(CIRCLE_MASK_RADIUS);
-        circleMask.setPosition(CAMERA_HALF_WIDTH - CIRCLE_MASK_RADIUS, CAMERA_HALF_HEIGHT);
+        circleMask.setPosition(VIEWPORT_HALF_WIDTH - CIRCLE_MASK_RADIUS, VIEWPORT_HALF_HEIGHT);
         circleMask.setColor(DARK_GRASS);
 
         triangleMask = new Triangle(
-            CAMERA_HALF_WIDTH - 200f, CAMERA_HALF_HEIGHT - 200f,
-            CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT,
-            CAMERA_HALF_WIDTH + 200f, CAMERA_HALF_HEIGHT - 200f
+            VIEWPORT_HALF_WIDTH - 200f, VIEWPORT_HALF_HEIGHT - 200f,
+            VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_HALF_WIDTH + 200f, VIEWPORT_HALF_HEIGHT - 200f
         );
     }
 

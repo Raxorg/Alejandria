@@ -1,7 +1,6 @@
 package com.epicness.alejandria.showcase.modules.collisions;
 
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -9,6 +8,7 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.utils.PixmapUtils;
 
 public class PixelPerfectCollisionDrawable implements ModuleDrawable {
 
@@ -16,9 +16,7 @@ public class PixelPerfectCollisionDrawable implements ModuleDrawable {
     private final Sprited[] shapes;
 
     public PixelPerfectCollisionDrawable(Sprite weirdShape) {
-        TextureData textureData = weirdShape.getTexture().getTextureData();
-        textureData.prepare();
-        pixmap = textureData.consumePixmap();
+        pixmap = PixmapUtils.convertToPixmap(weirdShape);
         shapes = new Sprited[5];
         for (int i = 0; i < shapes.length; i++) {
             shapes[i] = new Sprited(weirdShape);

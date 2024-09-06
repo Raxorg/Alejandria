@@ -41,7 +41,7 @@ public class TexturedCubeDrawable implements ModuleDrawable {
         Material material = new Material(
             TextureAttribute.createDiffuse(sprite),
             new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),
-            FloatAttribute.createAlphaTest(0.5f),
+            FloatAttribute.createAlphaTest(0f),
             IntAttribute.createCullFace(GL20.GL_NONE));
 
         Model model = modelBuilder.createBox(5f, 5f, 5f, material, Position | Normal | TextureCoordinates);
@@ -53,7 +53,7 @@ public class TexturedCubeDrawable implements ModuleDrawable {
 
         modelBatch = new ModelBatch();
 
-        camera = new PerspectiveCamera(67f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera = new PerspectiveCamera(90f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.translate(0f, 0f, 20f);
     }
 

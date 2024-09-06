@@ -2,8 +2,8 @@ package com.epicness.alejandria.showcase.modules.procedural;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,7 +23,7 @@ public class LightningDrawable implements ModuleDrawable {
     public LightningDrawable(Sprite pixel) {
         bolts = new DelayedRemovalArray<>();
         flash = new Sprite(pixel);
-        flash.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+        flash.setSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         flash.setColor(CLEAR);
     }
 

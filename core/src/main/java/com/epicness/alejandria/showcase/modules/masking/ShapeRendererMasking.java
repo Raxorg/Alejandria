@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.masking;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -34,7 +34,7 @@ public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
         triangleMask.translateX(translation);
         Circle circleMask = drawable.getCircleMask();
         circleMask.translateX(-translation);
-        if (triangleMask.getEndX() >= CAMERA_WIDTH) {
+        if (triangleMask.getEndX() >= VIEWPORT_WIDTH) {
             direction = true;
         } else if (triangleMask.getX() <= 0f) {
             direction = false;

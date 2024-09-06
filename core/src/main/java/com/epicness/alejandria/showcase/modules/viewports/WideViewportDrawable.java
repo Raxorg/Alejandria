@@ -2,10 +2,10 @@ package com.epicness.alejandria.showcase.modules.viewports;
 
 import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -27,20 +27,20 @@ public class WideViewportDrawable implements ModuleDrawable {
 
     public WideViewportDrawable(OrthographicCamera camera, Sprite weirdShapeSprite) {
         normalProjectionMatrix = camera.combined;
-        camera.setToOrtho(false, CAMERA_WIDTH * 2f, CAMERA_HEIGHT);
+        camera.setToOrtho(false, VIEWPORT_WIDTH * 2f, VIEWPORT_HEIGHT);
         wideProjectionMatrix = camera.combined.cpy();
-        camera.setToOrtho(false, CAMERA_WIDTH, CAMERA_HEIGHT); // Affects normalProjectionMatrix
+        camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT); // Affects normalProjectionMatrix
 
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
 
         weirdShape = new Sprite(weirdShapeSprite);
         weirdShape.setOriginCenter();
-        weirdShape.setOriginBasedPosition(CAMERA_WIDTH + CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        weirdShape.setOriginBasedPosition(VIEWPORT_WIDTH + VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
 
         bufferSprite = new Sprite();
         bufferSprite.setSize(800f, 400f); // Must have same aspect ratio as wideProjectionMatrix
         bufferSprite.setOriginCenter();
-        bufferSprite.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        bufferSprite.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
     }
 
     @Override

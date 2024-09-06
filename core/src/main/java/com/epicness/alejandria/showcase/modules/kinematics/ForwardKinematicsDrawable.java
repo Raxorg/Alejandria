@@ -5,7 +5,7 @@ import static com.badlogic.gdx.graphics.Color.RED;
 import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_LINES;
 import static com.epicness.alejandria.showcase.constants.KinematicsConstants.FK_LINE_LENGTH;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,7 +20,7 @@ public class ForwardKinematicsDrawable implements ModuleDrawable {
 
     public ForwardKinematicsDrawable() {
         lines = new ConnectedLine[FK_LINES];
-        ConnectedLine root = new ConnectedLine(CAMERA_HALF_WIDTH, SHOWCASE_STRIPE_HEIGHT, FK_LINE_LENGTH, 90f, true);
+        ConnectedLine root = new ConnectedLine(VIEWPORT_HALF_WIDTH, SHOWCASE_STRIPE_HEIGHT, FK_LINE_LENGTH, 90f, true);
         root.thickness = 15f;
         root.setColor(BLACK);
         lines[0] = root;

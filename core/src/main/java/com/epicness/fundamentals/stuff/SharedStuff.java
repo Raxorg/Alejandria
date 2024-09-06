@@ -3,8 +3,8 @@ package com.epicness.fundamentals.stuff;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.NAVY;
 import static com.epicness.fundamentals.constants.ColorConstants.BLACK_50;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.epicness.fundamentals.SharedScreen;
 import com.epicness.fundamentals.assets.SharedAssets;
@@ -22,7 +22,7 @@ public class SharedStuff extends Stuff<SharedAssets> {
     public void initializeStuff() {
         animatedBackground = new AnimatedBackgroundDeluxe(
             0, 0,
-            CAMERA_WIDTH, CAMERA_HEIGHT,
+            VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
             NAVY.cpy(),
             assets.getWeirdShape(),
             assets.getPixel(),
@@ -35,7 +35,7 @@ public class SharedStuff extends Stuff<SharedAssets> {
         animatedBackground.setSpriteColor(BLACK_50.cpy());
 
         fader = new Sprited(assets.getPixel());
-        fader.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+        fader.setSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         fader.setColor(BLACK.cpy());
     }
 

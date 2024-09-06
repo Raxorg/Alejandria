@@ -14,15 +14,17 @@ import static com.epicness.alejandria.showcase.constants.LightsConstants.RECTANG
 import static com.epicness.alejandria.showcase.constants.LightsConstants.SHAPE_COUNT;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_SIZE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_STRIPE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
@@ -36,15 +38,17 @@ import java.util.List;
 
 public class SimpleLightsDrawable implements ModuleDrawable {
 
-    private final FrameBuffer lightBuffer;
+    private FrameBuffer lightBuffer;
     private final TextureRegion bufferRegion;
     private final Circle[] circles;
     private final Rectangle[] rectangles;
     private final List<Sprite> lights;
+    private final Matrix4 projectionMatrix;
+    private final OrthographicCamera bufferCamera;
 
     public SimpleLightsDrawable() {
-        lightBuffer = new FrameBuffer(RGBA8888, (int) CAMERA_WIDTH, (int) CAMERA_HEIGHT, false);
-        bufferRegion = new TextureRegion(lightBuffer.getColorBufferTexture(), (int) CAMERA_WIDTH, (int) SHOWCASE_SIZE);
+        lightBuffer = new FrameBuffer(RGBA8888, (int) VIEWPORT_WIDTH, (int) VIEWPORT_HEIGHT, false);
+        bufferRegion = new TextureRegion(lightBuffer.getColorBufferTexture(), (int) VIEWPORT_WIDTH, (int) SHOWCASE_SIZE);
         bufferRegion.flip(false, true);
 
         circles = new Circle[SHAPE_COUNT];
@@ -53,7 +57,8 @@ public class SimpleLightsDrawable implements ModuleDrawable {
                 MathUtils.random(MIN_CIRCLE_X, MAX_CIRCLE_X),
                 MathUtils.random(MIN_CIRCLE_Y, MAX_CIRCLE_Y),
                 CIRCLE_RADIUS,
-                Random.rainbowColor()
+                Random.rainbowColor(),
+                0f
             );
         }
 
@@ -63,16 +68,37 @@ public class SimpleLightsDrawable implements ModuleDrawable {
                 MathUtils.random(MIN_RECTANGLE_X, MAX_RECTANGLE_X),
                 MathUtils.random(MIN_RECTANGLE_Y, MAX_RECTANGLE_Y),
                 RECTANGLE_SIZE,
-                Random.rainbowColor()
+                Random.rainbowColor(),
+                0f
             );
         }
 
         lights = new ArrayList<>();
+        projectionMatrix = new Matrix4();
+
+        bufferCamera = new OrthographicCamera();
+        bufferCamera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
     }
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer) {
-        // Draw random shapes like you normally would
+        // Normal drawing
+        drawRandomShapes(spriteBatch, shapeDrawer);
+
+        // Draw to the lights buffer
+        drawLights(spriteBatch);
+
+        // Draw what's on the buffer
+        spriteBatch.setBlendFunction(GL20.GL_DST_COLOR, GL20.GL_ZERO);
+        spriteBatch.begin();
+        spriteBatch.draw(bufferRegion, 0, SHOWCASE_STRIPE_HEIGHT);
+        spriteBatch.end();
+
+        // Back to normal blending
+        spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    private void drawRandomShapes(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
         spriteBatch.begin();
         for (int i = 0; i < circles.length; i++) {
             circles[i].draw(shapeDrawer);
@@ -81,6 +107,12 @@ public class SimpleLightsDrawable implements ModuleDrawable {
             rectangles[i].draw(shapeDrawer);
         }
         spriteBatch.end();
+    }
+
+    private void drawLights(SpriteBatch spriteBatch) {
+        // Save current projection matrix and use a projection matrix fit for the framebuffer
+        projectionMatrix.set(spriteBatch.getProjectionMatrix());
+        spriteBatch.setProjectionMatrix(bufferCamera.combined);
 
         // Draw our lights to the buffer, our shapes are affected by blending
         lightBuffer.begin();
@@ -93,18 +125,24 @@ public class SimpleLightsDrawable implements ModuleDrawable {
         spriteBatch.end();
         lightBuffer.end();
 
-        // Draw what's on the buffer
-        spriteBatch.setBlendFunction(GL20.GL_DST_COLOR, GL20.GL_ZERO);
-        spriteBatch.begin();
-        spriteBatch.draw(bufferRegion, 0, SHOWCASE_STRIPE_HEIGHT);
-        spriteBatch.end();
-
-        // Back to normal blending
-        spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        // Return to the previous projection matrix
+        spriteBatch.setProjectionMatrix(projectionMatrix);
     }
 
     @Override
     public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    }
+
+    public FrameBuffer getLightBuffer() {
+        return lightBuffer;
+    }
+
+    public void setLightBuffer(FrameBuffer lightBuffer) {
+        this.lightBuffer = lightBuffer;
+    }
+
+    public TextureRegion getBufferRegion() {
+        return bufferRegion;
     }
 
     public List<Sprite> getLights() {

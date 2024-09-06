@@ -6,8 +6,8 @@ import static com.epicness.alejandria.showcase.constants.FunConstants.BALLS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.BALL_COLORS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.LINE_THICKNESS;
 import static com.epicness.alejandria.showcase.constants.FunConstants.SPACING;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,13 +39,13 @@ public class BeepingBallsDrawable implements ModuleDrawable {
         spriteBatch.begin();
 
         shapeDrawer.line(
-            100f, CAMERA_HALF_HEIGHT,
-            100f + SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS,
+            100f, VIEWPORT_HALF_HEIGHT,
+            100f + SPACING * BALLS, VIEWPORT_HALF_HEIGHT - SPACING * BALLS,
             LINE_THICKNESS
         );
         shapeDrawer.line(
-            CAMERA_WIDTH - 100f, CAMERA_HALF_HEIGHT,
-            CAMERA_WIDTH - 100f - SPACING * BALLS, CAMERA_HALF_HEIGHT - SPACING * BALLS,
+            VIEWPORT_WIDTH - 100f, VIEWPORT_HALF_HEIGHT,
+            VIEWPORT_WIDTH - 100f - SPACING * BALLS, VIEWPORT_HALF_HEIGHT - SPACING * BALLS,
             LINE_THICKNESS
         );
 

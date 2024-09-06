@@ -1,14 +1,13 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
-import static com.epicness.alejandria.showcase.constants.RaymarchingConstants.SHADER_POSITION;
-import static com.epicness.alejandria.showcase.constants.RaymarchingConstants.SHADER_RESOLUTION;
-
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
 public class RaymarchingShader extends Module<RaymarchingShaderDrawable> {
 
     private ShaderProgram shader;
+    private float shaderResolution;
+    private float shaderX, shaderY;
     private float time;
 
     public RaymarchingShader() {
@@ -27,8 +26,15 @@ public class RaymarchingShader extends Module<RaymarchingShaderDrawable> {
         time += delta;
 
         shader.bind();
-        shader.setUniformf("u_resolution", SHADER_RESOLUTION, SHADER_RESOLUTION);
-        shader.setUniformf("u_position", SHADER_POSITION, SHADER_POSITION);
+        shader.setUniformf("u_resolution", shaderResolution, shaderResolution);
+        shader.setUniformf("u_position", shaderX, shaderY);
         shader.setUniformf("time", time);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        shaderResolution = Math.min(width, height);
+        shaderX = width / 2f - shaderResolution / 2f;
+        shaderY = height / 2f - shaderResolution / 2f;
     }
 }

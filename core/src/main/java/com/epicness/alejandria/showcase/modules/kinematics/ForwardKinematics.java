@@ -11,7 +11,11 @@ public class ForwardKinematics extends Module<ForwardKinematicsDrawable> {
     private float[] times;
 
     public ForwardKinematics() {
-        super("Forward Kinematics", "Wiggly! :3");
+        super(
+            "Forward Kinematics",
+            "Wiggly! :3\n\n" +
+                "This thing is made out of many interconnected segments"
+        );
     }
 
     @Override

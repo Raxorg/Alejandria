@@ -1,7 +1,7 @@
 package com.epicness.fundamentals.renderer;
 
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
@@ -16,7 +16,7 @@ public abstract class Renderer3D<S extends Stuff<?>> extends Renderer<S> {
     protected final ModelBatch modelBatch;
 
     public Renderer3D() {
-        perspectiveCamera = new PerspectiveCamera(67f, CAMERA_WIDTH, CAMERA_HEIGHT);
+        perspectiveCamera = new PerspectiveCamera(90f, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         perspectiveCamera.far = 1000f;
 
         modelBatch = new ModelBatch();

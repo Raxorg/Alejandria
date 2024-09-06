@@ -9,8 +9,8 @@ import static com.epicness.alejandria.showcase.constants.PatternsConstants.CENTE
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.UNCENTERED_CENTER_DISTANCE;
 import static com.epicness.alejandria.showcase.constants.PatternsConstants.UNCENTERED_OWN_CENTER_DISTANCE;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.BASIC_COLORS;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
@@ -55,8 +55,8 @@ public class Spiral extends Module<SpiralDrawable> {
         for (int i = 0; i < dots.length; i++) {
             dot = dots[i];
 
-            centerX = CAMERA_HALF_WIDTH + centerDistance * MathUtils.cos(PI2 * i / dots.length);
-            centerY = CAMERA_HALF_HEIGHT + centerDistance * MathUtils.sin(PI2 * i / dots.length);
+            centerX = VIEWPORT_HALF_WIDTH + centerDistance * MathUtils.cos(PI2 * i / dots.length);
+            centerY = VIEWPORT_HALF_HEIGHT + centerDistance * MathUtils.sin(PI2 * i / dots.length);
 
             x = centerX + ownCenterDistance * MathUtils.cos(MathUtils.PI2 * (time * i / dots.length));
             y = centerY + ownCenterDistance * MathUtils.sin(MathUtils.PI2 * (time * i / dots.length));

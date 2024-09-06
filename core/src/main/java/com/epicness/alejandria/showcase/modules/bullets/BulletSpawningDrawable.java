@@ -4,8 +4,8 @@ import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_HEIGHT;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.GUN_WIDTH;
 import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants.MUZZLE_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
-import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
+import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -24,7 +24,7 @@ public class BulletSpawningDrawable implements ModuleDrawable {
         gun = new Sprited(gunSprite);
         gun.setSize(GUN_WIDTH, GUN_HEIGHT);
         gun.setOrigin(GUN_WIDTH / 2f, MUZZLE_HEIGHT); // The muzzle is higher than the center
-        gun.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        gun.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         gun.useBilinearFilter();
         // Bullet
         bullet = new Sprited(glowSprite);
@@ -35,7 +35,7 @@ public class BulletSpawningDrawable implements ModuleDrawable {
         center = new Sprited(glowSprite);
         center.setSize(BULLET_SIZE, BULLET_SIZE);
         center.setOriginCenter();
-        center.setOriginBasedPosition(CAMERA_HALF_WIDTH, CAMERA_HALF_HEIGHT);
+        center.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         center.setColor(Color.RED);
     }
 

@@ -13,13 +13,17 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle implements ShapeD
 
     public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor, float thickness) {
         super(x, y, w, h);
-        this.borderColor = borderColor;
-        this.fillColor = fillColor;
+        this.borderColor = new Color(borderColor);
+        this.fillColor = new Color(fillColor);
         this.thickness = thickness;
     }
 
     public Rectangle(float x, float y, float w, float h, Color borderColor, Color fillColor) {
         this(x, y, w, h, borderColor, fillColor, 5f);
+    }
+
+    public Rectangle(float x, float y, float size, Color color, float thickness) {
+        this(x, y, size, size, color, color, thickness);
     }
 
     public Rectangle(float x, float y, float w, float h, Color color) {
