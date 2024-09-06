@@ -27,6 +27,8 @@ i:alejandria/showcase/images/fun/circle.png:alejandria/showcase/images/fun/circl
 i:alejandria/showcase/images/fun/circleGlow.png:alejandria/showcase/images/fun/circleGlow-37fce29ad6eda7a3f4fb59427d659361.png:5909:image/png:1
 i:alejandria/showcase/images/fun/roundedSquare.png:alejandria/showcase/images/fun/roundedSquare-43a00072f3185fa969596c8b3c2f8e78.png:1307:image/png:1
 d:alejandria/showcase/images/masking:alejandria/showcase/images/masking:0:application/unknown:1
+i:alejandria/showcase/images/masking/add.png:alejandria/showcase/images/masking/add-917c96d3b0d28d765c26580a7d262340.png:7895:image/png:1
+i:alejandria/showcase/images/masking/equal.png:alejandria/showcase/images/masking/equal-1e16fc9849cced5ffd927885b46802f7.png:3743:image/png:1
 i:alejandria/showcase/images/masking/glow.png:alejandria/showcase/images/masking/glow-7e3f902bfcbb4be5f89d77950fc67464.png:49828:image/png:1
 i:alejandria/showcase/images/masking/smiley_color.png:alejandria/showcase/images/masking/smiley_color-624eefe2a9d06338c16ba41970c70eba.png:15724:image/png:1
 i:alejandria/showcase/images/masking/smiley_outline.png:alejandria/showcase/images/masking/smiley_outline-151204be615d0cfffdc3b2031194cfbd.png:25001:image/png:1
@@ -59,9 +61,9 @@ b:alejandria/showcase/shaders/shake.vert:alejandria/showcase/shaders/shake-a5491
 d:alejandria/showcase/shaders/shared:alejandria/showcase/shaders/shared:0:application/unknown:1
 b:alejandria/showcase/shaders/shared/fragment.frag:alejandria/showcase/shaders/shared/fragment-dc8e8af25066bfe942e0c98d50475e36.frag:208:application/unknown:1
 b:alejandria/showcase/shaders/shared/vertex.vert:alejandria/showcase/shaders/shared/vertex-451429cbbc217fbb042152df91320cc5.vert:269:application/unknown:1
-b:alejandria/showcase/shaders/vignette.frag:alejandria/showcase/shaders/vignette-30cd642ddd88f816201be97b684a287b.frag:575:application/unknown:1
+b:alejandria/showcase/shaders/vignette.frag:alejandria/showcase/shaders/vignette-5488cb152a589a4e7f65106992ae68e6.frag:552:application/unknown:1
 b:alejandria/showcase/shaders/vignette.sp:alejandria/showcase/shaders/vignette-0eeb6f689cbda844103eb3f51869aed8.sp:106:application/unknown:1
-t:assets.txt:assets-e21ed69dce5e89b6275414657563228e.txt:2703:text/plain:1
+t:assets.txt:assets-e3a2b6e6cc179225f749976382c7bf3f.txt:2791:text/plain:1
 d:fundamentals:fundamentals:0:application/unknown:1
 d:fundamentals/atlases:fundamentals/atlases:0:application/unknown:1
 t:fundamentals/atlases/spritesLinear.atlas:fundamentals/atlases/spritesLinear-2fb19ddca10806e8ba21c839172ea209.atlas:712:application/unknown:1
