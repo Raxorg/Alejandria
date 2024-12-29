@@ -2,7 +2,6 @@ package com.epicness.alejandria.showcase.logic;
 
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.GITHUB_ROOT;
 
-import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 
 /**
@@ -27,9 +26,7 @@ public abstract class Module<D extends ModuleDrawable> extends ShowcaseLogicHand
 
     public final D setupModule() {
         input.addInputHandler(this);
-        drawable = setup();
-        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        return drawable;
+        return drawable = setup();
     }
 
     protected abstract D setup();

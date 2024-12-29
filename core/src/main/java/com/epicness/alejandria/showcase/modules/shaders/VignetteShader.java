@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
@@ -18,6 +19,7 @@ public class VignetteShader extends Module<VignetteShaderDrawable> {
     public VignetteShaderDrawable setup() {
         ShaderProgram.pedantic = false;
         renderer.getSpriteBatch().setShader(shader = assets.getVignette());
+        updateShaderValues(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         return new VignetteShaderDrawable(sharedAssets.getSquare32());
     }
 
@@ -30,6 +32,10 @@ public class VignetteShader extends Module<VignetteShaderDrawable> {
 
     @Override
     public void resize(int width, int height) {
+        updateShaderValues(width, height);
+    }
+
+    private void updateShaderValues(int width, int height) {
         shaderResolution = Math.min(width, height);
         shaderX = width / 2f - shaderResolution / 2f;
         shaderY = height / 2f - shaderResolution / 2f;

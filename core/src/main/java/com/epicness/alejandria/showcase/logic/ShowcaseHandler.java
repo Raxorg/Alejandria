@@ -55,7 +55,6 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
         currentModule.resize(width, height);
     }
 

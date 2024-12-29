@@ -11,7 +11,6 @@ import static com.epicness.alejandria.showcase.constants.MaskingConstants.MASK_Y
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.PLUS_X;
 import static com.epicness.alejandria.showcase.constants.MaskingConstants.PLUS_Y;
 import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.SHOWCASE_BACKGROUND_COLOR;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
@@ -66,7 +65,7 @@ public class AlphaMaskingDrawable implements ModuleDrawable {
         originalSprite.setColor(RED);
 
         // Frame buffer is needed because normal rendering ignores or ruins blending commands
-        frameBuffer = new FrameBuffer(RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
+        frameBuffer = new FrameBuffer(RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
         projection = new Matrix4();
 
         bufferCamera = new OrthographicCamera();

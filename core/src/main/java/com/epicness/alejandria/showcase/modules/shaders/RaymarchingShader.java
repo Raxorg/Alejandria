@@ -1,5 +1,6 @@
 package com.epicness.alejandria.showcase.modules.shaders;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
@@ -18,6 +19,7 @@ public class RaymarchingShader extends Module<RaymarchingShaderDrawable> {
     protected RaymarchingShaderDrawable setup() {
         drawable = new RaymarchingShaderDrawable(sharedAssets.getPixel(), assets.getRaymarching());
         shader = drawable.getShader();
+        updateShaderValues(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         return drawable;
     }
 
@@ -33,6 +35,10 @@ public class RaymarchingShader extends Module<RaymarchingShaderDrawable> {
 
     @Override
     public void resize(int width, int height) {
+        updateShaderValues(width, height);
+    }
+
+    private void updateShaderValues(int width, int height) {
         shaderResolution = Math.min(width, height);
         shaderX = width / 2f - shaderResolution / 2f;
         shaderY = height / 2f - shaderResolution / 2f;

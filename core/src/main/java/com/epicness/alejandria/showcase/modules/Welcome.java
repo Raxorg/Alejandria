@@ -2,6 +2,7 @@ package com.epicness.alejandria.showcase.modules;
 
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.logic.Module;
 
@@ -27,6 +28,7 @@ public class Welcome extends Module<WelcomeDrawable> {
     protected WelcomeDrawable setup() {
         drawable = new WelcomeDrawable(copyOf(sharedAssets.getPixelFont()), sharedAssets.getPixel(), assets.getNeonWaves());
         shader = drawable.getShader();
+        updateShaderValues(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         return drawable;
     }
 
@@ -42,6 +44,10 @@ public class Welcome extends Module<WelcomeDrawable> {
 
     @Override
     public void resize(int width, int height) {
+        updateShaderValues(width, height);
+    }
+
+    private void updateShaderValues(int width, int height) {
         float resolution = Math.min(width, height);
         shaderResolution = resolution * 0.7f;
         shaderX = width / 2f - shaderResolution / 2f;

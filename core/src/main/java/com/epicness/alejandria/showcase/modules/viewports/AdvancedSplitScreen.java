@@ -46,6 +46,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
         camera2 = drawable.getCamera2();
         renderer.getViewport().setMaxWorldWidth(VIEWPORT_WIDTH);
         renderer.getViewport().setMaxWorldHeight(VIEWPORT_HEIGHT);
+        renderer.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         return drawable;
     }
 
@@ -160,6 +161,7 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
     protected void exit() {
         renderer.getViewport().setMaxWorldWidth(0);
         renderer.getViewport().setMaxWorldHeight(0);
+        renderer.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         renderer.getShapeRenderer().setColor(WHITE);
         renderer.useStaticCamera();

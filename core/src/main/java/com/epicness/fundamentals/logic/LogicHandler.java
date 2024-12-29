@@ -33,7 +33,6 @@ public abstract class LogicHandler<G extends Game, A extends Assets, L extends L
     }
 
     public void resize(int width, int height) {
-        renderer.getViewport().update(width, height);
     }
 
     protected final void setSharedStructure(

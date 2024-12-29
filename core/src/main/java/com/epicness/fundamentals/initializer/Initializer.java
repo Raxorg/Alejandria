@@ -26,11 +26,12 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
     }
 
     public final void initialize(SharedResources sharedResources) {
+        Game game = (Game) Gdx.app.getApplicationListener();
         SharedInput input = sharedResources.getInput();
         SharedScreen screen = sharedResources.getScreen();
 
         logic.setStructure(
-            (Game) Gdx.app.getApplicationListener(),
+            game,
             sharedResources.getAssets(),
             input,
             sharedResources.getLogic(),
@@ -58,9 +59,11 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         sharedResources.registerInitializer(this);
 
         logic.initialLogic();
+        game.setScreen(screen);
     }
 
     public final void fastInitialize(SharedResources sharedResources) {
+        Game game = (Game) Gdx.app.getApplicationListener();
         SharedInput input = sharedResources.getInput();
         SharedScreen screen = sharedResources.getScreen();
 
@@ -72,6 +75,7 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
         input.setEnabled(true);
 
         logic.initialLogic();
+        game.setScreen(screen);
     }
 
     public Assets getAssets() {

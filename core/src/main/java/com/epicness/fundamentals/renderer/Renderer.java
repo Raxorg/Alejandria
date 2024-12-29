@@ -36,6 +36,10 @@ public abstract class Renderer<S extends Stuff<?>> {
 
     public abstract void render();
 
+    public void resize(int width, int height) {
+        viewport.update(width, height);
+    }
+
     public void useCamera(Camera camera) {
         viewport.setCamera(camera);
         viewport.apply();

@@ -5,13 +5,13 @@ import static com.badlogic.gdx.graphics.Color.RED;
 import static com.badlogic.gdx.graphics.GL20.GL_ONE;
 import static com.badlogic.gdx.graphics.GL20.GL_ONE_MINUS_SRC_ALPHA;
 import static com.badlogic.gdx.graphics.GL20.GL_SRC_ALPHA;
-import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDOW_SIZE;
 import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -34,7 +34,7 @@ public class FrameBufferExampleDrawable implements ModuleDrawable {
 
     public FrameBufferExampleDrawable(Sprite glowSprite) {
         // Frame buffer size is not affected by cameras
-        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
+        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 
         sprite1 = new Sprite(glowSprite);
         sprite1.setScale(2f);

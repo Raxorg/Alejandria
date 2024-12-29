@@ -31,8 +31,7 @@ public class SharedScreen extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-        if (logic == null) return;
-
+        renderer.resize(width, height);
         logic.resize(width, height);
     }
 

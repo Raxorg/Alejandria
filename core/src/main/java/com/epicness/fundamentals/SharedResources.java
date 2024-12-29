@@ -1,7 +1,5 @@
 package com.epicness.fundamentals;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.epicness.fundamentals.assets.SharedAssets;
 import com.epicness.fundamentals.initializer.Initializer;
@@ -35,8 +33,6 @@ public class SharedResources {
         assets.finishLoading();
         assets.initializeAssets();
         stuff.initializeStuff();
-
-        ((Game) Gdx.app.getApplicationListener()).setScreen(screen);
     }
 
     public SharedAssets getAssets() {
