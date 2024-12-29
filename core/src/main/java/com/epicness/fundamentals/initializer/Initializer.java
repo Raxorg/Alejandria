@@ -81,4 +81,8 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
     public boolean wasInitialized() {
         return initialized;
     }
+
+    public Logic getLogic() {
+        return logic;
+    }
 }

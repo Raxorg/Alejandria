@@ -22,6 +22,7 @@ public class GwtLauncher extends GwtApplication {
     public ApplicationListener createApplicationListener() {
         AlejandriaApp app = new AlejandriaApp();
         app.setAlertSystem(new HTMLAlertSystem());
+        app.setShowcasePicker(new HTMLShowcasePicker());
         return app;
     }
 }

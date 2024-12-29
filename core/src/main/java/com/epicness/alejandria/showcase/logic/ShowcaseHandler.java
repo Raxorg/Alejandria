@@ -108,7 +108,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
     }
 
-    private void changeModule(int index) {
+    public void changeModule(int index) {
         if (currentModule != null) {
             currentModule.exitModule();
         }
@@ -116,6 +116,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         stuff.getShowcase().setModuleDrawable(currentModule.setupModule());
         stuff.getTitle().setText(currentModule.title);
         stuff.getInformation().setText(currentModule.information);
+        game.getShowcasePicker().setShowcase(currentModule.getClass().getName());
         hideInformation();
     }
 
