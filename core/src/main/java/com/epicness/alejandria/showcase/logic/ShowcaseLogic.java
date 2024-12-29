@@ -145,4 +145,13 @@ public class ShowcaseLogic extends Logic {
     public void resize(int width, int height) {
         showcaseHandler.resize(width, height);
     }
+
+    public void setShowcaseByName(String potentialShowcaseName) {
+        for (int i = 0; i < getHandlers().size(); i++) {
+            if (potentialShowcaseName.equals(getHandlers().get(i).getClass().getName())) {
+                showcaseHandler.changeModule(i);
+                break;
+            }
+        }
+    }
 }

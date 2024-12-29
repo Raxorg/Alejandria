@@ -2,8 +2,10 @@ package com.epicness.alejandria;
 
 import com.badlogic.gdx.Game;
 import com.epicness.alejandria.interfacing.AlertSystem;
+import com.epicness.alejandria.interfacing.ShowcasePicker;
 import com.epicness.alejandria.showcase.ShowcaseInitializer;
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
+import com.epicness.alejandria.showcase.logic.ShowcaseLogic;
 import com.epicness.fundamentals.SharedResources;
 
 // TODO: 2/29/2024 Show FPS (1/Delta or Gdx.graphics.getFramesPerSecond() and Delta Time when debug enabled
@@ -24,6 +26,7 @@ import com.epicness.fundamentals.SharedResources;
 public class AlejandriaApp extends Game {
 
     private AlertSystem alertSystem;
+    private ShowcasePicker showcasePicker;
 
     @Override
     public void create() {
@@ -31,7 +34,11 @@ public class AlejandriaApp extends Game {
         assets.queueAssetLoading();
         assets.finishLoading();
         assets.initializeAssets();
-        new ShowcaseInitializer(assets).initialize(new SharedResources());
+
+        var potentialShowcaseName = showcasePicker.getShowcase();
+        var showcaseInitializer = new ShowcaseInitializer(assets);
+        showcaseInitializer.initialize(new SharedResources());
+        ((ShowcaseLogic) showcaseInitializer.getLogic()).setShowcaseByName(potentialShowcaseName);
     }
 
     public AlertSystem getAlertSystem() {
@@ -40,5 +47,13 @@ public class AlejandriaApp extends Game {
 
     public void setAlertSystem(AlertSystem alertSystem) {
         this.alertSystem = alertSystem;
+    }
+
+    public void setShowcasePicker(ShowcasePicker showcasePicker) {
+        this.showcasePicker = showcasePicker;
+    }
+
+    public ShowcasePicker getShowcasePicker() {
+        return showcasePicker;
     }
 }
