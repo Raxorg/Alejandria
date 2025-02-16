@@ -30,11 +30,13 @@ public class FrameBufferExampleDrawable implements ModuleDrawable {
     private final Sprite sprite1, sprite2, bufferSprite;
     private final Matrix4 projectionMatrix;
     private final OrthographicCamera bufferCamera;
+    private Texture frameBufferTexture;
     private boolean drawDirect;
 
     public FrameBufferExampleDrawable(Sprite glowSprite) {
         // Frame buffer size is not affected by cameras
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+        frameBufferTexture = frameBuffer.getColorBufferTexture();
 
         sprite1 = new Sprite(glowSprite);
         sprite1.setScale(2f);
@@ -88,8 +90,7 @@ public class FrameBufferExampleDrawable implements ModuleDrawable {
         spriteBatch.setProjectionMatrix(projectionMatrix);
 
         // Get the Texture from the FrameBuffer
-        Texture texture = frameBuffer.getColorBufferTexture();
-        bufferSprite.setRegion(texture);
+        bufferSprite.setRegion(frameBufferTexture);
         bufferSprite.flip(false, true);
         // Draw the Texture
         spriteBatch.setBlendFunction(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
@@ -115,5 +116,6 @@ public class FrameBufferExampleDrawable implements ModuleDrawable {
 
     public void setFrameBuffer(FrameBuffer frameBuffer) {
         this.frameBuffer = frameBuffer;
+        frameBufferTexture = frameBuffer.getColorBufferTexture();
     }
 }
