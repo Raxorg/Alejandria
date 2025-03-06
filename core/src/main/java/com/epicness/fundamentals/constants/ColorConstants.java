@@ -15,7 +15,9 @@ public class ColorConstants {
     public static final Color BLACK_50 = new Color(0, 0, 0, 0.50f);
     public static final Color BLACK_75 = new Color(0, 0, 0, 0.75f);
 
+    public static final Color LIBGDX_MATTE = new Color(0x252633ff);
     public static final Color NAVY_GRAY_50 = new Color(0.25f, 0.25f, 0.5f, 1f);
+    public static final Color BETTER_PURPLE = new Color(0.5f, 0f, 1f, 1f);
 
     public static final Color DIRT = new Color(0xeea160ff);
     public static final Color LIGHT_DIRT = new Color(0xf4cca1ff);
@@ -32,8 +34,16 @@ public class ColorConstants {
     public static final Color PASTEL_YELLOW = new Color(0xFFFF99FF);
     public static final Color PASTEL_ORANGE = new Color(0xFFD0A1FF);
     public static final Color PASTEL_PURPLE = new Color(0xB1A3FFFF);
+    public static final Color[] PASTEL_COLORS = {
+        PASTEL_RED,
+        PASTEL_GREEN,
+        PASTEL_BLUE,
+        PASTEL_YELLOW,
+        PASTEL_ORANGE,
+        PASTEL_PURPLE
+    };
 
-    // Terminal
+    // Terminal / Console
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
