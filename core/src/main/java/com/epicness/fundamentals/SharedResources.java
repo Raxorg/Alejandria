@@ -14,7 +14,7 @@ public class SharedResources {
     private final SharedInput input;
     private final SharedScreen screen;
     private final SharedStuff stuff;
-    private final Array<Initializer<?, ?, ?>> initializers;
+    private final Array<Initializer<?, ?, ?, ?>> initializers;
 
     public SharedResources() {
         assets = new SharedAssets();
@@ -55,10 +55,10 @@ public class SharedResources {
         return stuff;
     }
 
-    public Initializer<?, ?, ?> findInitializer(Initializer<?, ?, ?> initializer) {
+    public Initializer<?, ?, ?, ?> findInitializer(Initializer<?, ?, ?, ?> initializer) {
         String initializerName = initializer.getClass().getName();
         for (int i = 0; i < initializers.size; i++) {
-            Initializer<?, ?, ?> currentInitializer = initializers.get(i);
+            Initializer<?, ?, ?, ?> currentInitializer = initializers.get(i);
             String currentName = currentInitializer.getClass().getName();
             if (currentName.equals(initializerName)) {
                 return currentInitializer;
@@ -68,7 +68,7 @@ public class SharedResources {
         return initializer;
     }
 
-    public void registerInitializer(Initializer<?, ?, ?> initializer) {
+    public void registerInitializer(Initializer<?, ?, ?, ?> initializer) {
         initializers.add(initializer);
     }
 }

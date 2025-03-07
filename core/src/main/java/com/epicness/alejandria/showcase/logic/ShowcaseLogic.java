@@ -131,6 +131,7 @@ public class ShowcaseLogic extends Logic {
         registerHandler(new WideViewport());
 
         registerHandler(showcaseHandler = new ShowcaseHandler());
+        if (OSUtils.isHTML()) registerHandler(new URLHandler());
     }
 
     @Override
@@ -144,14 +145,5 @@ public class ShowcaseLogic extends Logic {
     @Override
     public void resize(int width, int height) {
         showcaseHandler.resize(width, height);
-    }
-
-    public void setShowcaseByName(String potentialShowcaseName) {
-        for (int i = 0; i < getHandlers().size(); i++) {
-            if (potentialShowcaseName.equals(getHandlers().get(i).getClass().getName())) {
-                showcaseHandler.changeModule(i);
-                break;
-            }
-        }
     }
 }

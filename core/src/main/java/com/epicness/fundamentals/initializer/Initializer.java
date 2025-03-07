@@ -10,15 +10,15 @@ import com.epicness.fundamentals.logic.Logic;
 import com.epicness.fundamentals.renderer.Renderer;
 import com.epicness.fundamentals.stuff.Stuff;
 
-public abstract class Initializer<A extends Assets, R extends Renderer<S>, S extends Stuff<A>> {
+public abstract class Initializer<A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>> {
 
     protected final A assets;
-    protected Logic logic;
+    protected L logic;
     protected R renderer;
     protected S stuff;
     private boolean initialized;
 
-    public Initializer(A assets, Logic logic, R renderer, S stuff) {
+    public Initializer(A assets, L logic, R renderer, S stuff) {
         this.assets = assets;
         this.logic = logic;
         this.renderer = renderer;
@@ -84,9 +84,5 @@ public abstract class Initializer<A extends Assets, R extends Renderer<S>, S ext
 
     public boolean wasInitialized() {
         return initialized;
-    }
-
-    public Logic getLogic() {
-        return logic;
     }
 }

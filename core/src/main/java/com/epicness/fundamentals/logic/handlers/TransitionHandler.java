@@ -13,18 +13,18 @@ public class TransitionHandler {
 
     // Structure
     private SharedResources sharedResources;
-    private Initializer<?, ?, ?> nextInitializer;
+    private Initializer<?, ?, ?, ?> nextInitializer;
     private SharedLogic logic;
     // Logic
     private boolean transitionAllowed;
 
-    public void startTransition(CompletionListener completionListener, Initializer<?, ?, ?> nextInitializer,
-                                Initializer<?, ?, ?>... additionalInitializers) {
+    public void startTransition(CompletionListener completionListener, Initializer<?, ?, ?, ?> nextInitializer,
+                                Initializer<?, ?, ?, ?>... additionalInitializers) {
         this.nextInitializer = sharedResources.findInitializer(nextInitializer);
         List<Assets> assetsList = new ArrayList<>();
         assetsList.add(this.nextInitializer.getAssets());
         for (int i = 0; i < additionalInitializers.length; i++) {
-            Initializer<?, ?, ?> initializer = sharedResources.findInitializer(additionalInitializers[i]);
+            Initializer<?, ?, ?, ?> initializer = sharedResources.findInitializer(additionalInitializers[i]);
             assetsList.add(initializer.getAssets());
         }
         logic.getAssetLoader().beginLoading(assetsList, completionListener);

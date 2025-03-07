@@ -5,7 +5,6 @@ import static com.epicness.alejandria.showcase.constants.ShowcaseConstants.WINDO
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.epicness.alejandria.AlejandriaApp;
-import com.epicness.alejandria.interfacing.ShowcasePicker;
 
 public class Lwjgl3Launcher {
 
@@ -15,19 +14,7 @@ public class Lwjgl3Launcher {
     }
 
     private static void createApplication() {
-        AlejandriaApp app = new AlejandriaApp();
-        app.setShowcasePicker(new ShowcasePicker() {
-            @Override
-            public void setShowcase(String example) {
-
-            }
-
-            @Override
-            public String getShowcase() {
-                return "";
-            }
-        });
-        new Lwjgl3Application(app, getDefaultConfiguration());
+        new Lwjgl3Application(new AlejandriaApp(), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {

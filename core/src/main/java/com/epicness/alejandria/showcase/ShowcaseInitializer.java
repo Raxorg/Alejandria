@@ -5,7 +5,7 @@ import com.epicness.alejandria.showcase.logic.ShowcaseLogic;
 import com.epicness.alejandria.showcase.stuff.ShowcaseStuff;
 import com.epicness.fundamentals.initializer.Initializer;
 
-public class ShowcaseInitializer extends Initializer<ShowcaseAssets, ShowcaseRenderer, ShowcaseStuff> {
+public class ShowcaseInitializer extends Initializer<ShowcaseAssets, ShowcaseLogic, ShowcaseRenderer, ShowcaseStuff> {
 
     public ShowcaseInitializer(ShowcaseAssets showcaseAssets) {
         super(showcaseAssets, new ShowcaseLogic(), new ShowcaseRenderer(), new ShowcaseStuff());

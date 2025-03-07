@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.logic.LogicHandler;
 import com.epicness.fundamentals.stuff.Sprited;
 import com.epicness.fundamentals.stuff.SpritedText;
+import com.epicness.fundamentals.utils.OSUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
                 modules.add((Module<?>) handler);
             }
         }
-        changeModule(0);
+        changeModule(0, false);
         showingInformation = false;
         debug = false;
     }
@@ -107,7 +108,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         }
     }
 
-    public void changeModule(int index) {
+    private void changeModule(int index, boolean updateURL) {
         if (currentModule != null) {
             currentModule.exitModule();
         }
@@ -115,8 +116,12 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
         stuff.getShowcase().setModuleDrawable(currentModule.setupModule());
         stuff.getTitle().setText(currentModule.title);
         stuff.getInformation().setText(currentModule.information);
-        game.getShowcasePicker().setShowcase(currentModule.getClass().getName());
+        if (OSUtils.isHTML() && updateURL) get(URLHandler.class).updateURL(currentModule.getClass().getName());
         hideInformation();
+    }
+
+    public void changeModule(int index) {
+        changeModule(index, true);
     }
 
     public void openGitHub() {
