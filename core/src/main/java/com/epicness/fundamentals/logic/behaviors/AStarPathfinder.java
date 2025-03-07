@@ -17,6 +17,10 @@ public class AStarPathfinder<T> {
         this.straightCost = straightCost;
     }
 
+    public AStarPathfinder() {
+        this(10, 14);
+    }
+
     public List<AStarCostCell<T>> findPath(int startCol, int startRow, int endCol, int endRow) {
         AStarCostCell<T> startCell = grid.getCell(startCol, startRow);
         AStarCostCell<T> endCell = grid.getCell(endCol, endRow);
@@ -24,9 +28,9 @@ public class AStarPathfinder<T> {
         List<AStarCostCell<T>> closedList = new ArrayList<>();
 
         AStarCostCell<T> cell;
-        for (int c = 0; c < grid.cols; c++) {
-            for (int r = 0; r < grid.rows; r++) {
-                cell = grid.getCell(c, r);
+        for (int col = 0; col < grid.getCols(); col++) {
+            for (int row = 0; row < grid.getRows(); row++) {
+                cell = grid.getCell(col, row);
                 cell.gCost = Integer.MAX_VALUE;
                 cell.fCost = cell.gCost + cell.hCost;
                 cell.previousCell = null;
@@ -38,7 +42,7 @@ public class AStarPathfinder<T> {
         startCell.hCost = calculateHCost(startCell, endCell);
         startCell.fCost = startCell.gCost + startCell.hCost;
 
-        while (openList.size() > 0) {
+        while (!openList.isEmpty()) {
             cell = getLowestFCostCell(openList);
             if (cell == endCell) return calculatePath(endCell);
 

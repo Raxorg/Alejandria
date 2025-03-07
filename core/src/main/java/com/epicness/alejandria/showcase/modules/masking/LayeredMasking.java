@@ -6,13 +6,13 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH
 
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.DualSprited;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 import java.util.List;
 
 public class LayeredMasking extends Module<LayeredMaskingDrawable> {
 
-    private Circle circle1, circle2;
+    private CirclePlus circle1, circle2;
 
     public LayeredMasking() {
         super("Layered Masking", "Too much happening here to explain xD" +

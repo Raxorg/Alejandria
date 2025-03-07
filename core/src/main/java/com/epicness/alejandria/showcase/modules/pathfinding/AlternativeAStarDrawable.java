@@ -50,7 +50,7 @@ public class AlternativeAStarDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public GenericGrid<AStarCostCell> getGrid() {

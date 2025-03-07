@@ -35,10 +35,10 @@ public class ShowcaseRenderer extends Renderer<ShowcaseStuff> {
     }
 
     public void renderDebug() {
-        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+        spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
 
-        shapeRenderer.begin();
-        stuff.getShowcase().drawDebug(shapeRenderer);
-        shapeRenderer.end();
+        spriteBatch.begin();
+        stuff.getShowcase().drawDebug(shapeDrawer);
+        spriteBatch.end();
     }
 }

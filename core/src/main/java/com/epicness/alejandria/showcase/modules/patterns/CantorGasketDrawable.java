@@ -39,7 +39,7 @@ public class CantorGasketDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     private void punchCantorGasket(float x, float y, float size, ShapeDrawerPlus shapeDrawer, int recursions) {

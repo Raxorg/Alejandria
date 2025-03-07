@@ -13,13 +13,13 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.Text;
 
 public class WelcomeDrawable implements ModuleDrawable {
 
     private final ShaderProgram shader;
-    private final Sprited canvas;
+    private final SpritePlus canvas;
     private final Text authorText;
 
     public WelcomeDrawable(BitmapFont pixelFont, Sprite pixel, ShaderProgram neonWavesShader) {
@@ -31,7 +31,7 @@ public class WelcomeDrawable implements ModuleDrawable {
         if (!shader.getLog().isEmpty()) {
             Gdx.app.error("SHADER LOG:", shader.getLog());
         }
-        canvas = new Sprited(pixel);
+        canvas = new SpritePlus(pixel);
         canvas.setSize(VIEWPORT_WIDTH, CANVAS_HEIGHT);
         canvas.setY(CANVAS_Y);
 
@@ -56,8 +56,8 @@ public class WelcomeDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        authorText.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        authorText.drawDebug(shapeDrawer);
     }
 
     public ShaderProgram getShader() {

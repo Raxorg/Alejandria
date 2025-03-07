@@ -24,6 +24,7 @@ public class TextManipulationDrawable implements ModuleDrawable {
         text.setVerticallyCentered(true);
         text.setScale(5f);
         text.setTruncate(null);
+        text.setWrap(true);
     }
 
     @Override
@@ -34,8 +35,8 @@ public class TextManipulationDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        text.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        text.drawDebug(shapeDrawer);
     }
 
     public Text getText() {

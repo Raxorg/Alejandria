@@ -104,7 +104,7 @@ public class PixmapMaskingStandalone extends Game {
     private void drawContours() {
         /* Draw the contour of the circle and rectangle used as masks. */
         shapeRenderer.setColor(Color.CYAN);
-        shapeRenderer.circle(size / 2f, size / 2f, size / 2f);
-        shapeRenderer.rect(size / 2f, 0, size / 2f, size / 2f);
+        shapeRenderer.circle(size * 0.5f, size * 0.5f, size * 0.5f);
+        shapeRenderer.rect(size * 0.5f, 0, size * 0.5f, size * 0.5f);
     }
 }

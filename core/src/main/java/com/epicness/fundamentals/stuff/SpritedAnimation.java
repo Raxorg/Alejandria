@@ -8,19 +8,19 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 public class SpritedAnimation implements Buttonable, Transformable {
 
-    private final Animation<Sprited> animation;
+    private final Animation<SpritePlus> animation;
     private float time;
 
     public SpritedAnimation(float frameDuration, Animation.PlayMode playMode, Sprite... spriteFrames) {
-        Sprited[] animationFrames = new Sprited[spriteFrames.length];
+        SpritePlus[] animationFrames = new SpritePlus[spriteFrames.length];
         for (int i = 0; i < spriteFrames.length; i++) {
-            animationFrames[i] = new Sprited(spriteFrames[i]);
+            animationFrames[i] = new SpritePlus(spriteFrames[i]);
         }
         animation = new Animation<>(frameDuration, animationFrames);
         animation.setPlayMode(playMode);
@@ -34,8 +34,8 @@ public class SpritedAnimation implements Buttonable, Transformable {
         animation.getKeyFrame(time).draw(spriteBatch);
     }
 
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        animation.getKeyFrame(time).drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        animation.getKeyFrame(time).drawDebug(shapeDrawer);
     }
 
     @Override

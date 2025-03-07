@@ -13,7 +13,7 @@ import com.epicness.fundamentals.stuff.Stuff;
 public abstract class LogicInputHandler<G extends Game, A extends Assets, L extends Logic, R extends Renderer<S>, S extends Stuff<A>>
     extends LogicHandler<G, A, L, R, S> {
 
-    public void register() {
+    public final void register() {
         input.addInputHandler(this);
     }
 
@@ -34,7 +34,7 @@ public abstract class LogicInputHandler<G extends Game, A extends Assets, L exte
     public void touchDragged(float x, float y) {
     }
 
-    public void touchUp(float x, float y) {
+    public void touchUp(float x, float y, int button) {
     }
 
     public void touchCancelled(float x, float y) {
@@ -44,13 +44,13 @@ public abstract class LogicInputHandler<G extends Game, A extends Assets, L exte
     public void mouseMovedDynamic(float x, float y) {
     }
 
-    public void touchDownDynamic(float x, float y) {
+    public void touchDownDynamic(float x, float y, int button) {
     }
 
     public void touchDraggedDynamic(float x, float y) {
     }
 
-    public void touchUpDynamic(float x, float y) {
+    public void touchUpDynamic(float x, float y, int button) {
     }
 
     public void touchCancelledDynamic(float x, float y) {

@@ -22,22 +22,22 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.DualSprited;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LayeredMaskingDrawable implements ModuleDrawable {
 
-    private final Sprited mask;
+    private final SpritePlus mask;
     private final DefaultCellGrid gridA, gridB;
-    private final Circle circle1, circle2;
+    private final CirclePlus circle1, circle2;
     private final List<DualSprited> shapes;
 
     public LayeredMaskingDrawable(Sprite weirdShape, Sprite square32, Sprite square32Inverted, Sprite pixel) {
-        mask = new Sprited(pixel);
+        mask = new SpritePlus(pixel);
         mask.setOrigin(VIEWPORT_WIDTH, VIEWPORT_HEIGHT * 2f);
         mask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         mask.setSize(VIEWPORT_WIDTH * 2f, VIEWPORT_HEIGHT * 2f);
@@ -64,11 +64,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
             }
         }
 
-        circle1 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
+        circle1 = new CirclePlus(LAYERED_CIRCLE_RADIUS, WHITE);
         circle1.setPosition(VIEWPORT_HALF_WIDTH - LAYERED_CIRCLE_RADIUS, VIEWPORT_HALF_HEIGHT);
         circle1.setThickness(3f);
 
-        circle2 = new Circle(LAYERED_CIRCLE_RADIUS, WHITE);
+        circle2 = new CirclePlus(LAYERED_CIRCLE_RADIUS, WHITE);
         circle2.setX(VIEWPORT_HALF_WIDTH - LAYERED_CIRCLE_RADIUS);
         circle2.setThickness(3f);
 
@@ -191,10 +191,10 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Sprited getMask() {
+    public SpritePlus getMask() {
         return mask;
     }
 
@@ -202,11 +202,11 @@ public class LayeredMaskingDrawable implements ModuleDrawable {
         return shapes;
     }
 
-    public Circle getCircle1() {
+    public CirclePlus getCircle1() {
         return circle1;
     }
 
-    public Circle getCircle2() {
+    public CirclePlus getCircle2() {
         return circle2;
     }
 }

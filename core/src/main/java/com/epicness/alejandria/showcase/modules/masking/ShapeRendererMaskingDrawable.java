@@ -15,20 +15,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 
 public class ShapeRendererMaskingDrawable implements ModuleDrawable {
 
-    private final Circle maskedCircle, circleMask;
+    private final CirclePlus maskedCircle, circleMask;
     private final Triangle triangleMask;
 
     public ShapeRendererMaskingDrawable() {
-        maskedCircle = new Circle(MASKED_CIRCLE_RADIUS);
+        maskedCircle = new CirclePlus(MASKED_CIRCLE_RADIUS);
         maskedCircle.setPosition(VIEWPORT_HALF_WIDTH - MASKED_CIRCLE_RADIUS, VIEWPORT_HALF_HEIGHT - MASKED_CIRCLE_RADIUS);
         maskedCircle.setColor(DARK_DIRT);
 
-        circleMask = new Circle(CIRCLE_MASK_RADIUS);
+        circleMask = new CirclePlus(CIRCLE_MASK_RADIUS);
         circleMask.setPosition(VIEWPORT_HALF_WIDTH - CIRCLE_MASK_RADIUS, VIEWPORT_HALF_HEIGHT);
         circleMask.setColor(DARK_GRASS);
 
@@ -88,10 +88,10 @@ public class ShapeRendererMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Circle getCircleMask() {
+    public CirclePlus getCircleMask() {
         return circleMask;
     }
 

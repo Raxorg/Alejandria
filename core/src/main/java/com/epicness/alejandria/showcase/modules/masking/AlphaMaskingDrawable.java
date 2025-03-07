@@ -142,7 +142,7 @@ public class AlphaMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public FrameBuffer getFrameBuffer() {

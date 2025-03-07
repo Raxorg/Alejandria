@@ -1,8 +1,6 @@
 package com.epicness.fundamentals.stuff.interfaces;
 
-import com.badlogic.gdx.math.Vector2;
-
-public interface Transformable extends Movable, Scalable, Rotatable {
+public interface Transformable extends Movable, Scalable, Rotatable, HasCenter {
 
     default float getEndX() {
         return getX() + getWidth();
@@ -12,19 +10,13 @@ public interface Transformable extends Movable, Scalable, Rotatable {
         return getY() + getHeight();
     }
 
+    @Override
     default float getCenterX() {
-        return getX() + getWidth() / 2f;
+        return getX() + getWidth() * 0.5f;
     }
 
+    @Override
     default float getCenterY() {
-        return getY() + getHeight() / 2f;
-    }
-
-    default Vector2 getCenter(Vector2 result) {
-        return result.set(getCenterX(), getCenterY());
-    }
-
-    default Vector2 getCenter() {
-        return getCenter(new Vector2());
+        return getY() + getHeight() * 0.5f;
     }
 }

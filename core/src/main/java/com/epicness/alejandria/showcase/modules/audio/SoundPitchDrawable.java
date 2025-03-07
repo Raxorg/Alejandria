@@ -16,22 +16,22 @@ import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.grid.Cell;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class SoundPitchDrawable implements ModuleDrawable {
 
     private final DefaultCellGrid grid;
-    private final Circle[] circles;
+    private final CirclePlus[] circles;
 
     public SoundPitchDrawable(Sprite cell) {
         grid = new DefaultCellGrid(cell, SOUNDBOARD_COLS, SOUNDBOARD_ROWS);
         grid.setCellSize(SOUNDBOARD_CELL_SIZE);
-        grid.translate(VIEWPORT_HALF_WIDTH - grid.getWidth() / 2f, SHOWCASE_STRIPE_HEIGHT * 2f);
+        grid.translate(VIEWPORT_HALF_WIDTH - grid.getWidth() * 0.5f, SHOWCASE_STRIPE_HEIGHT * 2f);
         grid.setColor(LIGHT_DIRT);
 
-        circles = new Circle[SOUNDBOARD_ROWS];
+        circles = new CirclePlus[SOUNDBOARD_ROWS];
         for (int i = 0; i < circles.length; i++) {
-            circles[i] = new Circle(
+            circles[i] = new CirclePlus(
                 grid.cells[0][i].getX(), grid.cells[0][i].getCenterY() - SOUNDBOARD_CIRCLE_RADIUS,
                 SOUNDBOARD_CIRCLE_RADIUS, RED
             );
@@ -49,7 +49,7 @@ public class SoundPitchDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
 
     }
 
@@ -57,7 +57,7 @@ public class SoundPitchDrawable implements ModuleDrawable {
         return grid.cells;
     }
 
-    public Circle[] getCircles() {
+    public CirclePlus[] getCircles() {
         return circles;
     }
 }

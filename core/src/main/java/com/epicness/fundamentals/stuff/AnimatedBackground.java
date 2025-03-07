@@ -97,11 +97,11 @@ public class AnimatedBackground {
         Rectangle clipBounds = new Rectangle(x, y, w, h);
         ScissorStack.calculateScissors(camera, spriteBatch.getTransformMatrix(), clipBounds, scissors);
         boolean pop = ScissorStack.pushScissors(scissors);
-        spriteBatch.setColor(color.r / 2f, color.g / 2f, color.b / 2f, color.a);
+        spriteBatch.setColor(color.r * 0.5f, color.g * 0.5f, color.b * 0.5f, color.a);
         for (Vector2 position : positions) {
             spriteBatch.draw(
                 repeatedImage,
-                position.x, position.y, imageSize / 2f, imageSize / 2f,
+                position.x, position.y, imageSize * 0.5f, imageSize * 0.5f,
                 imageSize, imageSize, 1f, 1f,
                 45f);
         }

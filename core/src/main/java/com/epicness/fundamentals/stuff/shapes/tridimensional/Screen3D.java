@@ -30,8 +30,8 @@ public class Screen3D<S extends Shape3D<?, ?>> {
         this.shape = shape;
         this.offsetX2D = offsetX2D;
         this.offsetY2D = offsetY2D;
-        this.cameraX = offsetX2D + cameraWidth / 2f;
-        this.cameraY = offsetY2D + cameraHeight / 2f;
+        this.cameraX = offsetX2D + cameraWidth * 0.5f;
+        this.cameraY = offsetY2D + cameraHeight * 0.5f;
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
         bufferSprite = new Sprite();
         bufferSprite.setSize(cameraWidth, cameraHeight);

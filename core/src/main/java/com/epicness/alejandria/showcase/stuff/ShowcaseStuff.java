@@ -12,7 +12,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH
 import static com.epicness.fundamentals.utils.TextUtils.copyOf;
 
 import com.epicness.alejandria.showcase.assets.ShowcaseAssets;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.stuff.Stuff;
 
@@ -20,7 +20,7 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
 
     private SpritedText title;
     private Showcase showcase;
-    private Sprited bottomStripe, previous, gitHubButton, infoButton, next;
+    private SpritePlus bottomStripe, previous, gitHubButton, infoButton, next;
     private SpritedText information;
 
     @Override
@@ -34,25 +34,25 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
 
         showcase = new Showcase();
 
-        bottomStripe = new Sprited(sharedAssets.getPixel());
+        bottomStripe = new SpritePlus(sharedAssets.getPixel());
         bottomStripe.setSize(VIEWPORT_WIDTH, SHOWCASE_STRIPE_HEIGHT);
         bottomStripe.setColor(WHITE_25);
 
-        previous = new Sprited(assets.getArrow());
+        previous = new SpritePlus(assets.getArrow());
         previous.setSize(SHOWCASE_BUTTON_SIZE);
         previous.setOriginCenter();
         previous.rotate(180f);
 
-        gitHubButton = new Sprited(assets.getGitHub());
+        gitHubButton = new SpritePlus(assets.getGitHub());
         gitHubButton.setSize(SHOWCASE_BUTTON_SIZE);
         gitHubButton.setX(GITHUB_BUTTON_X);
         gitHubButton.useBilinearFilter();
 
-        infoButton = new Sprited(assets.getInfo());
+        infoButton = new SpritePlus(assets.getInfo());
         infoButton.setSize(SHOWCASE_BUTTON_SIZE);
         infoButton.setX(INFO_BUTTON_X);
 
-        next = new Sprited(assets.getArrow());
+        next = new SpritePlus(assets.getArrow());
         next.setSize(SHOWCASE_BUTTON_SIZE);
         next.setX(NEXT_BUTTON_X);
 
@@ -70,23 +70,23 @@ public class ShowcaseStuff extends Stuff<ShowcaseAssets> {
         return showcase;
     }
 
-    public Sprited getBottomStripe() {
+    public SpritePlus getBottomStripe() {
         return bottomStripe;
     }
 
-    public Sprited getPrevious() {
+    public SpritePlus getPrevious() {
         return previous;
     }
 
-    public Sprited getGitHubButton() {
+    public SpritePlus getGitHubButton() {
         return gitHubButton;
     }
 
-    public Sprited getInfoButton() {
+    public SpritePlus getInfoButton() {
         return infoButton;
     }
 
-    public Sprited getNext() {
+    public SpritePlus getNext() {
         return next;
     }
 

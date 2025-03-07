@@ -8,5 +8,5 @@ public interface ModuleDrawable {
 
     void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer, ShapeRendererPlus shapeRenderer);
 
-    void drawDebug(ShapeRendererPlus shapeRenderer);
+    void drawDebug(ShapeDrawerPlus shapeDrawer);
 }

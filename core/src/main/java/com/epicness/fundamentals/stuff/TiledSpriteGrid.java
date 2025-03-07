@@ -7,23 +7,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
-import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 
 public class TiledSpriteGrid {
 
-    private final Sprited background;
-    private final Sprited[][] sprites;
+    private final SpritePlus background;
+    private final SpritePlus[][] sprites;
     private final Rectangle bounds, scissors;
 
     public TiledSpriteGrid(Sprite backgroundSprite, Sprite tiledSprite, int columns, int rows, float spriteSize,
                            float width, float height) {
-        background = new Sprited(backgroundSprite);
+        background = new SpritePlus(backgroundSprite);
         background.setSize(width, height);
-        sprites = new Sprited[columns][];
+        sprites = new SpritePlus[columns][];
         for (int column = 0; column < columns; column++) {
-            sprites[column] = new Sprited[rows];
+            sprites[column] = new SpritePlus[rows];
             for (int row = 0; row < rows; row++) {
-                sprites[column][row] = new Sprited(tiledSprite);
+                sprites[column][row] = new SpritePlus(tiledSprite);
                 sprites[column][row].setSize(spriteSize);
                 sprites[column][row].setOriginCenter();
                 sprites[column][row].setRotation(45f);
@@ -53,20 +53,20 @@ public class TiledSpriteGrid {
         }
     }
 
-    public void drawDebug(Camera camera, ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(Camera camera, ShapeDrawerPlus shapeDrawer) {
         // Scissors
-        ScissorStack.calculateScissors(camera, shapeRenderer.getTransformMatrix(), bounds, scissors);
+        ScissorStack.calculateScissors(camera, shapeDrawer.getBatch().getTransformMatrix(), bounds, scissors);
         boolean pop = ScissorStack.pushScissors(scissors);
         // Background
-        background.drawDebug(shapeRenderer);
+        background.drawDebug(shapeDrawer);
         // Sprites
         for (int column = 0; column < sprites.length; column++) {
             for (int row = 0; row < sprites[column].length; row++) {
-                sprites[column][row].drawDebug(shapeRenderer);
+                sprites[column][row].drawDebug(shapeDrawer);
             }
         }
         // Returning to normal rendering
-        shapeRenderer.flush();
+        shapeDrawer.getBatch().flush();
         if (pop) {
             ScissorStack.popScissors();
         }
@@ -83,7 +83,7 @@ public class TiledSpriteGrid {
         float ySpacing = (height + spriteSize - (rows * spriteSize)) / rows;
         for (int column = 0; column < columns; column++) {
             for (int row = 0; row < rows; row++) {
-                Sprited sprite = sprites[column][row];
+                SpritePlus sprite = sprites[column][row];
                 sprite.setX(x + column * spriteSize + column * xSpacing);
                 sprite.setY(y + row * spriteSize + row * ySpacing);
             }
@@ -101,8 +101,8 @@ public class TiledSpriteGrid {
                 if (row % 2 == 0) {
                     continue;
                 }
-                Sprited sprite = sprites[column][row];
-                sprite.translateX(spriteSize / 2f + xSpacing / 2f);
+                SpritePlus sprite = sprites[column][row];
+                sprite.translateX(spriteSize * 0.5f + xSpacing * 0.5f);
             }
         }
     }
@@ -120,7 +120,7 @@ public class TiledSpriteGrid {
         }
     }
 
-    public Sprited[][] getSprites() {
+    public SpritePlus[][] getSprites() {
         return sprites;
     }
 

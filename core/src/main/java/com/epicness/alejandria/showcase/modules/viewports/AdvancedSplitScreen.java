@@ -21,12 +21,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.SpritePlus;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
-    private Circle player1, player2;
+    private CirclePlus player1, player2;
     private Camera camera1, camera2;
 
     public AdvancedSplitScreen() {
@@ -98,8 +98,8 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
 
     private void updateCameraPositions() {
         if (drawable.arePlayersClose()) {
-            float averageX = (player1.getCenterX() + player2.getCenterX()) / 2f;
-            float averageY = (player1.getCenterY() + player2.getCenterY()) / 2f;
+            float averageX = (player1.getCenterX() + player2.getCenterX()) * 0.5f;
+            float averageY = (player1.getCenterY() + player2.getCenterY()) * 0.5f;
             camera1.position.x = averageX;
             camera1.position.y = averageY;
             camera2.position.x = averageX;
@@ -109,10 +109,10 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
             angle *= MathUtils.radiansToDegrees;
             float distanceX = MathUtils.cosDeg(angle) * MAX_DISTANCE;
             float distanceY = MathUtils.sinDeg(angle) * MAX_DISTANCE;
-            camera1.position.x = player1.getCenterX() + distanceX / 2f;
-            camera1.position.y = player1.getCenterY() + distanceY / 2f;
-            camera2.position.x = player2.getCenterX() - distanceX / 2f;
-            camera2.position.y = player2.getCenterY() - distanceY / 2f;
+            camera1.position.x = player1.getCenterX() + distanceX * 0.5f;
+            camera1.position.y = player1.getCenterY() + distanceY * 0.5f;
+            camera2.position.x = player2.getCenterX() - distanceX * 0.5f;
+            camera2.position.y = player2.getCenterY() - distanceY * 0.5f;
         }
     }
 
@@ -128,22 +128,22 @@ public class AdvancedSplitScreen extends Module<AdvancedSplitScreenDrawable> {
     }
 
     private void limitCameraPositions() {
-        float minCameraPosition = camera1.viewportWidth / 2f;
-        float maxCameraPosition = GRID_SIZE - camera1.viewportWidth / 2f;
+        float minCameraPosition = camera1.viewportWidth * 0.5f;
+        float maxCameraPosition = GRID_SIZE - camera1.viewportWidth * 0.5f;
         camera1.position.x = MathUtils.clamp(camera1.position.x, minCameraPosition, maxCameraPosition);
         camera1.position.y = MathUtils.clamp(camera1.position.y, minCameraPosition, maxCameraPosition);
         camera1.update();
 
-        minCameraPosition = camera2.viewportWidth / 2f;
-        maxCameraPosition = GRID_SIZE - camera2.viewportWidth / 2f;
+        minCameraPosition = camera2.viewportWidth * 0.5f;
+        maxCameraPosition = GRID_SIZE - camera2.viewportWidth * 0.5f;
         camera2.position.x = MathUtils.clamp(camera2.position.x, minCameraPosition, maxCameraPosition);
         camera2.position.y = MathUtils.clamp(camera2.position.y, minCameraPosition, maxCameraPosition);
         camera2.update();
     }
 
     private void updateMask() {
-        Sprited mask = drawable.getMask();
-        Sprited divider = drawable.getDivider();
+        SpritePlus mask = drawable.getMask();
+        SpritePlus divider = drawable.getDivider();
 
         float angle = MathUtils.atan2(player2.getCenterY() - player1.getCenterY(), player2.getCenterX() - player1.getCenterX());
         angle *= MathUtils.radiansToDegrees;

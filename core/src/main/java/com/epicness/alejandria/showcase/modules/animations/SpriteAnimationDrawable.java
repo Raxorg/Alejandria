@@ -8,16 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.SpritedAnimation;
 
 public class SpriteAnimationDrawable implements ModuleDrawable {
 
-    private final Sprited frames;
+    private final SpritePlus frames;
     private final SpritedAnimation animation;
 
     public SpriteAnimationDrawable(Sprite framesSprite, Sprite[] animationFrames) {
-        frames = new Sprited(framesSprite);
+        frames = new SpritePlus(framesSprite);
         frames.setSize(400f, 400f);
         frames.setOriginCenter();
         frames.setOriginBasedPosition(VIEWPORT_HALF_WIDTH - 220f, VIEWPORT_HALF_HEIGHT);
@@ -40,9 +40,9 @@ public class SpriteAnimationDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(frames.getBoundingRectangle());
-        shapeRenderer.rect(animation.getBoundingRectangle());
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(frames.getBoundingRectangle());
+        shapeDrawer.rectangle(animation.getBoundingRectangle());
     }
 
     public SpritedAnimation getAnimation() {

@@ -14,25 +14,25 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DragAndDropDrawable implements ModuleDrawable {
 
-    private final Sprited dropArea;
-    private final List<Sprited> squares;
+    private final SpritePlus dropArea;
+    private final List<SpritePlus> squares;
 
     public DragAndDropDrawable(Sprite pixelSprite, Sprite squareSprite) {
-        dropArea = new Sprited(pixelSprite);
+        dropArea = new SpritePlus(pixelSprite);
         dropArea.setSize(DROP_AREA_WIDTH, DROP_AREA_HEIGHT);
         dropArea.setPosition(DROP_AREA_X, DROP_AREA_Y);
         dropArea.setColor(WHITE_25);
 
         squares = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            Sprited square = new Sprited(squareSprite);
+            SpritePlus square = new SpritePlus(squareSprite);
             square.setSize(DROP_SQUARE_SIZE);
             square.setPosition(DROP_AREA_X + i * 110f, STARTING_DROP_SQUARE_Y);
             square.setColor(LIGHT_GRASS);
@@ -51,14 +51,14 @@ public class DragAndDropDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Sprited getDropArea() {
+    public SpritePlus getDropArea() {
         return dropArea;
     }
 
-    public List<Sprited> getSquares() {
+    public List<SpritePlus> getSquares() {
         return squares;
     }
 }

@@ -7,16 +7,16 @@ import static com.epicness.fundamentals.constants.ColorConstants.WHITE_25;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 import java.util.List;
 
 public class DragAndDrop extends Module<DragAndDropDrawable> {
 
-    private Sprited dropArea;
-    private List<Sprited> squares;
+    private SpritePlus dropArea;
+    private List<SpritePlus> squares;
     private Vector2 pivot;
-    private Sprited draggedSquare;
+    private SpritePlus draggedSquare;
 
     public DragAndDrop() {
         super("Drag And Drop", "Cross platform friendly drag and drop");
@@ -35,7 +35,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     public void mouseMoved(float x, float y) {
         clearSquares();
         for (int i = 0; i < squares.size(); i++) {
-            Sprited square = squares.get(i);
+            SpritePlus square = squares.get(i);
             if (square.contains(x, y)) {
                 clearSquares();
                 square.setColor(ORANGE);
@@ -52,7 +52,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     @Override
     public void touchDown(float x, float y, int button) {
         for (int i = 0; i < squares.size(); i++) {
-            Sprited square = squares.get(i);
+            SpritePlus square = squares.get(i);
             if (square.contains(x, y)) {
                 pivot.set(x, y);
                 draggedSquare = square;
@@ -74,7 +74,7 @@ public class DragAndDrop extends Module<DragAndDropDrawable> {
     }
 
     @Override
-    public void touchUp(float x, float y) {
+    public void touchUp(float x, float y, int button) {
         if (dropArea.getColor().equals(LIGHT_GRASS)) {
             float dropX = MathUtils.clamp(
                 draggedSquare.getX(),

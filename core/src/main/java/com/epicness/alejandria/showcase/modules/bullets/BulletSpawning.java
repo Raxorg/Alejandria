@@ -6,7 +6,7 @@ import static com.epicness.alejandria.showcase.constants.BulletSpawningConstants
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.utils.AngleUtils;
 import com.epicness.fundamentals.utils.Random;
 
@@ -26,15 +26,15 @@ public class BulletSpawning extends Module<BulletSpawningDrawable> {
 
     @Override
     public void mouseMoved(float x, float y) {
-        Sprited gun = drawable.getGun();
+        SpritePlus gun = drawable.getGun();
         float rotation = AngleUtils.degreesBetweenPoints(x, y, gun.getOriginBasedX(), gun.getOriginBasedY());
         gun.setRotation(rotation);
     }
 
     @Override
     public void touchDown(float x, float y, int button) {
-        Sprited gun = drawable.getGun();
-        Sprited bullet = drawable.getBullet();
+        SpritePlus gun = drawable.getGun();
+        SpritePlus bullet = drawable.getBullet();
 
         float cos = MathUtils.cosDeg(gun.getRotation());
         float sin = MathUtils.sinDeg(gun.getRotation());

@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class StickmanTests extends Game {
 
     private SpriteBatch spriteBatch;
     private ShapeDrawerPlus shapeDrawerPlus;
-    private Sprited sprite;
+    private SpritePlus sprite;
 
     @Override
     public void create() {
@@ -23,7 +23,7 @@ public class StickmanTests extends Game {
         Sprite pixel = new Sprite(new Texture(SPRITESNEAREST_ATLAS.fileName));
         shapeDrawerPlus = new ShapeDrawerPlus(spriteBatch, pixel);
 
-        sprite = new Sprited(pixel);
+        sprite = new SpritePlus(pixel);
         sprite.setSize(80f, 20f);
         sprite.setPosition(200f, 200f);
         sprite.setColor(RED);

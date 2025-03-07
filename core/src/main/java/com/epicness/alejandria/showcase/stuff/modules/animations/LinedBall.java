@@ -3,9 +3,8 @@ package com.epicness.alejandria.showcase.stuff.modules.animations;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Line;
-
-import space.earlygrey.shapedrawer.ShapeDrawer;
 
 public class LinedBall {
 
@@ -24,7 +23,7 @@ public class LinedBall {
         lastTrackedPosition = new Vector2();
     }
 
-    public void draw(ShapeDrawer shapeDrawer) {
+    public void draw(ShapeDrawerPlus shapeDrawer) {
         line.draw(shapeDrawer);
         shapeDrawer.filledCircle(
             line.getPosition().x + line.length * MathUtils.cosDeg(line.getAngleDeg()),

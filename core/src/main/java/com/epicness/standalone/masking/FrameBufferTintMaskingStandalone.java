@@ -40,8 +40,8 @@ public class FrameBufferTintMaskingStandalone extends Game {
 
         textWidth = glyphLayout.width;
         textHeight = glyphLayout.height;
-        textX = WINDOW_SIZE / 2f - textWidth / 2f;
-        textY = WINDOW_SIZE / 2f + textHeight / 2f;
+        textX = WINDOW_SIZE * 0.5f - textWidth * 0.5f;
+        textY = WINDOW_SIZE * 0.5f + textHeight * 0.5f;
 
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, WINDOW_SIZE, WINDOW_SIZE, false);
     }

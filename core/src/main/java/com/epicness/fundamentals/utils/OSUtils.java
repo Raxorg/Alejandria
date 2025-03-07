@@ -25,4 +25,8 @@ public class OSUtils {
     public static boolean isHTML() {
         return Gdx.app.getType() == Application.ApplicationType.WebGL;
     }
+
+    public static boolean isDesktop() {
+        return Gdx.app.getType() == Application.ApplicationType.Desktop;
+    }
 }

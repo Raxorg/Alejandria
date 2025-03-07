@@ -12,12 +12,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable> {
 
     private Pixmap pixmap;
-    private Sprited[] shapes;
+    private SpritePlus[] shapes;
 
     public PixelPerfectCollision() {
         super(
@@ -42,7 +42,7 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
     @Override
     public void touchDown(float x, float y, int button) {
         for (int i = 0; i < shapes.length; i++) {
-            Sprited shape = shapes[i];
+            SpritePlus shape = shapes[i];
             shape.setColor(WHITE);
             if (!shape.getBoundingRectangle().contains(x, y)) {
                 continue;
@@ -70,7 +70,7 @@ public class PixelPerfectCollision extends Module<PixelPerfectCollisionDrawable>
         }
     }
 
-    private void randomizePosition(Sprited shape) {
+    private void randomizePosition(SpritePlus shape) {
         float size = shape.getWidth();
         shape.setX(MathUtils.random(0f, VIEWPORT_WIDTH - size));
         shape.setY(MathUtils.random(SHOWCASE_Y, SHOWCASE_Y + SHOWCASE_SIZE - size));

@@ -31,8 +31,8 @@ public class ShakeShader extends Module<ShakeShaderDrawable> {
     @Override
     public void update(float delta) {
         float shakeStrength = 10f;
-        float shakeX = MathUtils.random() * shakeStrength - shakeStrength / 2f;
-        float shakeY = MathUtils.random() * shakeStrength - shakeStrength / 2f;
+        float shakeX = MathUtils.random() * shakeStrength - shakeStrength * 0.5f;
+        float shakeY = MathUtils.random() * shakeStrength - shakeStrength * 0.5f;
         shader.bind();
         shader.setUniformf("u_distort", shakeX, shakeY, 0f, 0f);
     }

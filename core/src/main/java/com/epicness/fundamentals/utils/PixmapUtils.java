@@ -108,7 +108,7 @@ public class PixmapUtils {
     public static Pixmap createLight(Color color, int width, int height) {
         Pixmap newPixmap = new Pixmap(width, height, Format.RGBA8888);
         Vector2 tile = new Vector2(0, 0);
-        Vector2 center = new Vector2(width / 2f, height / 2f);
+        Vector2 center = new Vector2(width * 0.5f, height * 0.5f);
 
         newPixmap.setBlending(Blending.SourceOver);
         for (int x = 0; x <= width; x++) {

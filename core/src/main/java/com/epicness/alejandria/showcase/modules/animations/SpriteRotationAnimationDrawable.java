@@ -41,9 +41,9 @@ public class SpriteRotationAnimationDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(pixel.getBoundingRectangle());
-        shapeRenderer.rect(weirdShape.getBoundingRectangle());
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(pixel.getBoundingRectangle());
+        shapeDrawer.rectangle(weirdShape.getBoundingRectangle());
     }
 
     public Sprite getPixel() {

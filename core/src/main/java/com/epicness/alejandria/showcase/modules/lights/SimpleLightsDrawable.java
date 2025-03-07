@@ -29,7 +29,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 import com.epicness.fundamentals.utils.Random;
 
@@ -40,7 +40,7 @@ public class SimpleLightsDrawable implements ModuleDrawable {
 
     private FrameBuffer lightBuffer;
     private final TextureRegion bufferRegion;
-    private final Circle[] circles;
+    private final CirclePlus[] circles;
     private final Rectangle[] rectangles;
     private final List<Sprite> lights;
     private final Matrix4 projectionMatrix;
@@ -51,9 +51,9 @@ public class SimpleLightsDrawable implements ModuleDrawable {
         bufferRegion = new TextureRegion(lightBuffer.getColorBufferTexture(), (int) VIEWPORT_WIDTH, (int) SHOWCASE_SIZE);
         bufferRegion.flip(false, true);
 
-        circles = new Circle[SHAPE_COUNT];
+        circles = new CirclePlus[SHAPE_COUNT];
         for (int i = 0; i < circles.length; i++) {
-            circles[i] = new Circle(
+            circles[i] = new CirclePlus(
                 MathUtils.random(MIN_CIRCLE_X, MAX_CIRCLE_X),
                 MathUtils.random(MIN_CIRCLE_Y, MAX_CIRCLE_Y),
                 CIRCLE_RADIUS,
@@ -130,7 +130,7 @@ public class SimpleLightsDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public FrameBuffer getLightBuffer() {

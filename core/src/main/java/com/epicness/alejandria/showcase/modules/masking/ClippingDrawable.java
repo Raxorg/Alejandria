@@ -61,7 +61,7 @@ public class ClippingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public AnimatedBackground getBackground1() {

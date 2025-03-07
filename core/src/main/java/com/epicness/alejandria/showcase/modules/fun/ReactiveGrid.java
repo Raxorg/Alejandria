@@ -22,17 +22,17 @@ import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.fun.ColorBall;
 import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCell;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.grid.CellGrid;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.utils.Random;
 
 public class ReactiveGrid extends Module<ReactiveGridDrawable> {
 
     private CellGrid<ColoredCell> grid;
-    private SnapshotArray<Sprited> colorBombs;
+    private SnapshotArray<SpritePlus> colorBombs;
     private SnapshotArray<ColorBall> colorBalls;
-    private Circle circle;
+    private CirclePlus circle;
 
     private float bombTimer;
     private float translationX, translationY;
@@ -40,7 +40,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
     private Color color;
     private Vector2 auxVector2, auxVector1;
     private ColorBall auxColorBall;
-    private Sprited auxColorBomb;
+    private SpritePlus auxColorBomb;
 
     public ReactiveGrid() {
         super("Reactive Grid", "Mesmerizing and colorful grid effects :3");
@@ -87,7 +87,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
     private void spawnColorBombs(float delta) {
         bombTimer += delta;
         if (bombTimer >= COLOR_BOMB_SPAWN_RATE) {
-            Sprited circle = new Sprited(assets.getCircle());
+            SpritePlus circle = new SpritePlus(assets.getCircle());
             circle.setSize(CELL_SIZE);
             circle.setX(GRID_X + MathUtils.random(GRID_COLUMNS - 1) * CELL_SIZE);
             circle.setY(GRID_Y + MathUtils.random(GRID_ROWS - 1) * CELL_SIZE);
@@ -115,7 +115,7 @@ public class ReactiveGrid extends Module<ReactiveGridDrawable> {
         colorBombs.begin();
         for (int i = 0; i < colorBombs.size; i++) {
             auxColorBomb = colorBombs.get(i);
-            if (auxColorBomb.getCenter(auxVector2).dst(circle.getCenter(auxVector1)) <= CELL_SIZE / 2f + CIRCLE_RADIUS) {
+            if (auxColorBomb.getCenter(auxVector2).dst(circle.getCenter(auxVector1)) <= CELL_SIZE * 0.5f + CIRCLE_RADIUS) {
                 spawnExplosion(auxVector2, auxColorBomb.getColor());
                 colorBombs.removeValue(auxColorBomb, true);
                 return;

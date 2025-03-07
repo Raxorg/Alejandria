@@ -39,8 +39,8 @@ public class AlertDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(bounds);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(bounds);
     }
 
     public NinePatch getButton() {

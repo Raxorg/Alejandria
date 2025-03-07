@@ -36,6 +36,18 @@ public class PreferencesHandler {
         prefs.flush();
     }
 
+    public void saveBoolean(String preferencesPath, String key, boolean value) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        prefs.putBoolean(key, value);
+        prefs.flush();
+    }
+
+    public void saveFloat(String preferencesPath, String key, float value) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        prefs.putFloat(key, value);
+        prefs.flush();
+    }
+
     public String loadString(String preferencesPath, String key) {
         Preferences prefs = Gdx.app.getPreferences(preferencesPath);
         return prefs.getString(key);
@@ -44,6 +56,16 @@ public class PreferencesHandler {
     public int loadInteger(String preferencesPath, String key) {
         Preferences prefs = Gdx.app.getPreferences(preferencesPath);
         return prefs.getInteger(key);
+    }
+
+    public boolean loadBoolean(String preferencesPath, String key) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        return prefs.getBoolean(key);
+    }
+
+    public float loadFloat(String preferencesPath, String key) {
+        Preferences prefs = Gdx.app.getPreferences(preferencesPath);
+        return prefs.getFloat(key);
     }
 
     public void removeString(String preferencesPath, String key) {

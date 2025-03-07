@@ -13,8 +13,8 @@ public class Showcase {
         moduleDrawable.draw(spriteBatch, shapeDrawer, shapeRenderer);
     }
 
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        moduleDrawable.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        moduleDrawable.drawDebug(shapeDrawer);
     }
 
     public void setModuleDrawable(ModuleDrawable moduleDrawable) {

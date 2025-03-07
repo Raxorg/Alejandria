@@ -6,14 +6,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class PhyllotaxisDrawable implements ModuleDrawable {
 
-    private final Circle[] circles;
+    private final CirclePlus[] circles;
 
     public PhyllotaxisDrawable() {
-        circles = new Circle[PHYLLOTAXIS_CIRCLES];
+        circles = new CirclePlus[PHYLLOTAXIS_CIRCLES];
     }
 
     @Override
@@ -26,10 +26,10 @@ public class PhyllotaxisDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Circle[] getCircles() {
+    public CirclePlus[] getCircles() {
         return circles;
     }
 }

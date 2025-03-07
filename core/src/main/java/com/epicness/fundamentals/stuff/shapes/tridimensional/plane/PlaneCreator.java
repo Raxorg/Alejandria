@@ -11,8 +11,8 @@ public class PlaneCreator extends ModelCreator<PlaneProperties> {
 
     @Override
     protected Model build(PlaneProperties properties) {
-        float hw = properties.width / 2f;
-        float hh = properties.height / 2f;
+        float hw = properties.width * 0.5f;
+        float hh = properties.height * 0.5f;
         return modelBuilder.createRect(
             -hw, -hh, 0f,   // v1
             hw, -hh, 0f,    // v2

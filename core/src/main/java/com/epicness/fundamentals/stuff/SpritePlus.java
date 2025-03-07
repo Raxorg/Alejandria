@@ -7,16 +7,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.SpriteDrawable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class Sprited implements Buttonable, Transformable, SpriteDrawable {
+public class SpritePlus implements Buttonable, Transformable, SpriteDrawable {
 
     private final Sprite sprite;
 
-    public Sprited(Sprite sprite) {
+    public SpritePlus(Sprite sprite) {
         this.sprite = new Sprite(sprite);
     }
 
@@ -29,8 +29,8 @@ public class Sprited implements Buttonable, Transformable, SpriteDrawable {
         sprite.draw(spriteBatch);
     }
 
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(getBoundingRectangle());
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(getBoundingRectangle());
     }
 
     @Override

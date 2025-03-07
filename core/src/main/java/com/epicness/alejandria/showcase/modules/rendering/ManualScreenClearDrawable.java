@@ -8,15 +8,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class ManualScreenClearDrawable implements ModuleDrawable {
 
-    private final Sprited weirdShape;
+    private final SpritePlus weirdShape;
 
     public ManualScreenClearDrawable(Sprite weirdShapeSprite) {
-        weirdShape = new Sprited(weirdShapeSprite);
-        weirdShape.setY(VIEWPORT_HALF_HEIGHT - weirdShape.getHeight() / 2f);
+        weirdShape = new SpritePlus(weirdShapeSprite);
+        weirdShape.setY(VIEWPORT_HALF_HEIGHT - weirdShape.getHeight() * 0.5f);
         weirdShape.setColor(ORANGE);
         weirdShape.useBilinearFilter();
     }
@@ -29,10 +29,10 @@ public class ManualScreenClearDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Sprited getWeirdShape() {
+    public SpritePlus getWeirdShape() {
         return weirdShape;
     }
 }

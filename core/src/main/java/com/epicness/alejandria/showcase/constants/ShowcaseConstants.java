@@ -25,7 +25,7 @@ public class ShowcaseConstants {
     public static final float NEXT_BUTTON_X = VIEWPORT_WIDTH - SHOWCASE_BUTTON_SIZE;
 
     public static final float SHOWCASE_SIZE = VIEWPORT_HEIGHT - SHOWCASE_STRIPE_HEIGHT * 2f;
-    public static final float SHOWCASE_HALF_SIZE = SHOWCASE_SIZE / 2f;
+    public static final float SHOWCASE_HALF_SIZE = SHOWCASE_SIZE * 0.5f;
     public static final float SHOWCASE_X = SHOWCASE_BUTTON_SIZE;
     public static final float SHOWCASE_Y = SHOWCASE_STRIPE_HEIGHT;
     public static final float SHOWCASE_TOP = SHOWCASE_STRIPE_HEIGHT + SHOWCASE_SIZE;

@@ -85,7 +85,7 @@ public class AnimatedBackgroundDeluxe extends AnimatedBackground {
             }
             spriteBatch.draw(
                 repeatedImage,
-                positions[i].x, positions[i].y, imageSize / 2f, imageSize / 2f,
+                positions[i].x, positions[i].y, imageSize * 0.5f, imageSize * 0.5f,
                 imageSize, imageSize, 1f, 1f,
                 rotations[i]);
         }

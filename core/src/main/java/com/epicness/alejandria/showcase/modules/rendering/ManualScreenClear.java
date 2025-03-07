@@ -6,11 +6,11 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH
 
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class ManualScreenClear extends Module<ManualScreenClearDrawable> {
 
-    private Sprited weirdShape;
+    private SpritePlus weirdShape;
 
     public ManualScreenClear() {
         super(

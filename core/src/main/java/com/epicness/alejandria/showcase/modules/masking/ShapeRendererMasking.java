@@ -6,7 +6,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_WIDTH
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Triangle;
 
 public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
@@ -32,7 +32,7 @@ public class ShapeRendererMasking extends Module<ShapeRendererMaskingDrawable> {
 
         Triangle triangleMask = drawable.getTriangleMask();
         triangleMask.translateX(translation);
-        Circle circleMask = drawable.getCircleMask();
+        CirclePlus circleMask = drawable.getCircleMask();
         circleMask.translateX(-translation);
         if (triangleMask.getEndX() >= VIEWPORT_WIDTH) {
             direction = true;

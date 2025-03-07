@@ -19,16 +19,16 @@ import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCell;
 import com.epicness.alejandria.showcase.stuff.modules.fun.ColoredCellGrid;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.grid.CellGrid;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class ReactiveGridDrawable implements ModuleDrawable {
 
     private final ColoredCellGrid grid;
-    private final SnapshotArray<Sprited> colorBombs;
+    private final SnapshotArray<SpritePlus> colorBombs;
     private final SnapshotArray<ColorBall> colorBalls;
-    private final Circle circle;
+    private final CirclePlus circle;
 
     public ReactiveGridDrawable(Sprite cellSprite) {
         grid = new ColoredCellGrid(cellSprite, GRID_COLUMNS, GRID_ROWS);
@@ -38,7 +38,7 @@ public class ReactiveGridDrawable implements ModuleDrawable {
         colorBombs = new SnapshotArray<>();
         colorBalls = new SnapshotArray<>();
 
-        circle = new Circle(CIRCLE_RADIUS);
+        circle = new CirclePlus(CIRCLE_RADIUS);
         circle.setThickness(3f);
         circle.setColor(RED);
     }
@@ -59,14 +59,14 @@ public class ReactiveGridDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public CellGrid<ColoredCell> getGrid() {
         return grid;
     }
 
-    public SnapshotArray<Sprited> getColorBombs() {
+    public SnapshotArray<SpritePlus> getColorBombs() {
         return colorBombs;
     }
 
@@ -74,7 +74,7 @@ public class ReactiveGridDrawable implements ModuleDrawable {
         return colorBalls;
     }
 
-    public Circle getCircle() {
+    public CirclePlus getCircle() {
         return circle;
     }
 }

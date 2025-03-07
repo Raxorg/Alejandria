@@ -8,7 +8,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
 
@@ -31,7 +31,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
         accelerating = false;
 
         drawable = new PhyllotaxisDrawable();
-        Circle[] circles = drawable.getCircles();
+        CirclePlus[] circles = drawable.getCircles();
         angles = new float[PHYLLOTAXIS_CIRCLES];
         float a = 137.5f;
         float c = 12f;
@@ -43,7 +43,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
             y = VIEWPORT_HALF_HEIGHT - PHYLLOTAXIS_BALL_RADIUS + radius * MathUtils.sinDeg(angles[i]);
             Color color = new Color().fromHsv(angles[i] % 360, 1, 1);
             color.a = 1f;
-            circles[i] = new Circle(x, y, PHYLLOTAXIS_BALL_RADIUS, color);
+            circles[i] = new CirclePlus(x, y, PHYLLOTAXIS_BALL_RADIUS, color);
         }
         return drawable;
     }
@@ -53,7 +53,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
         if (accelerating) {
             speed += 180f * delta;
         }
-        Circle[] circles = drawable.getCircles();
+        CirclePlus[] circles = drawable.getCircles();
         for (int i = 0; i < PHYLLOTAXIS_CIRCLES; i++) {
             angles[i] += delta * speed;
             Color color = new Color().fromHsv(angles[i] % 360, 1, 1);
@@ -68,7 +68,7 @@ public class Phyllotaxis extends Module<PhyllotaxisDrawable> {
     }
 
     @Override
-    public void touchUp(float x, float y) {
+    public void touchUp(float x, float y, int button) {
         accelerating = false;
     }
 }

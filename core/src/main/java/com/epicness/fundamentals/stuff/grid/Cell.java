@@ -1,14 +1,14 @@
 package com.epicness.fundamentals.stuff.grid;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
-public class Cell extends Sprited {
+public class Cell extends SpritePlus {
 
     private final int column, row;
 
-    public Cell(Sprite cellSprite, int column, int row) {
-        super(cellSprite);
+    public Cell(Sprite sprite, int column, int row) {
+        super(sprite);
         this.column = column;
         this.row = row;
     }

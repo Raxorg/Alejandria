@@ -1,7 +1,10 @@
 package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
@@ -9,14 +12,13 @@ import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Transformable, Buttonable, ShapeDrawable {
+public class CirclePlus implements Transformable, Buttonable, ShapeDrawable {
 
-    public final float radius;
-    private float x, y;
+    private float x, y, radius;
     private final Color borderColor, fillColor;
     private float thickness;
 
-    public Circle(float x, float y, float radius, Color borderColor, Color fillColor, float thickness) {
+    public CirclePlus(float x, float y, float radius, Color borderColor, Color fillColor, float thickness) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -25,47 +27,67 @@ public class Circle implements Transformable, Buttonable, ShapeDrawable {
         this.thickness = thickness;
     }
 
-    public Circle(float x, float y, float radius, Color borderColor, Color fillColor) {
+    public CirclePlus(Vector2 position, float radius, Color borderColor, Color fillColor, float thickness) {
+        this(position.x, position.y, radius, borderColor, fillColor, thickness);
+    }
+
+    public CirclePlus(float x, float y, float radius, Color borderColor, Color fillColor) {
         this(x, y, radius, borderColor, fillColor, 3f);
     }
 
-    public Circle(float x, float y, float radius, Color color, float thickness) {
+    public CirclePlus(float x, float y, float radius, Color color, float thickness) {
         this(x, y, radius, color, color, thickness);
     }
 
-    public Circle(float radius, Color borderColor, Color fillColor) {
-        this(0f, 0f, radius, borderColor, fillColor);
+    public CirclePlus(Vector2 position, float radius, Color borderColor, Color fillColor) {
+        this(position.x, position.y, radius, borderColor, fillColor, 3f);
     }
 
-    public Circle(float x, float y, float radius, Color color) {
+    public CirclePlus(float radius, Color borderColor, Color fillColor, float thickness) {
+        this(0f, 0f, radius, borderColor, fillColor, thickness);
+    }
+
+    public CirclePlus(float x, float y, float radius, Color color) {
         this(x, y, radius, color, color);
     }
 
-    public Circle(float x, float y, float radius) {
+    public CirclePlus(float x, float y, Color color, float thickness) {
+        this(x, y, 5f, color, thickness);
+    }
+
+    public CirclePlus(float radius, Color borderColor, Color fillColor) {
+        this(radius, borderColor, fillColor, 3f);
+    }
+
+    public CirclePlus(float x, float y, float radius) {
         this(x, y, radius, new Color(1f, 1f, 1f, 1f));
     }
 
-    public Circle(float x, float y, Color color) {
-        this(x, y, 5f, color);
+    public CirclePlus(float x, float y, Color color) {
+        this(x, y, color, 3f);
     }
 
-    public Circle(float x, float y) {
+    public CirclePlus(float x, float y) {
         this(x, y, 5f);
     }
 
-    public Circle(float radius, Color color) {
+    public CirclePlus(float radius, Color color) {
         this(0f, 0f, radius, color);
     }
 
-    public Circle(float radius) {
+    public CirclePlus(Vector2 position) {
+        this(position.x, position.y);
+    }
+
+    public CirclePlus(float radius) {
         this(radius, new Color(1f, 1f, 1f, 1f));
     }
 
-    public Circle(Color color) {
+    public CirclePlus(Color color) {
         this(5f, color);
     }
 
-    public Circle() {
+    public CirclePlus() {
         this(5f);
     }
 
@@ -86,6 +108,10 @@ public class Circle implements Transformable, Buttonable, ShapeDrawable {
     public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(borderColor);
         shapeRenderer.circle(x + radius, y + radius, radius);
+    }
+
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.circle(x + radius, y + radius, radius, 1.5f, WHITE);
     }
 
     @Override
@@ -127,12 +153,12 @@ public class Circle implements Transformable, Buttonable, ShapeDrawable {
 
     @Override
     public void stretchWidth(float amount) {
-        throw new UnsupportedOperationException();
+        radius += amount * 0.5f;
     }
 
     @Override
     public void stretchHeight(float amount) {
-        throw new UnsupportedOperationException();
+        radius += amount * 0.5f;
     }
 
     @Override
@@ -143,6 +169,29 @@ public class Circle implements Transformable, Buttonable, ShapeDrawable {
     @Override
     public float getHeight() {
         return radius * 2f;
+    }
+
+    public void setCenterBasedPosition(float x, float y) {
+        this.x = x - radius;
+        this.y = y - radius;
+    }
+
+    public void setCenterBasedPosition(Vector2 position) {
+        setCenterBasedPosition(position.x, position.y);
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadiusCentered(float radius) {
+        x -= (radius - this.radius) * 0.5f;
+        y -= (radius - this.radius) * 0.5f;
+        this.radius = radius;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
     }
 
     public Color getBorderColor() {

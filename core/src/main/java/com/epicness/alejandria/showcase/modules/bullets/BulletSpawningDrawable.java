@@ -13,26 +13,26 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class BulletSpawningDrawable implements ModuleDrawable {
 
-    private final Sprited gun, bullet, center;
+    private final SpritePlus gun, bullet, center;
 
     public BulletSpawningDrawable(Sprite gunSprite, Sprite glowSprite) {
         // Gun
-        gun = new Sprited(gunSprite);
+        gun = new SpritePlus(gunSprite);
         gun.setSize(GUN_WIDTH, GUN_HEIGHT);
-        gun.setOrigin(GUN_WIDTH / 2f, MUZZLE_HEIGHT); // The muzzle is higher than the center
+        gun.setOrigin(GUN_WIDTH * 0.5f, MUZZLE_HEIGHT); // The muzzle is higher than the center
         gun.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         gun.useBilinearFilter();
         // Bullet
-        bullet = new Sprited(glowSprite);
+        bullet = new SpritePlus(glowSprite);
         bullet.setSize(BULLET_SIZE, BULLET_SIZE);
         bullet.setOriginCenter();
         bullet.setColor(Color.CLEAR);
         // Center
-        center = new Sprited(glowSprite);
+        center = new SpritePlus(glowSprite);
         center.setSize(BULLET_SIZE, BULLET_SIZE);
         center.setOriginCenter();
         center.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
@@ -49,17 +49,17 @@ public class BulletSpawningDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        gun.drawDebug(shapeRenderer);
-        bullet.drawDebug(shapeRenderer);
-        center.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        gun.drawDebug(shapeDrawer);
+        bullet.drawDebug(shapeDrawer);
+        center.drawDebug(shapeDrawer);
     }
 
-    public Sprited getGun() {
+    public SpritePlus getGun() {
         return gun;
     }
 
-    public Sprited getBullet() {
+    public SpritePlus getBullet() {
         return bullet;
     }
 }

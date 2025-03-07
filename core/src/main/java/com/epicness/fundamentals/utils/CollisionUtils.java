@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.Line3D;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.WireframeCube;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.cylinder.Cylinder;
@@ -38,13 +39,21 @@ public class CollisionUtils {
         return intersects(line.getRay(), wireframeCube, intersection);
     }
 
-    /* Also returns true if the polygon contains the circle */
     public static boolean overlapPolygonCircle(Polygon polygon, Circle circle) {
+        return overlapPolygonCircle(polygon, circle.x, circle.y, circle.radius);
+    }
+
+    public static boolean overlapPolygonCircle(Polygon polygon, CirclePlus circle) {
+        return overlapPolygonCircle(polygon, circle.getCenterX(), circle.getCenterY(), circle.getRadius());
+    }
+
+    /* Also returns true if the polygon contains the circle */
+    private static boolean overlapPolygonCircle(Polygon polygon, float circleCenterX, float circleCenterY, float circleRadius) {
         float[] vertices = polygon.getTransformedVertices();
         Vector2 start = new Vector2();
         Vector2 end = new Vector2();
-        Vector2 center = new Vector2(circle.x, circle.y);
-        float squareRadius = circle.radius * circle.radius;
+        Vector2 center = new Vector2(circleCenterX, circleCenterY);
+        float squareRadius = circleRadius * circleRadius;
         /* Loop through the segments of the polygon */
         for (int i = 0; i < vertices.length; i += 2) {
             if (i == 0) {
@@ -57,6 +66,6 @@ public class CollisionUtils {
                 return true;
             }
         }
-        return polygon.contains(circle.x, circle.y);
+        return polygon.contains(center);
     }
 }

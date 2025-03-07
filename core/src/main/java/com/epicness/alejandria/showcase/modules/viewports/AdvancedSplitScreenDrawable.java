@@ -29,15 +29,15 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.grid.DefaultCellGrid;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class AdvancedSplitScreenDrawable implements ModuleDrawable {
 
     private DefaultCellGrid grid;
-    private Circle player1, player2;
-    private Sprited mask, divider;
+    private CirclePlus player1, player2;
+    private SpritePlus mask, divider;
     private OrthographicCamera camera1, camera2, staticCamera;
     private boolean playersClose, camerasClose;
 
@@ -75,16 +75,16 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     private void initPlayers() {
-        player1 = new Circle(PLAYER_RADIUS);
-        player1.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
+        player1 = new CirclePlus(PLAYER_RADIUS);
+        player1.setPosition(GRID_SIZE * 0.5f - PLAYER_RADIUS, GRID_SIZE * 0.5f - PLAYER_RADIUS);
         player1.setColor(GRASS);
-        player2 = new Circle(PLAYER_RADIUS);
-        player2.setPosition(GRID_SIZE / 2f - PLAYER_RADIUS, GRID_SIZE / 2f - PLAYER_RADIUS);
+        player2 = new CirclePlus(PLAYER_RADIUS);
+        player2.setPosition(GRID_SIZE * 0.5f - PLAYER_RADIUS, GRID_SIZE * 0.5f - PLAYER_RADIUS);
         player2.setColor(LIGHT_GRASS);
     }
 
     private void initMask(Sprite maskSprite) {
-        mask = new Sprited(maskSprite);
+        mask = new SpritePlus(maskSprite);
         mask.setOrigin(VIEWPORT_WIDTH, VIEWPORT_HEIGHT * 2f);
         mask.setSize(VIEWPORT_WIDTH * 2f, VIEWPORT_HEIGHT * 2f);
         mask.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
@@ -93,7 +93,7 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     private void initDivider(Sprite dividerSprite) {
-        divider = new Sprited(dividerSprite);
+        divider = new SpritePlus(dividerSprite);
         divider.setSize(VIEWPORT_WIDTH * 2f, DIVIDER_THICKNESS);
         divider.setOriginCenter();
         divider.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
@@ -176,22 +176,22 @@ public class AdvancedSplitScreenDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Circle getPlayer1() {
+    public CirclePlus getPlayer1() {
         return player1;
     }
 
-    public Circle getPlayer2() {
+    public CirclePlus getPlayer2() {
         return player2;
     }
 
-    public Sprited getMask() {
+    public SpritePlus getMask() {
         return mask;
     }
 
-    public Sprited getDivider() {
+    public SpritePlus getDivider() {
         return divider;
     }
 

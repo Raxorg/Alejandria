@@ -13,17 +13,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class VignetteShaderDrawable implements ModuleDrawable {
 
-    private final Sprited square1, square2, square3, square4;
+    private final SpritePlus square1, square2, square3, square4;
 
     public VignetteShaderDrawable(Sprite squareSprite) {
-        square1 = new Sprited(squareSprite);
-        square2 = new Sprited(squareSprite);
-        square3 = new Sprited(squareSprite);
-        square4 = new Sprited(squareSprite);
+        square1 = new SpritePlus(squareSprite);
+        square2 = new SpritePlus(squareSprite);
+        square3 = new SpritePlus(squareSprite);
+        square4 = new SpritePlus(squareSprite);
 
         square1.setSize(VIGNETTE_SQUARE_SIZE);
         square1.setColor(ORANGE);
@@ -52,6 +52,6 @@ public class VignetteShaderDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 }

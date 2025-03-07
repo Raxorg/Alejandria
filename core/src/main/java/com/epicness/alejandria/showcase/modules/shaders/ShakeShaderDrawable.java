@@ -9,14 +9,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class ShakeShaderDrawable implements ModuleDrawable {
 
-    private final Sprited weirdShape;
+    private final SpritePlus weirdShape;
 
     public ShakeShaderDrawable(Sprite weirdShapeSprite) {
-        weirdShape = new Sprited(weirdShapeSprite);
+        weirdShape = new SpritePlus(weirdShapeSprite);
         weirdShape.setOriginCenter();
         weirdShape.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         weirdShape.setColor(Color.RED);
@@ -30,6 +30,6 @@ public class ShakeShaderDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 }

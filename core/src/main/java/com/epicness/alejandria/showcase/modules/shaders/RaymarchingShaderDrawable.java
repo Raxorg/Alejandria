@@ -12,12 +12,12 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class RaymarchingShaderDrawable implements ModuleDrawable {
 
     private final ShaderProgram shader;
-    private final Sprited canvas;
+    private final SpritePlus canvas;
 
     public RaymarchingShaderDrawable(Sprite pixel, ShaderProgram raymarchingShader) {
         shader = raymarchingShader;
@@ -29,7 +29,7 @@ public class RaymarchingShaderDrawable implements ModuleDrawable {
             Gdx.app.error("SHADER LOG:", shader.getLog());
         }
 
-        canvas = new Sprited(pixel);
+        canvas = new SpritePlus(pixel);
         canvas.setSize(VIEWPORT_WIDTH, SHOWCASE_SIZE);
         canvas.setOriginCenter();
         canvas.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
@@ -45,7 +45,7 @@ public class RaymarchingShaderDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public ShaderProgram getShader() {

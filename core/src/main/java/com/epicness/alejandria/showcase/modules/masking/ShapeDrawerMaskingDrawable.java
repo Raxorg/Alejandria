@@ -11,12 +11,12 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.masking.SDTriangle;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
 
     private final SDTriangle triangle1, triangle2, triangle3, triangle4;
-    private final Circle mask;
+    private final CirclePlus mask;
 
     public ShapeDrawerMaskingDrawable() {
         float size = 200f;
@@ -47,7 +47,7 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
             VIEWPORT_HALF_WIDTH - size, VIEWPORT_HALF_HEIGHT + size);
         triangle4.setColor(Color.YELLOW);
 
-        mask = new Circle(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT - size, size);
+        mask = new CirclePlus(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT - size, size);
     }
 
     @Override
@@ -92,11 +92,11 @@ public class ShapeDrawerMaskingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        mask.draw(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        mask.drawDebug(shapeDrawer);
     }
 
-    public Circle getMask() {
+    public CirclePlus getMask() {
         return mask;
     }
 }

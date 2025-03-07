@@ -1,5 +1,9 @@
 package com.epicness.fundamentals.logic.behaviors;
 
+import static com.badlogic.gdx.graphics.Color.BLACK;
+import static com.badlogic.gdx.graphics.Color.CLEAR;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.logic.CompletionListener;
 import com.epicness.fundamentals.stuff.SharedStuff;
@@ -18,7 +22,7 @@ public class Fader {
         enabled = true;
     }
 
-    public void update(float delta) {
+    private void update(float delta) {
         if (!enabled) {
             return;
         }
@@ -26,11 +30,11 @@ public class Fader {
         float progress = 0f;
         if (fadingIn) {
             progress = Math.min(time / fadeTime, 1f);
-            color = Color.CLEAR.cpy().lerp(Color.BLACK, progress);
+            color = CLEAR.cpy().lerp(BLACK, progress);
             stuff.getFader().setColor(color);
         } else if (fadingOut) {
             progress = Math.min(time / fadeTime, 1f);
-            color = Color.BLACK.cpy().lerp(Color.CLEAR, progress);
+            color = BLACK.cpy().lerp(CLEAR, progress);
             stuff.getFader().setColor(color);
         }
         if (completionListener != null && !completionHandled && progress == 1f) {
@@ -40,6 +44,10 @@ public class Fader {
             completionListener.onComplete();
         }
         time += delta;
+    }
+
+    public void update() {
+        update(Gdx.graphics.getDeltaTime());
     }
 
     public void fadeIn() {

@@ -8,13 +8,13 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.fundamentals.stuff.grid.Cell;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 
 public class SoundPitch extends Module<SoundPitchDrawable> {
 
     private Cell[][] cells;
     private Cell[] currentCells;
-    private Circle[] circles;
+    private CirclePlus[] circles;
     private Sound sound;
 
     public SoundPitch() {
@@ -34,7 +34,7 @@ public class SoundPitch extends Module<SoundPitchDrawable> {
     @Override
     public void update(float delta) {
         float translation = 750f * delta;
-        Circle circle;
+        CirclePlus circle;
         for (int i = 0; i < circles.length; i++) {
             circle = circles[i];
             circle.translateX(translation);

@@ -1,7 +1,7 @@
 package com.epicness.alejandria.showcase.modules.cursor;
 
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.utils.AngleUtils;
 
 public class PointAtCursor extends Module<PointAtCursorDrawable> {
@@ -18,7 +18,7 @@ public class PointAtCursor extends Module<PointAtCursorDrawable> {
     @Override
     public void mouseMoved(float cursorX, float cursorY) {
         // Triangle 1
-        Sprited triangle = drawable.getTriangle1();
+        SpritePlus triangle = drawable.getTriangle1();
         float triangleX = triangle.getOriginBasedX();
         float triangleY = triangle.getOriginBasedY();
         float rotation = AngleUtils.degreesBetweenPoints(cursorX, cursorY, triangleX, triangleY);

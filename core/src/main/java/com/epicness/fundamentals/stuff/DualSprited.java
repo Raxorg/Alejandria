@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.renderer.ShapeRendererPlus;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
@@ -34,9 +34,9 @@ public class DualSprited implements Buttonable, Transformable {
         drawForeground(spriteBatch);
     }
 
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(background.getBoundingRectangle());
-        shapeRenderer.rect(foreground.getBoundingRectangle());
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(background.getBoundingRectangle());
+        shapeDrawer.rectangle(foreground.getBoundingRectangle());
     }
 
     @Override
@@ -155,11 +155,11 @@ public class DualSprited implements Buttonable, Transformable {
     }
 
     public float getForegroundCenterX() {
-        return foreground.getX() + foreground.getWidth() / 2f;
+        return foreground.getX() + foreground.getWidth() * 0.5f;
     }
 
     public float getForegroundCenterY() {
-        return foreground.getY() + foreground.getHeight() / 2f;
+        return foreground.getY() + foreground.getHeight() * 0.5f;
     }
 
     public Vector2 getForegroundCenter() {
@@ -269,11 +269,11 @@ public class DualSprited implements Buttonable, Transformable {
     }
 
     public float getBackgroundCenterX() {
-        return background.getX() + background.getWidth() / 2f;
+        return background.getX() + background.getWidth() * 0.5f;
     }
 
     public float getBackgroundCenterY() {
-        return background.getY() + background.getHeight() / 2f;
+        return background.getY() + background.getHeight() * 0.5f;
     }
 
     public Vector2 getBackgroundCenter() {

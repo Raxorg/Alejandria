@@ -12,7 +12,7 @@ import static com.epicness.fundamentals.constants.ColorConstants.BLACK_75;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.epicness.fundamentals.logic.LogicHandler;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.SpritedText;
 import com.epicness.fundamentals.utils.OSUtils;
 
@@ -26,7 +26,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     private boolean showingInformation;
     public static boolean debug;
     // Stuff
-    private Sprited previous, gitHub, info, next;
+    private SpritePlus previous, gitHub, info, next;
 
     @Override
     public void init() {
@@ -72,7 +72,7 @@ public class ShowcaseHandler extends ShowcaseLogicHandler {
     }
 
     @Override
-    public void touchUp(float x, float y) {
+    public void touchUp(float x, float y, int button) {
         int currentIndex = modules.indexOf(currentModule);
         if (previous.contains(x, y))
             changeModule(currentIndex == 0 ? modules.size() - 1 : currentIndex - 1);

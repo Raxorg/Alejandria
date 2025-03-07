@@ -75,7 +75,7 @@ public class SharedInput implements InputProcessor {
         // Dynamic camera
         unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
-            inputHandlers.get(i).touchDownDynamic(unprojected.x, unprojected.y);
+            inputHandlers.get(i).touchDownDynamic(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
 
@@ -109,13 +109,13 @@ public class SharedInput implements InputProcessor {
         // Static camera
         unproject(staticCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
-            inputHandlers.get(i).touchUp(unprojected.x, unprojected.y);
+            inputHandlers.get(i).touchUp(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
         // Dynamic camera
         unproject(dynamicCamera, screenX, screenY);
         for (int i = 0; i < inputHandlers.size(); i++) {
-            inputHandlers.get(i).touchUpDynamic(unprojected.x, unprojected.y);
+            inputHandlers.get(i).touchUpDynamic(unprojected.x, unprojected.y, button);
             if (inputConsumed) return true;
         }
 

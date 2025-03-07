@@ -3,22 +3,24 @@ package com.epicness.fundamentals.stuff;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
 import com.epicness.fundamentals.utils.TextUtils;
 
+import space.earlygrey.shapedrawer.ShapeDrawer;
+
 public class Text implements Buttonable, Movable {
 
     private final BitmapFont font;
     private String text;
-    private boolean verticallyCentered;
+    private boolean verticallyCentered, wrap;
     private float yOffset;
     private int hAlign;
     private String truncate;
     private final Rectangle bounds;
+    private final Color color;
 
     public Text(BitmapFont font, String text) {
         this.font = font;
@@ -26,6 +28,8 @@ public class Text implements Buttonable, Movable {
         hAlign = Align.left;
         bounds = new Rectangle();
         bounds.width = 500f;
+        color = new Color(1f, 1f, 1f, 1f);
+        updateBounds();
     }
 
     public Text(BitmapFont font) {
@@ -33,6 +37,7 @@ public class Text implements Buttonable, Movable {
     }
 
     public void draw(SpriteBatch spriteBatch) {
+        font.setColor(color);
         font.draw(
             spriteBatch,
             text,
@@ -42,13 +47,13 @@ public class Text implements Buttonable, Movable {
             text.length(),
             bounds.width,
             hAlign,
-            true,
+            wrap,
             truncate
         );
     }
 
-    public void drawDebug(ShapeRenderer shapeRenderer) {
-        shapeRenderer.rect(
+    public void drawDebug(ShapeDrawer shapeDrawer) {
+        shapeDrawer.rectangle(
             bounds.x,
             bounds.y + yOffset,
             bounds.width,
@@ -112,7 +117,11 @@ public class Text implements Buttonable, Movable {
 
     public void setVerticallyCentered(boolean centered) {
         verticallyCentered = centered;
-        yOffset = centered ? bounds.height / 2f : 0f;
+        yOffset = centered ? bounds.height * 0.5f : 0f;
+    }
+
+    public void setWrap(boolean wrap) {
+        this.wrap = wrap;
     }
 
     public String getTruncate() {
@@ -134,11 +143,11 @@ public class Text implements Buttonable, Movable {
     }
 
     public Color getColor() {
-        return font.getColor();
+        return color;
     }
 
     public void setColor(Color color) {
-        font.setColor(color);
+        this.color.set(color);
     }
 
     public float getWidth() {
@@ -149,16 +158,16 @@ public class Text implements Buttonable, Movable {
         bounds.width = width;
     }
 
-    public float getHeight() {
-        return TextUtils.getTextHeight(this);
-    }
-
     public float getPlainWidth() {
         return TextUtils.getTextWidth(this);
     }
 
+    public float getHeight() {
+        return TextUtils.getTextHeight(this);
+    }
+
     private void updateBounds() {
         bounds.height = TextUtils.getTextHeight(this);
-        yOffset = verticallyCentered ? bounds.height / 2f : 0f;
+        yOffset = verticallyCentered ? bounds.height * 0.5f : 0f;
     }
 }

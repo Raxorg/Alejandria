@@ -3,12 +3,12 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.ShapeDrawable;
 import com.epicness.fundamentals.utils.AngleUtils;
 
-import space.earlygrey.shapedrawer.ShapeDrawer;
-
-public class Line implements Movable {
+public class Line implements ShapeDrawable, Movable {
 
     private final Vector2 a, b;
     private float angleDeg;
@@ -84,7 +84,8 @@ public class Line implements Movable {
         b.set(a.x + deltaX, a.y + deltaY);
     }
 
-    public void draw(ShapeDrawer shapeDrawer) {
+    @Override
+    public void draw(ShapeDrawerPlus shapeDrawer) {
         shapeDrawer.line(a.x, a.y, b.x, b.y, thickness, colorA, colorB);
     }
 

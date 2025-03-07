@@ -1,6 +1,6 @@
 package com.epicness.fundamentals.logic.behaviors;
 
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.TiledSpriteGrid;
 
 public class TiledGridPanner {
@@ -22,7 +22,7 @@ public class TiledGridPanner {
         if (!enabled) {
             return;
         }
-        Sprited[][] sprites = tiledSpriteGrid.getSprites();
+        SpritePlus[][] sprites = tiledSpriteGrid.getSprites();
         for (int column = 0; column < sprites.length; column++) {
             for (int row = 0; row < sprites[column].length; row++) {
                 moveSprite(sprites[column][row], delta);
@@ -30,20 +30,20 @@ public class TiledGridPanner {
         }
     }
 
-    private void moveSprite(Sprited sprited, float delta) {
-        sprited.translateX(xSpeed * delta);
-        sprited.translateY(ySpeed * delta);
+    private void moveSprite(SpritePlus sprite, float delta) {
+        sprite.translateX(xSpeed * delta);
+        sprite.translateY(ySpeed * delta);
 
-        float differenceX = sprited.getBoundingRectangle().x - maxX;
+        float differenceX = sprite.getBoundingRectangle().x - maxX;
         if (differenceX > 0f) {
-            sprited.setX(tiledSpriteGrid.getBounds().x - sprited.getBoundingRectangle().width + differenceX);
-            sprited.translateX((sprited.getBoundingRectangle().width - sprited.getWidth()) / 2f);
+            sprite.setX(tiledSpriteGrid.getBounds().x - sprite.getBoundingRectangle().width + differenceX);
+            sprite.translateX((sprite.getBoundingRectangle().width - sprite.getWidth()) * 0.5f);
         }
 
-        float differenceY = sprited.getBoundingRectangle().y - maxY;
+        float differenceY = sprite.getBoundingRectangle().y - maxY;
         if (differenceY > 0f) {
-            sprited.setY(tiledSpriteGrid.getBounds().y - sprited.getBoundingRectangle().height + differenceY);
-            sprited.translateY((sprited.getBoundingRectangle().height - sprited.getHeight()) / 2f);
+            sprite.setY(tiledSpriteGrid.getBounds().y - sprite.getBoundingRectangle().height + differenceY);
+            sprite.translateY((sprite.getBoundingRectangle().height - sprite.getHeight()) * 0.5f);
         }
     }
 }

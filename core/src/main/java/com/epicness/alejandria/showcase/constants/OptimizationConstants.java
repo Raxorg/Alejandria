@@ -26,7 +26,7 @@ public class OptimizationConstants {
     static {
         COLOR_MAP = new HashMap<>();
         COLOR_MAP.put(INITIAL_SIZE, PASTEL_PURPLE);
-        COLOR_MAP.put(INITIAL_SIZE / 2f, PASTEL_RED);
+        COLOR_MAP.put(INITIAL_SIZE * 0.5f, PASTEL_RED);
         COLOR_MAP.put(INITIAL_SIZE / 4f, PASTEL_BLUE);
         COLOR_MAP.put(INITIAL_SIZE / 8f, PASTEL_ORANGE);
         COLOR_MAP.put(INITIAL_SIZE / 16f, PASTEL_GREEN);

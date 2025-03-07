@@ -11,7 +11,7 @@ import static com.epicness.fundamentals.constants.SharedConstants.VIEWPORT_HALF_
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.utils.AngleUtils;
 
 public class BeamAiming extends Module<BeamAimingDrawable> {
@@ -37,8 +37,8 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
 
     @Override
     public void update(float delta) {
-        Sprited triangle = drawable.getTriangle();
-        Sprited beam = drawable.getBeam();
+        SpritePlus triangle = drawable.getTriangle();
+        SpritePlus beam = drawable.getBeam();
         float translation = TRIANGLE_SPEED * delta;
         if (Gdx.input.isKeyPressed(W)) {
             triangle.translateY(translation);
@@ -61,19 +61,19 @@ public class BeamAiming extends Module<BeamAimingDrawable> {
 
     private void updateBeam() {
         // Triangle
-        Sprited triangle = drawable.getTriangle();
+        SpritePlus triangle = drawable.getTriangle();
         float triangleX = triangle.getOriginBasedX();
         float triangleY = triangle.getOriginBasedY();
         float rotation = AngleUtils.degreesBetweenPoints(lastCursorX, lastCursorY, triangleX, triangleY);
         triangle.setRotation(rotation - 90f);
         // Beam
-        Sprited beam = drawable.getBeam();
+        SpritePlus beam = drawable.getBeam();
         float beamX = beam.getOriginBasedX();
         float beamY = beam.getOriginBasedY();
         rotation = AngleUtils.degreesBetweenPoints(lastCursorX, lastCursorY, beamX, beamY);
         beam.setRotation(rotation);
         float distance = beam.getOriginBasedCenter(beamCenter).dst(lastCursorX, lastCursorY);
-        beam.setWidth(distance + beam.getHeight() / 2f);
+        beam.setWidth(distance + beam.getHeight() * 0.5f);
     }
 
     @Override

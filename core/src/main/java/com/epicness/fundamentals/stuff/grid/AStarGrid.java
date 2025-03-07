@@ -1,14 +1,25 @@
 package com.epicness.fundamentals.stuff.grid;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class AStarGrid<T> extends GenericGrid<AStarCostCell<T>> {
 
     public AStarGrid(int cols, int rows) {
         super(cols, rows, AStarCostCell::new);
-        for (int c = 0; c < cols; c++) {
-            for (int r = 0; r < rows; r++) {
-                findNeighbors(c, r);
+        findNeighbors();
+    }
+
+    @Override
+    public void setDimensions(int cols, int rows) {
+        super.setDimensions(cols, rows);
+        findNeighbors();
+    }
+
+    private void findNeighbors() {
+        for (int col = 0; col < cols; col++) {
+            for (int row = 0; row < rows; row++) {
+                findNeighbors(col, row);
             }
         }
     }
@@ -41,6 +52,10 @@ public class AStarGrid<T> extends GenericGrid<AStarCostCell<T>> {
     }
 
     public T getObject(int col, int row) {
-        return cells.get(col).get(row).getObject();
+        return getCell(col, row).getObject();
+    }
+
+    public final void traverseObjects(Consumer<T> consumer) {
+        traverseCells(cell -> consumer.accept(cell.getObject()));
     }
 }

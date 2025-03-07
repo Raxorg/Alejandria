@@ -138,7 +138,7 @@ public class ShaderPixmapMaskingStandalone extends Game {
     private void drawContours() {
         /* Draw the contour of the masks. */
         shapeRenderer.setColor(Color.CYAN);
-        shapeRenderer.rect(size / 4f, 0f, size / 2f, size / 2f);
-        shapeRenderer.circle(size / 2f, size * 0.75f, size / 4f);
+        shapeRenderer.rect(size / 4f, 0f, size * 0.5f, size * 0.5f);
+        shapeRenderer.circle(size * 0.5f, size * 0.75f, size / 4f);
     }
 }

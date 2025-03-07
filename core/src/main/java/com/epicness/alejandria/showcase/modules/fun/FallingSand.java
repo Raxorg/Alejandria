@@ -146,7 +146,7 @@ public class FallingSand extends Module<FallingSandDrawable> {
     }
 
     @Override
-    public void touchUp(float x, float y) {
+    public void touchUp(float x, float y, int button) {
         spawningSand = false;
     }
 }

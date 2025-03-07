@@ -31,8 +31,8 @@ public class ProceduralSquareDrawable implements ModuleDrawable {
         float gridSize = pixelSize * gridDimension + gridDimension * spacingFactor;
         for (int column = 0; column < gridDimension; column++) {
             for (int row = 0; row < gridDimension; row++) {
-                float x = column * pixelSize + VIEWPORT_HALF_WIDTH - gridSize / 2f + column * spacingFactor;
-                float y = row * pixelSize + VIEWPORT_HALF_HEIGHT - gridSize / 2f + row * spacingFactor;
+                float x = column * pixelSize + VIEWPORT_HALF_WIDTH - gridSize * 0.5f + column * spacingFactor;
+                float y = row * pixelSize + VIEWPORT_HALF_HEIGHT - gridSize * 0.5f + row * spacingFactor;
                 shapeDrawer.filledRectangle(x, y, pixelSize, pixelSize, pixels[column][row]);
             }
         }
@@ -40,7 +40,7 @@ public class ProceduralSquareDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public Color[][] getPixels() {

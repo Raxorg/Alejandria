@@ -39,12 +39,12 @@ public class NinePatchedText implements Buttonable {
 
     public void setY(float y) {
         boundingBox.y = y;
-        label.setY(y + boundingBox.height / 2f);
+        label.setY(y + boundingBox.height * 0.5f);
     }
 
     public void setSize(float width, float height) {
         boundingBox.setSize(width, height);
         label.setWidth(width);
-        label.setY(boundingBox.y + boundingBox.height / 2f);
+        label.setY(boundingBox.y + boundingBox.height * 0.5f);
     }
 }

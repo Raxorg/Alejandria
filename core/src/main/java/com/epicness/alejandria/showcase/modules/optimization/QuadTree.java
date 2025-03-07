@@ -17,17 +17,17 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 import java.util.ArrayList;
 
 public class QuadTree extends Module<QuadTreeDrawable> {
 
-    private ArrayList<Sprited> dots;
+    private ArrayList<SpritePlus> dots;
     private DelayedRemovalArray<Rectangle> quads;
     private SnapshotArray<Rectangle> quadsToCheck;
-    private DelayedRemovalArray<Sprited> dotsToCheck;
+    private DelayedRemovalArray<SpritePlus> dotsToCheck;
     // Memory optimization
     private Vector2 dotCenter;
     private Color color;
@@ -64,15 +64,15 @@ public class QuadTree extends Module<QuadTreeDrawable> {
     }
 
     private void randomizeDots() {
-        Sprited dot;
+        SpritePlus dot;
         for (int i = 0; i < dots.size(); i++) {
             dot = dots.get(i);
             dot.setX(MathUtils.random(
-                SHOWCASE_X + QUAD_THICKNESS / 2f + MARGIN,
-                SHOWCASE_X + SHOWCASE_SIZE - DOT_SIZE - QUAD_THICKNESS / 2f - MARGIN));
+                SHOWCASE_X + QUAD_THICKNESS * 0.5f + MARGIN,
+                SHOWCASE_X + SHOWCASE_SIZE - DOT_SIZE - QUAD_THICKNESS * 0.5f - MARGIN));
             dot.setY(MathUtils.random(
-                SHOWCASE_Y + QUAD_THICKNESS / 2f + MARGIN,
-                SHOWCASE_Y + SHOWCASE_SIZE - DOT_SIZE - QUAD_THICKNESS / 2f - MARGIN));
+                SHOWCASE_Y + QUAD_THICKNESS * 0.5f + MARGIN,
+                SHOWCASE_Y + SHOWCASE_SIZE - DOT_SIZE - QUAD_THICKNESS * 0.5f - MARGIN));
             dotsToCheck.add(dot);
         }
     }
@@ -89,15 +89,15 @@ public class QuadTree extends Module<QuadTreeDrawable> {
         quads.add(quad);
         quadsToCheck.add(quad);
         checkQuads();
-        quad.set(SHOWCASE_X + QUAD_THICKNESS / 2f,
-            SHOWCASE_Y + QUAD_THICKNESS / 2f,
+        quad.set(SHOWCASE_X + QUAD_THICKNESS * 0.5f,
+            SHOWCASE_Y + QUAD_THICKNESS * 0.5f,
             SHOWCASE_SIZE - QUAD_THICKNESS,
             SHOWCASE_SIZE - QUAD_THICKNESS);
     }
 
     private void checkQuads() {
         Rectangle quad;
-        Sprited dot;
+        SpritePlus dot;
         int count;
         quadsToCheck.begin();
         for (int i = 0; i < quadsToCheck.size; i++) {
@@ -122,7 +122,7 @@ public class QuadTree extends Module<QuadTreeDrawable> {
     }
 
     private void divideQuad(Rectangle quad) {
-        color.set(COLOR_MAP.get(quad.width / 2f));
+        color.set(COLOR_MAP.get(quad.width * 0.5f));
         hsv = color.toHsv(hsv);
         hsv[1] = Math.min(1f, hsv[1] + 0.5f);
         hsv[2] = Math.min(0.75f, hsv[2] - 0.25f);
@@ -130,10 +130,10 @@ public class QuadTree extends Module<QuadTreeDrawable> {
         Rectangle[] newQuads = new Rectangle[4];
         for (int i = 0; i < 4; i++) {
             newQuads[i] = new Rectangle(borderColor, color.cpy());
-            newQuads[i].setSize(quad.width / 2f);
+            newQuads[i].setSize(quad.width * 0.5f);
             newQuads[i].setPosition(quad.x, quad.y);
-            newQuads[i].x += (i % 2) * quad.width / 2f;
-            newQuads[i].y += i >= 2 ? quad.height / 2f : 0;
+            newQuads[i].x += (i % 2) * quad.width * 0.5f;
+            newQuads[i].y += i >= 2 ? quad.height * 0.5f : 0;
         }
         quads.addAll(newQuads);
         quadsToCheck.addAll(newQuads);

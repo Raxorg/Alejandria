@@ -40,7 +40,7 @@ public class RaymarchingShader extends Module<RaymarchingShaderDrawable> {
 
     private void updateShaderValues(int width, int height) {
         shaderResolution = Math.min(width, height);
-        shaderX = width / 2f - shaderResolution / 2f;
-        shaderY = height / 2f - shaderResolution / 2f;
+        shaderX = width * 0.5f - shaderResolution * 0.5f;
+        shaderY = height * 0.5f - shaderResolution * 0.5f;
     }
 }

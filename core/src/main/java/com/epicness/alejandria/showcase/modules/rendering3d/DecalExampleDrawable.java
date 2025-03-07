@@ -36,7 +36,7 @@ public class DecalExampleDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
     public PerspectiveCamera getCamera() {

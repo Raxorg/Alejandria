@@ -3,23 +3,23 @@ package com.epicness.alejandria.showcase.stuff.modules.fun;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
+import com.epicness.fundamentals.stuff.SpritePlus;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 public class Laser implements Transformable {
 
-    private final Sprited start, mid, end, startGlow, midGlow, endGlow;
+    private final SpritePlus start, mid, end, startGlow, midGlow, endGlow;
     private final Color auxColor;
 
     public Laser(Sprite beamStart, Sprite beamMid, Sprite beamEnd, Sprite beamStartGlow, Sprite beamMidGlow, Sprite beamEndGlow,
                  float width, float length, Color color) {
-        start = new Sprited(beamStart);
-        mid = new Sprited(beamMid);
-        end = new Sprited(beamEnd);
-        startGlow = new Sprited(beamStartGlow);
-        midGlow = new Sprited(beamMidGlow);
-        endGlow = new Sprited(beamEndGlow);
+        start = new SpritePlus(beamStart);
+        mid = new SpritePlus(beamMid);
+        end = new SpritePlus(beamEnd);
+        startGlow = new SpritePlus(beamStartGlow);
+        midGlow = new SpritePlus(beamMidGlow);
+        endGlow = new SpritePlus(beamEndGlow);
         auxColor = new Color(1f, 1f, 1f, 1f);
         setup(width, length);
         setColor(color);
@@ -62,10 +62,10 @@ public class Laser implements Transformable {
         endGlow.draw(spriteBatch);
     }
 
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        start.drawDebug(shapeRenderer);
-        mid.drawDebug(shapeRenderer);
-        end.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        start.drawDebug(shapeDrawer);
+        mid.drawDebug(shapeDrawer);
+        end.drawDebug(shapeDrawer);
     }
 
     @Override

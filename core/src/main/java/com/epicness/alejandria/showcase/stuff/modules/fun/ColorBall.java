@@ -2,9 +2,9 @@ package com.epicness.alejandria.showcase.stuff.modules.fun;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
-public class ColorBall extends Sprited {
+public class ColorBall extends SpritePlus {
 
     public final Vector2 speed;
 

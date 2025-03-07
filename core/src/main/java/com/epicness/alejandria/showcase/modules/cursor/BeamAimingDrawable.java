@@ -10,19 +10,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.Sprited;
+import com.epicness.fundamentals.stuff.SpritePlus;
 
 public class BeamAimingDrawable implements ModuleDrawable {
 
-    private final Sprited triangle, beam;
+    private final SpritePlus triangle, beam;
 
     public BeamAimingDrawable(Sprite triangleSprite, Sprite beamSprite) {
-        triangle = new Sprited(triangleSprite);
+        triangle = new SpritePlus(triangleSprite);
         triangle.setOriginCenter();
         triangle.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
         triangle.useBilinearFilter();
 
-        beam = new Sprited(beamSprite);
+        beam = new SpritePlus(beamSprite);
         beam.setSize(BEAM_THICKNESS);
         beam.setOriginCenter();
         beam.setOriginBasedPosition(VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_HEIGHT);
@@ -38,16 +38,16 @@ public class BeamAimingDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        shapeRenderer.rect(triangle.getBoundingRectangle());
-        shapeRenderer.rect(beam.getBoundingRectangle());
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        shapeDrawer.rectangle(triangle.getBoundingRectangle());
+        shapeDrawer.rectangle(beam.getBoundingRectangle());
     }
 
-    public Sprited getTriangle() {
+    public SpritePlus getTriangle() {
         return triangle;
     }
 
-    public Sprited getBeam() {
+    public SpritePlus getBeam() {
         return beam;
     }
 }

@@ -9,7 +9,7 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 public class Alert extends Module<AlertDrawable> {
 
-    private NinePatch button;
+    private NinePatch alertButton;
     private Rectangle bounds;
 
     public Alert() {
@@ -19,32 +19,32 @@ public class Alert extends Module<AlertDrawable> {
     @Override
     protected AlertDrawable setup() {
         drawable = new AlertDrawable(sharedAssets.getSquare32());
-        button = drawable.getButton();
+        alertButton = drawable.getButton();
         bounds = drawable.getBounds();
         return drawable;
     }
 
     @Override
     public void mouseMoved(float x, float y) {
-        button.setColor(LIGHT_DIRT);
+        alertButton.setColor(LIGHT_DIRT);
         if (bounds.contains(x, y)) {
-            button.setColor(DIRT);
+            alertButton.setColor(DIRT);
         }
     }
 
     @Override
     public void touchDown(float x, float y, int button) {
-        this.button.setColor(LIGHT_DIRT);
+        this.alertButton.setColor(LIGHT_DIRT);
         if (bounds.contains(x, y)) {
             game.getAlertSystem().alert("You invoked an HTML native alert! :D");
         }
     }
 
     @Override
-    public void touchUp(float x, float y) {
-        button.setColor(LIGHT_DIRT);
+    public void touchUp(float x, float y, int button) {
+        alertButton.setColor(LIGHT_DIRT);
         if (bounds.contains(x, y)) {
-            button.setColor(DIRT);
+            alertButton.setColor(DIRT);
         }
     }
 }

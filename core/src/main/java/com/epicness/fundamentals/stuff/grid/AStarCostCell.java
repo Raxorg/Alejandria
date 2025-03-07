@@ -29,4 +29,13 @@ public class AStarCostCell<T> {
     public boolean isEmpty() {
         return object == null;
     }
+
+    @Override
+    public String toString() {
+        return "AStarCostCell{" +
+            "object=" + object +
+            ", col=" + col +
+            ", row=" + row +
+            '}';
+    }
 }

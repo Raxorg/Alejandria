@@ -18,7 +18,7 @@ public class HexagonSelectionDrawable implements ModuleDrawable {
         float size = 96f;
         float[] vertices = new float[12];
         vertices[0] = 0f;
-        vertices[1] = size / 2f;
+        vertices[1] = size * 0.5f;
 
         vertices[2] = size / 4f;
         vertices[3] = size;
@@ -27,7 +27,7 @@ public class HexagonSelectionDrawable implements ModuleDrawable {
         vertices[5] = size;
 
         vertices[6] = size;
-        vertices[7] = size / 2f;
+        vertices[7] = size * 0.5f;
 
         vertices[8] = size * 0.75f;
         vertices[9] = 0f;
@@ -80,10 +80,10 @@ public class HexagonSelectionDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
         for (int column = 0; column < COLUMNS; column++) {
             for (int row = 0; row < ROWS; row++) {
-                hexagons[column][row].draw(shapeRenderer);
+                hexagons[column][row].draw(shapeDrawer);
             }
         }
     }

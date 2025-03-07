@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Line;
 import com.epicness.fundamentals.utils.Box2DFactory;
 
@@ -31,7 +31,7 @@ public class BallPhysicsDrawable implements ModuleDrawable {
     private final Matrix4 physicsProjectionMatrix;
     private final World world;
     private final Array<Body> circleBodies;
-    private final Array<Circle> circles;
+    private final Array<CirclePlus> circles;
     private final Line floor;
 
     public BallPhysicsDrawable() {
@@ -62,8 +62,8 @@ public class BallPhysicsDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        physicsProjectionMatrix.set(shapeRenderer.getProjectionMatrix()).scl(PHYSICS_SCALE_FACTOR);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        physicsProjectionMatrix.set(shapeDrawer.getBatch().getProjectionMatrix()).scl(PHYSICS_SCALE_FACTOR);
         debugRenderer.render(world, physicsProjectionMatrix);
     }
 
@@ -75,7 +75,7 @@ public class BallPhysicsDrawable implements ModuleDrawable {
         return circleBodies;
     }
 
-    public Array<Circle> getCircles() {
+    public Array<CirclePlus> getCircles() {
         return circles;
     }
 }

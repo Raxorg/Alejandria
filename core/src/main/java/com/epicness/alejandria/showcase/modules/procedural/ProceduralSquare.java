@@ -33,7 +33,7 @@ public class ProceduralSquare extends Module<ProceduralSquareDrawable> {
     }
 
     private float tunnel(int column, int row, float size, float factor) {
-        float center = size / 2f;
+        float center = size * 0.5f;
 
         float leftXGradient = (center / factor - column) * (2f * factor);
         float rightXGradient = (center / factor - (size - column) + 1f) * (2f * factor);

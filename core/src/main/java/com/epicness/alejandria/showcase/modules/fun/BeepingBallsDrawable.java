@@ -62,9 +62,9 @@ public class BeepingBallsDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
         for (int i = 0; i < BALLS; i++) {
-            balls[i].drawDebug(shapeRenderer);
+            balls[i].drawDebug(shapeDrawer);
         }
     }
 

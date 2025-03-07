@@ -16,7 +16,7 @@ public class SharedStuff extends Stuff<SharedAssets> {
     private SharedScreen screen;
     // Stuff
     private AnimatedBackgroundDeluxe animatedBackground;
-    private Sprited fader;
+    private SpritePlus fader;
 
     @Override
     public void initializeStuff() {
@@ -34,7 +34,7 @@ public class SharedStuff extends Stuff<SharedAssets> {
         animatedBackground.setFollowBackgroundColor(false);
         animatedBackground.setSpriteColor(BLACK_50.cpy());
 
-        fader = new Sprited(assets.getPixel());
+        fader = new SpritePlus(assets.getPixel());
         fader.setSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         fader.setColor(BLACK.cpy());
     }
@@ -44,7 +44,7 @@ public class SharedStuff extends Stuff<SharedAssets> {
         return animatedBackground;
     }
 
-    public Sprited getFader() {
+    public SpritePlus getFader() {
         return fader;
     }
 

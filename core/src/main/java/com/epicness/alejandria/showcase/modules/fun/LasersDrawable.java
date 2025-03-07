@@ -26,7 +26,7 @@ public class LasersDrawable implements ModuleDrawable {
         laser1.setHeight(400f);
 
         laser2 = new Laser(beamStart, beamMid, beamEnd, beamStartGlow, beamMidGlow, beamEndGlow);
-        laser2.setPosition(VIEWPORT_HALF_WIDTH / 2f, VIEWPORT_HALF_HEIGHT);
+        laser2.setPosition(VIEWPORT_HALF_WIDTH * 0.5f, VIEWPORT_HALF_HEIGHT);
         laser2.rotate(45f);
         laser2.setColor(CYAN);
 
@@ -37,7 +37,7 @@ public class LasersDrawable implements ModuleDrawable {
         laser3.setColor(GRASS);
 
         laser4 = new Laser(beamStart, beamMid, beamEnd, beamStartGlow, beamMidGlow, beamEndGlow);
-        laser4.setPosition(VIEWPORT_HALF_WIDTH / 2f, VIEWPORT_HALF_HEIGHT / 2f);
+        laser4.setPosition(VIEWPORT_HALF_WIDTH * 0.5f, VIEWPORT_HALF_HEIGHT * 0.5f);
         laser4.setHeight(500f);
         laser4.rotate(270f);
         laser4.setColor(BLUE);
@@ -55,11 +55,11 @@ public class LasersDrawable implements ModuleDrawable {
     }
 
     @Override
-    public void drawDebug(ShapeRendererPlus shapeRenderer) {
-        laser1.drawDebug(shapeRenderer);
-        laser2.drawDebug(shapeRenderer);
-        laser3.drawDebug(shapeRenderer);
-        laser4.drawDebug(shapeRenderer);
+    public void drawDebug(ShapeDrawerPlus shapeDrawer) {
+        laser1.drawDebug(shapeDrawer);
+        laser2.drawDebug(shapeDrawer);
+        laser3.drawDebug(shapeDrawer);
+        laser4.drawDebug(shapeDrawer);
     }
 
     public Laser getLaser1() {

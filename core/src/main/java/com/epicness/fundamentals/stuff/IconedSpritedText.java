@@ -9,16 +9,16 @@ import com.epicness.fundamentals.stuff.interfaces.Movable;
 
 public class IconedSpritedText implements Buttonable, Movable {
 
-    private final Sprited background;
+    private final SpritePlus background;
     private final Text label;
-    private final Sprited icon;
+    private final SpritePlus icon;
 
     public IconedSpritedText(Sprite backgroundSprite, BitmapFont font, Sprite iconSprite) {
-        background = new Sprited(backgroundSprite);
+        background = new SpritePlus(backgroundSprite);
         label = new Text(font);
         label.hAlignCenter();
         label.setVerticallyCentered(true);
-        icon = new Sprited(iconSprite);
+        icon = new SpritePlus(iconSprite);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -48,7 +48,7 @@ public class IconedSpritedText implements Buttonable, Movable {
     public void setX(float x) {
         background.setX(x);
         label.setX(x);
-        icon.setX(x + background.getWidth() - background.getHeight() / 2f - icon.getWidth() / 2f);
+        icon.setX(x + background.getWidth() - background.getHeight() * 0.5f - icon.getWidth() * 0.5f);
     }
 
     @Override
@@ -66,8 +66,8 @@ public class IconedSpritedText implements Buttonable, Movable {
     @Override
     public void setY(float y) {
         background.setY(y);
-        label.setY(y + background.getHeight() / 2f);
-        icon.setY(y + background.getHeight() / 2f - icon.getHeight() / 2f);
+        label.setY(y + background.getHeight() * 0.5f);
+        icon.setY(y + background.getHeight() * 0.5f - icon.getHeight() * 0.5f);
     }
 
     public void setSize(float size) {
@@ -77,10 +77,10 @@ public class IconedSpritedText implements Buttonable, Movable {
     public void setSize(float width, float height) {
         background.setSize(width, height);
         label.setWidth(width - height);
-        label.setY(background.getY() + height / 2f);
+        label.setY(background.getY() + height * 0.5f);
         icon.setSize(height * 0.65f);
-        icon.setX(background.getX() + width - height / 2f - icon.getWidth() / 2f);
-        icon.setY(background.getY() + height / 2f - icon.getHeight() / 2f);
+        icon.setX(background.getX() + width - height * 0.5f - icon.getWidth() * 0.5f);
+        icon.setY(background.getY() + height * 0.5f - icon.getHeight() * 0.5f);
     }
 
     public void setBackgroundColor(Color color) {

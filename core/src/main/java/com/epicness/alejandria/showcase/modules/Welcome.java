@@ -50,7 +50,7 @@ public class Welcome extends Module<WelcomeDrawable> {
     private void updateShaderValues(int width, int height) {
         float resolution = Math.min(width, height);
         shaderResolution = resolution * 0.7f;
-        shaderX = width / 2f - shaderResolution / 2f;
-        shaderY = height / 2f - shaderResolution / 2f + resolution * 0.05f;
+        shaderX = width * 0.5f - shaderResolution * 0.5f;
+        shaderY = height * 0.5f - shaderResolution * 0.5f + resolution * 0.05f;
     }
 }
