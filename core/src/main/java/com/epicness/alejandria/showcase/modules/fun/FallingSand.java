@@ -8,12 +8,12 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 public class FallingSand extends Module<FallingSandDrawable> {
 
     private boolean[][] grid;
-    private Rectangle[][] sandMatrix;
+    private RectanglePlus[][] sandMatrix;
     private float sandTimer;
     private boolean spawningSand;
     private float mouseX, mouseY;

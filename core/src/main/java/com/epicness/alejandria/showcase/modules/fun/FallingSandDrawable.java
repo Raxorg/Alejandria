@@ -12,26 +12,26 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 public class FallingSandDrawable implements ModuleDrawable {
 
-    private final Rectangle[][] sandMatrix;
-    private final Rectangle frame;
+    private final RectanglePlus[][] sandMatrix;
+    private final RectanglePlus frame;
 
     public FallingSandDrawable() {
-        sandMatrix = new Rectangle[SAND_DIMENSION][];
+        sandMatrix = new RectanglePlus[SAND_DIMENSION][];
         float x, y;
         for (int column = 0; column < SAND_DIMENSION; column++) {
-            sandMatrix[column] = new Rectangle[SAND_DIMENSION];
+            sandMatrix[column] = new RectanglePlus[SAND_DIMENSION];
             for (int row = 0; row < SAND_DIMENSION; row++) {
                 x = SHOWCASE_X + column * SAND_SIZE;
                 y = SHOWCASE_Y + row * SAND_SIZE;
-                sandMatrix[column][row] = new Rectangle(x, y, SAND_SIZE, SAND_SIZE, CLEAR.cpy());
+                sandMatrix[column][row] = new RectanglePlus(x, y, SAND_SIZE, SAND_SIZE, CLEAR.cpy());
             }
         }
 
-        frame = new Rectangle(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE, BLACK, CLEAR);
+        frame = new RectanglePlus(SHOWCASE_X, SHOWCASE_Y, SHOWCASE_SIZE, SHOWCASE_SIZE, BLACK, CLEAR);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class FallingSandDrawable implements ModuleDrawable {
 
     }
 
-    public Rectangle[][] getSandMatrix() {
+    public RectanglePlus[][] getSandMatrix() {
         return sandMatrix;
     }
 }

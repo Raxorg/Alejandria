@@ -13,12 +13,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 public class AlertDrawable implements ModuleDrawable {
 
     private final NinePatch button;
-    private final Rectangle bounds;
+    private final RectanglePlus bounds;
 
     public AlertDrawable(Sprite buttonSprite) {
         button = new NinePatch(buttonSprite, 1, 1, 1, 1);
@@ -28,7 +28,7 @@ public class AlertDrawable implements ModuleDrawable {
         button.setLeftWidth(ALERT_BUTTON_THICKNESS);
         button.setColor(LIGHT_DIRT);
 
-        bounds = new Rectangle(ALERT_BUTTON_X, ALERT_BUTTON_Y, ALERT_BUTTON_WIDTH, ALERT_BUTTON_HEIGHT);
+        bounds = new RectanglePlus(ALERT_BUTTON_X, ALERT_BUTTON_Y, ALERT_BUTTON_WIDTH, ALERT_BUTTON_HEIGHT);
     }
 
     @Override
@@ -40,14 +40,14 @@ public class AlertDrawable implements ModuleDrawable {
 
     @Override
     public void drawDebug(ShapeDrawerPlus shapeDrawer) {
-        shapeDrawer.rectangle(bounds);
+        bounds.drawDebug(shapeDrawer);
     }
 
     public NinePatch getButton() {
         return button;
     }
 
-    public Rectangle getBounds() {
+    public RectanglePlus getBounds() {
         return bounds;
     }
 }

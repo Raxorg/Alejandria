@@ -7,14 +7,14 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.SpritePlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 import java.util.ArrayList;
 
 public class QuadTreeDrawable implements ModuleDrawable {
 
     private final ArrayList<SpritePlus> dots;
-    private final DelayedRemovalArray<Rectangle> quads;
+    private final DelayedRemovalArray<RectanglePlus> quads;
 
     public QuadTreeDrawable(Sprite dotSprite) {
         dots = new ArrayList<>();
@@ -50,7 +50,7 @@ public class QuadTreeDrawable implements ModuleDrawable {
         return dots;
     }
 
-    public DelayedRemovalArray<Rectangle> getQuads() {
+    public DelayedRemovalArray<RectanglePlus> getQuads() {
         return quads;
     }
 }

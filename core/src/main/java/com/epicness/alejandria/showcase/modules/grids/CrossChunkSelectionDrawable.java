@@ -14,18 +14,18 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Chunk;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CrossChunkSelectionDrawable implements ModuleDrawable {
 
-    private final Rectangle background;
+    private final RectanglePlus background;
     private final List<Chunk> chunks;
 
     public CrossChunkSelectionDrawable() {
-        background = new Rectangle(GRID_X, GRID_Y, SHOWCASE_SIZE, WHITE);
+        background = new RectanglePlus(GRID_X, GRID_Y, SHOWCASE_SIZE, WHITE);
 
         chunks = new ArrayList<>();
         for (int column = 0; column < GRID_DIMENSION; column++) {
@@ -56,7 +56,7 @@ public class CrossChunkSelectionDrawable implements ModuleDrawable {
     public void drawDebug(ShapeDrawerPlus shapeDrawer) {
     }
 
-    public Rectangle getBackground() {
+    public RectanglePlus getBackground() {
         return background;
     }
 

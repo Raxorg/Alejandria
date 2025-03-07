@@ -30,7 +30,7 @@ import com.epicness.alejandria.showcase.stuff.modules.ModuleDrawable;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.CirclePlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 import com.epicness.fundamentals.utils.Random;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class SimpleLightsDrawable implements ModuleDrawable {
     private FrameBuffer lightBuffer;
     private final TextureRegion bufferRegion;
     private final CirclePlus[] circles;
-    private final Rectangle[] rectangles;
+    private final RectanglePlus[] rectangles;
     private final List<Sprite> lights;
     private final Matrix4 projectionMatrix;
     private final OrthographicCamera bufferCamera;
@@ -62,9 +62,9 @@ public class SimpleLightsDrawable implements ModuleDrawable {
             );
         }
 
-        rectangles = new Rectangle[SHAPE_COUNT];
+        rectangles = new RectanglePlus[SHAPE_COUNT];
         for (int i = 0; i < rectangles.length; i++) {
-            rectangles[i] = new Rectangle(
+            rectangles[i] = new RectanglePlus(
                 MathUtils.random(MIN_RECTANGLE_X, MAX_RECTANGLE_X),
                 MathUtils.random(MIN_RECTANGLE_Y, MAX_RECTANGLE_Y),
                 RECTANGLE_SIZE,

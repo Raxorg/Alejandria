@@ -5,7 +5,7 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 import com.epicness.fundamentals.utils.Random;
 
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import java.util.List;
 
 public class Chunk {
 
-    public final Rectangle bounds;
-    public final List<Rectangle> cells;
+    public final RectanglePlus bounds;
+    public final List<RectanglePlus> cells;
 
     public Chunk(float x, float y, float w, float h, float spacing, int dimension, float cellSize) {
-        bounds = new Rectangle(x, y, w, h);
+        bounds = new RectanglePlus(x, y, w, h);
         cells = new ArrayList<>();
         Color chunkColor = Random.opaqueColor();
         for (int column = 0; column < dimension; column++) {
@@ -25,7 +25,7 @@ public class Chunk {
                 Color cellColor = chunkColor.cpy().lerp(BLACK, MathUtils.random(0.2f, 0.7f));
                 float cellX = x + column * (cellSize + spacing);
                 float cellY = y + row * (cellSize + spacing);
-                cells.add(new Rectangle(cellX, cellY, cellSize, cellColor));
+                cells.add(new RectanglePlus(cellX, cellY, cellSize, cellColor));
             }
         }
     }

@@ -5,12 +5,12 @@ import static com.epicness.fundamentals.constants.ColorConstants.LIGHT_DIRT;
 
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.epicness.alejandria.showcase.logic.Module;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 public class Alert extends Module<AlertDrawable> {
 
     private NinePatch alertButton;
-    private Rectangle bounds;
+    private RectanglePlus bounds;
 
     public Alert() {
         super("Alert", "Shows an HTML alert with a message\n\nOnly available on the web version");

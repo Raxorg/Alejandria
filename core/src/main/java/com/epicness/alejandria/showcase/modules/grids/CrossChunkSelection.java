@@ -13,7 +13,7 @@ import static com.epicness.fundamentals.constants.ColorConstants.GRASS;
 import com.badlogic.gdx.Gdx;
 import com.epicness.alejandria.showcase.logic.Module;
 import com.epicness.alejandria.showcase.stuff.modules.grids.Chunk;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.RectanglePlus;
 
 import java.util.List;
 
@@ -40,19 +40,19 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
         if (!drawable.getBackground().contains(x, y)) {
             return;
         }
-        Rectangle cell = find(x, y);
+        RectanglePlus cell = find(x, y);
         cell.setColor(BLACK);
         selectNeighbors(x, y);
     }
 
-    private Rectangle find(float x, float y) {
+    private RectanglePlus find(float x, float y) {
         x -= GRID_X;
         y -= GRID_Y;
         List<Chunk> chunks = drawable.getChunks();
         int column = (int) (x / CHUNK_SIZE);
         int row = (int) (y / CHUNK_SIZE);
         Chunk chunk = chunks.get(row + column * GRID_DIMENSION);
-        List<Rectangle> cells = chunk.cells;
+        List<RectanglePlus> cells = chunk.cells;
         column = (int) ((x % CHUNK_SIZE) / CELL_SIZE);
         row = (int) ((y % CHUNK_SIZE) / CELL_SIZE);
         return cells.get(row + column * CHUNK_DIMENSION);
@@ -73,7 +73,7 @@ public class CrossChunkSelection extends Module<CrossChunkSelectionDrawable> {
                     if (offsetX < GRID_X || offsetX >= GRID_X + GRID_SIZE || offsetY < GRID_Y || offsetY >= GRID_Y + GRID_SIZE) {
                         continue;
                     }
-                    Rectangle cell = find(offsetX, offsetY);
+                    RectanglePlus cell = find(offsetX, offsetY);
                     cell.setColor(GRASS);
                 }
             }
